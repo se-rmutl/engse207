@@ -1,0 +1,58 @@
+{
+    "name": "3CX-One-Screen-for-Agent",
+    "productName": "One-Screen for Agent",
+    "version": "1.1.0",
+    "description": "One-Screen for Agent",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder build",
+        "build": "electron-builder",
+        "build-signed": "electron-builder -c.win.certificateSubjectName= ", 
+        "electron-packager": "electron-packager ./ 3CX-One-Screen-for-Agent --platform=win32 --arch=x64",
+        "electron-packager2": "electron-packager ./ 3CX-One-Screen-for-Agent --platform=win32 --arch=x64 --electron-version=1.4.3",
+        "setup": "electron-installer-windows --src dist/3CX-One-Screen-for-Agent-win32-x64/ --dest dist/installers/"
+    },
+    "build": {
+        "productName": "One-Screen for Agent",
+        "appId": "com.ipcc.rabbit.onescreen",
+        "win": {
+            "certificateSubjectName": "TestLtd",
+            "publisherName": "IP Convergence Company Limited",
+            "signingHashAlgorithms": ["sha256"], 
+            "verifyUpdateCodeSignature": true,
+            "signAndEditExecutable": true,
+            "target": [
+                "nsis"
+            ],
+            "icon": "assets/rabbit_logo.ico"
+        },
+        "nsis": {
+            "installerIcon": "assets/rabbit_logo.ico",
+            "uninstallerIcon": "assets/rabbit_logo.ico",
+            "uninstallDisplayName": "One-Screen for Agent",
+            "license": "assets/license.txt",
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true
+        }
+    },
+    "author": "IPCC2023",
+    "license": "ISC",
+    "devDependencies": {
+        "electron": "^23.1.2",
+        "electron-builder": "latest",
+        "electron-packager": "^17.1.2"
+    },
+    "dependencies": {
+        "@electron/remote": "^1.2.2",
+        "@primer/octicons": "^12.1.0",
+        "body-parser": "^1.19.0",
+        "easytimer.js": "^4.3.2",
+        "feather-icons": "^4.29.0",
+        "jquery": "^3.6.3",
+        "modclean": "^3.0.0-beta.1",
+        "path": "^0.12.7",
+        "ws": "^8.13.0"
+    }
+}
