@@ -39,8 +39,8 @@ const mountPath = '/api';
 const api = new ParseServer(config);
 
 var options = {
-  key: fs.readFileSync('C:/WebTechnology/backend/ssl/server.key'),
-  cert: fs.readFileSync('C:/WebTechnology/backend/ssl/server.crt')
+  key: fs.readFileSync('server.key'),
+  cert: fs.readFileSync('server.crt')
 };
 
 app.use(mountPath, api);

@@ -75,7 +75,7 @@ const init = async () => {
 
             // here is where you validate your token
             // comparing with token from your database for example
-            const isValid = token === '00D5D0000001aaZ!ARgAQGuQzp.mOv2jmhXkfIsjgywpCIh7.HZpc6vED1LCbc90DTaVDJwdNqbTW5r4uZicv8AFfkOE1ialqnR8UN5.wnAg3O7h';
+            const isValid = token === '1aaZ!ARgAQGuQzp00D5D000000.mOv2jmhXkfIsjgywpCIh7.HZpc6vED1LCbc90DTaVDJwdNqbTW5r4uZicv8AFfkOE1ialqnR8UN5.wnAgh090h';
 
             const credentials = { token };
             const artifacts = { test: 'info' };

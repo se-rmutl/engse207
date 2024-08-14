@@ -10,8 +10,8 @@ var apiport = 4000;
 var dashboard_port = 4001;
 
 var cert_options = {
-  key: fs.readFileSync('C:/WebTechnology/backend/ssl/server.key'),
-  cert: fs.readFileSync('C:/WebTechnology/backend/ssl/server.crt')
+  key: fs.readFileSync('server.key'),
+  cert: fs.readFileSync('server.crt')
 };
 
 var trustProxy = true;
