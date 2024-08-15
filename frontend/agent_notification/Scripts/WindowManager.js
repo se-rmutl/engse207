@@ -3,8 +3,9 @@ const helper = require('./HelperFunctions.js');
 const path = require('path');
 let imgPath;
 const AppNameVersion = app.getName() + " " + app.getVersion();
-const win_width = 290;
-const win_height = 190;
+const win_width = 320;
+const win_height = 210;
+
 
 class WindowManager {
     constructor() {
@@ -12,8 +13,7 @@ class WindowManager {
         this.state = { isReady: false }
 
         //Iconpaht different in Build
-        //imgPath = helper.isDev() ? './assets/Icon.png' : path.join(process.resourcesPath, '../assets/Icon.png');
-        imgPath = helper.isDev() ? './assets/rabbit_logo.png' : path.join(__dirname, '../assets/rabbit_logo.png');
+        imgPath = helper.isDev() ? './assets/agent_notification.png' : path.join(__dirname, '../assets/agent_notification.png');
         this.icon = nativeImage.createFromPath(imgPath);
 
     }
@@ -31,9 +31,9 @@ class WindowManager {
             this.showWindow()
         })
 
-        ipcMain.on('callonescreen', (event, arg) => {
+        //--------- Code here ------------
 
-            //const webContents = this.webContents
+        ipcMain.on('callonescreen', (event, arg) => {
 
             let child = require('child_process').execFile;
 
@@ -45,7 +45,7 @@ class WindowManager {
             //let chromeString = 'https://www.dev2solution.com/onescreen/outbound/';
 
             //--Public PRODUCTION Server------[Ver.x.x.0]----------
-            let chromeString = 'http://rbl-ccobcus/onescreen/outbound/campaign/';
+            let chromeString = '';
 
             console.log('--- Call operation parameters ---',);
             console.log("operationType: " + arg.operationType);
@@ -95,190 +95,10 @@ class WindowManager {
         })
 
 
-        ipcMain.on('calloperation', (event, arg) => {
-            console.log("-----------------calloperation-------------------");
 
-            //const webContents = this.webContents
-
-            let child = require('child_process').execFile;
-            //let executablePath = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe";
-            //let executablePath = "/Applications/3CXPhone.app";
-            let executablePath = "C:\\ProgramData\\3CXPhone for Windows\\PhoneApp\\CallTriggerCmd.exe";
-
-            console.log('--- [ipcMain] Call operation parameters ---',);
-            console.log("operationType: " + arg.operationType);
-            console.log("callParameter: " + arg.callParameter);
-            console.log("phoneNumber: " + arg.phoneNumber);
-            console.log("callId: " + String(arg.callId));
-
-            let parameters = [];
-            let returnString = "";
-
-
-
-                    
-            //console.log("xxxxxxreturnString: " + returnString);
-            //event.sender.send('getcallid', returnString);
-
-
-            if (arg.operationType == 1) { //Call Out
-                parameters = ["--call=" + arg.phoneNumber];
-
-                console.log("parameters: " + parameters);
-
-                child(executablePath, parameters, function (err, data) {
-                    console.log("err: " + err)
-
-                    returnString = data.toString();
-                    console.log("data.toString(): " + data.toString());
-
-                    console.log("Call operationType: [" + arg.operationType + "] completed.");
-
-                    if (returnString == "") {
-                        console.log("Call has been Ended"); // true
-                        //this.win.webContents.send('endcall', arg.phoneNumber)
-
-                    } else {
-                        console.log("returnString: " + returnString);
-                        event.sender.send('getcallid', returnString);
-
-                    }
-
-                });
-
-            } else
-                if (arg.operationType == 2) { //Drop Call
-
-                    console.log("Call operationType: [" + arg.operationType + "] started.");
-
-
-
-                    //-----------------------------------------------------
-                    console.log("Getting call list..");
-
-                    parameters = ["--list"];
-
-                    console.log("call list parameters: " + parameters);
-
-                    child(executablePath, parameters, function (err, data) {
-                        //console.log("err: " + err)
-
-                        returnString = data.toString();
-                        console.log("data.toString(): " + data.toString());
-
-                        console.log("Call operationType: [--list] completed.");
-
-                        if (returnString == "") {
-                            console.log("returnString was nothing"); // true
-                            //this.win.webContents.send('endcall', arg.phoneNumber)
-
-                        } else {
-
-                            let callStatus ='';
-
-                            console.log("Do [getcallid] returnString: " + returnString);
-
-                            //console.log(`Call Status:\n${data}`);
-                            console.log(`-------------------`);
-                            let splitArray = returnString.split('\n'); // This will become an array now
-                            console.log("splitArray.length: " + splitArray.length);
-                            for (let i = 0; i < splitArray.length; i++) {
-            
-                                // console.log("splitArray[i].indexOf(arg.callParameter): "+splitArray[i].indexOf(arg.callParameter));
-                                console.log(`<------------------->`);
-            
-                                if (splitArray[i].length != 0) {
-            
-            
-                                    //  if (splitArray[i].indexOf(arg.callParameter) != -1) {
-                                    // console.log(`Line: ${splitArray[i]}`);
-                                    console.log(`Output: ${splitArray[i].substring(0, splitArray[i].indexOf(' '))}`);
-            
-                                    let s = splitArray[i].split(/(?<=^\S+)\s/)
-                                    callStatus = s[0];
-                                // console.log("callStatus1: " + callStatus);
-                                }
-            
-                                //  }
-                            }
-
-                            console.log("callStatus: " + callStatus);
-                            //event.sender.send('getcallid', callStatus);
-                            console.log("Getting call list completed");
-
-                            //console.log("Call operationType: [" + arg.operationType + "] completed.");
-                            console.log("drop call parameters: " + parameters+' '+callStatus);
-
-                            const { exec } = require('child_process');
-
-                        // exec('"C:\\ProgramData\\3CXPhone for Windows\\PhoneApp\\CallTriggerCmd.exe" --drop=' + String(arg.callId));
-
-                            exec('"C:\\ProgramData\\3CXPhone for Windows\\PhoneApp\\CallTriggerCmd.exe" --drop=' + callStatus);
-
-                            console.log("Call operationType: [" + arg.operationType + "] completed.");
-
-                        }
-
-                    });
-
-                    //-----------------------------------------------------
-
-
-
-
-
-
-
-
-                } else
-                    if (arg.operationType == 3) { //Hold Call
-                        console.log("Call operationType: [" + arg.operationType + "] completed.");
-                        parameters = ["--hold=" + String(arg.callId)];
-
-                        console.log("parameters: " + parameters);
-                        const { exec } = require('child_process');
-                        exec('"C:\\ProgramData\\3CXPhone for Windows\\PhoneApp\\CallTriggerCmd.exe" --hold=' + String(arg.callId));
-
-                    } else
-                        if (arg.operationType == 4) { // Resume Call
-                            console.log("Call operationType: [" + arg.operationType + "] completed.");
-                            parameters = ["--resume=" + String(arg.callId)];
-
-                            console.log("parameters: " + parameters);
-                            const { exec } = require('child_process');
-                            exec('"C:\\ProgramData\\3CXPhone for Windows\\PhoneApp\\CallTriggerCmd.exe" --resume=' + String(arg.callId));
-
-                        }
-                        console.log("-----------------End of calloperation ----------------");
-        })
-
-
-        ipcMain.on('dropcall', (event, arg) => {
-
-            let child2 = require('child_process').execFile;
-
-            let executablePath = "C:\\ProgramData\\3CXPhone for Windows\\PhoneApp\\CallTriggerCmd.exe"; //CallTriggerCmd.exe -c=90988289519
-
-
-            console.log('--- Drop call operation ---',)
-            console.log("callParameter: " + arg.callParameter);
-            console.log("callId: " + String(arg.callId));
-            //let parameters = ["--call=90992818989"];
-            //let parameters = ["-c=90988289519"];
-            let parameters = ["--" + arg.callParameter + "=" + String(arg.callId)];
-            let returnString = "";
-
-            //parameters = "";
-            console.log("parameters: " + parameters);
-
-
-            const { exec } = require('child_process');
-
-            exec('"C:\\ProgramData\\3CXPhone for Windows\\PhoneApp\\CallTriggerCmd.exe" --drop=' + String(arg.callId));
-
-        })
-
+        //--------------------------------
     }
+
 
     //Creates a Tray and a Windows
     createUI() {
@@ -308,7 +128,7 @@ class WindowManager {
 
     createTray() {
         this.tray = new Tray(this.icon);
-        this.tray.getTitle('Rabbit Life')
+        this.tray.getTitle('Agent Notification')
 
         this.tray.on('double-click', this.toggleWindowMain.bind(this));
 
@@ -332,24 +152,24 @@ class WindowManager {
 
     createMainWindow() {
         this.win = new BrowserWindow({
-            icon: 'assets/rabbit_logo.png',
+            icon: 'assets/agent_notification.png',
             width: win_width,
             height: win_height,
             // backgroundColor: '#E5E8E8', // background color
             title: AppNameVersion,
-            frame: true,
-            show: true,
-            fullscreenable: false,
-            movable: true,
-            resizable: false,
-            transparent: false,
+            // frame: true,
+            // show: true,
+            // fullscreenable: false,
+            // movable: true,
+            // resizable: true,
+            // transparent: true,
             // maximazable: false,
-            menu: false,
+            menu: true,
             webPreferences: {
                 nodeIntegration: true,
                 enableRemoteModule: true,
                 plugins: true,
-                devTools: false,
+                devTools: true,
                 contextIsolation: false
             },
             skipTaskbar: false
@@ -373,7 +193,7 @@ class WindowManager {
                     type: 'question',
                     buttons: ['Yes', 'No'],
                     title: 'Confirm',
-                    message: 'Are you sure you want to quit ?'
+                    message: 'Are you sure you want to exit ?'
                 });
             if (choice === 1) {
                 e.preventDefault();
@@ -399,10 +219,8 @@ class WindowManager {
         const windowBounds = this.win.getBounds()
         const trayBounds = this.tray.getBounds()
 
-
         let x = 0;
         let y = 0;
-
 
         console.log("(mac) windowBounds.width=" + windowBounds.width + ", (mac) windowBounds.height=" + windowBounds.height);
         console.log("(mac) trayBounds.width=" + trayBounds.width + ", (mac) trayBounds.height=" + trayBounds.height);
@@ -432,7 +250,7 @@ class WindowManager {
 
             return {
                 x: width - win_width,
-                y: height - (win_height + 40),
+                y: height - (win_height + 50),
             }
 
         }
@@ -451,7 +269,6 @@ class WindowManager {
         }
     }
 
-
     toggleWindowMain() {
 
         if (this.win.isVisible()) {
@@ -460,6 +277,8 @@ class WindowManager {
             this.showMainWindow()
         }
     }
+
+
 }
 
 module.exports = WindowManager;
