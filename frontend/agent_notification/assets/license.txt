@@ -1,2 +1,2 @@
-This software "3CX One-Screen for Agent (Rabbit Life)"
-@2023 IP Convergence Company Limited. All rights reserved.
+This software "Agent Notification"
+@2024 ENGSE611 Class, Software Engineering, RMUTL. Thailand. All rights reserved.
