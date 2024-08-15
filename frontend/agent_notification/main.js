@@ -16,7 +16,8 @@ app.on('window-all-closed', () => {
   }
 })
 
-//app.commandLine.appendSwitch("ignore-certificate-errors");
+//--- When use self-signing certificate must be uncomment this line below. ---
+app.commandLine.appendSwitch("ignore-certificate-errors");
 
 //-----------------------
 
@@ -31,5 +32,3 @@ ipcMain.on('synchronous-message', (event, arg) => {
   console.log(arg) // prints "ping"
   event.returnValue = 'pong'
 })
-
-
