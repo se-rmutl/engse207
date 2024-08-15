@@ -19,6 +19,7 @@ class WindowManager {
     }
 
     createIPC() {
+        
         ipcMain.on('close-me', (evt, arg) => {
             app.quit()
         })
@@ -31,70 +32,7 @@ class WindowManager {
             this.showWindow()
         })
 
-        //--------- Code here ------------
-
-        ipcMain.on('callonescreen', (event, arg) => {
-
-            let child = require('child_process').execFile;
-
-            let executablePathx64 = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
-
-            let executablePathx86 = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe";
-
-            //--DEV Server------------------------------
-            let chromeString = 'https://www.se-rmutl.net';
-
-            //--Public PRODUCTION Server------[Ver.x.x.0]----------
-            //let chromeString = 'https://www.se-rmutl.net';
-
-            console.log('--- Call operation parameters ---',);
-            console.log("operationType: " + arg.operationType);
-            console.log("callParameter: " + arg.callParameter);
-            console.log("phoneNumber: " + arg.phoneNumber);
-            console.log("AgentCode: " + arg.AgentCode);
-            console.log("x64Chrome: " + arg.x64Chrome);
-            console.log("callId: " + String(arg.callId));
-
-            let parameters = [];
-            let returnString = "";
-            let executablePath = "";
-
-            if (arg.operationType == 1) { //Call Out
-                // parameters = ["--call=" + arg.phoneNumber];
-                parameters = [chromeString + arg.AgentCode];
-
-                if (arg.x64Chrome) executablePath = executablePathx64
-                else executablePath = executablePathx86
-
-                console.log("parameters: " + parameters);
-                console.log("executablePath: " + executablePath);
-
-                child(executablePath, parameters, function (err, data) {
-                    //child(executablePathx86, parameters, function (err, data) {
-                    console.log("err: " + err)
-
-                    returnString = data.toString();
-                    console.log("data.toString(): " + data.toString());
-
-                    console.log("Call operationType: [" + arg.operationType + "] completed.");
-
-                    if (returnString == "") {
-                        console.log("Call has been Ended"); // true
-                        //this.win.webContents.send('endcall', arg.phoneNumber)
-
-                    } else {
-                        console.log("returnString: " + returnString);
-                        event.sender.send('getcallid', returnString);
-
-                    }
-
-                });
-
-            }
-
-        })
-
-
+ 
 
         //--------------------------------
     }
