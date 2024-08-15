@@ -39,7 +39,7 @@
             "allowToChangeInstallationDirectory": true
         }
     },
-    "author": "ENGSE611 Class",
+    "author": "SE RMUTL Class",
     "license": "ISC",
     "devDependencies": {
         "electron": "^23.1.2",
