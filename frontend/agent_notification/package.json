@@ -18,13 +18,6 @@
         "productName": "Agent Notification",
         "appId": "rmutl.se.notification",
         "win": {
-            "certificateSubjectName": "TestLtd",
-            "publisherName": "SE RMUTL",
-            "signingHashAlgorithms": [
-                "sha256"
-            ],
-            "verifyUpdateCodeSignature": true,
-            "signAndEditExecutable": true,
             "target": [
                 "nsis"
             ],

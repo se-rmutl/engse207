@@ -1,2 +1,3 @@
 This software "Agent Notification"
-@2024 ENGSE611 Class, Software Engineering, RMUTL. Thailand. All rights reserved.
+SE Class by Aj.Thanit Keatkaew, Software Engineering, RMUTL. Thailand.
+@2024 All rights reserved.
