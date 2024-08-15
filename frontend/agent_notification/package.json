@@ -32,7 +32,7 @@
             "allowToChangeInstallationDirectory": true
         }
     },
-    "author": "SE RMUTL Class",
+    "author": "Thanit Keatkaew, SE RMUTL",
     "license": "ISC",
     "devDependencies": {
         "electron": "^23.1.2",
