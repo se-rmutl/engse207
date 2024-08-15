@@ -19,6 +19,13 @@ npm install
 npm start
 ```
 
+## Build installer package for windows
+This source is configed for windows environment onlyd, if you want to build for MacOS or Unix please find out on the internet.
+
+``` bash
+npm run build
+```
+
 ## Showcase
 ![Preview Picture showing a Window in the Menu Bar](assets/PreviewPicture.png)
 
