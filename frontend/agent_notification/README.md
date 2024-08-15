@@ -20,7 +20,7 @@ npm start
 ```
 
 ## Build installer package for windows
-This source is configed for windows environment onlyd, if you want to build for MacOS or Unix please find out on the internet.
+This source is configed for windows environment only, if you want to build for MacOS or Unix please find out on the internet.
 
 ``` bash
 npm run build
