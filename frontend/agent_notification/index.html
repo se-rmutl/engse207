@@ -47,29 +47,29 @@
 
         //----------------------------------
 
-/*
-        $(function () {
-            console.log("ready!");
-
-            $("#buttonCall").hide();
-            $("#buttonDisConnect").hide();
-            $("#buttonConnect").show();
-            $("#nodata").hide();
-            //$("#errMessage").show();
-            $("#agent").focus();
-            //alert(localStorage.getItem("switch_104_02"));
-
-            //--- Running Chrome x64 only -----   
-
-            if (localStorage.getItem("agent") != "") {
-
-                console.log("Saved Agent Code: "+localStorage.getItem("agent"));
-                $("#agent").val(localStorage.getItem("agent"));
-                checkInput('on');
-                //document.getElementById("agent").val(localStorage.getItem("agent"));
-            }
-        });
-*/
+        /*
+                $(function () {
+                    console.log("ready!");
+        
+                    $("#buttonCall").hide();
+                    $("#buttonDisConnect").hide();
+                    $("#buttonConnect").show();
+                    $("#nodata").hide();
+                    //$("#errMessage").show();
+                    $("#agent").focus();
+                    //alert(localStorage.getItem("switch_104_02"));
+        
+                    //--- Running Chrome x64 only -----   
+        
+                    if (localStorage.getItem("agent") != "") {
+        
+                        console.log("Saved Agent Code: "+localStorage.getItem("agent"));
+                        $("#agent").val(localStorage.getItem("agent"));
+                        checkInput('on');
+                        //document.getElementById("agent").val(localStorage.getItem("agent"));
+                    }
+                });
+        */
 
         function CallOnescreen(operationType, phone_number) {
             //console.log("---- CallOnescreen ----");
@@ -107,15 +107,14 @@
                         "/getOnlineAgentByAgentCode?agentcode=" +
                         AgentCode,
                     headers: {
-                        'Authorization': 'Bearer 00D5D0000001aaZ!ARgAQGuQzp.mOv2jmhXkfIsjgywpCIh7.HZpc6vED1LCbc90DTaVDJwdNqbTW5r4uZicv8AFfkOE1ialqnR8UN5.wnAg3O7h'
+                        'Authorization': 'Bearer 1aaZ!ARgAQGuQzp00D5D000000.mOv2jmhXkfIsjgywpCIh7.HZpc6vED1LCbc90DTaVDJwdNqbTW5r4uZicv8AFfkOE1ialqnR8UN5.wnAgh090h'
                     },
                     timeout: 15000,
                     success: function (response) {
                         console.log(response);
                         console.log('response.error:' + response.error);
                         if (response.error == false) {
-                            //if (response.data.IsLogin == 1) {
-                            if (response.data.AgentStatus != 9) {
+                            if ((response.data.IsLogin == 1) && (response.data.AgentStatus != 9)) {
                                 wsChecks = "true";
                                 console.log("new: " + wsChecks);
                                 //$("#errMessage").hide();
@@ -301,7 +300,7 @@
             //$("#icon").attr("src", "./assets/icon/na.png");
             $("#connectTime")
                 .empty()
-                .append("["+AgentCode+"] Starts at: " + output);
+                .append("[" + AgentCode + "] Starts at: " + output);
 
         }
 
@@ -314,7 +313,7 @@
             $("#basicUsage").hide();
             // ws = new WebSocket("ws://" + WebSecketServer + "/?agentcode=" + AgentCode);
             //// ws.close();
-            
+
             connectSocket = false;
             $("#AgentCode").empty().append("No Data");
             $("#agent").show();
@@ -342,13 +341,13 @@
 
             $("#errMessage").empty();
 
-           // $("#ConnectionStatus").empty().append("Disconnected");
+            // $("#ConnectionStatus").empty().append("Disconnected");
             $("#ConnectionStatus").empty().removeClass().addClass('badge bg-danger').append("Disconnected");
 
 
             console.log('Socket is connected');
             console.log(" Agent Code  -> Set empty");
-            localStorage.setItem("agent","")
+            localStorage.setItem("agent", "")
             console.log(localStorage.getItem("agent"));
 
         }
