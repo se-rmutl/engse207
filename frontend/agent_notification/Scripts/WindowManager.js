@@ -41,11 +41,11 @@ class WindowManager {
 
             let executablePathx86 = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe";
 
-            //--POC Server------------------------------
-            //let chromeString = 'https://www.dev2solution.com/onescreen/outbound/';
+            //--DEV Server------------------------------
+            let chromeString = 'https://www.se-rmutl.net';
 
             //--Public PRODUCTION Server------[Ver.x.x.0]----------
-            let chromeString = '';
+            //let chromeString = 'https://www.se-rmutl.net';
 
             console.log('--- Call operation parameters ---',);
             console.log("operationType: " + arg.operationType);
