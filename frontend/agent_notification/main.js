@@ -3,7 +3,7 @@ const { app } = require('electron')
 const WindowManager = require('./Scripts/WindowManager.js');
 
 //Main Object responsible for managing the electron windows is created
- windowManager = new WindowManager();
+windowManager = new WindowManager();
 
 //Called when Electron is ready
 //This creates the browser windows and tray in the menu bar
@@ -18,6 +18,10 @@ app.on('window-all-closed', () => {
 
 //--- When use self-signing certificate must be uncomment this line below. ---
 app.commandLine.appendSwitch("ignore-certificate-errors");
+
+if (process.platform === 'win32') {
+  app.setAppUserModelId(app.name+' '+app.getVersion());
+}
 
 //-----------------------
 

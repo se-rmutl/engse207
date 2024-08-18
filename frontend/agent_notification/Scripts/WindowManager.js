@@ -3,8 +3,8 @@ const helper = require('./HelperFunctions.js');
 const path = require('path');
 let imgPath;
 const AppNameVersion = app.getName() + " " + app.getVersion();
-const win_width = 320;
-const win_height = 210;
+const win_width = 520; //320
+const win_height = 310; //210
 
 
 class WindowManager {
@@ -73,9 +73,11 @@ class WindowManager {
         const contextMenu = Menu.buildFromTemplate([
             { label: AppNameVersion, enabled: false },
             { type: 'separator' },
+            { label: AppNameVersion, enabled: false },
+            { type: 'separator' },
             { label: 'Configuration', click: () => { this.showWindow() } },
-            // { label: 'Agent Code', click: () => { this.showWindow() } },
-            //{ label: 'close', click: () => { this.hideWindow() }},
+            { label: 'Agent Code', click: () => { this.showWindow() } },
+            { label: 'close', click: () => { this.hideWindow() }},
             { type: 'separator' },
             // { label: 'x86 Chrome', type: 'radio' },
             { label: 'Exit', click: () => { this.exitWindow() } }
@@ -99,7 +101,7 @@ class WindowManager {
             // show: true,
             // fullscreenable: false,
             // movable: true,
-            // resizable: true,
+              resizable: true,
             // transparent: true,
             // maximazable: false,
             menu: true,
@@ -114,12 +116,12 @@ class WindowManager {
         })
 
         this.win.webContents.openDevTools()
-
-        this.win.loadFile('index.html');
+     
+        this.win.loadFile('index.html'); /*---- */
         this.win.setVisibleOnAllWorkspaces(true);
         this.win.setAlwaysOnTop(true, 'screen');
         this.win.setMenu(null);
-        this.showMainWindow();
+        this.showMainWindow(); /*---- */
 
         this.win.setFullScreenable(false);
         this.win.setMaximizable(false);
