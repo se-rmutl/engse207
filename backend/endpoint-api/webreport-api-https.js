@@ -14,7 +14,7 @@ const apiport = 8443
 
 var url = require('url');
 
-//---------------- Websocket -----------------------------
+//---------------- Websocket Part1 Start -----------------------
 
 var webSocketServer = new (require('ws')).Server({
     port: (process.env.PORT || 3071)
@@ -87,7 +87,7 @@ webSocketServer.on('connection', (ws, req) => {
 
 });
 
-//---------------- Websocket -----------------------------
+//---------------- Websocket Part1 End -----------------------
 
 
 //init Express
@@ -266,7 +266,8 @@ const init = async () => {
 
                     const responsedata = await OnlineAgent.OnlineAgentRepo.postOnlineAgentStatus(AgentCode, AgentName, IsLogin, AgentStatus);
 
-                    //---------------- Websocket -----------------------------
+                    //---------------- Websocket Part2 Start -----------------------
+                    
                     if (!responsedata.error) {
                         if (clientWebSockets[AgentCode]) {
 
@@ -286,7 +287,7 @@ const init = async () => {
 
                         }
                     }
-                    //---------------- Websocket -----------------------------
+                    //---------------- Websocket Part2 End -----------------------
 
                     if (responsedata.statusCode == 200)
                         return responsedata;
