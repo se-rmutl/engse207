@@ -215,13 +215,13 @@ const init = async () => {
                     if (responsedata.statusCode == 500)
                         return h.response("Something went wrong. Please try again later.").code(500);
                     else
-                        if (responsedata.statusCode == 200)
-                            return responsedata;
-                        else
-                            if (responsedata.statusCode == 404)
-                                return h.response(responsedata).code(404);
-                            else
-                                return h.response("Something went wrong. Please try again later.").code(500);
+                    if (responsedata.statusCode == 200)
+                        return responsedata;
+                     else
+                    if (responsedata.statusCode == 404)
+                        return h.response(responsedata).code(404);
+                    else
+                        return h.response("Something went wrong. Please try again later.").code(500);
 
                 }
             } catch (err) {
@@ -291,10 +291,10 @@ const init = async () => {
                     if (responsedata.statusCode == 200)
                         return responsedata;
                     else
-                        if (responsedata.statusCode == 404)
-                            return h.response(responsedata).code(404);
-                        else
-                            return h.response("Something went wrong. Please try again later.").code(500);
+                    if (responsedata.statusCode == 404)
+                        return h.response(responsedata).code(404);
+                    else
+                        return h.response("Something went wrong. Please try again later.").code(500);
 
                 }
 
