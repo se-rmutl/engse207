@@ -36,12 +36,12 @@
         let statusLabel;
 
         //--Dev Server------------------------------
-        var APIServer = "https://192.168.56.1:8443/api/v1";
+        var APIServer = "https://192.168.56.1:8443/engse207/api/v1";
         var WebSecketServer = "ws://192.168.56.1:3071";
 
         //--Staging Server------------------------------
-        //var APIServer = "https://192.168.56.106:8443/api/v1";
-        //var WebSecketServer = "ws://192.168.56.106:3071";
+        //var APIServer = "https://lab-api.se-rmutl.net/engse207/api/v1";
+        //var WebSecketServer = "ws://lab-ws.se-rmutl.net/engse207";
 
         var ConcurrentCall = [];
         var connectSocket = false;
@@ -663,7 +663,10 @@
                             if (response.MessageType == 5) {
 
                                 console.log("response.MessageType == 5");
-                                console.log("response.IsLogin = " + response.IsLogin);
+                                console.log("response.FromAgentCode = " + response.FromAgentCode);
+                                console.log("response.ToAgentCode = " + response.ToAgentCode);
+                                console.log("response.Message = " + response.Message);
+
                                 messageNotify(response);
 
 
