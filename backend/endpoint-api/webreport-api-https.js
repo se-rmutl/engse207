@@ -165,7 +165,7 @@ const init = async () => {
 
     server.route({
         method: 'GET',
-        path: '/',
+        path: '/engse207/api/v1/',
         config: {
             cors: {
                 origin: [
@@ -189,7 +189,7 @@ const init = async () => {
 
     server.route({
         method: 'GET',
-        path: '/api/v1/getOnlineAgentByAgentCode',
+        path: '/engse207/api/v1/getOnlineAgentByAgentCode',
         config: {
             cors: {
                 origin: [
@@ -215,13 +215,13 @@ const init = async () => {
                     if (responsedata.statusCode == 500)
                         return h.response("Something went wrong. Please try again later.").code(500);
                     else
-                    if (responsedata.statusCode == 200)
-                        return responsedata;
-                     else
-                    if (responsedata.statusCode == 404)
-                        return h.response(responsedata).code(404);
-                    else
-                        return h.response("Something went wrong. Please try again later.").code(500);
+                        if (responsedata.statusCode == 200)
+                            return responsedata;
+                        else
+                            if (responsedata.statusCode == 404)
+                                return h.response(responsedata).code(404);
+                            else
+                                return h.response("Something went wrong. Please try again later.").code(500);
 
                 }
             } catch (err) {
@@ -233,7 +233,7 @@ const init = async () => {
 
     server.route({
         method: 'POST',
-        path: '/api/v1/postOnlineAgentStatus',
+        path: '/engse207/api/v1/postOnlineAgentStatus',
         config: {
             cors: {
                 origin: [
@@ -267,7 +267,7 @@ const init = async () => {
                     const responsedata = await OnlineAgent.OnlineAgentRepo.postOnlineAgentStatus(AgentCode, AgentName, IsLogin, AgentStatus);
 
                     //---------------- Websocket Part2 Start -----------------------
-                    
+
                     if (!responsedata.error) {
                         if (clientWebSockets[AgentCode]) {
 
@@ -292,10 +292,10 @@ const init = async () => {
                     if (responsedata.statusCode == 200)
                         return responsedata;
                     else
-                    if (responsedata.statusCode == 404)
-                        return h.response(responsedata).code(404);
-                    else
-                        return h.response("Something went wrong. Please try again later.").code(500);
+                        if (responsedata.statusCode == 404)
+                            return h.response(responsedata).code(404);
+                        else
+                            return h.response("Something went wrong. Please try again later.").code(500);
 
                 }
 
@@ -309,7 +309,7 @@ const init = async () => {
 
     server.route({
         method: 'POST',
-        path: '/api/v1/postSendMessage',
+        path: '/engse207/api/v1/postSendMessage',
         config: {
             cors: {
                 origin: [
@@ -375,7 +375,7 @@ const init = async () => {
 
     server.route({
         method: 'POST',
-        path: '/api/v1/deleteOnlineAgent',
+        path: '/engse207/api/v1/deleteOnlineAgent',
         config: {
             cors: {
                 origin: [
@@ -422,6 +422,3 @@ process.on('unhandledRejection', (err) => {
 });
 
 init();
-
-
-

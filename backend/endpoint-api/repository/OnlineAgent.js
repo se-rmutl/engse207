@@ -38,10 +38,10 @@ async function getOnlineAgentByAgentCode(agentcode) {
     catch (error) {
         console.log(error);
         return ({
-             error: true,
-             statusCode: 500,
-             errMessage: 'An internal server error occurred',
-         });
+            error: true,
+            statusCode: 500,
+            errMessage: 'An internal server error occurred',
+        });
     }
 }
 

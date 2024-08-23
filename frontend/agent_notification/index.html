@@ -95,22 +95,22 @@
         }
 
         function messageNotify(ReceiveMessage) {
-/*
+            /*
+                        const notification = {
+                            title: 'From: '+ReceiveMessage.FromAgentCode,
+                            //subtitle: 'Subtitle of the Notification',
+                            //body: '** '+ statusLabel+ ' **',
+                            body: 'Message: '+ReceiveMessage.Message +'\n'+'['+ReceiveMessage.DateTime+']',
+                            silent: false,
+                            requireInteraction: true,
+                            icon: path.join(__dirname, './assets/impatient.png')
+                        }
+                        */
             const notification = {
-                title: 'From: '+ReceiveMessage.FromAgentCode,
+                title: ReceiveMessage.DateTime + '\n' + 'From: ' + ReceiveMessage.FromAgentCode,
                 //subtitle: 'Subtitle of the Notification',
                 //body: '** '+ statusLabel+ ' **',
-                body: 'Message: '+ReceiveMessage.Message +'\n'+'['+ReceiveMessage.DateTime+']',
-                silent: false,
-                requireInteraction: true,
-                icon: path.join(__dirname, './assets/impatient.png')
-            }
-            */
-            const notification = {
-                title: ReceiveMessage.DateTime+'\n'+'From: '+ReceiveMessage.FromAgentCode,
-                //subtitle: 'Subtitle of the Notification',
-                //body: '** '+ statusLabel+ ' **',
-                body: ' '+ReceiveMessage.Message,
+                body: ' ' + ReceiveMessage.Message,
                 silent: false,
                 requireInteraction: true,
                 icon: path.join(__dirname, './assets/impatient.png')
@@ -667,23 +667,23 @@
                                 messageNotify(response);
 
 
-/*
-                                if (response.IsLogin == 0) {
-                                    logoutFromAPI();
-                                } else {
-                                    if (IsLogin == 0) {
-                                        IsLogin = 1;
-                                        setLoginTime();
-                                    }
-
-                                    if (response.AgentStatus != agentStatusID) {
-                                        counterTimer();
-                                        agentStatusID = response.AgentStatus;
-                                    }
-                                    console.log("response.MessageType == 4: " + response.AgentStatus);
-                                    statusDisplay(response.AgentStatus);
-                                }
-*/
+                                /*
+                                                                if (response.IsLogin == 0) {
+                                                                    logoutFromAPI();
+                                                                } else {
+                                                                    if (IsLogin == 0) {
+                                                                        IsLogin = 1;
+                                                                        setLoginTime();
+                                                                    }
+                                
+                                                                    if (response.AgentStatus != agentStatusID) {
+                                                                        counterTimer();
+                                                                        agentStatusID = response.AgentStatus;
+                                                                    }
+                                                                    console.log("response.MessageType == 4: " + response.AgentStatus);
+                                                                    statusDisplay(response.AgentStatus);
+                                                                }
+                                */
 
                             }
                             /*

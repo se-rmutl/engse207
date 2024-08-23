@@ -20,7 +20,7 @@ app.on('window-all-closed', () => {
 app.commandLine.appendSwitch("ignore-certificate-errors");
 
 if (process.platform === 'win32') {
-  app.setAppUserModelId(app.name+' '+app.getVersion());
+  app.setAppUserModelId(app.name + ' ' + app.getVersion());
 }
 
 //-----------------------
