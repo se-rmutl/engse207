@@ -8,8 +8,8 @@ const wbconfig = {
         appId : "wallboardapi"
     },
     production: {
-        hosturl  : 'https://lab-parse-server.se-rmutl.net/api',
-        wsurl    : 'wss://lab-parse-server.se-rmutl.net',
+        hosturl  : 'https://10.21.43.203:8005/api',
+        wsurl    : 'wss://10.21.43.203:8005',
         masterKey     : 'wallboardapi',
         clientKey     : 'wallboardapi',
         javascriptKey : 'wallboardapi',
@@ -17,3 +17,5 @@ const wbconfig = {
     }
 };
 export default wbconfig;
+
+
