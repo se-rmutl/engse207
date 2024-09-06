@@ -1,3 +1,4 @@
+
 Parse.Cloud.define('hello', req => {
     req.log.info(req);
     return 'Hi from Parse Server';
@@ -35,9 +36,17 @@ Parse.Cloud.define("OnlineAgentByAgentId", async request => {
 });
 
 
-Parse.Cloud.define("postOnlineAgentList", async request => {
-
-    let AgentID = request.params.AgentID;
+Parse.Cloud.define("postOnlineAgentListByTeam", async request => {
+    /*
+    Parameter:
+            AgentCode: AgentCode,
+            AgentName: AgentName,
+            Queue: Queue,
+            AgentStatus: AgentStatus,
+            AgentStatusCode: AgentStatusCode,
+            IsLogin: IsLogin
+    */
+    let AgentCode = request.params.AgentCode;
     let AgentName = request.params.AgentName;
     let Queue = request.params.Queue;
     let AgentStatus = request.params.AgentStatus;
@@ -45,11 +54,19 @@ Parse.Cloud.define("postOnlineAgentList", async request => {
     let IsLogin = request.params.IsLogin;
     let startedAt = new Date();
 
+    let QueueInt = 0;
+
+    if (Queue != undefined)
+        QueueInt = parseInt(Queue); //long
+
+    let Teams = ['N/A', 'Team1', 'Team2', 'Team3', 'Team4', 'Team5', 'Team6', 'Team7', 'Team8', 'Team9'];
+    let QueueText = Teams[QueueInt];
+
     let returnCode = 0;
     //------------------
-    console.log("AgentID: " + AgentID);
+    console.log("AgentCode: " + AgentCode);
     console.log("AgentName: " + AgentName);
-    console.log("Queue: " + Queue);
+    console.log("QueueText: " + QueueText);
     console.log("AgentStatus: " + AgentStatus);
     console.log("AgentStatusCode: " + AgentStatusCode);
     console.log("IsLogin: " + IsLogin);
@@ -60,23 +77,20 @@ Parse.Cloud.define("postOnlineAgentList", async request => {
     if (IsLogin == 0) {
 
         const agent_query = new Parse.Query("OnlineAgentLists");
-        agent_query.equalTo("AgentID", AgentID);
+        agent_query.equalTo("AgentCode", AgentCode); // where AgentCode = '1234' 
 
         agent_query.find().then(function (agents) {
-
-            // DELETE FROM OnlineAgentLists 
-            // WHERE (AgentID = 'xxxxx') AND (IsLogin = 0)
 
             //What do I do HERE to delete the posts?
             agents.forEach(function (agent) {
                 agent.destroy({
                     success: function () {
                         // SUCCESS CODE HERE, IF YOU WANT
-                        console.log("Delete success: " + AgentID);
+                        console.log("Delete success: " + AgentCode);
                     },
                     error: function () {
                         // ERROR CODE HERE, IF YOU WANT
-                        console.log("Delete error: " + AgentID);
+                        console.log("Delete error: " + AgentCode);
                     }
                 });
             });
@@ -91,7 +105,7 @@ Parse.Cloud.define("postOnlineAgentList", async request => {
     else {  // IsLogin == 1
 
         const query = new Parse.Query("OnlineAgentLists");
-        query.equalTo("AgentID", AgentID);
+        query.equalTo("AgentCode", AgentCode);
 
         let results;
 
@@ -103,11 +117,11 @@ Parse.Cloud.define("postOnlineAgentList", async request => {
 
                 let onlineagentlist = new Parse.Object("OnlineAgentLists");
 
-                if (AgentID != undefined) onlineagentlist.set("AgentID", AgentID);
+                if (AgentCode != undefined) onlineagentlist.set("AgentCode", AgentCode);
                 else returnCode = 11;
                 if (AgentName != undefined) onlineagentlist.set("AgentName", AgentName);
                 else returnCode = 12;
-                if (Queue != undefined) onlineagentlist.set("Queue", Queue);
+                if (Queue != undefined) onlineagentlist.set("Queue", QueueText);
                 else returnCode = 13;
                 if (AgentStatus != undefined) onlineagentlist.set("AgentStatus", AgentStatus);
                 else returnCode = 14;
@@ -127,7 +141,7 @@ Parse.Cloud.define("postOnlineAgentList", async request => {
 
                 if (AgentName != undefined) results.set("AgentName", AgentName);
                 else returnCode = 1;
-                if (Queue != undefined) results.set("Queue", Queue);
+                if (Queue != undefined) results.set("Queue", QueueText);
                 else returnCode = 2;
                 if (AgentStatus != undefined) results.set("AgentStatus", AgentStatus);
                 else returnCode = 3;
