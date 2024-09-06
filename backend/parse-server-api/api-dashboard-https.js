@@ -6,8 +6,8 @@ var fs = require('fs');
 // You might need this. Use 'true' or 'false' depending your connection.
 var options = { allowInsecureHTTP: true };
 
-var apiport = 4000;
-var dashboard_port = 4001;
+var apiport = 8005;
+var dashboard_port = 8006;
 
 var cert_options = {
   key: fs.readFileSync('server.key'),
@@ -17,7 +17,7 @@ var cert_options = {
 var trustProxy = true;
 var dashboard = new ParseDashboard({
   "apps": [{
-    "serverURL": 'https://192.168.56.10:' + apiport + '/api',
+    "serverURL": 'https://10.21.43.203:' + apiport + '/api',
     "appId": 'wallboardapi',
     "masterKey": 'wallboardapi',
     "appName": 'wallboardapi',

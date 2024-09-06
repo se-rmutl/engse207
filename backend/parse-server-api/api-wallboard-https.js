@@ -10,17 +10,17 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 const databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
-var apiport = 4000;
+var apiport = 8005;
 
 const config = {
-  databaseURI: 'mongodb://wallboard:wallboard1q2w3e4r@127.0.0.1:27017/wallboarddb',
+  databaseURI: 'mongodb://team0_wallboarduser:WB1qazxsw2@10.21.43.203:27017/team0_wallboarddb',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
   appId: process.env.APP_ID || 'wallboardapi',
   masterKey: process.env.MASTER_KEY || 'wallboardapi', //Add your master key here. Keep it secret!
   clientKey: 'wallboardapi',
   javascriptKey: 'wallboardapi',
-  serverURL: 'https://192.168.56.10:' + apiport + '/api', // Don't forget to change to https if needed
-  publicServerURL: 'https://192.168.56.10:' + apiport + '/api',
+  serverURL: 'https://10.21.43.203:' + apiport + '/api', // Don't forget to change to https if needed
+  publicServerURL: 'https://10.21.43.203:' + apiport + '/api',
   liveQuery: {
     classNames: ['OnlineAgentLists', 'WallboardBanners','CallAgentSummaries'], // List of classes to support for query subscriptions
   },
