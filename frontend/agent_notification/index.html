@@ -12,15 +12,11 @@
 
     <script language="JavaScript">
 
+        const path = require('path');
         const {
             ipcRenderer,
             remote
         } = require("electron");
-
-        const electron = require('electron');
-        const path = require('path')
-
-
 
         const $ = require("jquery");
         const Timer = require("easytimer.js").Timer;
@@ -33,14 +29,16 @@
 
         var CallID;
 
-        let statusLabel;
-
         //--Dev Server------------------------------
-        //var APIServer = "https://192.168.56.1:8443/engse207/api/v1";
+        //var APIServer = "https://192.168.56.1:8443/api/v1";
         //var WebSecketServer = "ws://192.168.56.1:3071";
 
         //--Staging Server------------------------------
-        var APIServer = "https://10.21.43.203:8000/api/v1";
+        //var APIServer = "https://lab-api.se-rmutl.net/engse207/api/v1";
+        //var WebSecketServer = "ws://lab-ws.se-rmutl.net/engse207";
+
+        //--Production Server------------------------------
+        var APIServer = "https://10.21.43.203:8000/engse207/api/v1";
         var WebSecketServer = "ws://10.21.43.203:8001";
 
         var ConcurrentCall = [];
@@ -110,7 +108,7 @@
                 title: ReceiveMessage.DateTime + '\n' + 'From: ' + ReceiveMessage.FromAgentCode,
                 //subtitle: 'Subtitle of the Notification',
                 //body: '** '+ statusLabel+ ' **',
-                body: ' ' + ReceiveMessage.Message,
+                body: ' ---------------------- \n' + ReceiveMessage.Message,
                 silent: false,
                 requireInteraction: true,
                 icon: path.join(__dirname, './assets/impatient.png')
@@ -140,13 +138,24 @@
         $(function () {
             console.log("ready!");
 
+
             $("#buttonCall").hide();
             $("#buttonDisConnect").hide();
             $("#buttonConnect").show();
+
+            $("#currentStatus").hide();
+
             $("#nodata").hide();
             //$("#errMessage").show();
             $("#agent").focus();
             //alert(localStorage.getItem("switch_104_02"));
+
+            $("#NotifyBtn").hide();
+            $("#destAgent").hide();
+            $("#agentMsg").hide();
+            $("#SendMsgBtn").hide();
+
+
 
             //--- Running Chrome x64 only -----   
             if (localStorage.getItem("agent") != "") {
@@ -177,6 +186,51 @@
 
         }
 
+        function sendMessage() {
+            if ($("#destAgent").val() == "") {
+
+                alert("Please enter destination agent ");
+                $("#destAgent").focus();
+
+            }
+            else
+                if ($("#agentMsg").val() == "") {
+
+                    alert("Please enter Message ");
+                    setTimeout(function () { $("#agentMsg").focus(); }, 0);
+
+                }
+                else {
+
+                    const data = {
+                        FromAgentCode: $("#agent").val(),
+                        ToAgentCode: $("#destAgent").val(),
+                        Message: $("#agentMsg").val(),
+                    };
+
+                    $.ajax({
+                        type: 'POST',
+                        url: APIServer + "/postSendMessage",
+                        headers: {
+                            Authorization: 'Bearer 1aaZ!ARgAQGuQzp00D5D000000.mOv2jmhXkfIsjgywpCIh7.HZpc6vED1LCbc90DTaVDJwdNqbTW5r4uZicv8AFfkOE1ialqnR8UN5.wnAgh090h'
+                        },
+                        data: JSON.stringify(data),
+                        contentType: 'application/json',
+                    })
+                        .done((data) => {
+                            console.log({ data });
+                        })
+                        .fail((err) => {
+                            console.error(err);
+                        })
+                        .always(() => {
+                            console.log('always called');
+                        });
+
+
+                }
+
+        }
 
         function checkInput(status) {
             if ($("#agent").val() == "") {
@@ -213,6 +267,19 @@
                                 $("reports").show();
                                 $("#buttonDisConnect").show();
                                 $("#buttonCall").show();
+
+                                //$('#currentStatus').val(response.data.AgentStatus).change();
+                                
+                                $("#currentStatus").prop('selectedIndex',response.data.AgentStatus-1);
+
+                                $("#currentStatus").show();
+
+                                $("#NotifyBtn").show();
+
+                                $("#destAgent").show();
+                                $("#agentMsg").show();
+                                $("#SendMsgBtn").show();
+
                                 IsLogin = 1;
 
                                 //-------- Web Socket ----------
@@ -288,7 +355,7 @@
         }
 
         function statusDisplay(status) {
-            //let statusLabel;
+            let statusLabel;
             switch (status) {
                 case "1":
                     statusLabel = "Available";
@@ -404,6 +471,11 @@
             $("#nodata").hide();
             $("#basicUsage").hide();
             // ws = new WebSocket("ws://" + WebSecketServer + "/?agentcode=" + AgentCode);
+
+            $("#NotifyBtn").hide();
+            $("#destAgent").hide();
+            $("#agentMsg").hide();
+            $("#SendMsgBtn").hide();
 
             //-------- Web Socket ----------
             ws.close();
@@ -671,24 +743,25 @@
 
 
                                 /*
-                                                                if (response.IsLogin == 0) {
-                                                                    logoutFromAPI();
-                                                                } else {
-                                                                    if (IsLogin == 0) {
-                                                                        IsLogin = 1;
-                                                                        setLoginTime();
-                                                                    }
+                                if (response.IsLogin == 0) {
+                                    logoutFromAPI();
+                                } else {
+                                    if (IsLogin == 0) {
+                                        IsLogin = 1;
+                                        setLoginTime();
+                                    }
                                 
-                                                                    if (response.AgentStatus != agentStatusID) {
-                                                                        counterTimer();
-                                                                        agentStatusID = response.AgentStatus;
-                                                                    }
-                                                                    console.log("response.MessageType == 4: " + response.AgentStatus);
-                                                                    statusDisplay(response.AgentStatus);
-                                                                }
+                                    if (response.AgentStatus != agentStatusID) {
+                                        counterTimer();
+                                        agentStatusID = response.AgentStatus;
+                                    }
+                                    console.log("response.MessageType == 4: " + response.AgentStatus);
+                                    statusDisplay(response.AgentStatus);
+                                }
                                 */
 
                             }
+
                             /*
                             if (response.MessageType == 10) {
 
@@ -747,7 +820,11 @@
         //-------- Web Socket ----------
 
 
-
+        function GetSelectedTextValue(currentStatus) {
+            var selectedText = currentStatus.options[currentStatus.selectedIndex].innerHTML;
+            var selectedValue = currentStatus.value;
+            alert("Selected Text: " + selectedText + " Value: " + selectedValue);
+        }
 
     </script>
 
@@ -791,14 +868,59 @@
                                 onclick="CallOnescreen(1,'0000')">
                                 Pop-up Chrome
                             </button>
+
+                            <button id="NotifyBtn" class="btn btn-warning btn-sm btn-block mt-2" onclick="notify()">
+                                Notification
+                            </button>
+
                             <button id="buttonDisConnect" class="btn btn-danger btn-sm shadow btn-block mt-2"
                                 onclick="logoutFromAPI()">
                                 Disconnect
                             </button>
-                            <button id="buttonNotification" class="btn btn-primary btn-sm shadow btn-block mt-2"
-                                onclick="notify()">
-                                Notification
-                            </button>
+
+                            <div class="input-group  mt-2">
+                                <img src='./assets/Help_And_Support.png' width="30px" height="30px" />
+                                <select id="currentStatus" onchange="GetSelectedTextValue(this)">
+                                    <option value="1">Avalible</option>
+                                    <option value="2">Active</option>
+                                    <option value="3">Wrap</option>
+                                    <option value="4">Not Ready</option>
+                                </select>
+                            </div>
+
+                            <!-- 
+                            <div class="input-group-sm mb-1">
+                                <input type="text" class="form-control form-control-sm" id="destAgent"
+                                    placeholder="Agent" />
+                                <input type="text" class="form-control form-control-sm" id="agentMsg"
+                                    placeholder="Type message here.." />
+                                <button id="SendMsgBtn" class="btn btn-warning btn-sm btn-block shadow"
+                                    onclick="checkInput('on')">
+                                    Send
+                                </button>
+                            </div> 
+-->
+
+                            <div class="input-group  mt-2">
+
+                                <div class="col-xs-1">
+                                    <input type="text" class="form-control form-control-sm" id="destAgent"
+                                        placeholder="Agent" />
+                                </div>
+
+                                <div class="col-xs-3">
+                                    <input type="text" class="form-control form-control-sm" id="agentMsg"
+                                        placeholder="Type message here.." />
+                                </div>
+
+                                <div class="input-group-append">
+                                    <button id="SendMsgBtn" class="btn btn-warning btn-sm btn-block shadow"
+                                        onclick="sendMessage()">
+                                        Send
+                                    </button>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </tr>
@@ -808,7 +930,7 @@
         <div id="display">
             <div class="row">
                 <div class="col-12">
-                    <div class="input-group mb-1">
+                    <div class="input-group mb-3">
                         <input type="text" class="form-control form-control-sm" id="agent"
                             placeholder="Enter Agent Code" />
                         <button id="buttonConnect" class="btn btn-warning btn-sm btn-block shadow"
@@ -828,7 +950,7 @@
 
     <script>
         // You can also require other files to run in this process
-        //require('./renderer.js')
+        // require('./renderer.js')
     </script>
 </body>
 
