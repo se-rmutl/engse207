@@ -32,7 +32,7 @@ const Agentonline = ({ OnlineAgentList, ServiceCode }) => {
                                             const agent = OnlineAgentList[key]
                                             if (parseInt(agent.AgentStatus) === 1) {
 
-                                                return msToTime(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentID)
+                                                return msToTime(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentCode)
                                             }
 
                                         }
@@ -41,7 +41,7 @@ const Agentonline = ({ OnlineAgentList, ServiceCode }) => {
                                         Object.keys(OnlineAgentList).map((key) => {
                                             const agent = OnlineAgentList[key]
                                             if (parseInt(agent.AgentStatus) === 1 && agent.Queue === ServiceCode) {
-                                                return msToTime(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentID)
+                                                return msToTime(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentCode)
                                             }
 
                                         }
@@ -65,7 +65,7 @@ const Agentonline = ({ OnlineAgentList, ServiceCode }) => {
                                             const agent = OnlineAgentList[key]
                                             if (parseInt(agent.AgentStatus) === 2) {
 
-                                                return msToTime(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentID)
+                                                return msToTime(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentCode)
                                             }
 
                                         }
@@ -74,7 +74,7 @@ const Agentonline = ({ OnlineAgentList, ServiceCode }) => {
                                         Object.keys(OnlineAgentList).map((key) => {
                                             const agent = OnlineAgentList[key]
                                             if (parseInt(agent.AgentStatus) === 2 && agent.Queue === ServiceCode) {
-                                                return msToTime(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentID)
+                                                return msToTime(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentCode)
                                             }
 
                                         }
@@ -97,7 +97,7 @@ const Agentonline = ({ OnlineAgentList, ServiceCode }) => {
                                             const agent = OnlineAgentList[key]
                                             if (parseInt(agent.AgentStatus) === 3) {
 
-                                                return msToTime(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentID)
+                                                return msToTime(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentCode)
                                             }
 
                                         }
@@ -106,7 +106,7 @@ const Agentonline = ({ OnlineAgentList, ServiceCode }) => {
                                         Object.keys(OnlineAgentList).map((key) => {
                                             const agent = OnlineAgentList[key]
                                             if (parseInt(agent.AgentStatus) === 3 && agent.Queue === ServiceCode) {
-                                                return msToTime(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentID)
+                                                return msToTime(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentCode)
                                             }
 
                                         }
@@ -131,12 +131,12 @@ const Agentonline = ({ OnlineAgentList, ServiceCode }) => {
 
                                             //console.log("agent.AgentTime: "+agent.AgentTime);
                                             //console.log("agent.AgentName: "+agent.AgentName);
-                                            //console.log("agent.AgentID: "+agent.AgentID);
+                                            //console.log("agent.AgentCode: "+agent.AgentCode);
                                             //console.log("agent.AgentStatusCode: "+agent.AgentStatusCode);
 
                                             if (parseInt(agent.AgentStatus) === 4) {
-                                                //return msToTimeFor4(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentID, agent.AgentStatusCode)
-                                                return msToTimeFor4(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentID, parseInt(agent.AgentStatusCode))
+                                                //return msToTimeFor4(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentCode, agent.AgentStatusCode)
+                                                return msToTimeFor4(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentCode, parseInt(agent.AgentStatusCode))
 
                                             }
 
@@ -146,7 +146,7 @@ const Agentonline = ({ OnlineAgentList, ServiceCode }) => {
                                         Object.keys(OnlineAgentList).map((key) => {
                                             const agent = OnlineAgentList[key]
                                             if (parseInt(agent.AgentStatus) === 4 && agent.Queue && agent.Queue === ServiceCode) {
-                                                return msToTimeFor4(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentID, agent.AgentStatusCode)
+                                                return msToTimeFor4(agent.AgentTime, 'false', agent.AgentName, '', agent.AgentCode, agent.AgentStatusCode)
                                             }
 
                                         }
