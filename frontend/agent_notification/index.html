@@ -22,31 +22,50 @@
         const Timer = require("easytimer.js").Timer;
         const timer = new Timer();
 
-        var AgentCode;
-        var agentStatusID;
-        var callTotal = 0;
-        var agentData;
+        let AgentCode;
+        let agentStatusID;
+        let callTotal = 0;
+        let agentData;
 
-        var CallID;
+        let CallID;
 
         //--Dev Server------------------------------
-        //var APIServer = "https://192.168.56.1:8443/api/v1";
-        //var WebSecketServer = "ws://192.168.56.1:3071";
+        //let APIServer = "https://192.168.56.1:8443/api/v1";
+        //let WebSecketServer = "ws://192.168.56.1:3071";
 
         //--Staging Server------------------------------
-        //var APIServer = "https://lab-api.se-rmutl.net/engse207/api/v1";
-        //var WebSecketServer = "ws://lab-ws.se-rmutl.net/engse207";
+        //let APIServer = "https://lab-api.se-rmutl.net/engse207/api/v1";
+        //let WebSecketServer = "ws://lab-ws.se-rmutl.net/engse207";
 
         //--Production Server------------------------------
-        var APIServer = "https://10.21.43.203:8000/engse207/api/v1";
-        var WebSecketServer = "ws://10.21.43.203:8001";
 
-        var ConcurrentCall = [];
-        var connectSocket = false;
-        var IsLogin = 0;
-        var wsChecks = "false";
+        let APIServer = "https://10.21.43.203:8000/engse207/api/v1";
+        let WebSecketServer = "ws://10.21.43.203:8001";
 
-        var c;
+        let ParseServerAPI = "https://10.21.43.203:8005/api";
+        let ParseMasterKey = "wallboardapi";
+        let ParseClientKey = "wallboardapi";
+        let ParseJavascriptKey = "wallboardapi";
+        let ParseAppId = "wallboardapi";
+        let TeamNo = '0'; //<-- Enter you Team No. here.
+
+        let currentAgent = {
+            AgentCode : '',
+            AgentName : '',
+            Team : TeamNo,
+            AgentStatus : '',
+            AgentStatusCode : '5', //-- Hard Code
+            IsLogin : '',
+        }
+
+        //-----------------------------------
+
+        let ConcurrentCall = [];
+        let connectSocket = false;
+        let IsLogin = 0;
+        let wsChecks = "false";
+
+        let c;
         let ws;
 
         let checked;
@@ -144,6 +163,7 @@
             $("#buttonConnect").show();
 
             $("#currentStatus").hide();
+            $("#currentStatusImg").hide();
 
             $("#nodata").hide();
             //$("#errMessage").show();
@@ -257,6 +277,12 @@
                         console.log('response.error:' + response.error);
                         if (response.error == false) {
                             if ((response.data.IsLogin == 1) && (response.data.AgentStatus != 9)) {
+
+                                currentAgent.AgentCode = response.data.agent_code;
+                                currentAgent.AgentName = response.data.AgentName;
+                                currentAgent.IsLogin = response.data.IsLogin;
+                                currentAgent.AgentStatus = response.data.AgentStatus;
+
                                 wsChecks = "true";
                                 console.log("new: " + wsChecks);
                                 //$("#errMessage").hide();
@@ -269,10 +295,11 @@
                                 $("#buttonCall").show();
 
                                 //$('#currentStatus').val(response.data.AgentStatus).change();
-                                
-                                $("#currentStatus").prop('selectedIndex',response.data.AgentStatus-1);
+
+                                $("#currentStatus").prop('selectedIndex', response.data.AgentStatus - 1);
 
                                 $("#currentStatus").show();
+                                $("#currentStatusImg").show();
 
                                 $("#NotifyBtn").show();
 
@@ -430,15 +457,15 @@
         }
 
         function setLoginTime() {
-            var d = new Date();
+            let d = new Date();
 
-            var month = d.getMonth() + 1;
-            var day = d.getDate();
-            var hour = d.getHours();
-            var minute = d.getMinutes();
-            var sec = d.getSeconds();
+            let month = d.getMonth() + 1;
+            let day = d.getDate();
+            let hour = d.getHours();
+            let minute = d.getMinutes();
+            let sec = d.getSeconds();
 
-            var output =
+            let output =
                 d.getFullYear() +
                 "-" +
                 (month < 10 ? "0" : "") +
@@ -491,6 +518,10 @@
                 .append("Disconnected");
 
             $("#buttonDisConnect").hide();
+
+            $("#currentStatus").hide();
+            $("#currentStatusImg").hide();
+
             $("#buttonConnect").show();
             $("#icon").attr("src", "./assets/icon/disconnect.png");
             $("#connectTime").empty().append("Information");
@@ -579,7 +610,7 @@
 
 
                     ws.onmessage = function (message) {
-                        var response = message.data;
+                        let response = message.data;
 
                         console.log("message received: " + message.data);
                         // document.getElementById('messageFromServer').innerHTML = response;
@@ -614,7 +645,7 @@
                                 .empty()
                                 .append("Connected");
 
-                            var response = JSON.parse(message.data);
+                            let response = JSON.parse(message.data);
                             // document.getElementById('log').innerHTML = response['MessageType'];
                             if (response.MessageType == 2) {
                                 openApplication();
@@ -635,7 +666,7 @@
                                             openApplication();
                                         }
                                     } else {
-                                        for (var i = 0; i < ConcurrentCall.length; i++) {
+                                        for (let i = 0; i < ConcurrentCall.length; i++) {
                                             if (
                                                 ConcurrentCall[i].ServiceCode ==
                                                 response["ServiceCode"] &&
@@ -663,7 +694,7 @@
                                 }
 
                                 if (ConcurrentCall.length > 0) {
-                                    for (var i = 0; i < ConcurrentCall.length; i++) {
+                                    for (let i = 0; i < ConcurrentCall.length; i++) {
                                         if (parseInt(ConcurrentCall[i]["Call"]) > 0) {
                                             $("#reports").append(
                                                 '<div class="col-6 mb-3">' +
@@ -821,9 +852,31 @@
 
 
         function GetSelectedTextValue(currentStatus) {
-            var selectedText = currentStatus.options[currentStatus.selectedIndex].innerHTML;
-            var selectedValue = currentStatus.value;
+            let selectedText = currentStatus.options[currentStatus.selectedIndex].innerHTML;
+            let selectedValue = currentStatus.value;
             alert("Selected Text: " + selectedText + " Value: " + selectedValue);
+
+            const data = {
+                AgentCode: $("#agent").val(),
+                AgentName : currentAgent.AgentName,
+                Queue : currentAgent.Team,
+                AgentStatus : selectedValue,
+                AgentStatusCode : currentAgent.AgentStatusCode,
+                IsLogin : currentAgent.IsLogin
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: ParseServerAPI + "/functions/postOnlineAgentListByTeam",
+                headers: {
+                    "X-Parse-Application-Id": ParseAppId,
+                    "X-Parse-Master-Key": ParseMasterKey
+                },
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+            })
+
+
         }
 
     </script>
@@ -879,7 +932,8 @@
                             </button>
 
                             <div class="input-group  mt-2">
-                                <img src='./assets/Help_And_Support.png' width="30px" height="30px" />
+                                <img id="currentStatusImg" src='./assets/Help_And_Support.png' width="30px"
+                                    height="30px" />
                                 <select id="currentStatus" onchange="GetSelectedTextValue(this)">
                                     <option value="1">Avalible</option>
                                     <option value="2">Active</option>
