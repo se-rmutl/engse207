@@ -38,9 +38,10 @@
         //let WebSecketServer = "ws://lab-ws.se-rmutl.net/engse207";
 
         //--Production Server------------------------------
-
         let APIServer = "https://10.21.43.203:8000/engse207/api/v1";
         let WebSecketServer = "ws://10.21.43.203:8001";
+
+        //-------------------------------Start Added ---
 
         let ParseServerAPI = "https://10.21.43.203:8005/api";
         let ParseMasterKey = "wallboardapi";
@@ -50,12 +51,12 @@
         let TeamNo = '0'; //<-- Enter you Team No. here.
 
         let currentAgent = {
-            AgentCode : '',
-            AgentName : '',
-            Team : TeamNo,
-            AgentStatus : '',
-            AgentStatusCode : '5', //-- Hard Code
-            IsLogin : '',
+            AgentCode: '',
+            AgentName: '',
+            Team: TeamNo,
+            AgentStatus: '',
+            AgentStatusCode: '5', //-- Hard Code
+            IsLogin: '',
         }
 
         //-----------------------------------
@@ -278,10 +279,12 @@
                         if (response.error == false) {
                             if ((response.data.IsLogin == 1) && (response.data.AgentStatus != 9)) {
 
+                                //-------------------------------Start Added ---
                                 currentAgent.AgentCode = response.data.agent_code;
                                 currentAgent.AgentName = response.data.AgentName;
                                 currentAgent.IsLogin = response.data.IsLogin;
                                 currentAgent.AgentStatus = response.data.AgentStatus;
+                                //-------------------------------End Added ---
 
                                 wsChecks = "true";
                                 console.log("new: " + wsChecks);
@@ -850,7 +853,7 @@
         }
         //-------- Web Socket ----------
 
-
+        //-------------------------------Start Added ---
         function GetSelectedTextValue(currentStatus) {
             let selectedText = currentStatus.options[currentStatus.selectedIndex].innerHTML;
             let selectedValue = currentStatus.value;
@@ -858,11 +861,11 @@
 
             const data = {
                 AgentCode: $("#agent").val(),
-                AgentName : currentAgent.AgentName,
-                Queue : currentAgent.Team,
-                AgentStatus : selectedValue,
-                AgentStatusCode : currentAgent.AgentStatusCode,
-                IsLogin : currentAgent.IsLogin
+                AgentName: currentAgent.AgentName,
+                Queue: currentAgent.Team,
+                AgentStatus: selectedValue,
+                AgentStatusCode: currentAgent.AgentStatusCode,
+                IsLogin: currentAgent.IsLogin
             };
 
             $.ajax({
@@ -876,8 +879,8 @@
                 contentType: 'application/json',
             })
 
-
         }
+        //-------------------------------End Added ---
 
     </script>
 
