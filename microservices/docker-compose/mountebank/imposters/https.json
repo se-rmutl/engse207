@@ -1,0 +1,34 @@
+{
+    "protocol": "https",
+    "port": 8090,
+    "stubs": [
+        {
+            "predicates": [
+                {
+                    "deepEquals": {
+                        "method": "GET"
+                    }
+                },
+                {
+                    "deepEquals": {
+                        "path": "/test"
+                    }
+                }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 200,
+                        "headers": {
+                            "Content-Type": "application/json"
+                        },
+                        "body": 
+                        {
+                            "test": "test"
+                        }                      
+                    }
+                }
+            ]
+        }
+    ]
+}

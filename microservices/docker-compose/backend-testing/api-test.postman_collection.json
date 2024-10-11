@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "75e117f7-a3d7-4dbf-81f1-8b51f219cb70",
+		"name": "api-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35987594"
+	},
+	"item": [
+		{
+			"name": "get merchant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Test to validate response schema\r",
+							"pm.test(\"Response schema is valid\", function () {\r",
+							"  var schema = {\r",
+							"    type: \"array\",\r",
+							"    items: {\r",
+							"      type: \"object\",\r",
+							"      properties: {\r",
+							"        id: { type: \"number\" },\r",
+							"        name: { type: \"string\" },\r",
+							"        email: { type: \"string\", format: \"email\" }\r",
+							"      },\r",
+							"      required: [\"id\", \"name\", \"email\"]\r",
+							"    }\r",
+							"  };\r",
+							"\r",
+							"  pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "backend:3000",
+					"host": [
+						"backend"
+					],
+					"port": "3000"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add merchant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"look@mail.com\",\n    \"name\" : \"look\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "backend:3000/merchants",
+					"host": [
+						"backend"
+					],
+					"port": "3000",
+					"path": [
+						"merchants"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,28 @@
+{
+    "port": 4000,
+    "protocol": "graphql",
+    "schema": "type Thing { alpha: Int beta: String } type Query { myQuery(myFirstArg: Int, mySecondArg: Int): Thing }",
+    "stubs": [
+        {
+            "predicates": [
+                {
+                    "equals": {
+                        "query": "myQuery",
+                        "args": {
+                            "myFirstArg": 123
+                        }
+                    }
+                }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "data": {
+                            "beta": "abcdef"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

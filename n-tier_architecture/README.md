@@ -1,2 +1,1 @@
-# ENGSE207
-N-tier Architecture
+# N-tier Architecture
