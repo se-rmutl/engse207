@@ -133,7 +133,7 @@ const init = async () => {
 
             try {
 
-        
+
                 if (param.agentcode == null)
                     return h.response("Please provide agentcode.").code(400);
                 else {
@@ -158,6 +158,39 @@ const init = async () => {
         }
 
     });
+
+
+    server.route({
+        method: 'POST',
+        path: '/api/v1/postOnlineAgentStatus',
+        config: {
+            cors: {
+                origin: [
+                    '*'
+                ],
+                headers: ["Access-Control-Allow-Headers", "Access-Control-Allow-Origin", "Accept", "Authorization", "Content-Type", "If-None-Match", "Accept-language"],
+                additionalHeaders: ["Access-Control-Allow-Headers: Origin, Content-Type, x-ms-request-id , Authorization"],
+                credentials: true
+            }
+        },
+        handler: async (request, h) => {
+            let param = request.query;
+
+            try {
+
+
+
+                
+
+
+            } catch (err) {
+                console.dir(err)
+            }
+        }
+
+    });
+
+
 
 
 
