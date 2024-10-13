@@ -7,6 +7,9 @@ let cors = require('cors');
 
 const OnlineAgent = require('./repository/OnlineAgent');
 
+const apiconfig = require('./apiconfig')['development'];
+
+
 //-------------------------------------
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
@@ -75,7 +78,7 @@ const init = async () => {
 
             // here is where you validate your token
             // comparing with token from your database for example
-            const isValid = token === '1aaZ!ARgAQGuQzp00D5D000000.mOv2jmhXkfIsjgywpCIh7.HZpc6vED1LCbc90DTaVDJwdNqbTW5r4uZicv8AFfkOE1ialqnR8UN5.wnAgh090h';
+            const isValid = token === apiconfig.serverKey;
 
             const credentials = { token };
             const artifacts = { test: 'info' };
@@ -131,17 +134,31 @@ const init = async () => {
         handler: async (request, h) => {
             let param = request.query;
 
+            //console.log(param);
+            //console.log("Level: "+param.level);
+
             try {
 
 
                 if (param.agentcode == null)
-                    return h.response("Please provide agentcode.").code(400);
+
+                    //return h.response("Please provide agentcode.").code(400);
+                    return h.response({
+                        "error": true,
+                        "statusCode": 400,
+                        "errMessage": "Please provide agentcode."
+                    }).code(400);
+
                 else {
 
                     const responsedata = await OnlineAgent.OnlineAgentRepo.getOnlineAgentByAgentCode(`${param.agentcode}`);
 
                     if (responsedata.statusCode == 500)
-                        return h.response("Something went wrong. Please try again later.").code(500);
+                        return h.response({
+                            "error": true,
+                            "statusCode": 500,
+                            "errMessage": "An internal server error occurred."
+                        }).code(500);
                     else
                         if (responsedata.statusCode == 200)
                             return responsedata;
@@ -191,7 +208,14 @@ const init = async () => {
             try {
 
                 if (param.AgentCode == null)
-                    return h.response("Please provide agentcode.").code(400);
+                    //return h.response("Please provide agentcode.").code(400);
+
+                    return h.response({
+                        "error": true,
+                        "statusCode": 400,
+                        "errMessage": "Please provide agentcode."
+                    }).code(400);
+
                 else {
 
                     const responsedata = await OnlineAgent.OnlineAgentRepo.postOnlineAgentStatus(AgentCode, AgentName, IsLogin, AgentStatus);
@@ -205,6 +229,44 @@ const init = async () => {
                             return h.response("Something went wrong. Please try again later.").code(500);
 
                 }
+
+            } catch (err) {
+                console.dir(err)
+            }
+
+        }
+
+    });
+
+
+    server.route({
+        method: 'POST',
+        path: '/api/v1/postSendMessage',
+        config: {
+            cors: {
+                origin: [
+                    '*'
+                ],
+                headers: ["Access-Control-Allow-Headers", "Access-Control-Allow-Origin", "Accept", "Authorization", "Content-Type", "If-None-Match", "Accept-language"],
+                additionalHeaders: ["Access-Control-Allow-Headers: Origin, Content-Type, x-ms-request-id , Authorization"],
+                credentials: true
+            },
+            payload: {
+                parse: true,
+                allow: ['application/json', 'multipart/form-data'],
+                multipart: true  // <== this is important in hapi 19
+            }
+        },
+        handler: async (request, h) => {
+            let param = request.payload;
+
+            try {
+
+
+
+
+
+                
 
             } catch (err) {
                 console.dir(err)
