@@ -1,6 +1,6 @@
 var dbconfig = {
     web_labDB: {
-        server: '192.168.56.106',
+        server: localhost,
         database:'team0_web_labDB',
         user:'sa',
         password:'',
@@ -11,7 +11,7 @@ var dbconfig = {
             enableArithAbort: true,
             trustServerCertificate: true,
             trustedconnection:  true,
-            instancename:  '192.168.56.106'  // SQL Server instance name
+            instancename:  localhost  // SQL Server instance name
         }
     },
 
