@@ -763,6 +763,109 @@
 
 
 
+        //-------- Web Socket ----------
+
+        function websocketConnect(status) {
+
+            console.log("websocketConnect status: " + status)
+            if (wsChecks == "true") {
+
+                if (status == "off") {
+
+
+                }
+                else if (status == "on") {
+
+                    ws = new WebSocket(WebSecketServer + "/?agentcode=" + AgentCode);
+
+                    $("#buttonDisConnect").show();
+                    $("#buttonConnect").hide();
+                    $("#AgentCode").empty().append(AgentCode);
+                    $("#agent").hide();
+                    $("#status")
+                        .removeClass()
+                        .addClass("badge bg-success")
+                        .empty()
+                        .append("Connected");
+
+                    ws.onmessage = function (message) {
+                        var response = message.data;
+                        console.log("message received: " + message.data);
+
+                        if (message.data == "NEW USER JOINED") {
+                            $("#ConnectionStatus").empty().removeClass().addClass('badge bg-success').append("Connected");
+                            console.log('Socket is connected');
+
+                            if (connectSocket == false) {
+                                connectSocket = true;
+
+                                setLoginTime();
+
+                                $("#status")
+                                    .removeClass()
+                                    .addClass("badge bg-success")
+                                    .empty()
+                                    .append("Connected");
+
+
+                                // $('#statusLabel').empty().removeClass().addClass('badge bg-success').append('Available');
+
+                                counterTimer();
+                            }
+
+                        }
+
+                        if (connectSocket == true && message.data != "NEW USER JOINED") {
+
+                            $("#status")
+                                .removeClass()
+                                .addClass("badge bg-success")
+                                .empty()
+                                .append("Connected");
+
+                            var response = JSON.parse(message.data);
+
+                            console.log("response: "+JSON.stringify(response));
+
+                            if (response.MessageType == 1) {
+                                console.log("MessageType1 ");
+                            }
+                            else
+                            if (response.MessageType == 2) {
+                                console.log("MessageType2 ");
+
+                            }
+                            else
+                            if (response.MessageType == 2) {
+                                console.log("MessageType3 ");
+
+                            }
+
+
+                        }
+
+
+
+
+
+
+
+
+
+
+
+                    }
+
+
+
+                }
+
+
+            }
+
+        }
+
+
 
     </script>
 
