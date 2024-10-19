@@ -39,12 +39,14 @@ webSocketServer.on('connection', (ws, req) => {
     console.log("------- webSocketServer ------");
     console.log("AgentCode: " + qdata.agentcode);
 
-    ws.name = ws.agentcode; //9999  , 9998
-    var newItem = ws.agentcode;
+    ws.name = qdata.agentcode; //9999  , 9998
+    var newItem = ws.name;
 
     if (CLIENTS.indexOf(newItem) === -1) {
 
-        clientWebSockets[ws.agentcode] = ws;
+        //console.dir("ws: " + JSON.stringify(ws));
+
+        clientWebSockets[newItem] = ws;
         CLIENTS.push(newItem);
         ws.send("NEW USER JOINED");
         console.log("New agent joined");
@@ -61,10 +63,10 @@ webSocketServer.on('connection', (ws, req) => {
 
         //console.log(CLIENTS); 
 
-        delete clientWebSockets[ws.agentcode]
-        console.log('Previous Agent deleted: ' + ws.agentcode)
+        delete clientWebSockets[ws.name]
+        console.log('Previous Agent deleted: ' + ws.name)
         //---------------------
-        clientWebSockets[ws.agentcode] = ws;
+        clientWebSockets[ws.name] = ws;
 
         CLIENTS.push(newItem);
         ws.send("NEW USER JOINED");
@@ -293,9 +295,13 @@ const init = async () => {
                     const responsedata = await OnlineAgent.OnlineAgentRepo.postOnlineAgentStatus(AgentCode, AgentName, IsLogin, AgentStatus);
 
                     //---------------- Websocket Part2 Start -----------------------
-
+                    console.log("AgentCode: "+AgentCode)
+                 
                     if (!responsedata.error) {
+
                         if (clientWebSockets[AgentCode]) {
+                            
+                            console.log("Sennding MessageType")
 
                             clientWebSockets[AgentCode].send(JSON.stringify({
                                 MessageType: '1',
@@ -306,10 +312,10 @@ const init = async () => {
                                 DateTime: d.toLocaleString('en-US'),
                             }));
 
-                            return ({
-                                error: false,
-                                message: "Agent status has been set.",
-                            });
+                            // return ({
+                            //     error: false,
+                            //     message: "Agent status has been set.",
+                            // });
 
                         }
                     }
