@@ -457,6 +457,8 @@
                         .empty()
                         .append("Connected");
 
+                    //----------------------
+                    // WS on Message
                     ws.onmessage = function (message) {
                         var response = message.data;
                         console.log("message received: " + message.data);
@@ -494,36 +496,52 @@
 
                             var response = JSON.parse(message.data);
 
-                            console.log("response: "+JSON.stringify(response));
+                            console.log("response: " + JSON.stringify(response));
 
                             if (response.MessageType == 1) {
                                 console.log("MessageType1 ");
-                            }
-                            else
-                            if (response.MessageType == 2) {
-                                console.log("MessageType2 ");
 
                             }
                             else
-                            if (response.MessageType == 2) {
-                                console.log("MessageType3 ");
+                                if (response.MessageType == 2) {
 
-                            }
+                                    console.log("MessageType2 ");
+                                    console.log("response.MessageType == 2");
+                                    console.log("response.FromAgentCode = " + response.FromAgentCode);
+                                    console.log("response.ToAgentCode = " + response.ToAgentCode);
+                                    console.log("response.Message = " + response.Message);
 
+                                    messageNotify(response);
+                                }
 
                         }
 
 
-
-
-
-
-
-
-
-
-
                     }
+
+                    // WS on Close
+                    ws.onclose = function (e) {
+                        console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
+
+                        setTimeout(function () {
+                            console.log('IsLogin: ', IsLogin);
+                            if (IsLogin != 0) {
+
+                                $("#ConnectionStatus").empty().removeClass().addClass('badge bg-warning text-dark').append("Reconnecting..");
+
+                                console.log('Socket is reconnecting..');
+                                websocketConnect(status);
+                            }
+                        }, 1000);
+                    };
+
+                    // WS on Error
+                    ws.onerror = function (err) {
+                        console.error('Socket encountered error: ', err.message, 'Closing socket');
+                        ws.close();
+                    };
+
+
 
 
 

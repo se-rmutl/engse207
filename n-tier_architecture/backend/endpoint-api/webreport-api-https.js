@@ -312,10 +312,10 @@ const init = async () => {
                                 DateTime: d.toLocaleString('en-US'),
                             }));
 
-                            // return ({
-                            //     error: false,
-                            //     message: "Agent status has been set.",
-                            // });
+                             return ({
+                                 error: false,
+                                 message: "Agent status has been set.",
+                             });
 
                         }
                     }
@@ -362,13 +362,43 @@ const init = async () => {
         handler: async (request, h) => {
             let param = request.payload;
 
+            const FromAgentCode = param.FromAgentCode;
+            const ToAgentCode = param.ToAgentCode;
+            const Message = param.Message;
+            var d = new Date();
+
             try {
 
+                if ((param.FromAgentCode == null) || (param.ToAgentCode == null))
+                    return h.response("Please provide AgentCode.").code(400);
+                else {
+
+                    //---------------- Websocket -----------------------------
+
+                    if (clientWebSockets[ToAgentCode]) {
+
+                        clientWebSockets[ToAgentCode].send(JSON.stringify({
+                            MessageType: '2',
+                            FromAgentCode: FromAgentCode,
+                            ToAgentCode: ToAgentCode,
+                            DateTime: d.toLocaleString('en-US'),
+                            Message: Message,
+                        }));
+
+                        return ({
+                            error: false,
+                            message: "Message has been set.",
+                        });
+
+                    }
+                    else
+                        return h.response("Agent not found, can not send message to agent.").code(404);
+
+                    //---------------- Websocket -----------------------------
 
 
+                }
 
-
-                
 
             } catch (err) {
                 console.dir(err)
