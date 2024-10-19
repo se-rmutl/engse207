@@ -198,7 +198,7 @@
                                 IsLogin = 1;
 
                                 //-------- Web Socket ----------
-                                //websocketConnect(status);
+                                websocketConnect(status);
                                 // return wsChecks;
                                 //-------- Web Socket ----------
 
@@ -430,6 +430,29 @@
 
         }
 
+
+
+        //-------- Web Socket ----------
+
+        function websocketConnect(status) {
+
+            console.log("websocketConnect status: " +status)
+            if (wsChecks == "true") {
+
+                if (status == "off") {
+
+
+                }
+                else if (status == "on") {
+
+                    ws = new WebSocket(WebSecketServer + "/?agentcode=" + AgentCode);
+
+                }
+
+
+            }
+
+        }
 
 
 

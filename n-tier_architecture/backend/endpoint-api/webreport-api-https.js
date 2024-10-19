@@ -27,7 +27,7 @@ var webSocketServer = new (require('ws')).Server({
 CLIENTS = [];
 
 webSocketServer.on('connection', (ws, req) => {
-    
+
     var q = url.parse(req.url, true);
 
     console.log(q.host);
@@ -38,6 +38,45 @@ webSocketServer.on('connection', (ws, req) => {
 
     console.log("------- webSocketServer ------");
     console.log("AgentCode: " + qdata.agentcode);
+
+    ws.name = ws.agentcode; //9999  , 9998
+    var newItem = ws.agentcode;
+
+    if (CLIENTS.indexOf(newItem) === -1) {
+
+        clientWebSockets[ws.agentcode] = ws;
+        CLIENTS.push(newItem);
+        ws.send("NEW USER JOINED");
+        console.log("New agent joined");
+        
+    } else {
+        //ws.send("USER ALREADY JOINED");
+        console.log("This agent already joined");
+
+        //-----------------
+        const index = CLIENTS.indexOf(newItem);
+        if (index > -1) {
+            CLIENTS.splice(index, 1);
+        }
+
+        //console.log(CLIENTS); 
+
+        delete clientWebSockets[ws.agentcode]
+        console.log('Previous Agent deleted: ' + ws.agentcode)
+        //---------------------
+        clientWebSockets[ws.agentcode] = ws;
+
+        CLIENTS.push(newItem);
+        ws.send("NEW USER JOINED");
+        console.log("New agent joined");
+        //--------------------
+    }
+
+
+
+
+
+
 
 
 });
