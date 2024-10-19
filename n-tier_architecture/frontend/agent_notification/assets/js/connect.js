@@ -4,7 +4,7 @@
 let Connect = {
     connection: null,
     connection_status: false,
-    ip_address: '128.199.188.223', // edit by yours
+    ip_address: '192.168.16.102', // edit by yours
     port: '3001', // port
 
     start: function () {

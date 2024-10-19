@@ -295,7 +295,7 @@ const init = async () => {
                     const responsedata = await OnlineAgent.OnlineAgentRepo.postOnlineAgentStatus(AgentCode, AgentName, IsLogin, AgentStatus);
 
 //---------------- Websocket Part2 Start -----------------------
-                    //console.log("AgentCode: "+AgentCode)
+
                     if (!responsedata.error) {
                         if (clientWebSockets[AgentCode]) {
 

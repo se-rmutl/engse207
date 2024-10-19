@@ -43,8 +43,8 @@
         var WebSecketServer = "ws://192.168.16.1:3071";
 
         //--Staging Server------------------------------
-        //var APIServer = "https://lab-api.se-rmutl.net/api/v1";
-        //var WebSecketServer = "ws://lab-ws.se-rmutl.net";
+        //var APIServer = "https://lab-api.se-rmutl.net/engse207/api/v1";
+        //var WebSecketServer = "ws://lab-ws.se-rmutl.net/engse207";
 
         var ConcurrentCall = [];
         var connectSocket = false;
@@ -87,7 +87,7 @@
                 body: Message,
                 silent: false,
                 requireInteraction: false,
-                icon: path.join(__dirname, './assets/icon/impatient.png')
+                icon: path.join(__dirname, './assets/impatient.png')
             }
             const myNotification = new window.Notification(notification.title, notification);
 
@@ -116,7 +116,7 @@
                 body: ' ' + ReceiveMessage.Message,
                 silent: false,
                 requireInteraction: true,
-                icon: path.join(__dirname, './assets/icon/impatient.png')
+                icon: path.join(__dirname, './assets/impatient.png')
             }
 
             const myNotification = new window.Notification(notification.title, notification);
@@ -146,10 +146,6 @@
             $("#buttonCall").hide();
             $("#buttonDisConnect").hide();
             $("#buttonConnect").show();
-            $("#select").hide();
-            $("#Agent").hide();
-            $("#message").hide();
-            $("#send").hide();
             $("#nodata").hide();
             //$("#errMessage").show();
             $("#agent").focus();
@@ -220,10 +216,6 @@
                                 $("reports").show();
                                 $("#buttonDisConnect").show();
                                 $("#buttonCall").show();
-                                $("#select").show();
-                                $("#Agent").show();
-                                $("#message").show();
-                                $("#send").show();
                                 IsLogin = 1;
 
                                 //-------- Web Socket ----------
@@ -349,7 +341,7 @@
                     $("#statusLabel")
                         .empty()
                         .removeClass()
-                        .addClass("badge btn-pr1")
+                        .addClass("badge bg-dark")
                         .append(statusLabel);
                     break;
             }
@@ -365,7 +357,7 @@
                     $("#basicUsage")
                         .empty()
                         .removeClass()
-                        .addClass("badge btn-pr1")
+                        .addClass("badge bg-dark")
                         .append(timer.getTimeValues().toString());
 
                     //console.log(connectSocket)
@@ -414,10 +406,6 @@
             $("#buttonCall").hide();
             $("#nodata").hide();
             $("#basicUsage").hide();
-            $("#select").hide();
-            $("#Agent").hide();
-            $("#message").hide();
-            $("#send").hide();
             // ws = new WebSocket("ws://" + WebSecketServer + "/?agentcode=" + AgentCode);
 
             //-------- Web Socket ----------
@@ -442,7 +430,7 @@
             $("#statusLabel")
                 .empty()
                 .removeClass()
-                .addClass("badge btn-pr1")
+                .addClass("badge bg-dark")
                 .append("N/A");
             IsLogin = 0;
             $('#display').show()
@@ -780,14 +768,14 @@
                     <tr>
                         <div class="pt-2 pl-2 pr-2">
                     <tr>
-                        <td class="text-warning">
-                            <span class="text-warning h4" id="connectTime">Information</span>
+                        <td class="text-white">
+                            <span class="text-white" id="connectTime">Information</span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="text-white">
-                            <span class="btn btn-pr" id="ConnectionStatus">Disconnected</span>
-                            <span id="statusLabel" class="btn btn-pr1">N/A</span>
+                        <td class="text-blue">
+                            <span class="text-blue" id="ConnectionStatus">Disconnected</span>
+                            <span id="statusLabel" class="badge bg-dark">N/A</span>
                         </td>
                     </tr>
                     <tr>
@@ -802,44 +790,19 @@
                 <tr>
                     <div class="row">
                         <div class="col-sm-12 text-center ">
-                            <button id="buttonCall" class="btn btn-primary" disable
+                            <button id="buttonCall" class="btn btn-primary btn-sm shadow btn-block mt-2" disable
                                 onclick="CallOnescreen(1,'0000')">
                                 Pop-up Chrome
                             </button>
-                            <button id="buttonDisConnect" class="btn btn-danger "
+                            <button id="buttonDisConnect" class="btn btn-danger btn-sm shadow btn-block mt-2"
                                 onclick="logoutFromAPI()">
                                 Disconnect
                             </button>
-                            <button id="buttonNotification" class="btn btn-primary "
+                            <button id="buttonNotification" class="btn btn-primary btn-sm shadow btn-block mt-2"
                                 onclick="notify()">
                                 Notification
                             </button>
                         </div>
-
-                        <div class="col-sm-12 mt-3 text-center">
-                            <img id="icon" src="./assets/icon/na.png" alt="statusLabel" style="width:50px;height:50px;">
-                            <span id="statusLabel" class="badge"></span>
-                            <select id="select" class="form-select-lg">
-                                <option value="1">Available</option>
-                                <option value="2">Active</option>
-                                <option value="3">Wrap</option>
-                                <option value="4">Not Ready</option>
-                            </select>
-                        </div>
-    
-                        <div class="col-sm-12 mt-3 text-center">
-                            <input id="Agent" type="text" 
-                                class="input-primary btn-sm shadow btn-block mt-2" 
-                                placeholder="To Agent Code" />
-                            <input id="message" type="text" 
-                                class="input-primary btn-sm shadow btn-block mt-2" 
-                                placeholder="Type message here" />
-                            <button id="send" class="btn btn-success"
-                                onclick="messageNotify()">
-                                Send
-                            </button>
-                        </div>
-
                     </div>
                 </tr>
             </table>
@@ -867,10 +830,8 @@
     </div>
 
     <script>
-        document.getElementById("select").addEventListener("change", function () {
-            const selectedValue = this.value;
-            statusDisplay(selectedValue);
-        });
+        // You can also require other files to run in this process
+        //require('./renderer.js')
     </script>
 </body>
 

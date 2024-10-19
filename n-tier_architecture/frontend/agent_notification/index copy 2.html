@@ -43,8 +43,8 @@
         var WebSecketServer = "ws://192.168.16.1:3071";
 
         //--Staging Server------------------------------
-        //var APIServer = "https://lab-api.se-rmutl.net/api/v1";
-        //var WebSecketServer = "ws://lab-ws.se-rmutl.net";
+        //var APIServer = "https://lab-api.se-rmutl.net/engse207/api/v1";
+        //var WebSecketServer = "ws://lab-ws.se-rmutl.net/engse207";
 
         var ConcurrentCall = [];
         var connectSocket = false;
@@ -64,7 +64,8 @@
                 subtitle: 'Subtitle of the Notification',
                 body: 'Body of Custom Notification',
                 silent: false,
-                icon: path.join(__dirname, './assets/agent_notification.png'),
+                //icon: path.join(__dirname, './assets/agent_notification.png'),
+                icon: path.join(__dirname, './assets/icon/impatient.png'),
                 timeoutType: 'never',
                 requireInteraction: true
             }
@@ -72,21 +73,19 @@
 
             myNotification.onclick = (e) => console.log("User clicked the pop-up");
             myNotification.onclose = (e) => console.log("User closed the pop-up");
-
             myNotification.onerror = (err) => console.error(err);
         }
 
 
         function statusNotify(Message) {
-
-
             const notification = {
                 title: 'Agent Status Changed',
                 subtitle: 'Subtitle of the Notification',
-                //body: '** '+ statusLabel+ ' **',
+                body: '** '+ statusLabel+ ' **',
                 body: Message,
                 silent: false,
                 requireInteraction: false,
+                //icon: path.join(__dirname, './assets/impatient.png')
                 icon: path.join(__dirname, './assets/icon/impatient.png')
             }
             const myNotification = new window.Notification(notification.title, notification);
@@ -112,11 +111,11 @@
             const notification = {
                 title: ReceiveMessage.DateTime + '\n' + 'From: ' + ReceiveMessage.FromAgentCode,
                 //subtitle: 'Subtitle of the Notification',
-                //body: '** '+ statusLabel+ ' **',
+                body: '** '+ statusLabel+ ' **',
                 body: ' ' + ReceiveMessage.Message,
                 silent: false,
                 requireInteraction: true,
-                icon: path.join(__dirname, './assets/icon/impatient.png')
+                icon: path.join(__dirname, './assets/impatient.png')
             }
 
             const myNotification = new window.Notification(notification.title, notification);
@@ -144,12 +143,12 @@
             console.log("ready!");
 
             $("#buttonCall").hide();
-            $("#buttonDisConnect").hide();
-            $("#buttonConnect").show();
             $("#select").hide();
             $("#Agent").hide();
             $("#message").hide();
             $("#send").hide();
+            $("#buttonDisConnect").hide();
+            $("#buttonConnect").show();
             $("#nodata").hide();
             //$("#errMessage").show();
             $("#agent").focus();
@@ -251,7 +250,7 @@
                             console.log('---- ERROR ------');
                             console.log(response);
 
-                            //$("#statusLabel").empty().append(response.errMessage);                            
+                            $("#statusLabel").empty().append(response.errMessage);                            
                             $("#connectTime").empty().append(response.errMessage);
 
                             wsChecks = false;
@@ -282,7 +281,7 @@
                 .empty()
                 .append("Connected");
 
-            // $('#statusLabel').empty().removeClass().addClass('badge bg-success').append('Available');
+             $('#statusLabel').empty().removeClass().addClass('badge bg-success').append('Available');
 
             counterTimer();
 
@@ -299,7 +298,7 @@
         }
 
         function statusDisplay(status) {
-            //let statusLabel;
+            let statusLabel;
             switch (status) {
                 case "1":
                     statusLabel = "Available";
@@ -349,7 +348,7 @@
                     $("#statusLabel")
                         .empty()
                         .removeClass()
-                        .addClass("badge btn-pr1")
+                        .addClass("badge bg-dark")
                         .append(statusLabel);
                     break;
             }
@@ -365,7 +364,7 @@
                     $("#basicUsage")
                         .empty()
                         .removeClass()
-                        .addClass("badge btn-pr1")
+                        .addClass("badge bg-dark")
                         .append(timer.getTimeValues().toString());
 
                     //console.log(connectSocket)
@@ -400,7 +399,7 @@
                 (sec < 10 ? "0" : "") +
                 sec;
 
-            //$("#icon").attr("src", "./assets/icon/na.png");
+            $("#icon").attr("src", "./assets/icon/na.png");
             $("#connectTime")
                 .empty()
                 .append("[" + AgentCode + "] Starts at: " + output);
@@ -412,12 +411,12 @@
             timer.stop();
             timer.reset();
             $("#buttonCall").hide();
-            $("#nodata").hide();
-            $("#basicUsage").hide();
             $("#select").hide();
             $("#Agent").hide();
             $("#message").hide();
             $("#send").hide();
+            $("#nodata").hide();
+            $("#basicUsage").hide();
             // ws = new WebSocket("ws://" + WebSecketServer + "/?agentcode=" + AgentCode);
 
             //-------- Web Socket ----------
@@ -442,7 +441,7 @@
             $("#statusLabel")
                 .empty()
                 .removeClass()
-                .addClass("badge btn-pr1")
+                .addClass("badge bg-dark")
                 .append("N/A");
             IsLogin = 0;
             $('#display').show()
@@ -786,8 +785,8 @@
                     </tr>
                     <tr>
                         <td class="text-white">
-                            <span class="btn btn-pr" id="ConnectionStatus">Disconnected</span>
-                            <span id="statusLabel" class="btn btn-pr1">N/A</span>
+                            <span class="text-blue badge bg-danger" id="ConnectionStatus">Disconnected</span>
+                            <span id="statusLabel" class="badge bg-dark">N/A</span>
                         </td>
                     </tr>
                     <tr>
@@ -800,50 +799,52 @@
         <div class="col-12">
             <table class="table table-sm fs-6">
                 <tr>
-                    <div class="row">
-                        <div class="col-sm-12 text-center ">
-                            <button id="buttonCall" class="btn btn-primary" disable
-                                onclick="CallOnescreen(1,'0000')">
-                                Pop-up Chrome
-                            </button>
-                            <button id="buttonDisConnect" class="btn btn-danger "
-                                onclick="logoutFromAPI()">
-                                Disconnect
-                            </button>
-                            <button id="buttonNotification" class="btn btn-primary "
-                                onclick="notify()">
-                                Notification
-                            </button>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-12 mt-3 text-center">
+                                <button id="buttonCall" class="btn btn-primary btn-sm shadow btn-block mt-3"
+                                    disabled onclick="CallOnescreen(1,'0000')">
+                                    Pop-up Chrome
+                                </button>
+                                <button id="buttonDisConnect" class="btn btn-danger btn-sm shadow btn-block mt-3"
+                                    onclick="logoutFromAPI()">
+                                    Disconnect
+                                </button>
+                                <button id="buttonNotification" class="btn btn-primary btn-sm shadow btn-block mt-3"
+                                    onclick="notify()">
+                                    Notification
+                                </button>
+                            </div>
+        
+                            <div class="col-sm-12 mt-3 text-center">
+                                <img id="icon" src="./assets/icon/na.png" alt="statusLabel" style="width:50px;height:50px;">
+                                <span id="statusLabel" class="badge"></span>
+                                <select id="select" class="form-select-lg">
+                                    <option value="1">Available</option>
+                                    <option value="2">Active</option>
+                                    <option value="3">Wrap</option>
+                                    <option value="4">Not Ready</option>
+                                </select>
+                            </div>
+        
+                            <div class="col-sm-12 mt-3 text-center">
+                                <input id="Agent" type="text" 
+                                    class="input-primary btn-sm shadow btn-block mt-2" 
+                                    placeholder="To Agent Code" />
+                                <input id="message" type="text" 
+                                    class="input-primary btn-sm shadow btn-block mt-2" 
+                                    placeholder="Type message here" />
+                                <button id="send" class="btn-sen btn-sm shadow btn-block mt-2"
+                                    onclick="messageNotify()">
+                                    Send
+                                </button>
+                            </div>
                         </div>
-
-                        <div class="col-sm-12 mt-3 text-center">
-                            <img id="icon" src="./assets/icon/na.png" alt="statusLabel" style="width:50px;height:50px;">
-                            <span id="statusLabel" class="badge"></span>
-                            <select id="select" class="form-select-lg">
-                                <option value="1">Available</option>
-                                <option value="2">Active</option>
-                                <option value="3">Wrap</option>
-                                <option value="4">Not Ready</option>
-                            </select>
-                        </div>
-    
-                        <div class="col-sm-12 mt-3 text-center">
-                            <input id="Agent" type="text" 
-                                class="input-primary btn-sm shadow btn-block mt-2" 
-                                placeholder="To Agent Code" />
-                            <input id="message" type="text" 
-                                class="input-primary btn-sm shadow btn-block mt-2" 
-                                placeholder="Type message here" />
-                            <button id="send" class="btn btn-success"
-                                onclick="messageNotify()">
-                                Send
-                            </button>
-                        </div>
-
-                    </div>
+                    </td>
                 </tr>
             </table>
         </div>
+        
 
         <div id="display">
             <div class="row">
@@ -867,10 +868,14 @@
     </div>
 
     <script>
-        document.getElementById("select").addEventListener("change", function () {
-            const selectedValue = this.value;
-            statusDisplay(selectedValue);
-        });
+
+    // ดักจับการเปลี่ยนแปลงค่าใน select
+    document.getElementById("select").addEventListener("change", function () {
+        const selectedValue = this.value;
+        statusDisplay(selectedValue); // เรียกใช้ฟังก์ชัน statusDisplay
+    });
+        // You can also require other files to run in this process
+        //require('./renderer.js')
     </script>
 </body>
 

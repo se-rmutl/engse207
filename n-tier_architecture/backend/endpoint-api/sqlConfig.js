@@ -1,7 +1,7 @@
 var dbconfig = {
     development: {
-        server: '192.168.56.106',
-        database:'team0_web_labDB',
+        server: '192.168.16.102',
+        database:'team4_web_labDB',
         user:'sa',
         password:'P@ssw0rd',
         port: 1433,
@@ -11,13 +11,13 @@ var dbconfig = {
             enableArithAbort: true,
             trustServerCertificate: true,
             trustedconnection:  true,
-            instancename:  '192.168.56.106'  // SQL Server instance name
+            instancename:  '192.168.16.102'  // SQL Server instance name
         }
     },
     production: {
         server: '10.21.43.203',
-        database:'team0_web_labDB',
-        user:'team0',
+        database:'hana4_web_labDB',
+        user:'hana4',
         password:'P@ssw0rd',
         port: 1433,
         options:{

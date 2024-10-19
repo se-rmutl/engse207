@@ -4,7 +4,7 @@ const path = require('path');
 let imgPath;
 const AppNameVersion = app.getName() + " " + app.getVersion();
 const win_width = 520; //320
-const win_height = 310; //210
+const win_height = 340; //210
 
 class WindowManager {
 
