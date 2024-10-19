@@ -48,7 +48,7 @@ webSocketServer.on('connection', (ws, req) => {
         CLIENTS.push(newItem);
         ws.send("NEW USER JOINED");
         console.log("New agent joined");
-        
+
     } else {
         //ws.send("USER ALREADY JOINED");
         console.log("This agent already joined");
@@ -68,6 +68,7 @@ webSocketServer.on('connection', (ws, req) => {
 
         CLIENTS.push(newItem);
         ws.send("NEW USER JOINED");
+
         console.log("New agent joined");
         //--------------------
     }
@@ -290,6 +291,30 @@ const init = async () => {
                 else {
 
                     const responsedata = await OnlineAgent.OnlineAgentRepo.postOnlineAgentStatus(AgentCode, AgentName, IsLogin, AgentStatus);
+
+                    //---------------- Websocket Part2 Start -----------------------
+
+                    if (!responsedata.error) {
+                        if (clientWebSockets[AgentCode]) {
+
+                            clientWebSockets[AgentCode].send(JSON.stringify({
+                                MessageType: '1',
+                                AgentCode: AgentCode,
+                                AgentName: AgentName,
+                                IsLogin: IsLogin,
+                                AgentStatus: AgentStatus,
+                                DateTime: d.toLocaleString('en-US'),
+                            }));
+
+                            return ({
+                                error: false,
+                                message: "Agent status has been set.",
+                            });
+
+                        }
+                    }
+                    //---------------- Websocket Part2 End -----------------------
+
 
                     if (responsedata.statusCode == 200)
                         return responsedata;
