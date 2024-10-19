@@ -18,6 +18,38 @@ const apiport = 8443
 
 var url = require('url');
 
+//---------------- Websocket Part1 Start -----------------------
+
+var webSocketServer = new (require('ws')).Server({
+    port: (process.env.PORT || 3071)
+}),
+    clientWebSockets = {} // userID: webSocket
+CLIENTS = [];
+
+webSocketServer.on('connection', (ws, req) => {
+    
+    var q = url.parse(req.url, true);
+
+    console.log(q.host);
+    console.log(q.pathname);
+    console.log(q.search);
+
+    var qdata = q.query; //returns an object: { year: 2017, month: 'february' }
+
+    console.log("------- webSocketServer ------");
+    console.log("AgentCode: " + qdata.agentcode);
+
+
+});
+
+//---------------- Websocket Part1 End -----------------------
+
+
+
+
+
+
+
 //init Express
 var app = express();
 //init Express Router
