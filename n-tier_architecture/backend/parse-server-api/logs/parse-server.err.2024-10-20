@@ -1,1 +1,5 @@
 {"level":"error","message":"Invalid key(s) found in Parse Server configuration: useMasterKey, allowExpriredAuthDataToken","timestamp":"2024-10-20T05:19:38.683Z"}
+{"level":"error","message":"Invalid key(s) found in Parse Server configuration: useMasterKey, allowExpriredAuthDataToken","timestamp":"2024-10-20T07:16:54.142Z"}
+{"code":255,"level":"error","message":"Class OnlineAgentLists is not empty, contains 1 objects, cannot drop schema.","stack":"Error: Class OnlineAgentLists is not empty, contains 1 objects, cannot drop schema.\n    at D:\\Class\\1-67\\ENGSE207-HANA\\LAB\\engse207-dev\\n-tier_architecture\\backend\\parse-server-api\\node_modules\\parse-server\\lib\\Controllers\\DatabaseController.js:1091:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-10-20T07:19:29.103Z"}
+{"level":"error","message":"Invalid key(s) found in Parse Server configuration: useMasterKey, allowExpriredAuthDataToken","timestamp":"2024-10-20T07:48:08.462Z"}
+{"level":"error","message":"Invalid key(s) found in Parse Server configuration: useMasterKey, allowExpriredAuthDataToken","timestamp":"2024-10-20T07:57:55.295Z"}
