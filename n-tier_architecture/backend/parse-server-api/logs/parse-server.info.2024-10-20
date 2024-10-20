@@ -1,2 +1,2 @@
-{"level":"error","message":"Invalid key(s) found in Parse Server configuration: useMasterKey, allowExpriredAuthDataToken","timestamp":"2024-10-20T04:21:57.717Z"}
-{"level":"info","message":"Parse LiveQuery Server started running","timestamp":"2024-10-20T04:21:57.822Z"}
+{"level":"error","message":"Invalid key(s) found in Parse Server configuration: useMasterKey, allowExpriredAuthDataToken","timestamp":"2024-10-20T05:19:38.683Z"}
+{"level":"info","message":"Parse LiveQuery Server started running","timestamp":"2024-10-20T05:19:38.758Z"}
