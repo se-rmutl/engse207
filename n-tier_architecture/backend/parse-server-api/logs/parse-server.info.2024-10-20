@@ -27,3 +27,7 @@
 {"functionName":"OnlineAgentByAgentCode","level":"info","message":"Ran cloud function OnlineAgentByAgentCode for user undefined with:\n  Input: {\"AgentCode\":\"0001\"}\n  Result: \"3\"","params":{"AgentCode":"0001"},"timestamp":"2024-10-20T08:01:24.038Z"}
 {"functionName":"OnlineAgentByAgentCode","level":"info","message":"Ran cloud function OnlineAgentByAgentCode for user undefined with:\n  Input: {\"AgentCode\":\"0000\"}\n  Result: \"9\"","params":{"AgentCode":"0000"},"timestamp":"2024-10-20T08:02:00.595Z"}
 {"functionName":"OnlineAgentByAgentCode","level":"info","message":"Ran cloud function OnlineAgentByAgentCode for user undefined with:\n  Input: {\"AgentCode\":\"0001\"}\n  Result: \"3\"","params":{"AgentCode":"0001"},"timestamp":"2024-10-20T08:02:05.876Z"}
+{"level":"error","message":"Invalid key(s) found in Parse Server configuration: useMasterKey, allowExpriredAuthDataToken","timestamp":"2024-10-20T09:24:18.055Z"}
+{"level":"info","message":"Parse LiveQuery Server started running","timestamp":"2024-10-20T09:24:18.182Z"}
+{"level":"error","message":"Invalid key(s) found in Parse Server configuration: useMasterKey, allowExpriredAuthDataToken","timestamp":"2024-10-20T09:33:54.274Z"}
+{"level":"info","message":"Parse LiveQuery Server started running","timestamp":"2024-10-20T09:33:54.356Z"}
