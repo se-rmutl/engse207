@@ -3,3 +3,4 @@ package-lock.json
 server.crt
 server.key
 apiconfig.js
+sqlConfig.js
