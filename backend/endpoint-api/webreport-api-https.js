@@ -6,6 +6,9 @@ let cors = require('cors');
 
 const OnlineAgent = require('./repository/OnlineAgent');
 
+const apiconfig = require('./apiconfig')['production'];
+
+
 //-------------------------------------
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "1";
