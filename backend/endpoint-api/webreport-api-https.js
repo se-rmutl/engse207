@@ -11,7 +11,7 @@ const apiconfig = require('./apiconfig')['production'];
 
 //-------------------------------------
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "1";
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 const apiport = 8443
 
@@ -153,7 +153,7 @@ const init = async () => {
 
             // here is where you validate your token
             // comparing with token from your database for example
-            const isValid = token === '1aaZ!ARgAQGuQzp00D5D000000.mOv2jmhXkfIsjgywpCIh7.HZpc6vED1LCbc90DTaVDJwdNqbTW5r4uZicv8AFfkOE1ialqnR8UN5.wnAgh090h';
+            const isValid = token === apiconfig.serverKey;
 
             const credentials = { token };
             const artifacts = { test: 'info' };
@@ -168,7 +168,7 @@ const init = async () => {
 
     server.route({
         method: 'GET',
-        path: '/engse207/api/v1/',
+        path: '/',
         config: {
             cors: {
                 origin: [
@@ -190,53 +190,69 @@ const init = async () => {
         }
     });
 
-    server.route({
-        method: 'GET',
-        path: '/engse207/api/v1/getOnlineAgentByAgentCode',
-        config: {
-            cors: {
-                origin: [
-                    '*'
-                ],
-                headers: ["Access-Control-Allow-Headers", "Access-Control-Allow-Origin", "Accept", "Authorization", "Content-Type", "If-None-Match", "Accept-language"],
-                additionalHeaders: ["Access-Control-Allow-Headers: Origin, Content-Type, x-ms-request-id , Authorization"],
-                credentials: true
-            }
-        },
-        handler: async (request, h) => {
-            let param = request.query;
+    //-------- Code continue here -------------------
 
-            try {
-
-                param.agentcode
-                if (param.agentcode == null)
-                    return h.response("Please provide agentcode.").code(400);
-                else {
-
-                    const responsedata = await OnlineAgent.OnlineAgentRepo.getOnlineAgentByAgentCode(`${param.agentcode}`);
-
-                    if (responsedata.statusCode == 500)
-                        return h.response("Something went wrong. Please try again later.").code(500);
-                    else
-                        if (responsedata.statusCode == 200)
-                            return responsedata;
-                        else
-                            if (responsedata.statusCode == 404)
-                                return h.response(responsedata).code(404);
-                            else
-                                return h.response("Something went wrong. Please try again later.").code(500);
-
-                }
-            } catch (err) {
-                console.dir(err)
-            }
-        }
-
-    });
+ server.route({
+         method: 'GET',
+         path: '/api/v1/getOnlineAgentByAgentCode',
+         config: {
+             cors: {
+                 origin: [
+                     '*'
+                 ],
+                 headers: ["Access-Control-Allow-Headers", "Access-Control-Allow-Origin", "Accept", "Authorization", "Content-Type", "If-None-Match", "Accept-language"],
+                 additionalHeaders: ["Access-Control-Allow-Headers: Origin, Content-Type, x-ms-request-id , Authorization"],
+                 credentials: true
+             }
+         },
+         handler: async (request, h) => {
+             let param = request.query;
+ 
+             //console.log(param);
+             //console.log("Level: "+param.level);
+ 
+             try {
+ 
+ 
+                 if (param.agentcode == null)
+ 
+                     //return h.response("Please provide agentcode.").code(400);
+                     return h.response({
+                         "error": true,
+                         "statusCode": 400,
+                         "errMessage": "Please provide agentcode."
+                     }).code(400);
+ 
+                 else {
+ 
+                     const responsedata = await OnlineAgent.OnlineAgentRepo.getOnlineAgentByAgentCode(`${param.agentcode}`);
+ 
+                     if (responsedata.statusCode == 500)
+                         return h.response({
+                             "error": true,
+                             "statusCode": 500,
+                             "errMessage": "An internal server error occurred."
+                         }).code(500);
+                     else
+                         if (responsedata.statusCode == 200)
+                             return responsedata;
+                         else
+                             if (responsedata.statusCode == 404)
+                                 return h.response(responsedata).code(404);
+                             else
+                                 return h.response("Something went wrong. Please try again later.").code(500);
+ 
+                 }
+             } catch (err) {
+                 console.dir(err)
+             }
+         }
+ 
+     });
 
     server.route({
         method: 'POST',
-        path: '/engse207/api/v1/postOnlineAgentStatus',
+        path: '/api/v1/postOnlineAgentStatus',
         config: {
             cors: {
                 origin: [
@@ -264,18 +280,29 @@ const init = async () => {
             try {
 
                 if (param.AgentCode == null)
-                    return h.response("Please provide agentcode.").code(400);
+                    //return h.response("Please provide agentcode.").code(400);
+
+                    return h.response({
+                        "error": true,
+                        "statusCode": 400,
+                        "errMessage": "Please provide agentcode."
+                    }).code(400);
+
                 else {
 
                     const responsedata = await OnlineAgent.OnlineAgentRepo.postOnlineAgentStatus(AgentCode, AgentName, IsLogin, AgentStatus);
 
                     //---------------- Websocket Part2 Start -----------------------
-
+                    console.log("AgentCode: "+AgentCode)
+                 
                     if (!responsedata.error) {
+
                         if (clientWebSockets[AgentCode]) {
+                            
+                            console.log("Sennding MessageType")
 
                             clientWebSockets[AgentCode].send(JSON.stringify({
-                                MessageType: '4',
+                                MessageType: '1',
                                 AgentCode: AgentCode,
                                 AgentName: AgentName,
                                 IsLogin: IsLogin,
@@ -283,10 +310,10 @@ const init = async () => {
                                 DateTime: d.toLocaleString('en-US'),
                             }));
 
-                            return ({
-                                error: false,
-                                message: "Agent status has been set.",
-                            });
+                             return ({
+                                 error: false,
+                                 message: "Agent status has been set.",
+                             });
 
                         }
                     }
@@ -312,7 +339,7 @@ const init = async () => {
 
     server.route({
         method: 'POST',
-        path: '/engse207/api/v1/postSendMessage',
+        path: '/api/v1/postSendMessage',
         config: {
             cors: {
                 origin: [
@@ -347,7 +374,7 @@ const init = async () => {
                     if (clientWebSockets[ToAgentCode]) {
 
                         clientWebSockets[ToAgentCode].send(JSON.stringify({
-                            MessageType: '5',
+                            MessageType: '2',
                             FromAgentCode: FromAgentCode,
                             ToAgentCode: ToAgentCode,
                             DateTime: d.toLocaleString('en-US'),
@@ -378,7 +405,7 @@ const init = async () => {
 
     server.route({
         method: 'POST',
-        path: '/engse207/api/v1/deleteOnlineAgent',
+        path: '/api/v1/deleteOnlineAgent',
         config: {
             cors: {
                 origin: [
