@@ -3,17 +3,15 @@ Parse.Cloud.define("hello", (req) => {
   return "Hi from Parse Server";
 });
 
-Parse.Cloud.define("OnlineAgentByAgentCode", async (request) => {
-  let AgentCode = request.params.AgentCode;
-  let StatusCode = request.params.StatusCode;
+Parse.Cloud.define("OnlineAgentByAgentId", async (request) => {
+  let AgentID = request.params.AgentID;
 
   let returnCode = 0;
   //------------------
 
   const query = new Parse.Query("OnlineAgentLists"); // select * from OnlineAgentLists
 
-  query.equalTo("AgentCode", AgentCode); // where AgentCode = 'AgentCode'
-
+  query.equalTo("AgentID", AgentID); // where AgentID = 'AgentID'
 
   let results;
 
@@ -34,14 +32,14 @@ Parse.Cloud.define("OnlineAgentByAgentCode", async (request) => {
 
 Parse.Cloud.define("postOnlineAgentListByTeam", async (request) => {
   /*
-    Parameter:
-            AgentCode: AgentCode,
-            AgentName: AgentName,
-            Queue: Queue,
-            AgentStatus: AgentStatus,
-            AgentStatusCode: AgentStatusCode,
-            IsLogin: IsLogin
-    */
+  Parameter:
+          AgentCode: AgentCode,
+          AgentName: AgentName,
+          Queue: Queue,
+          AgentStatus: AgentStatus,
+          AgentStatusCode: AgentStatusCode,
+          IsLogin: IsLogin
+  */
   let AgentCode = request.params.AgentCode;
   let AgentName = request.params.AgentName;
   let Queue = request.params.Queue;
@@ -55,7 +53,7 @@ Parse.Cloud.define("postOnlineAgentListByTeam", async (request) => {
   if (Queue != undefined) QueueInt = parseInt(Queue); //long
 
   let Teams = [
-    "Team0",
+    "N/A",
     "Team1",
     "Team2",
     "Team3",
@@ -140,7 +138,6 @@ Parse.Cloud.define("postOnlineAgentListByTeam", async (request) => {
         else returnCode = 17;
 
         if (returnCode == 0) onlineagentlist.save(); //Insert data
-     
       } else {
         //  Found record
         // Update Data

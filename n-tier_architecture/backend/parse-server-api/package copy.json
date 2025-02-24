@@ -8,16 +8,15 @@
   },
   "author": "",
   "license": "ISC",
- 
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.21.1",
+    "express": "^4.21.0",
     "fs": "0.0.1-security",
     "kerberos": "^2.2.0",
-    "mongoose": "^8.7.1",
-    "node-cron": "^3.0.2",
+    "mongoose": "^8.7.0",
+    "node-cron": "^3.0.3",
     "parse": "^5.3.0",
-    "parse-dashboard": "^6.0.0",
-    "parse-server": "^6.5.10"
+    "parse-dashboard": "^5.4.0",
+    "parse-server": "^7.3.0"
   }
 }

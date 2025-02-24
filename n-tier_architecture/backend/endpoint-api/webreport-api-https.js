@@ -7,7 +7,7 @@ let cors = require('cors');
 
 const OnlineAgent = require('./repository/OnlineAgent');
 
-const apiconfig = require('./apiconfig')['development'];
+const apiconfig = require('./apiconfig')['production'];
 
 
 //-------------------------------------
@@ -27,7 +27,6 @@ var webSocketServer = new (require('ws')).Server({
 CLIENTS = [];
 
 webSocketServer.on('connection', (ws, req) => {
-
     var q = url.parse(req.url, true);
 
     console.log(q.host);
@@ -38,19 +37,19 @@ webSocketServer.on('connection', (ws, req) => {
 
     console.log("------- webSocketServer ------");
     console.log("AgentCode: " + qdata.agentcode);
+    ws.agentcode = qdata.agentcode;
 
-    ws.name = qdata.agentcode; //9999  , 9998
-    var newItem = ws.name;
+    // clientWebSockets[ws.agentcode] = ws;
+    ws.name = ws.agentcode;
+    //CLIENTS.push(ws.agentcode);
+
+    var newItem = ws.agentcode;
 
     if (CLIENTS.indexOf(newItem) === -1) {
-
-        //console.dir("ws: " + JSON.stringify(ws));
-
-        clientWebSockets[newItem] = ws;
+        clientWebSockets[ws.agentcode] = ws;
         CLIENTS.push(newItem);
         ws.send("NEW USER JOINED");
         console.log("New agent joined");
-
     } else {
         //ws.send("USER ALREADY JOINED");
         console.log("This agent already joined");
@@ -63,33 +62,36 @@ webSocketServer.on('connection', (ws, req) => {
 
         //console.log(CLIENTS); 
 
-        delete clientWebSockets[ws.name]
-        console.log('Previous Agent deleted: ' + ws.name)
+        delete clientWebSockets[ws.agentcode]
+        console.log('Previous Agent deleted: ' + ws.agentcode)
         //---------------------
-        clientWebSockets[ws.name] = ws;
+        clientWebSockets[ws.agentcode] = ws;
 
         CLIENTS.push(newItem);
         ws.send("NEW USER JOINED");
-
         console.log("New agent joined");
         //--------------------
     }
 
+    //console.log('ws.agentcode : ' + newItem)
+    console.dir('CLIENTS : ' + CLIENTS)
 
+    ws.on('close', function () {
 
+        const index = CLIENTS.indexOf(newItem);
+        if (index > -1) {
+            CLIENTS.splice(index, 1);
+        }
 
+        //console.log(CLIENTS); 
 
-
-
+        delete clientWebSockets[ws.agentcode]
+        console.log('Agent deleted: ' + ws.agentcode)
+    })
 
 });
 
 //---------------- Websocket Part1 End -----------------------
-
-
-
-
-
 
 
 //init Express
