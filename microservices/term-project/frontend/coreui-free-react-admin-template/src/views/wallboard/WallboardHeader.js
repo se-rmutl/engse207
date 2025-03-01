@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material'
 import DateTime from './dateTime'
 
-import wallboard_logo from './../../assets/images/logo-se.png'
+import wallboard_logo from './../../assets/images/react.jpg'
 
 const WallboardHeader = ({ title, serviceChange, ServiceCode }) => {
     const [age, setAge] = React.useState('10');
