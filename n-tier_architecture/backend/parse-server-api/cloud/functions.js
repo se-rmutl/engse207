@@ -5,7 +5,7 @@ Parse.Cloud.define("hello", (req) => {
 
 Parse.Cloud.define("OnlineAgentByAgentCode", async (request) => {
   let AgentCode = request.params.AgentCode;
-  
+
   let returnCode = 0;
   //------------------
 
@@ -83,7 +83,8 @@ Parse.Cloud.define("postOnlineAgentListByTeam", async (request) => {
     const agent_query = new Parse.Query("OnlineAgentLists");
     agent_query.equalTo("AgentCode", AgentCode); // where AgentCode = '1234'
 
-    agent_query.find().then(function (agents) {
+    agent_query.find().then(
+      function (agents) {
         //What do I do HERE to delete the posts?
         agents.forEach(function (agent) {
           agent.destroy({
@@ -139,7 +140,6 @@ Parse.Cloud.define("postOnlineAgentListByTeam", async (request) => {
         else returnCode = 17;
 
         if (returnCode == 0) onlineagentlist.save(); //Insert data
-     
       } else {
         //  Found record
         // Update Data
