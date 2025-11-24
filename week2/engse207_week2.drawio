@@ -1,0 +1,433 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3" pages="5">
+  <diagram name="diagram1_quality_attributes_overview" id="Okp4CikHjmpn5OJmh9Ka">
+    <mxGraphModel dx="2084" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-1" value="Quality Attributes (Non-Functional Requirements)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="194" y="60" width="500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-2" value="SOFTWARE SYSTEM" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="314" y="370" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-3" value="Performance&#xa;(เร็ว ตอบสนองทันที)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="60" y="170" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=classic;endFill=1" edge="1" parent="1" source="HXoyWCpoNUMpIKBPw-jJ-3" target="HXoyWCpoNUMpIKBPw-jJ-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-5" value="Response Time&#xa;Throughput&#xa;Latency" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="60" y="260" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-6" value="Scalability&#xa;(ขยายได้)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="369" y="150" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=classic;endFill=1" edge="1" parent="1" source="HXoyWCpoNUMpIKBPw-jJ-6" target="HXoyWCpoNUMpIKBPw-jJ-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-8" value="Horizontal/Vertical&#xa;Load Capacity" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="394" y="240" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-9" value="Availability&#xa;(พร้อมใช้งาน)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="678" y="170" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=classic;endFill=1" edge="1" parent="1" source="HXoyWCpoNUMpIKBPw-jJ-9" target="HXoyWCpoNUMpIKBPw-jJ-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-11" value="Uptime %&#xa;Redundancy&#xa;Failover" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="703" y="260" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-12" value="Security&#xa;(ปลอดภัย)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="60" y="570" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;endArrow=classic;endFill=1" edge="1" parent="1" source="HXoyWCpoNUMpIKBPw-jJ-12" target="HXoyWCpoNUMpIKBPw-jJ-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-14" value="Authentication&#xa;Authorization&#xa;Encryption" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="60" y="510" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-15" value="Modifiability&#xa;(แก้ไขง่าย)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="369" y="590" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;endArrow=classic;endFill=1" edge="1" parent="1" source="HXoyWCpoNUMpIKBPw-jJ-15" target="HXoyWCpoNUMpIKBPw-jJ-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-17" value="Maintainability&#xa;Extensibility&#xa;Flexibility" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="394" y="530" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-18" value="Usability&#xa;(ใช้งานง่าย)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#cce5ff;strokeColor=#36393d;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="678" y="570" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;endArrow=classic;endFill=1" edge="1" parent="1" source="HXoyWCpoNUMpIKBPw-jJ-18" target="HXoyWCpoNUMpIKBPw-jJ-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-20" value="User Experience&#xa;Learnability&#xa;Accessibility" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="703" y="510" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="HXoyWCpoNUMpIKBPw-jJ-21" value="Quality Attributes กำหนดว่าระบบมีคุณภาพดีหรือไม่&#xa;และเป็นตัวขับเคลื่อน (Drivers) ในการออกแบบสถาปัตยกรรม" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10" vertex="1" parent="1">
+          <mxGeometry x="-60" y="720" width="400" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="RAKGEEMiATv2vAcb1Tm6" name="diagram2_qa_scenario_structure">
+    <mxGraphModel dx="2084" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-1" value="Quality Attribute Scenario - 6 Components" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="-6" y="110" width="600" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-2" value="1. SOURCE&#xa;(แหล่งที่มา)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;align=center" vertex="1" parent="1">
+          <mxGeometry x="-170" y="190" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-3" value="ใคร หรืออะไร&#xa;ที่เป็นต้นเหตุ&#xa;&#xa;เช่น User, System,&#xa;Hacker, Network" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5" vertex="1" parent="1">
+          <mxGeometry x="-170" y="280" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-4" value="2. STIMULUS&#xa;(สิ่งกระตุ้น)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;align=center" vertex="1" parent="1">
+          <mxGeometry x="50" y="190" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-5" value="เหตุการณ์อะไร&#xa;ที่เกิดขึ้น&#xa;&#xa;เช่น Request, Load,&#xa;Attack, Failure" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5" vertex="1" parent="1">
+          <mxGeometry x="50" y="280" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-6" value="3. ARTIFACT&#xa;(สิ่งที่ถูกกระทบ)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;align=center" vertex="1" parent="1">
+          <mxGeometry x="270" y="190" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-7" value="ส่วนไหนของระบบ&#xa;ที่ได้รับผลกระทบ&#xa;&#xa;เช่น API Server,&#xa;Database, UI" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5" vertex="1" parent="1">
+          <mxGeometry x="270" y="280" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-8" value="4. ENVIRONMENT&#xa;(สภาพแวดล้อม)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;align=center" vertex="1" parent="1">
+          <mxGeometry x="490" y="190" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-9" value="ระบบอยู่ใน&#xa;สภาวะอะไร&#xa;&#xa;เช่น Normal load,&#xa;Peak time, Under attack" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5" vertex="1" parent="1">
+          <mxGeometry x="490" y="280" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;endArrow=classic;endFill=1;strokeColor=#666666" edge="1" parent="1" source="LRaLnBUAL5Y9oylAgprQ-2" target="LRaLnBUAL5Y9oylAgprQ-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;endArrow=classic;endFill=1;strokeColor=#666666" edge="1" parent="1" source="LRaLnBUAL5Y9oylAgprQ-4" target="LRaLnBUAL5Y9oylAgprQ-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;endArrow=classic;endFill=1;strokeColor=#666666" edge="1" parent="1" source="LRaLnBUAL5Y9oylAgprQ-6" target="LRaLnBUAL5Y9oylAgprQ-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-13" value="5. RESPONSE&#xa;(การตอบสนอง)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;align=center" vertex="1" parent="1">
+          <mxGeometry x="50" y="450" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-14" value="ระบบตอบสนองอย่างไร&#xa;&#xa;เช่น Process request, Log event,&#xa;Block access, Failover to backup" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5" vertex="1" parent="1">
+          <mxGeometry x="50" y="540" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-15" value="6. RESPONSE MEASURE&#xa;(เกณฑ์วัดการตอบสนอง)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;align=center" vertex="1" parent="1">
+          <mxGeometry x="50" y="650" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-16" value="วัดผลลัพธ์อย่างไร (ต้องมีตัวเลข)&#xa;&#xa;เช่น Response time &lt; 2s,&#xa;Uptime 99.9%, Success rate &gt; 95%" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5" vertex="1" parent="1">
+          <mxGeometry x="50" y="740" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;endArrow=classic;endFill=1;strokeColor=#666666" edge="1" parent="1" source="LRaLnBUAL5Y9oylAgprQ-8" target="LRaLnBUAL5Y9oylAgprQ-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="580" y="410" />
+              <mxPoint x="190" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;endArrow=classic;endFill=1;strokeColor=#666666" edge="1" parent="1" source="LRaLnBUAL5Y9oylAgprQ-13" target="LRaLnBUAL5Y9oylAgprQ-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-19" value="ตัวอย่าง: Performance Scenario&#xa;&#xa;Source: ผู้ใช้ Mobile App&#xa;Stimulus: กดค้นหาร้านอาหาร&#xa;Artifact: Search Service API&#xa;Environment: Normal load (5,000 users)&#xa;Response: ระบบค้นหาและแสดงผล&#xa;Response Measure: &lt; 2 วินาที (95%)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#cce5ff;strokeColor=#36393d;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontFamily=Courier New" vertex="1" parent="1">
+          <mxGeometry x="410" y="470" width="340" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="LRaLnBUAL5Y9oylAgprQ-20" value="⚠️ Response Measure ต้องวัดผลได้จริง มีตัวเลขชัดเจน" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="410" y="660" width="340" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="dNwSnD3lq4GGxh2cMi4V" name="diagram3_tradeoffs">
+    <mxGraphModel dx="1257" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-1" value="Common Trade-offs in Software Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="234" y="30" width="700" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-2" value="Trade-off #1: Performance ↔ Security" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="80" y="100" width="450" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-3" value="PERFORMANCE" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="100" y="160" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-4" value="✓ เร็ว&#xa;✓ Response time ต่ำ&#xa;✗ Security checks น้อย" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=5" vertex="1" parent="1">
+          <mxGeometry x="100" y="230" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-5" value="SECURITY" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="370" y="160" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-6" value="✓ ปลอดภัย&#xa;✓ Encryption, Validation&#xa;✗ ช้าลง (Overhead)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=5" vertex="1" parent="1">
+          <mxGeometry x="370" y="230" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-7" value="⚖️" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=40" vertex="1" parent="1">
+          <mxGeometry x="265" y="170" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-8" value="ตัวอย่าง:&#xa;• HTTPS vs HTTP&#xa;• Token validation frequency&#xa;• Encryption level" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#cce5ff;strokeColor=#36393d;align=left;verticalAlign=top;spacingLeft=5" vertex="1" parent="1">
+          <mxGeometry x="100" y="300" width="410" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-9" value="Trade-off #2: Consistency ↔ Availability (CAP Theorem)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="640" y="100" width="450" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-10" value="CONSISTENCY" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="660" y="160" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-11" value="✓ ข้อมูลตรงเสมอ&#xa;✓ Strong consistency&#xa;✗ อาจ unavailable" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=5" vertex="1" parent="1">
+          <mxGeometry x="660" y="230" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-12" value="AVAILABILITY" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="930" y="160" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-13" value="✓ ใช้งานได้เสมอ&#xa;✓ High uptime&#xa;✗ Eventual consistency" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=5" vertex="1" parent="1">
+          <mxGeometry x="930" y="230" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-14" value="⚖️" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=40" vertex="1" parent="1">
+          <mxGeometry x="825" y="170" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-15" value="ตัวอย่าง:&#xa;• Banking: เลือก Consistency (ยอดเงินต้องตรงเสมอ)&#xa;• Facebook: เลือก Availability (Like count ไม่ตรงชั่วคราวได้)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#cce5ff;strokeColor=#36393d;align=left;verticalAlign=top;spacingLeft=5" vertex="1" parent="1">
+          <mxGeometry x="660" y="300" width="410" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-16" value="Trade-off #3: Scalability ↔ Cost" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="80" y="400" width="450" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-17" value="SCALABILITY" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="100" y="460" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-18" value="✓ รองรับ Load สูง&#xa;✓ Auto-scaling&#xa;✗ Infrastructure cost สูง" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=5" vertex="1" parent="1">
+          <mxGeometry x="100" y="530" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-19" value="LOW COST" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="370" y="460" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-20" value="✓ ประหยัด&#xa;✓ Simple architecture&#xa;✗ Scale ได้จำกัด" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=5" vertex="1" parent="1">
+          <mxGeometry x="370" y="530" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-21" value="⚖️" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=40" vertex="1" parent="1">
+          <mxGeometry x="265" y="470" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-22" value="ตัวอย่าง:&#xa;• Startup: เริ่มแบบ Simple → Scale ทีหลัง&#xa;• Enterprise: ลงทุน Infrastructure ตั้งแต่แรก" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#cce5ff;strokeColor=#36393d;align=left;verticalAlign=top;spacingLeft=5" vertex="1" parent="1">
+          <mxGeometry x="100" y="600" width="410" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-23" value="Trade-off #4: Modifiability (Flexibility) ↔ Performance" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="640" y="400" width="450" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-24" value="MODIFIABILITY" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="660" y="460" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-25" value="✓ แก้ไขง่าย&#xa;✓ Plugin-based&#xa;✗ มี Overhead" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=5" vertex="1" parent="1">
+          <mxGeometry x="660" y="530" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-26" value="PERFORMANCE" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="930" y="460" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-27" value="✓ เร็วมาก&#xa;✓ Optimized แน่น&#xa;✗ แก้ไขยาก" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=5" vertex="1" parent="1">
+          <mxGeometry x="930" y="530" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-28" value="⚖️" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=40" vertex="1" parent="1">
+          <mxGeometry x="825" y="470" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-29" value="ตัวอย่าง:&#xa;• Microservices: Flexible แต่มี Network overhead&#xa;• Monolith: เร็ว แต่แก้ไขยาก" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#cce5ff;strokeColor=#36393d;align=left;verticalAlign=top;spacingLeft=5" vertex="1" parent="1">
+          <mxGeometry x="660" y="600" width="410" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nu0PPFSfmms1lUGNcHdd-30" value="💡 Key Insight: ไม่สามารถได้ทุกอย่างที่ดีพร้อมกัน → ต้องจัดลำดับความสำคัญและตัดสินใจอย่างมีเหตุผล" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#f5f5f5;strokeColor=#666666;align=center;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="80" y="700" width="990" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="KfgFyTbZ2QCITLz3Ngxq" name="diagram4_architectural_drivers">
+    <mxGraphModel dx="1257" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-1" value="Architectural Drivers - ปัจจัยที่ขับเคลื่อนการออกแบบสถาปัตยกรรม" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="134" y="30" width="800" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-2" value="SOFTWARE&#xa;ARCHITECTURE" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=4" vertex="1" parent="1">
+          <mxGeometry x="404" y="350" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-3" value="1. FUNCTIONAL&#xa;REQUIREMENTS&#xa;(ระบบต้องทำอะไร?)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="50" y="140" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-4" value="• Use Cases&#xa;• Features&#xa;• Business Logic&#xa;• User Stories" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5" vertex="1" parent="1">
+          <mxGeometry x="50" y="250" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=3;endArrow=classic;endFill=1;strokeColor=#d6b656" edge="1" parent="1" source="x2sDU40QCjS0NsMTBpKv-3" target="x2sDU40QCjS0NsMTBpKv-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-6" value="2. QUALITY&#xa;ATTRIBUTES&#xa;(ระบบต้องมีคุณภาพอย่างไร?)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="798" y="140" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-7" value="• Performance&#xa;• Scalability&#xa;• Availability&#xa;• Security&#xa;• Modifiability&#xa;• Usability" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5" vertex="1" parent="1">
+          <mxGeometry x="798" y="250" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=3;endArrow=classic;endFill=1;strokeColor=#82b366" edge="1" parent="1" source="x2sDU40QCjS0NsMTBpKv-6" target="x2sDU40QCjS0NsMTBpKv-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-9" value="3. CONSTRAINTS&#xa;(ข้อจำกัด)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="50" y="530" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-10" value="• Technical (Tech stack)&#xa;• Time (Deadline)&#xa;• Budget&#xa;• Legal/Policy&#xa;• Organizational" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5" vertex="1" parent="1">
+          <mxGeometry x="50" y="640" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=3;endArrow=classic;endFill=1;strokeColor=#b85450" edge="1" parent="1" source="x2sDU40QCjS0NsMTBpKv-9" target="x2sDU40QCjS0NsMTBpKv-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-12" value="4. ASSUMPTIONS&#xa;(สมมติฐาน)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="798" y="530" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-13" value="• User behavior&#xa;• Load expectations&#xa;• Data volume&#xa;• Technology stability&#xa;• 3rd party uptime" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5" vertex="1" parent="1">
+          <mxGeometry x="798" y="640" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=3;endArrow=classic;endFill=1;strokeColor=#9673a6" edge="1" parent="1" source="x2sDU40QCjS0NsMTBpKv-12" target="x2sDU40QCjS0NsMTBpKv-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-15" value="กระบวนการ:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="310" y="520" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-16" value="1️⃣ รวบรวม Drivers" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#cce5ff;strokeColor=#36393d" vertex="1" parent="1">
+          <mxGeometry x="310" y="560" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-17" value="2️⃣ เขียน Scenarios" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#cce5ff;strokeColor=#36393d" vertex="1" parent="1">
+          <mxGeometry x="310" y="610" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-18" value="3️⃣ จัดลำดับความสำคัญ" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#cce5ff;strokeColor=#36393d" vertex="1" parent="1">
+          <mxGeometry x="310" y="660" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-19" value="4️⃣ ออกแบบสถาปัตยกรรม" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="310" y="710" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=classic;endFill=1" edge="1" parent="1" source="x2sDU40QCjS0NsMTBpKv-16" target="x2sDU40QCjS0NsMTBpKv-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=classic;endFill=1" edge="1" parent="1" source="x2sDU40QCjS0NsMTBpKv-17" target="x2sDU40QCjS0NsMTBpKv-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=classic;endFill=1" edge="1" parent="1" source="x2sDU40QCjS0NsMTBpKv-18" target="x2sDU40QCjS0NsMTBpKv-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;endArrow=classic;endFill=1;strokeColor=#6c8ebf" edge="1" parent="1" source="x2sDU40QCjS0NsMTBpKv-19" target="x2sDU40QCjS0NsMTBpKv-24">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="534" y="520" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="390" y="780" />
+              <mxPoint x="534" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-24" value="🎯 สถาปัตยกรรมที่ตอบโจทย์&#xa;Architectural Drivers" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="404" y="510" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-25" value="ตัวอย่าง Task Board System:&#xa;• Functional: สร้าง task, assign, comment&#xa;• Quality: Performance &lt;1s, Availability 99%&#xa;• Constraints: Node.js, AWS, 6 เดือน&#xa;• Assumptions: Max 1,000 users, 10GB data/year" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontFamily=Courier New" vertex="1" parent="1">
+          <mxGeometry x="760" y="390" width="370" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="x2sDU40QCjS0NsMTBpKv-26" value="💡 Drivers ต่างๆ อาจมี Trade-offs → ต้องจัดลำดับความสำคัญ" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;align=center;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="723" y="750" width="370" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="NZwqgKgHWii_TfwagjA_" name="diagram5_scenario_example">
+    <mxGraphModel dx="1257" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-1" value="ตัวอย่าง: Performance Scenario - Food Delivery System" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="234" y="30" width="700" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-2" value="SOURCE" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-3" value="ผู้ใช้งาน&#xa;Mobile App&#xa;(Customer)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666" vertex="1" parent="1">
+          <mxGeometry x="80" y="180" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;endArrow=classic;endFill=1" edge="1" parent="1" source="lmoTCa5mVb4y9Rr7o2iy-2" target="lmoTCa5mVb4y9Rr7o2iy-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-5" value="STIMULUS" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="260" y="120" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-6" value="กดค้นหา&#xa;ร้านอาหาร&#xa;และเลือกดูเมนู" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666" vertex="1" parent="1">
+          <mxGeometry x="260" y="180" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;endArrow=classic;endFill=1" edge="1" parent="1" source="lmoTCa5mVb4y9Rr7o2iy-5" target="lmoTCa5mVb4y9Rr7o2iy-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-8" value="ARTIFACT" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="440" y="120" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-9" value="Restaurant&#xa;Search Service&#xa;+ Menu API" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666" vertex="1" parent="1">
+          <mxGeometry x="440" y="180" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;endArrow=classic;endFill=1" edge="1" parent="1" source="lmoTCa5mVb4y9Rr7o2iy-8" target="lmoTCa5mVb4y9Rr7o2iy-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-11" value="ENVIRONMENT" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="620" y="120" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-13" value="🔄 SYSTEM PROCESSING" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="260" y="320" width="500" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;endArrow=classic;endFill=1;strokeColor=#9673a6" edge="1" parent="1" source="lmoTCa5mVb4y9Rr7o2iy-11" target="lmoTCa5mVb4y9Rr7o2iy-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="280" />
+              <mxPoint x="510" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-15" value="RESPONSE" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="260" y="440" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-16" value="ระบบค้นหาร้านอาหาร&#xa;และโหลดรายการเมนู&#xa;พร้อมรูปภาพ" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666" vertex="1" parent="1">
+          <mxGeometry x="260" y="500" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;endArrow=classic;endFill=1" edge="1" parent="1" source="lmoTCa5mVb4y9Rr7o2iy-13" target="lmoTCa5mVb4y9Rr7o2iy-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-18" value="RESPONSE MEASURE" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="520" y="440" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-19" value="⏱️ Response time&#xa;&lt; 2 วินาที&#xa;สำหรับ 95% ของ requests" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="520" y="500" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-20" value="✅ SUCCESS&#xa;95% complete &lt; 2s" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="260" y="600" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-21" value="❌ FAIL&#xa;&gt;5% exceed 2s" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="520" y="600" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-22" value="💡 Architectural Implications (ผลกระทบต่อการออกแบบ):" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="80" y="680" width="680" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-23" value="1. ใช้ Caching (Redis) เก็บรายการร้านอาหารยอดนิยม" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#cce5ff;strokeColor=#36393d;align=left;spacingLeft=10" vertex="1" parent="1">
+          <mxGeometry x="80" y="720" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-24" value="2. ใช้ CDN สำหรับรูปภาพเมนู" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#cce5ff;strokeColor=#36393d;align=left;spacingLeft=10" vertex="1" parent="1">
+          <mxGeometry x="440" y="720" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-25" value="3. Database Indexing สำหรับ location-based search" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#cce5ff;strokeColor=#36393d;align=left;spacingLeft=10" vertex="1" parent="1">
+          <mxGeometry x="80" y="770" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-26" value="4. API Response pagination (limit results per page)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#cce5ff;strokeColor=#36393d;align=left;spacingLeft=10" vertex="1" parent="1">
+          <mxGeometry x="440" y="770" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-27" value="📊 วิธีการวัด:&#xa;• ใช้ Application Performance Monitoring (APM)&#xa;• Log response time ทุก request&#xa;• Calculate 95th percentile" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10" vertex="1" parent="1">
+          <mxGeometry x="800" y="120" width="300" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-28" value="⚖️ Trade-off:&#xa;Caching ช่วยเพิ่ม Performance แต่อาจทำให้&#xa;ข้อมูลไม่เป็น Real-time 100%&#xa;→ ต้องกำหนด Cache TTL ที่เหมาะสม" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10" vertex="1" parent="1">
+          <mxGeometry x="800" y="260" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="lmoTCa5mVb4y9Rr7o2iy-29" value="Normal load&#xa;~5,000&#xa;concurrent users" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666" vertex="1" parent="1">
+          <mxGeometry x="620" y="180" width="140" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
