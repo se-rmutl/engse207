@@ -351,12 +351,12 @@ Quality Attribute Scenario ประกอบด้วย 6 ส่วนหล�
 
 ```
 ┌─────────────────────────────────────────────────┐
-│  1. Source (แหล่งที่มาของ Event)                │
-│  2. Stimulus (สิ่งกระตุ้น/เหตุการณ์)            │
-│  3. Artifact (ส่วนของระบบที่ได้รับผลกระทบ)      │
+│  1. Source (แหล่งที่มาของ Event)                   │
+│  2. Stimulus (สิ่งกระตุ้น/เหตุการณ์)                  │
+│  3. Artifact (ส่วนของระบบที่ได้รับผลกระทบ)           │
 │  4. Environment (สภาพแวดล้อมของระบบ)             │
 │  5. Response (การตอบสนองของระบบ)                │
-│  6. Response Measure (เกณฑ์วัดการตอบสนอง)       │
+│  6. Response Measure (เกณฑ์วัดการตอบสนอง)         │
 └─────────────────────────────────────────────────┘
 ```
 
@@ -541,17 +541,17 @@ Quality Attribute Scenario ประกอบด้วย 6 ส่วนหล�
 ```
 ┌────────────────────────────────────────────────┐
 │                                                │
-│  1. Functional Requirements                   │
-│     (ระบบต้องทำอะไร?)                          │
+│  1. Functional Requirements                    │
+│     (ระบบต้องทำอะไร?)                           │
 │                                                │
-│  2. Quality Attributes / Non-Functional Req.  │
-│     (ระบบต้องมีคุณภาพอย่างไร?)                │
+│  2. Quality Attributes / Non-Functional Req.   │
+│     (ระบบต้องมีคุณภาพอย่างไร?)                     │
 │                                                │
-│  3. Constraints (ข้อจำกัด)                     │
-│     (มีข้อจำกัดด้านเทคนิค เวลา งบประมาณ?)    │
+│  3. Constraints (ข้อจำกัด)                       │
+│     (มีข้อจำกัดด้านเทคนิค เวลา งบประมาณ?)           │
 │                                                │
-│  4. Assumptions (สมมติฐาน)                     │
-│     (เราสมมติอะไรเกี่ยวกับระบบ?)               │
+│  4. Assumptions (สมมติฐาน)                      │
+│     (เราสมมติอะไรเกี่ยวกับระบบ?)                   │
 │                                                │
 └────────────────────────────────────────────────┘
 ```
@@ -830,7 +830,7 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 
 **กรอกข้อมูลลงใน Template:**
 
-```markdown
+
 ## Quality Attributes for Task Board System
 
 | Quality Attribute | ระดับความสำคัญ (1-5) | เหตุผล |
@@ -842,7 +842,7 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 | Modifiability | __ | เพราะ... |
 | Usability | __ | เพราะ... |
 | อื่นๆ (ระบุ) | __ | เพราะ... |
-```
+
 
 **ขั้นตอนที่ 2: จัดลำดับความสำคัญ (15 นาที)**
 
@@ -860,7 +860,6 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 
 **Template สำหรับเขียน Scenario:**
 
-```markdown
 ### Scenario #1: [ชื่อ Scenario]
 
 **Quality Attribute:** [Performance/Scalability/...]
@@ -876,11 +875,10 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 
 **คำอธิบายแบบเต็ม:**
 [เขียนเป็นประโยคเต็มอธิบาย Scenario นี้]
-```
 
 **ตัวอย่าง Scenario ที่เขียนดี:**
 
-```markdown
+
 ### Scenario #1: Fast Task List Loading
 
 **Quality Attribute:** Performance
@@ -898,7 +896,7 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 เมื่อผู้ใช้งานเปิด Task board ที่มี 200 tasks ในสภาวะการใช้งานปกติ (Network 4G) 
 ระบบต้องสามารถโหลด Task list ทั้งหมดและแสดงใน Board view ได้ภายใน 1.5 วินาที 
 สำหรับ 95% ของ requests
-```
+
 
 **💡 Tips:**
 - Response measure ต้องวัดได้จริง มีตัวเลข
@@ -917,7 +915,7 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 
 ให้ดูว่า Quality Attributes ที่เลือกมามีความขัดแย้งกันหรือไม่
 
-```markdown
+
 ## Trade-offs Analysis
 
 ### Conflict #1: Performance vs Security
@@ -931,7 +929,7 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 
 **Impact:**
 [มีผลกระทบอย่างไรต่อสถาปัตยกรรม?]
-```
+
 
 **2. จัดลำดับความสำคัญอีกครั้ง (10 นาที)**
 
@@ -939,7 +937,7 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 - Quality Attribute ใดสำคัญที่สุดสำหรับระบบนี้?
 - ถ้าต้องเลือก เราจะยอมแลก (Sacrifice) Attribute ใด?
 
-```markdown
+
 ## Final Priority
 
 1. [Quality Attribute #1] - เพราะ...
@@ -947,7 +945,7 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 3. [Quality Attribute #3] - เพราะ...
 4. [Quality Attribute #4] - เพราะ...
 5. [Quality Attribute #5] - เพราะ...
-```
+
 
 ---
 
@@ -966,7 +964,7 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
   - Priority ที่เลือกสอดคล้องกับความต้องการของระบบหรือไม่?
 
 **Checklist สำหรับ Peer Review:**
-```markdown
+
 ## Peer Review Checklist
 
 กลุ่มที่รีวิว: ___________
@@ -978,7 +976,6 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 | Trade-offs analysis มีเหตุผล | __ | |
 | Priority สอดคล้องกับความต้องการ | __ | |
 | การนำเสนอชัดเจน เข้าใจง่าย | __ | |
-```
 
 ---
 
@@ -1015,7 +1012,7 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 
 #### **ส่วนที่ 1: System Overview (1 หน้า)**
 
-```markdown
+
 # [ชื่อระบบ]
 
 ## 1. System Description
@@ -1031,7 +1028,7 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 2. [Feature 2]
 ...
 10. [Feature 10]
-```
+
 
 ---
 
@@ -1039,7 +1036,7 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 
 ระบุ Functional Requirements อย่างน้อย 15 ข้อ โดยแบ่งตาม Category
 
-```markdown
+
 ## Functional Requirements
 
 ### User Management
@@ -1054,7 +1051,7 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 
 ### Reporting
 - FR-12: ...
-```
+
 
 ---
 
@@ -1062,7 +1059,7 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 
 เลือก Quality Attributes หลัก 6 ตัว และเขียน Scenario อย่างละ 1 scenario
 
-```markdown
+
 ## Quality Attributes
 
 ### QA-1: Performance
@@ -1085,13 +1082,12 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 
 ### QA-2: Scalability
 [...]
-```
+
 
 ---
 
 #### **ส่วนที่ 4: Constraints (1 หน้า)**
 
-```markdown
 ## Constraints
 
 ### Technical Constraints
@@ -1106,13 +1102,11 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 
 ### Legal/Policy Constraints
 - [Constraint 1]
-```
 
 ---
 
 #### **ส่วนที่ 5: Assumptions (0.5 หน้า)**
 
-```markdown
 ## Assumptions
 
 1. [Assumption 1]
@@ -1120,13 +1114,12 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 3. [Assumption 3]
 4. [Assumption 4]
 5. [Assumption 5]
-```
+
 
 ---
 
 #### **ส่วนที่ 6: Priority & Trade-offs (1 หน้า)**
 
-```markdown
 ## Quality Attributes Priority
 
 | Rank | Quality Attribute | เหตุผล |
@@ -1145,7 +1138,6 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 
 **Decision:**
 [เราเลือกอะไร? ทำไม?]
-```
 
 ---
 
@@ -1249,7 +1241,6 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 
 ### Template 1: Quality Attribute Scenario
 
-```markdown
 ### Scenario: [ชื่อ Scenario]
 
 **Quality Attribute:** [Performance/Scalability/Availability/Security/Modifiability/Usability]
@@ -1271,13 +1262,12 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 
 **Architectural Impact:**
 [Scenario นี้จะส่งผลต่อการออกแบบสถาปัตยกรรมอย่างไร]
-```
 
 ---
 
 ### Template 2: Trade-offs Analysis
 
-```markdown
+
 ## Trade-offs Analysis
 
 ### Conflict: [Quality Attribute A] vs [Quality Attribute B]
@@ -1310,7 +1300,7 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 
 **Rationale:**
 [เหตุผลประกอบการตัดสินใจ โดยพิจารณาจาก Context, Stakeholders, Constraints]
-```
+
 
 ---
 
@@ -1339,4 +1329,4 @@ Architectural Drivers จะนำไปสู่การตัดสินใ�
 **ข้อมูลติดต่อ:**
 อาจารย์ธนิต เกตุแก้ว
 Email: thanit@rmutl.ac.th
-Office Hours: [ระบุเวลา]
+
