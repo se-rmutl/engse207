@@ -38,7 +38,7 @@
 | สัปดาห์ | หัวข้อ (Topic) | เนื้อหา (Materials) | งานปฏิบัติ (Labs/Workshops) |
 | :---: | :--- | :---: | :---: |
 | **01** | **บทนำสถาปัตยกรรมซอฟต์แวร์** <br> (Introduction & Modern Systems) | [📺 Lecture](./week01/lecture.md) | [💻 Lab: System Analysis](./week01/lab.md) |
-| **02** | **คุณภาพซอฟต์แวร์ & ปัจจัยขับเคลื่อน** <br> (Quality Attributes & Architectural Drivers) | [📺 Lecture](./week02/lecture.md) | [💻 Workshop: QA Scenarios](./week02/lab.md) |
+| **02** | **คุณภาพซอฟต์แวร์ & ปัจจัยขับเคลื่อน** <br> (Quality Attributes & Architectural Drivers) | [📺 Lecture](./week02/lecture.md) | [💻 Workshop: QA Scenarios](./week02/workshop.md) <br> [💻 Lab: Architectural Drivers](./week02/lab.md)|
 | **03** | **รูปแบบสถาปัตยกรรมพื้นฐาน (Part 1)** <br> (Monolith, Layered, Client-Server, Pipe-Filter) | [📺 Lecture](./week03/lecture.md) | [💻 Lab: Refactoring to Layered](./week03/lab.md) |
 | **04** | **รูปแบบสถาปัตยกรรมสมัยใหม่ (Part 2)** <br> (Microservices, Event-Driven, Serverless) | [📺 Lecture](./week04/lecture.md) | [💻 Lab: Microservices Design](./week04/lab.md) |
 | **05** | **การจำลองแบบด้วย C4 Model** <br> (Architecture Views: Context/Container) | [📺 Lecture](./week05/lecture.md) | [💻 Lab: Draw C1-C2 Diagrams](./week05/lab.md) |
