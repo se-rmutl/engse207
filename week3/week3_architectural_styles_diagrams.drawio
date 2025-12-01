@@ -1,0 +1,586 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3" pages="6">
+  <diagram name="1-Monolithic-Architecture" id="monolithic">
+    <mxGraphModel dx="1245" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title-mono" value="Monolithic Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=24;fontStyle=1;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="400" y="70" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="monolith-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="384.5" y="120" width="400" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="monolith-title" value="&lt;b&gt;Monolithic Application&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=18;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="384.5" y="130" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ui-layer" value="&lt;b&gt;User Interface (UI)&lt;/b&gt;&lt;br&gt;&lt;br&gt;• HTML/CSS/JavaScript&lt;br&gt;• Views &amp; Forms&lt;br&gt;• User Interactions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=10;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="414.5" y="170" width="340" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="business-layer" value="&lt;b&gt;Business Logic&lt;/b&gt;&lt;br&gt;&lt;br&gt;• User Management&lt;br&gt;• Order Processing&lt;br&gt;• Payment Processing&lt;br&gt;• Inventory Management&lt;br&gt;• Shipping Logic&lt;br&gt;• Validation Rules" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=10;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="414.5" y="280" width="340" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="data-layer" value="&lt;b&gt;Data Access Layer&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Database Connections&lt;br&gt;• SQL Queries&lt;br&gt;• ORM (e.g., Hibernate)&lt;br&gt;• CRUD Operations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;verticalAlign=top;spacingLeft=10;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="414.5" y="450" width="340" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="database" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="535" y="630" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="db-label" value="&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;(Shared)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="535" y="680" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-to-db" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;strokeColor=#666666;" parent="1" source="data-layer" target="database" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="584.5" y="590" as="sourcePoint" />
+            <mxPoint x="634.5" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="characteristics" value="&lt;b&gt;✅ Advantages:&lt;/b&gt;&lt;br&gt;• Simple to develop&amp;nbsp;&lt;br&gt;• Easy to test&lt;br&gt;• Fast in-process calls&lt;br&gt;• Single deployment&lt;br&gt;&lt;br&gt;&lt;b&gt;❌ Disadvantages:&lt;/b&gt;&lt;br&gt;• Hard to scale&lt;br&gt;• Tight coupling&lt;br&gt;• Large codebase&lt;br&gt;• Technology lock-in" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;fontSize=11;fontColor=#333333;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="810" y="140" width="170" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="usecases" value="&lt;b&gt;🎯 Best For:&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Small to medium apps&lt;br&gt;• MVPs &amp;amp; prototypes&lt;br&gt;• Teams &amp;lt; 10 people&lt;br&gt;• Internal tools&lt;br&gt;• Simple requirements&lt;br&gt;&lt;br&gt;&lt;b&gt;Examples:&lt;/b&gt;&lt;br&gt;• WordPress&lt;br&gt;• Small CRM systems&lt;br&gt;• POS systems" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=10;fontSize=11;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="820" y="380" width="170" height="190" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="2-Layered-Architecture" id="layered">
+    <mxGraphModel dx="1245" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title-layer" value="Layered (3-Tier) Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=24;fontStyle=1;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="385" y="70" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="presentation-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="384.5" y="120" width="385.5" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pres-title" value="&lt;b&gt;Presentation Layer&lt;/b&gt;&lt;br&gt;(User Interface)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=14;fontColor=#1A1A1A;spacingTop=5;" parent="1" vertex="1">
+          <mxGeometry x="384.5" y="125" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pres-content" value="• HTML/CSS/JavaScript&lt;br&gt;• React, Angular, Vue.js&lt;br&gt;• Display data to users&lt;br&gt;• Handle user input" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=11;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="384.5" y="160" width="400" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow1" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=2;strokeColor=#666666;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="584.5" y="240" as="sourcePoint" />
+            <mxPoint x="584.5" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="business-logic-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="384.5" y="270" width="385.5" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="business-title" value="&lt;b&gt;Business Logic Layer&lt;/b&gt;&lt;br&gt;(Application/Domain Layer)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=14;fontColor=#1A1A1A;spacingTop=5;" parent="1" vertex="1">
+          <mxGeometry x="384.5" y="275" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="business-content" value="• Business rules &amp;amp; validation&lt;br&gt;• Domain logic&lt;br&gt;• Workflow orchestration&lt;br&gt;• Calculate discounts, taxes&lt;br&gt;• Order processing logic" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=11;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="385" y="320" width="400" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow2" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=2;strokeColor=#666666;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="584.5" y="410" as="sourcePoint" />
+            <mxPoint x="584.5" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="data-access-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="384.5" y="440" width="385.5" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="data-title" value="&lt;b&gt;Data Access Layer&lt;/b&gt;&lt;br&gt;(Persistence Layer)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=14;fontColor=#1A1A1A;spacingTop=5;" parent="1" vertex="1">
+          <mxGeometry x="384.5" y="445" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="data-content" value="• Repositories &amp;amp; DAOs&lt;br&gt;• Database queries (SQL)&lt;br&gt;• ORM (Hibernate, Entity Framework)&lt;br&gt;• CRUD operations" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=11;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="384.5" y="480" width="400" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-db" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#666666;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="584.5" y="560" as="sourcePoint" />
+            <mxPoint x="584.5" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="database-layer" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="534.5" y="600" width="100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="db-label-layer" value="&lt;b&gt;Database&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="534.5" y="635" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="advantages-layer" value="&lt;b&gt;✅ Advantages:&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Clear separation&lt;br&gt;• Easy to maintain&lt;br&gt;• Testable layers&lt;br&gt;• Team scalability&lt;br&gt;• Reusable logic&lt;br&gt;• Change UI easily" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;fontSize=11;fontColor=#333333;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="810" y="120" width="150" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="disadvantages-layer" value="&lt;b&gt;❌ Disadvantages:&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Performance overhead&lt;br&gt;• Cascading changes&lt;br&gt;• Over-engineering&lt;br&gt;• Layer coupling" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;fontSize=11;fontColor=#333333;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="810" y="285" width="150" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="bestfor-layer" value="&lt;b&gt;🎯 Best For:&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Enterprise apps&lt;br&gt;• Complex business logic&lt;br&gt;• Team specialization&lt;br&gt;• E-commerce systems&lt;br&gt;• Banking systems" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=10;fontSize=11;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="810" y="445" width="150" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="rule" value="&lt;b&gt;Dependency Rule:&lt;/b&gt; Upper layers depend on lower layers" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="370" y="690" width="400" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="3-Client-Server-Architecture" id="client-server">
+    <mxGraphModel dx="1245" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title-cs" value="Client-Server Architecture (3-Tier)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=24;fontStyle=1;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="350" y="100" width="500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="client1" value="" style="shape=mxgraph.cisco.computers_and_peripherals.pc;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="135" y="200" width="78" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="client1-label" value="&lt;b&gt;Client 1&lt;/b&gt;&lt;br&gt;(Web Browser)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="124" y="270" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="client2" value="" style="shape=mxgraph.cisco.computers_and_peripherals.handheld;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="155" y="350" width="30" height="73" as="geometry" />
+        </mxCell>
+        <mxCell id="client2-label" value="&lt;b&gt;Client 2&lt;/b&gt;&lt;br&gt;(Mobile App)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="120" y="423" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="client3" value="" style="shape=mxgraph.cisco.computers_and_peripherals.pc;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="135" y="500" width="78" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="client3-label" value="&lt;b&gt;Client N&lt;/b&gt;&lt;br&gt;(Desktop App)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="124" y="570" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-req1" value="Request" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="213" y="246.5" as="sourcePoint" />
+            <mxPoint x="323" y="246.5" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow-resp1" value="Response" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#00CC66;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="270" as="sourcePoint" />
+            <mxPoint x="210" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow-req2" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="210" y="370" as="sourcePoint" />
+            <mxPoint x="320" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow-resp2" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#00CC66;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="385" as="sourcePoint" />
+            <mxPoint x="210" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow-req3" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="210" y="510" as="sourcePoint" />
+            <mxPoint x="320" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow-resp3" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#00CC66;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="525" as="sourcePoint" />
+            <mxPoint x="210" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="app-server" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="330" y="200" width="200" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="app-server-title" value="&lt;b&gt;Application Server&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=16;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="330" y="210" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="app-server-content" value="&lt;br&gt;&lt;b&gt;Business Logic:&lt;/b&gt;&lt;br&gt;• Authentication&lt;br&gt;• Authorization&lt;br&gt;• Data validation&lt;br&gt;• Business rules&lt;br&gt;• Workflow processing&lt;br&gt;&lt;br&gt;&lt;b&gt;API Endpoints:&lt;/b&gt;&lt;br&gt;• REST APIs&lt;br&gt;• GraphQL&lt;br&gt;• WebSocket&lt;br&gt;&lt;br&gt;&lt;b&gt;Technologies:&lt;/b&gt;&lt;br&gt;• Node.js&lt;br&gt;• Java Spring&lt;br&gt;• Python Django" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=10;spacingLeft=15;" parent="1" vertex="1">
+          <mxGeometry x="330" y="240" width="200" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="db-arrow" value="SQL Queries" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=2;strokeColor=#666666;" parent="1" edge="1">
+          <mxGeometry x="0.0091" y="20" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="530" y="350" as="sourcePoint" />
+            <mxPoint x="629" y="350" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="db-server" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="630" y="206.5" width="180" height="313.5" as="geometry" />
+        </mxCell>
+        <mxCell id="db-server-title" value="&lt;b&gt;Database Server&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=16;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="630" y="216.5" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="db-icon" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="670" y="266.5" width="100" height="93.5" as="geometry" />
+        </mxCell>
+        <mxCell id="db-content" value="&lt;b&gt;Data Storage:&lt;/b&gt;&lt;br&gt;• MySQL&lt;br&gt;• PostgreSQL&lt;br&gt;• MongoDB&lt;br&gt;• Oracle&lt;br&gt;&lt;br&gt;&lt;b&gt;Functions:&lt;/b&gt;&lt;br&gt;• Store data&lt;br&gt;• Execute queries&lt;br&gt;• Transactions" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=10;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="630" y="373" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="info-box" value="&lt;b&gt;Key Characteristics:&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Centralized server&lt;br&gt;• Multiple clients&lt;br&gt;• Request-Response pattern&lt;br&gt;• Thin clients (UI only)&lt;br&gt;• Thick server (logic + data)&lt;br&gt;&lt;br&gt;&lt;b&gt;Communication:&lt;/b&gt;&lt;br&gt;• HTTP/HTTPS&lt;br&gt;• WebSocket&lt;br&gt;• RPC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=10;fontSize=11;strokeWidth=2;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="840" y="194.5" width="170" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="examples-box" value="&lt;b&gt;🏪 Real Examples:&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Gmail (Email)&lt;br&gt;• Internet Banking&lt;br&gt;• Shopee / Lazada&lt;br&gt;• Facebook&lt;br&gt;• LINE&lt;br&gt;• Netflix" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=10;fontSize=11;strokeWidth=2;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="840" y="423" width="170" height="137" as="geometry" />
+        </mxCell>
+        <mxCell id="network-label" value="🌐 Network (Internet)" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=12;fontStyle=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="450" y="150" width="320" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="4-N-Tier-Architecture" id="n-tier">
+    <mxGraphModel dx="1245" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title-ntier" value="N-Tier Architecture (4-Tier Example)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=24;fontStyle=1;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="265" y="40" width="500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tier1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="50" y="100" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tier1-title" value="&lt;b&gt;Tier 1: Client Tier&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=14;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="50" y="105" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="tier1-content" value="• Web Browser&lt;br&gt;• Mobile App&lt;br&gt;• Desktop App&lt;br&gt;• IoT Devices" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=11;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="50" y="135" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-t1" value="HTTP/HTTPS" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#0066CC;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" target="tier2-content" edge="1">
+          <mxGeometry y="10" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="150" as="sourcePoint" />
+            <mxPoint x="300" y="150" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tier2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="310" y="100" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tier2-title" value="&lt;b&gt;Tier 2: Web Server&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=14;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="310" y="105" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="tier2-content" value="• Nginx&lt;br&gt;• Apache&lt;br&gt;• Serve static files&lt;br&gt;• Load balancing" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=11;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="310" y="135" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-t2" value="API Calls" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#0066CC;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" parent="1" source="tier2-content" edge="1">
+          <mxGeometry y="10" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="150" as="sourcePoint" />
+            <mxPoint x="570" y="150" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tier3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="570" y="100" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tier3-title" value="&lt;b&gt;Tier 3: App Server&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=14;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="570" y="105" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="tier3-content" value="• Business Logic&lt;br&gt;• Node.js / Java&lt;br&gt;• Python / .NET&lt;br&gt;• API Gateway" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=11;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="570" y="135" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-t3" value="DB Queries" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#0066CC;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" target="tier4-content" edge="1">
+          <mxGeometry x="-0.0533" y="10" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="750" y="150" as="sourcePoint" />
+            <mxPoint x="820" y="150" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tier4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="820" y="100" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tier4-title" value="&lt;b&gt;Tier 4: Database&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=14;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="820" y="105" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="tier4-content" value="• MySQL&lt;br&gt;• PostgreSQL&lt;br&gt;• MongoDB&lt;br&gt;• Redis Cache" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=11;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="820" y="135" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="extension-label" value="&lt;b&gt;5-Tier Extension (with Caching):&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=15;fontColor=#CC0000;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="120" y="220" width="250" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="ext-tier1" value="Client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="110" y="250" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ext-arrow1" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#666666;fontSize=13;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="275" as="sourcePoint" />
+            <mxPoint x="280" y="275" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ext-tier2" value="Web Server" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="280" y="250" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ext-arrow2" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#666666;fontSize=13;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="275" as="sourcePoint" />
+            <mxPoint x="450" y="275" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ext-tier3" value="&lt;b&gt;Cache Tier&lt;/b&gt;&lt;br&gt;(Redis)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontColor=#CC0000;" parent="1" vertex="1">
+          <mxGeometry x="450" y="250" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ext-arrow3" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#666666;fontSize=13;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="570" y="275" as="sourcePoint" />
+            <mxPoint x="620" y="275" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ext-tier4" value="App Server" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="620" y="250" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ext-arrow4" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#666666;fontSize=13;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="740" y="275" as="sourcePoint" />
+            <mxPoint x="790" y="275" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ext-tier5" value="Database" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="790" y="250" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="benefits" value="&lt;b&gt;✅ Benefits of N-Tier:&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;b&gt;High Scalability&lt;/b&gt;: Scale each tier independently&lt;br&gt;• &lt;b&gt;Security&lt;/b&gt;: Separate layers with firewalls&lt;br&gt;• &lt;b&gt;Flexibility&lt;/b&gt;: Change technology per tier&lt;br&gt;• &lt;b&gt;Team Independence&lt;/b&gt;: Teams work on different tiers&lt;br&gt;• &lt;b&gt;Fault Isolation&lt;/b&gt;: Failure in one tier doesn&#39;t crash all" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=10;fontSize=12;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="130" y="329" width="340" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="challenges" value="&lt;b&gt;❌ Challenges:&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;b&gt;High Complexity&lt;/b&gt;: Many components to manage&lt;br&gt;• &lt;b&gt;Higher Cost&lt;/b&gt;: Multiple servers needed&lt;br&gt;• &lt;b&gt;Network Latency&lt;/b&gt;: Data passes through tiers&lt;br&gt;• &lt;b&gt;Difficult Debugging&lt;/b&gt;: Hard to trace issues&lt;br&gt;• &lt;b&gt;Deployment Complexity&lt;/b&gt;: Coordinate deployments" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=10;fontSize=12;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="550" y="329" width="350" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="real-examples" value="&lt;b&gt;🏪 Real-World Examples:&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;LINE Platform:&lt;/b&gt;&lt;br&gt;Mobile App → CDN → Load Balancer → Message Service → User Service → Database&lt;br&gt;&lt;br&gt;&lt;b&gt;Shopee E-Commerce:&lt;/b&gt;&lt;br&gt;Web/App → CDN → API Gateway → Product/Order/Payment Services → Databases&lt;br&gt;&lt;br&gt;&lt;b&gt;Banking Systems:&lt;/b&gt;&lt;br&gt;Mobile App → Web Server → App Server → Core Banking → Database Cluster" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=10;fontSize=11;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="130" y="480" width="790" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="physical-note" value="⚠️ &lt;b&gt;Key Difference:&lt;/b&gt; TIER = Physical separation (different servers) vs LAYER = Logical separation (in code)" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="120" y="650" width="790" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="5-Pipe-and-Filter-Architecture" id="pipe-filter">
+    <mxGraphModel dx="1245" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title-pf" value="Pipe-and-Filter Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=24;fontStyle=1;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="340" y="60" width="500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pattern-title" value="&lt;b&gt;Basic Pattern:&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=16;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="80" y="100" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="input" value="Input Data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="150" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="pipe1" value="" style="endArrow=classic;html=1;strokeWidth=4;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="175" as="sourcePoint" />
+            <mxPoint x="240" y="175" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pipe1-label" value="Pipe" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontColor=#0066CC;" parent="1" vertex="1">
+          <mxGeometry x="180" y="150" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="filter1" value="Filter 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="240" y="150" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="pipe2" value="" style="endArrow=classic;html=1;strokeWidth=4;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="175" as="sourcePoint" />
+            <mxPoint x="400" y="175" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pipe2-label" value="Pipe" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontColor=#0066CC;" parent="1" vertex="1">
+          <mxGeometry x="340" y="150" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="filter2" value="Filter 2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="400" y="150" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="pipe3" value="" style="endArrow=classic;html=1;strokeWidth=4;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="175" as="sourcePoint" />
+            <mxPoint x="560" y="175" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pipe3-label" value="Pipe" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontColor=#0066CC;" parent="1" vertex="1">
+          <mxGeometry x="500" y="150" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="filter3" value="Filter 3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="560" y="150" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="pipe4" value="" style="endArrow=classic;html=1;strokeWidth=4;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="660" y="175" as="sourcePoint" />
+            <mxPoint x="720" y="175" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pipe4-label" value="Pipe" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontColor=#0066CC;" parent="1" vertex="1">
+          <mxGeometry x="660" y="150" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="output" value="Output Data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="720" y="150" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="example1-title" value="&lt;b&gt;Example 1: Video Processing Pipeline&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontColor=#CC0000;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="250" width="740" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="video-input" value="Video File" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="80" y="290" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="video-pipe1" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="310" as="sourcePoint" />
+            <mxPoint x="200" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="video-filter1" value="Decode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="200" y="290" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="video-pipe2" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="270" y="310" as="sourcePoint" />
+            <mxPoint x="310" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="video-filter2" value="Resize" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="310" y="290" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="video-pipe3" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="310" as="sourcePoint" />
+            <mxPoint x="420" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="video-filter3" value="Color&#xa;Correct" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="420" y="290" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="video-pipe4" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="310" as="sourcePoint" />
+            <mxPoint x="530" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="video-filter4" value="Compress" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="530" y="290" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="video-pipe5" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="310" as="sourcePoint" />
+            <mxPoint x="640" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="video-filter5" value="Encode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="640" y="290" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="video-pipe6" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="710" y="310" as="sourcePoint" />
+            <mxPoint x="750" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="video-output" value="Output&#xa;Video" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="750" y="290" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="example2-title" value="&lt;b&gt;Example 2: Log Processing Pipeline&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontColor=#CC0000;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="360" width="740" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="log-input" value="Raw Logs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="80" y="400" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="log-pipe1" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="420" as="sourcePoint" />
+            <mxPoint x="200" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="log-filter1" value="Parse&#xa;JSON" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="200" y="400" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="log-pipe2" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="270" y="420" as="sourcePoint" />
+            <mxPoint x="310" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="log-filter2" value="Filter&#xa;Errors" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="310" y="400" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="log-pipe3" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="420" as="sourcePoint" />
+            <mxPoint x="420" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="log-filter3" value="Group by&#xa;Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="420" y="400" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="log-pipe4" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="420" as="sourcePoint" />
+            <mxPoint x="530" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="log-filter4" value="Aggregate&#xa;Count" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="530" y="400" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="log-pipe5" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="420" as="sourcePoint" />
+            <mxPoint x="640" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="log-filter5" value="Alert&#xa;Decision" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="640" y="400" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="log-pipe6" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0066CC;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="710" y="420" as="sourcePoint" />
+            <mxPoint x="750" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="log-output" value="Alert&#xa;System" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="750" y="400" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="characteristics-pf" value="&lt;b&gt;Key Characteristics:&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;b&gt;Independent Filters&lt;/b&gt;: Each filter is self-contained&lt;br&gt;• &lt;b&gt;Data Streaming&lt;/b&gt;: Data flows through pipeline&lt;br&gt;• &lt;b&gt;Composable&lt;/b&gt;: Easy to add/remove/reorder filters&lt;br&gt;• &lt;b&gt;Reusable&lt;/b&gt;: Filters can be used in different pipelines&lt;br&gt;• &lt;b&gt;Parallel Processing&lt;/b&gt;: Filters can run concurrently" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=10;fontSize=11;strokeWidth=2;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="850" y="140" width="340" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="advantages-pf" value="&lt;b&gt;✅ Advantages:&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Easy to understand&lt;br&gt;• High reusability&lt;br&gt;• Easy to maintain&lt;br&gt;• Testable components&lt;br&gt;• Flexible composition&lt;br&gt;• Parallel execution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=10;fontSize=11;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="850" y="290" width="150" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="disadvantages-pf" value="&lt;b&gt;❌ Disadvantages:&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Added latency&lt;br&gt;• Not interactive&lt;br&gt;• Error handling complexity&lt;br&gt;• State management&lt;br&gt;• Data format constraints" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=10;fontSize=11;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="1020" y="290" width="170" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="bestfor-pf" value="&lt;b&gt;🎯 Best For:&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Data processing&lt;br&gt;• ETL pipelines&lt;br&gt;• Image/Video processing&lt;br&gt;• Log analysis&lt;br&gt;• Stream processing&lt;br&gt;• Batch jobs&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=10;fontSize=12;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="220" y="470" width="450" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="unix-example" value="&lt;b&gt;Unix Shell Example:&lt;/b&gt;&lt;br&gt;&lt;font face=&quot;Courier New&quot;&gt;cat file.txt | grep &quot;error&quot; | sort | uniq | wc -l&lt;/font&gt;&lt;br&gt;Each command is a filter, | is a pipe" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=10;fontSize=10;strokeWidth=2;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="850" y="440" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="RL1GlQhshkJQygZ2uU0a-1" value="&lt;br style=&quot;forced-color-adjust: none; color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;b style=&quot;forced-color-adjust: none; color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;Examples:&lt;/b&gt;&lt;br style=&quot;forced-color-adjust: none; color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;• Unix pipes&lt;/span&gt;&lt;br style=&quot;forced-color-adjust: none; color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;• Apache Kafka Streams&lt;/span&gt;&lt;br style=&quot;forced-color-adjust: none; color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;• AWS Step Functions&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="490" width="160" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="6-Comparison-Summary" id="comparison">
+    <mxGraphModel dx="1244" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title-compare" value="Architectural Styles Comparison" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=26;fontStyle=1;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="290" y="40" width="600" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="mono-summary" value="&lt;b style=&quot;font-size: 14px&quot;&gt;🏢 Monolithic&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Structure:&lt;/b&gt;&lt;br&gt;Single codebase, single deployment&lt;br&gt;&lt;br&gt;&lt;b&gt;✅ Pros:&lt;/b&gt;&lt;br&gt;• Simple, fast to start&lt;br&gt;• Easy testing&lt;br&gt;• No network overhead&lt;br&gt;&lt;br&gt;&lt;b&gt;❌ Cons:&lt;/b&gt;&lt;br&gt;• Hard to scale&lt;br&gt;• Tight coupling&lt;br&gt;• Large codebase&lt;br&gt;&lt;br&gt;&lt;b&gt;Best For:&lt;/b&gt;&lt;br&gt;Small apps, MVPs, startups" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=10;fontSize=11;strokeWidth=3;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="50" y="100" width="210" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="layered-summary" value="&lt;b style=&quot;font-size: 14px&quot;&gt;🏛️ Layered&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Structure:&lt;/b&gt;&lt;br&gt;Presentation → Business → Data&lt;br&gt;&lt;br&gt;&lt;b&gt;✅ Pros:&lt;/b&gt;&lt;br&gt;• Clear separation&lt;br&gt;• Maintainable&lt;br&gt;• Team scalability&lt;br&gt;&lt;br&gt;&lt;b&gt;❌ Cons:&lt;/b&gt;&lt;br&gt;• Performance overhead&lt;br&gt;• Cascading changes&lt;br&gt;• Over-engineering&lt;br&gt;&lt;br&gt;&lt;b&gt;Best For:&lt;/b&gt;&lt;br&gt;Enterprise apps, complex logic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=10;fontSize=11;strokeWidth=3;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="280" y="100" width="210" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="cs-summary" value="&lt;b style=&quot;font-size: 14px&quot;&gt;🖥️ Client-Server&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Structure:&lt;/b&gt;&lt;br&gt;Clients ↔ Server ↔ Database&lt;br&gt;&lt;br&gt;&lt;b&gt;✅ Pros:&lt;/b&gt;&lt;br&gt;• Centralized control&lt;br&gt;• Easy updates&lt;br&gt;• Multi-user support&lt;br&gt;&lt;br&gt;&lt;b&gt;❌ Cons:&lt;/b&gt;&lt;br&gt;• Network dependency&lt;br&gt;• Server bottleneck&lt;br&gt;• Infrastructure cost&lt;br&gt;&lt;br&gt;&lt;b&gt;Best For:&lt;/b&gt;&lt;br&gt;Web apps, mobile apps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=10;fontSize=11;strokeWidth=3;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="510" y="100" width="210" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="ntier-summary" value="&lt;b style=&quot;font-size: 14px&quot;&gt;🏗️ N-Tier&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Structure:&lt;/b&gt;&lt;br&gt;Client → Web → App → DB&lt;br&gt;&lt;br&gt;&lt;b&gt;✅ Pros:&lt;/b&gt;&lt;br&gt;• Highly scalable&lt;br&gt;• Secure layers&lt;br&gt;• Team independence&lt;br&gt;&lt;br&gt;&lt;b&gt;❌ Cons:&lt;/b&gt;&lt;br&gt;• High complexity&lt;br&gt;• Higher cost&lt;br&gt;• Network latency&lt;br&gt;&lt;br&gt;&lt;b&gt;Best For:&lt;/b&gt;&lt;br&gt;Large-scale systems" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;verticalAlign=top;spacingLeft=10;fontSize=11;strokeWidth=3;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="740" y="100" width="210" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="pf-summary" value="&lt;b style=&quot;font-size: 14px&quot;&gt;🔧 Pipe-and-Filter&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Structure:&lt;/b&gt;&lt;br&gt;Input → Filter1 → Filter2 → Output&lt;br&gt;&lt;br&gt;&lt;b&gt;✅ Pros:&lt;/b&gt;&lt;br&gt;• Reusable filters&lt;br&gt;• Easy to test&lt;br&gt;• Flexible composition&lt;br&gt;&lt;br&gt;&lt;b&gt;❌ Cons:&lt;/b&gt;&lt;br&gt;• Added latency&lt;br&gt;• Error handling&lt;br&gt;• Not interactive&lt;br&gt;&lt;br&gt;&lt;b&gt;Best For:&lt;/b&gt;&lt;br&gt;Data processing, ETL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=10;fontSize=11;strokeWidth=3;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="970" y="100" width="210" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="decision-guide" value="&lt;b style=&quot;font-size: 16px&quot;&gt;🎯 Decision Guide: Which Architecture to Choose?&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontColor=#CC0000;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="60" y="410" width="1130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="decision-tree" value="&lt;b&gt;Project Size:&lt;/b&gt;&lt;br&gt;• Small (1-10 users) → Monolithic&lt;br&gt;• Medium (100s users) → Layered or Client-Server&lt;br&gt;• Large (1000s+ users) → N-Tier&lt;br&gt;&lt;br&gt;&lt;b&gt;Team Size:&lt;/b&gt;&lt;br&gt;• &amp;lt;5 developers → Monolithic&lt;br&gt;• 5-20 developers → Layered&lt;br&gt;• 20+ developers → N-Tier&lt;br&gt;&lt;br&gt;&lt;b&gt;Performance Need:&lt;/b&gt;&lt;br&gt;• Ultra-fast → Monolithic (in-process)&lt;br&gt;• Moderate → Layered&lt;br&gt;• Distributed load → N-Tier" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=15;fontSize=11;fontColor=#333333;strokeWidth=2;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="140" y="460" width="290" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="quality-attrs" value="&lt;b&gt;Primary Quality Attribute:&lt;/b&gt;&lt;br&gt;• &lt;b&gt;Performance&lt;/b&gt; → Monolithic&lt;br&gt;• &lt;b&gt;Maintainability&lt;/b&gt; → Layered&lt;br&gt;• &lt;b&gt;Scalability&lt;/b&gt; → N-Tier&lt;br&gt;• &lt;b&gt;Reusability&lt;/b&gt; → Pipe-and-Filter&lt;br&gt;&lt;br&gt;&lt;b&gt;Task Type:&lt;/b&gt;&lt;br&gt;• Interactive app → Client-Server&lt;br&gt;• Batch processing → Pipe-and-Filter&lt;br&gt;• Data transformation → Pipe-and-Filter&lt;br&gt;• Enterprise system → Layered or N-Tier" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=15;fontSize=11;fontColor=#333333;strokeWidth=2;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="470" y="460" width="290" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="real-world" value="&lt;b&gt;Real-World Examples:&lt;/b&gt;&lt;br&gt;&lt;br&gt;🏢 &lt;b&gt;Monolithic:&lt;/b&gt; WordPress, Small CRM&lt;br&gt;&lt;br&gt;🏛️ &lt;b&gt;Layered:&lt;/b&gt; Banking systems, Hospital management&lt;br&gt;&lt;br&gt;🖥️ &lt;b&gt;Client-Server:&lt;/b&gt; Gmail, Facebook&lt;br&gt;&lt;br&gt;🏗️ &lt;b&gt;N-Tier:&lt;/b&gt; LINE, Shopee, Netflix&lt;br&gt;&lt;br&gt;🔧 &lt;b&gt;Pipe-Filter:&lt;/b&gt; Unix shell, Video encoders, ETL tools" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=15;fontSize=11;strokeWidth=2;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="800" y="460" width="310" height="210" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
