@@ -37,15 +37,15 @@
 
 | สัปดาห์ | หัวข้อ (Topic) | เนื้อหา (Materials) | งานปฏิบัติ (Labs/Workshops) |
 | :---: | :--- | :---: | :---: |
-| **01** | **บทนำสถาปัตยกรรมซอฟต์แวร์** <br> (Introduction & Modern Systems) | [📺 Lecture](./week01/lecture.md) | [💻 Lab: System Analysis](./week01/lab.md) |
-| **02** | **คุณภาพซอฟต์แวร์ & ปัจจัยขับเคลื่อน** <br> (Quality Attributes & Architectural Drivers) | [📺 Lecture](./week02/lecture.md) | [💻 Workshop: QA Scenarios](./week02/workshop.md) <br> [💻 Lab: Architectural Drivers](./week02/lab.md)|
-| **03** | **รูปแบบสถาปัตยกรรมพื้นฐาน (Part 1)** <br> (Monolith, Layered, Client-Server, Pipe-Filter) | [📺 Lecture](./week03/lecture.md) | [💻 Lab: Refactoring to Layered](./week03/lab.md) |
-| **04** | **รูปแบบสถาปัตยกรรมสมัยใหม่ (Part 2)** <br> (Microservices, Event-Driven, Serverless) | [📺 Lecture](./week04/lecture.md) | [💻 Lab: Microservices Design](./week04/lab.md) |
-| **05** | **การจำลองแบบด้วย C4 Model** <br> (Architecture Views: Context/Container) | [📺 Lecture](./week05/lecture.md) | [💻 Lab: Draw C1-C2 Diagrams](./week05/lab.md) |
-| **06** | **กระบวนการออกแบบสถาปัตยกรรม** <br> (Design Process & ADD-Lite) | [📺 Lecture](./week06/lecture.md) | [💻 Workshop: Decision Record (ADR)](./week06/lab.md) |
-| **07** | **สถาปัตยกรรมสำหรับ Cloud** <br> (Cloud & Containerization) | [📺 Lecture](./week07/lecture.md) | [💻 Lab: Cloud Deployment Diagram](./week07/lab.md) |
+| **01** | **บทนำสถาปัตยกรรมซอฟต์แวร์** <br> (Introduction & Modern Systems) | [📺 Lecture](./week1/lecture.md) | [💻 Lab: System Analysis](./week1/lab.md) |
+| **02** | **คุณภาพซอฟต์แวร์ & ปัจจัยขับเคลื่อน** <br> (Quality Attributes & Architectural Drivers) | [📺 Lecture](./week2/lecture.md) | [💻 Workshop: QA Scenarios](./week2/workshop.md) <br> [💻 Lab: Architectural Drivers](./week2/lab.md)|
+| **03** | **รูปแบบสถาปัตยกรรมพื้นฐาน (Part 1)** <br> (Monolith, Layered, Client-Server, Pipe-Filter) | [📺 Lecture](./week3/lecture.md) | [💻 Lab: Refactoring to Layered](./week3/lab.md) |
+| **04** | **รูปแบบสถาปัตยกรรมสมัยใหม่ (Part 2)** <br> (Microservices, Event-Driven, Serverless) | [📺 Lecture](./week4/lecture.md) | [💻 Lab: Microservices Design](./week4/lab.md) |
+| **05** | **การจำลองแบบด้วย C4 Model** <br> (Architecture Views: Context/Container) | [📺 Lecture](./week5/lecture.md) | [💻 Lab: Draw C1-C2 Diagrams](./week5/lab.md) |
+| **06** | **กระบวนการออกแบบสถาปัตยกรรม** <br> (Design Process & ADD-Lite) | [📺 Lecture](./week06/lecture.md) | [💻 Workshop: Decision Record (ADR)](./week6/lab.md) |
+| **07** | **สถาปัตยกรรมสำหรับ Cloud** <br> (Cloud & Containerization) | [📺 Lecture](./week7/lecture.md) | [💻 Lab: Cloud Deployment Diagram](./week7/lab.md) |
 | **08** | 📝 **สอบกลางภาค (Midterm Exam)** | - | - |
-| **09** | **สถาปัตยกรรมสำหรับ Mobile & Edge** <br> (Offline-First, BFF Pattern) | [📺 Lecture](./week09/lecture.md) | [💻 Lab: Mobile/BFF Design](./week09/lab.md) |
+| **09** | **สถาปัตยกรรมสำหรับ Mobile & Edge** <br> (Offline-First, BFF Pattern) | [📺 Lecture](./week9/lecture.md) | [💻 Lab: Mobile/BFF Design](./week9/lab.md) |
 | **10** | **สถาปัตยกรรมข้อมูล & การเชื่อมต่อ** <br> (Data-Intensive & Integration) | [📺 Lecture](./week10/lecture.md) | [💻 Lab: Data Flow & Integration](./week10/lab.md) |
 | **11** | **การประเมินสถาปัตยกรรม** <br> (Evaluation & Technical Debt) | [📺 Lecture](./week11/lecture.md) | [💻 Activity: Architecture Review](./week11/lab.md) |
 | **12** | **ความปลอดภัยในสถาปัตยกรรม** <br> (Security-Aware Architecture) | [📺 Lecture](./week12/lecture.md) | [💻 Lab: Threat Modeling](./week12/lab.md) |
