@@ -136,11 +136,11 @@ CREATE TABLE tasks (
 │  │  - Tasks Table                │  │
 │  └───────────────────────────────┘  │
 └─────────────────────────────────────┘
-         │
-         ▼
-   Single Deployment
-   Single Server
-   Port 3000
+                   │
+                   ▼
+             Single Deployment
+             Single Server
+             Port 3000
 ```
 
 ---
