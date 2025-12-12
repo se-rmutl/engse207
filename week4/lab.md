@@ -1,6 +1,6 @@
 # ENGSE207 Software Architecture
 
-## 📝 Homework Lab สัปดาห์ที่ 4: Microservices Design & Mini-Debate (ส่งสัปดาห์ถัดไป)
+## 📝 Homework Lab สัปดาห์ที่ 4 (งานกลุ่ม): Microservices Design & Mini-Debate (ส่งสัปดาห์ถัดไป)
 
 ### Assignment: "Extend Task Board with New Feature"
 

@@ -1,4 +1,99 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3" pages="7">
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3" pages="8">
+  <diagram id="FIAdy1TqvkBlaiH9D3s_" name="Page-8">
+    <mxGraphModel dx="925" dy="711" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Ft194ydG1xx3I92HZjjY-21" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Ft194ydG1xx3I92HZjjY-10" target="Ft194ydG1xx3I92HZjjY-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="940" y="310" as="sourcePoint" />
+            <mxPoint x="990" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-20" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Ft194ydG1xx3I92HZjjY-9" target="Ft194ydG1xx3I92HZjjY-14">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="790" y="310" as="sourcePoint" />
+            <mxPoint x="840" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-1" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="40" y="140" width="160" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-2" value="Mobile App" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontStyle=1" vertex="1" parent="Ft194ydG1xx3I92HZjjY-1">
+          <mxGeometry x="20" y="20" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-3" value="Web SPA&lt;br&gt;(React.js)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontStyle=1" vertex="1" parent="Ft194ydG1xx3I92HZjjY-1">
+          <mxGeometry x="20" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-4" value="IoT Device" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontStyle=1" vertex="1" parent="Ft194ydG1xx3I92HZjjY-1">
+          <mxGeometry x="20" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-5" value="API Gateway Layer (Ingress)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=23;" vertex="1" parent="1">
+          <mxGeometry x="280" y="140" width="200" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-6" value="&lt;b&gt;API Gateway&lt;/b&gt;&lt;br&gt;(Kong / NGINX)&lt;br&gt;&lt;br&gt;• Rate Limiting&lt;br&gt;• Auth Validation&lt;br&gt;• SSL Termination" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;" vertex="1" parent="Ft194ydG1xx3I92HZjjY-5">
+          <mxGeometry x="20" y="50" width="160" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-7" value="Microservices Layer (Internal Network)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;startSize=23;" vertex="1" parent="1">
+          <mxGeometry x="560" y="100" width="480" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-8" value="Auth Service&lt;br&gt;(OAuth2/OIDC)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="Ft194ydG1xx3I92HZjjY-7">
+          <mxGeometry x="30" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-9" value="User Service&lt;br&gt;(Node.js)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;" vertex="1" parent="Ft194ydG1xx3I92HZjjY-7">
+          <mxGeometry x="180" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-10" value="Order Service&lt;br&gt;(Java Spring)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;" vertex="1" parent="Ft194ydG1xx3I92HZjjY-7">
+          <mxGeometry x="330" y="110" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-24" value="Payment Svc&lt;br&gt;(GoLang)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;" vertex="1" parent="Ft194ydG1xx3I92HZjjY-7">
+          <mxGeometry x="180" y="230" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-12" value="Service Discovery&lt;br&gt;(Consul)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="Ft194ydG1xx3I92HZjjY-7">
+          <mxGeometry x="350" y="210" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-13" value="Persistence Layer (Polyglot)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;startSize=23;" vertex="1" parent="1">
+          <mxGeometry x="560" y="460" width="480" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-14" value="User DB&lt;br&gt;(MongoDB)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffffff;strokeColor=#9673a6;" vertex="1" parent="Ft194ydG1xx3I92HZjjY-13">
+          <mxGeometry x="190" y="40" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-15" value="Order DB&lt;br&gt;(PostgreSQL)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffffff;strokeColor=#9673a6;" vertex="1" parent="Ft194ydG1xx3I92HZjjY-13">
+          <mxGeometry x="340" y="40" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-16" value="Cache&lt;br&gt;(Redis)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="Ft194ydG1xx3I92HZjjY-13">
+          <mxGeometry x="40" y="40" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-17" value="Event Bus / Message Broker (Apache Kafka)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#333333;strokeColor=#333333;fontColor=#FFFFFF;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="540" y="630" width="550" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-18" value="HTTPS" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="Ft194ydG1xx3I92HZjjY-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="270" as="sourcePoint" />
+            <mxPoint x="250" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-19" value="REST/gRPC" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Ft194ydG1xx3I92HZjjY-6" target="Ft194ydG1xx3I92HZjjY-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="270" as="sourcePoint" />
+            <mxPoint x="510" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-22" value="Pub/Sub" style="endArrow=classic;startArrow=classic;html=1;exitX=0.943;exitY=1.014;exitDx=0;exitDy=0;entryX=0.845;entryY=-0.002;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;exitPerimeter=0;" edge="1" parent="1" source="Ft194ydG1xx3I92HZjjY-10" target="Ft194ydG1xx3I92HZjjY-17">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="890" y="440" as="sourcePoint" />
+            <mxPoint x="940" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ft194ydG1xx3I92HZjjY-23" value="Validate" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="Ft194ydG1xx3I92HZjjY-6" target="Ft194ydG1xx3I92HZjjY-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="170" as="sourcePoint" />
+            <mxPoint x="440" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
   <diagram id="Microservices-Arch" name="1. Microservices Architecture">
     <mxGraphModel dx="1018" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -160,7 +255,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="Sync-Async" name="3. Request-Response vs Event-Driven">
-    <mxGraphModel dx="1018" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="940" dy="726" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -189,40 +284,46 @@
           <mxGeometry x="216" y="147" width="100" height="20" as="geometry" />
         </mxCell>
         <mxCell id="async_t" value="B. Asynchronous (Event-Driven)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" parent="1" vertex="1">
-          <mxGeometry x="80" y="240" width="300" height="30" as="geometry" />
+          <mxGeometry x="80" y="280" width="300" height="30" as="geometry" />
         </mxCell>
         <mxCell id="svc_a2" value="Service A" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="80" y="300" width="100" height="50" as="geometry" />
+          <mxGeometry x="80" y="340" width="100" height="50" as="geometry" />
         </mxCell>
         <mxCell id="queue" value="Event Bus / Queue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1" parent="1" vertex="1">
-          <mxGeometry x="280" y="290" width="120" height="70" as="geometry" />
+          <mxGeometry x="280" y="330" width="120" height="70" as="geometry" />
         </mxCell>
         <mxCell id="svc_b2" value="Service B" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="480" y="260" width="100" height="50" as="geometry" />
+          <mxGeometry x="480" y="300" width="100" height="50" as="geometry" />
         </mxCell>
         <mxCell id="svc_c2" value="Service C" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="480" y="340" width="100" height="50" as="geometry" />
+          <mxGeometry x="480" y="380" width="100" height="50" as="geometry" />
         </mxCell>
         <mxCell id="arr3" value="Publish Event" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="svc_a2" target="queue" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="190" y="335" as="sourcePoint" />
-            <mxPoint x="370" y="335" as="targetPoint" />
+            <mxPoint x="190" y="375" as="sourcePoint" />
+            <mxPoint x="370" y="375" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="arr4" value="Consume" style="endArrow=classic;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="queue" target="svc_b2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="410" y="335" as="sourcePoint" />
-            <mxPoint x="490" y="335" as="targetPoint" />
+            <mxPoint x="410" y="375" as="sourcePoint" />
+            <mxPoint x="490" y="375" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="arr5" value="Consume" style="endArrow=classic;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="queue" target="svc_c2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="410" y="318" as="sourcePoint" />
-            <mxPoint x="490" y="295" as="targetPoint" />
+            <mxPoint x="410" y="358" as="sourcePoint" />
+            <mxPoint x="490" y="335" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="fire" value="🔥 Fire &amp; Forget" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#006600;fontSize=10;" parent="1" vertex="1">
-          <mxGeometry x="183" y="330" width="100" height="20" as="geometry" />
+          <mxGeometry x="183" y="370" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eo95sqsH28ZOSm40JnQg-1" value="• Service A ต้องรอ Service B&#xa;• ถ้า B ล่ม A จะ error&#xa;• เหมาะกับงานที่ต้องการผลทันที" style="text;whiteSpace=wrap;html=1;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="160" y="180" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eo95sqsH28ZOSm40JnQg-2" value="• Service A ไม่ต้องรอ B (fire-and-forget)&#xa;• Event Bus เก็บ message ให้ B มารับภายหลัง&#xa;• Loose coupling, เหมาะกับงาน notification / analytics" style="text;whiteSpace=wrap;html=1;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="160" y="420" width="280" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -532,6 +633,15 @@
             </Array>
             <mxPoint as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="w1f_E79H9aIsBJNUH8a8-1" value="- Small, independent services&#xa;- Own database&#xa;- Independent deployment" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="470" y="420" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="w1f_E79H9aIsBJNUH8a8-2" value="- Functions as a Service&#xa;- Pay-per-use&#xa;- Auto-scaling" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="210" y="410" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="w1f_E79H9aIsBJNUH8a8-3" value="- Reusable enterprise services&#xa;- Often via ESB&#xa;- SOAP / REST Web Services" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="650" y="415" width="170" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

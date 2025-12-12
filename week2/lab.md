@@ -1,4 +1,4 @@
-## 🏠 Lab2: Assignment: ระบุ Architectural Drivers สำหรับโปรเจกต์ของทีม
+## 🏠 Lab2: Assignment (งานกลุ่ม): ระบุ Architectural Drivers สำหรับโปรเจกต์ของทีม
 
 ---
 

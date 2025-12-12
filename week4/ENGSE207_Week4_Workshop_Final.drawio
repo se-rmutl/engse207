@@ -1,0 +1,329 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3" pages="3">
+  <diagram id="WorkshopA1" name="A1-TaskBoard-Microservices">
+    <mxGraphModel dx="1640" dy="809" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="a1_title" value="Workshop Example – Task Board Microservices Architecture" style="text;whiteSpace=wrap;html=1;fontSize=22;fontStyle=1;align=center;" parent="1" vertex="1">
+          <mxGeometry x="300" y="70" width="700" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_subtitle" value="Goal: Show how clients, API gateway, microservices, event bus and databases work together for UniTask Board." style="text;whiteSpace=wrap;html=1;fontSize=14;fontColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="280" y="110" width="740" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_grp_clients" value="Clients" style="shape=swimlane;rounded=1;html=1;childLayout=stackLayout;horizontal=0;startSize=24;fillColor=#f5f5f5;strokeColor=#999999;fontSize=13;fontStyle=1;swimlaneFillColor=#eeeeee;" parent="1" vertex="1">
+          <mxGeometry x="60" y="175" width="224" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="oNX7ZR2HDVZ3kOM8qw9p-15" value="" style="group" parent="a1_grp_clients" vertex="1" connectable="0">
+          <mxGeometry x="24" width="200" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="oNX7ZR2HDVZ3kOM8qw9p-11" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" parent="oNX7ZR2HDVZ3kOM8qw9p-15" vertex="1">
+          <mxGeometry width="200" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="oNX7ZR2HDVZ3kOM8qw9p-12" value="Web App (React)" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" parent="oNX7ZR2HDVZ3kOM8qw9p-15" vertex="1">
+          <mxGeometry x="10" y="8" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="oNX7ZR2HDVZ3kOM8qw9p-13" value="Mobile App (Flutter)" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" parent="oNX7ZR2HDVZ3kOM8qw9p-15" vertex="1">
+          <mxGeometry x="10" y="65" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="oNX7ZR2HDVZ3kOM8qw9p-14" value="Lecturer Dashboard" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" parent="oNX7ZR2HDVZ3kOM8qw9p-15" vertex="1">
+          <mxGeometry x="10" y="123" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_gateway" value="&lt;b&gt;API Gateway &lt;/b&gt;&lt;br&gt;• Auth &amp;amp; routing &lt;br&gt;• Rate limit&lt;br&gt;• Logging" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="360" y="225" width="130" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_grp_core" value="Core Microservices" style="shape=swimlane;rounded=1;html=1;childLayout=stackLayout;horizontal=0;startSize=24;fillColor=#f5f5f5;strokeColor=#999999;fontSize=13;fontStyle=1;swimlaneFillColor=#eeeeee;" parent="1" vertex="1">
+          <mxGeometry x="520" y="165" width="274" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="oNX7ZR2HDVZ3kOM8qw9p-19" value="" style="group" parent="a1_grp_core" vertex="1" connectable="0">
+          <mxGeometry x="24" width="250" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="oNX7ZR2HDVZ3kOM8qw9p-17" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;" parent="oNX7ZR2HDVZ3kOM8qw9p-19" vertex="1">
+          <mxGeometry width="250" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_svc_user" value="User Service – account, roles" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" parent="oNX7ZR2HDVZ3kOM8qw9p-19" vertex="1">
+          <mxGeometry x="10" y="10" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_svc_board" value="Board Service – boards, members" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" parent="oNX7ZR2HDVZ3kOM8qw9p-19" vertex="1">
+          <mxGeometry x="10" y="75" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_svc_task" value="Task Service – tasks, status, labels" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" parent="oNX7ZR2HDVZ3kOM8qw9p-19" vertex="1">
+          <mxGeometry x="10" y="140" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_grp_support" value="Supporting Services" style="shape=swimlane;rounded=1;html=1;childLayout=stackLayout;horizontal=0;startSize=24;fillColor=#f5f5f5;strokeColor=#999999;fontSize=13;fontStyle=1;swimlaneFillColor=#eeeeee;" parent="1" vertex="1">
+          <mxGeometry x="890" y="160" width="270" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="oNX7ZR2HDVZ3kOM8qw9p-20" value="" style="group" parent="a1_grp_support" vertex="1" connectable="0">
+          <mxGeometry x="24" width="240" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="oNX7ZR2HDVZ3kOM8qw9p-18" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" parent="oNX7ZR2HDVZ3kOM8qw9p-20" vertex="1">
+          <mxGeometry width="240" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_svc_notif" value="Notification Service – email / push" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" parent="oNX7ZR2HDVZ3kOM8qw9p-20" vertex="1">
+          <mxGeometry x="10" y="5" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_svc_analytics" value="Analytics Service – dashboards, reports" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" parent="oNX7ZR2HDVZ3kOM8qw9p-20" vertex="1">
+          <mxGeometry x="10" y="75" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_svc_webhook" value="Webhook Service – Git / Slack hooks" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" parent="oNX7ZR2HDVZ3kOM8qw9p-20" vertex="1">
+          <mxGeometry x="10" y="145" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_bus" value="Event Bus / Message Broker &lt;br&gt;(topic: task-events)" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="934" y="530" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_db_user" value="User DB" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="500" y="440" width="88.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_db_board" value="Board DB" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="624" y="440" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_db_task" value="Task DB" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="750" y="440" width="85" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_db_notif" value="Notification DB" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="910" y="440" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_db_analytics" value="Analytics Warehouse" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="1030" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_legend" value="&lt;b&gt;Legend: &lt;/b&gt;&lt;br&gt;• Solid arrow = Sync REST call &lt;br&gt;• Dashed arrow = Async event &lt;br&gt;• Each service owns its own database (Database per Service)" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f8f8;strokeColor=#999999;fontSize=11;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="70" y="380" width="320" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_note_flow" value="&lt;b&gt;Example scenario: &lt;/b&gt;&lt;br&gt;1) Student creates a task via Web App. &lt;br&gt;2) Task Service saves to Task DB. &lt;br&gt;3) Task Service publishes TaskCreated event. &lt;br&gt;4) Notification &amp;amp; Analytics react to that event." style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="530" y="520" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_e_client_1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="oNX7ZR2HDVZ3kOM8qw9p-12" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="280" y="210" as="sourcePoint" />
+            <mxPoint x="360" y="260" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="320" y="208" />
+              <mxPoint x="320" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a1_e_client_3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;entryX=-0.001;entryY=0.39;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryPerimeter=0;" parent="1" source="oNX7ZR2HDVZ3kOM8qw9p-14" target="a1_gateway" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="280" y="320" as="sourcePoint" />
+            <mxPoint x="340" y="270" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="320" y="323" />
+              <mxPoint x="320" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a1_e_bus_task" value="TaskCreated, &lt;br&gt;TaskAssigned" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;dashed=1;strokeColor=#9673a6;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="a1_svc_user" target="a1_bus" edge="1">
+          <mxGeometry x="-0.7901" y="25" relative="1" as="geometry">
+            <mxPoint x="784" y="150" as="sourcePoint" />
+            <mxPoint x="900" y="560" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="850" y="205" />
+              <mxPoint x="850" y="565" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a1_e_bus_notif" value="consume &lt;br&gt;events" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;dashed=1;strokeColor=#9673a6;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" parent="1" source="a1_bus" target="a1_svc_notif" edge="1">
+          <mxGeometry x="0.8258" y="-15" relative="1" as="geometry">
+            <mxPoint x="1190" y="585" as="sourcePoint" />
+            <mxPoint x="1154.0000000000005" y="195" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1178" y="583" />
+              <mxPoint x="1220" y="583" />
+              <mxPoint x="1220" y="195" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a1_e_bus_an" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;dashed=1;strokeColor=#9673a6;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" parent="1" source="a1_bus" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1130" y="570" as="sourcePoint" />
+            <mxPoint x="1144.0000000000002" y="336.11" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1180" y="547" />
+              <mxPoint x="1180" y="336" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a1_e_bus_webhook" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;dashed=1;strokeColor=#9673a6;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="a1_bus" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1180" y="580" as="sourcePoint" />
+            <mxPoint x="1144.0000000000005" y="260" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1200" y="565" />
+              <mxPoint x="1200" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CxGJUNAxPjq67QP0itiM-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="oNX7ZR2HDVZ3kOM8qw9p-17" target="a1_db_board" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="700" y="380" as="sourcePoint" />
+            <mxPoint x="1530" y="720" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="669" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CxGJUNAxPjq67QP0itiM-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="oNX7ZR2HDVZ3kOM8qw9p-17" target="a1_db_user" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="534" y="380" as="sourcePoint" />
+            <mxPoint x="490" y="450" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="669" y="400" />
+              <mxPoint x="544" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CxGJUNAxPjq67QP0itiM-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="oNX7ZR2HDVZ3kOM8qw9p-17" target="a1_db_task" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1014" y="410" as="sourcePoint" />
+            <mxPoint x="840" y="480" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="669" y="400" />
+              <mxPoint x="793" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CxGJUNAxPjq67QP0itiM-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" target="a1_db_notif" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1030" y="380" as="sourcePoint" />
+            <mxPoint x="861" y="470" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1030" y="400" />
+              <mxPoint x="960" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CxGJUNAxPjq67QP0itiM-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" target="a1_db_analytics" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1030" y="380" as="sourcePoint" />
+            <mxPoint x="1030" y="480" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1030" y="400" />
+              <mxPoint x="1090" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CxGJUNAxPjq67QP0itiM-10" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="a1_gateway" target="a1_grp_core" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="400" as="sourcePoint" />
+            <mxPoint x="380" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CxGJUNAxPjq67QP0itiM-12" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="274" y="260" as="sourcePoint" />
+            <mxPoint x="320" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="WorkshopA2" name="A2-Monolith-vs-Microservices">
+    <mxGraphModel dx="1533" dy="951" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="a2_title" value="Workshop Example – E‑Commerce MVP: Monolith vs Microservices" style="text;whiteSpace=wrap;html=1;fontSize=22;fontStyle=1;align=center;" parent="1" vertex="1">
+          <mxGeometry x="210" y="80" width="1040" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a2_sub" value="Goal: Compare pros and cons of Monolithic Architecture and Microservices for a small e‑commerce startup with 5 devs and 3‑month MVP." style="text;whiteSpace=wrap;html=1;fontSize=14;fontColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="220" y="120" width="1120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a2_mono_box" value="Monolithic Architecture" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="80" y="180" width="500" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="a2_mono_detail" value="&lt;b&gt;Characteristics: &lt;/b&gt;&lt;br&gt;• Single deployable (one codebase) &lt;br&gt;• Shared relational database &lt;br&gt;• All modules (Catalog, Cart, Order, Payment) in one app  When it fits: &lt;br&gt;• Small team, tight deadline (MVP) &lt;br&gt;• Requirements still changing every week &lt;br&gt;• Limited DevOps experience  Risks: &lt;br&gt;• Codebase grows into &quot;Big Ball of Mud&quot; &lt;br&gt;• Harder to scale only one part of the system &lt;br&gt;• Large deployment blast radius (one bug can break everything)" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="100" y="200" width="460" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="a2_micro_box" value="Microservices Architecture" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="730" y="180" width="510" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="a2_micro_detail" value="&lt;b&gt;Characteristics: &lt;/b&gt;&lt;br&gt;• Many small services (Catalog, Cart, Order, Payment, User, etc.) &lt;br&gt;• Database per Service • Communicate using REST and events  When it fits: &lt;br&gt;• Domain and traffic are large and complex &lt;br&gt;• Organization has multiple independent teams &lt;br&gt;• Strong DevOps &amp;amp; automation culture  Risks: &lt;br&gt;• High operational complexity (monitoring, tracing, CI/CD) &lt;br&gt;• Harder consistency, distributed transactions &lt;br&gt;• Overkill for tiny MVP and very small team" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="750" y="200" width="470" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="a2_decision" value="&lt;b&gt;Pragmatic guideline for this workshop case: &lt;/b&gt;&lt;br&gt;1) Start with a well‑structured, modular monolith for the MVP. &lt;br&gt;2) Carefully separate layers and modules. &lt;br&gt;3) When traffic and team size grow → split hot modules into microservices. &lt;br&gt;&lt;br&gt;&amp;nbsp;&lt;b&gt;Key mindset: &lt;/b&gt;Architecture should follow the business and team context, not the hype." style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f8f8;strokeColor=#999999;fontSize=12;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="380" y="450" width="580" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="a2_e_compare" value="possible evolution path" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;" parent="1" source="a2_mono_box" target="a2_micro_box" edge="1">
+          <mxGeometry x="-0.0588" y="15" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="WorkshopA3" name="A3-TaskAssignment-EventFlow">
+    <mxGraphModel dx="2927" dy="1816" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="a3_title" value="Workshop Example – Event‑Driven Flow for Task Assignment" style="text;whiteSpace=wrap;html=1;fontSize=22;fontStyle=1;align=center;" parent="1" vertex="1">
+          <mxGeometry x="305" y="40" width="880" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a3_sub" value="Scenario: User A creates a task and assigns it to User B. Task Service emits events so that Notification and Analytics services can react asynchronously." style="text;whiteSpace=wrap;html=1;fontSize=14;fontColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="240" y="80" width="1120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a3_lane" value="Task Assignment Flow" style="shape=swimlane;rounded=1;html=1;childLayout=stackLayout;horizontal=0;startSize=24;fillColor=#f5f5f5;strokeColor=#999999;fontSize=13;fontStyle=1;swimlaneFillColor=#eeeeee;" parent="1" vertex="1">
+          <mxGeometry x="60" y="120" width="1270" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="KqxfWswAXYcRT2SMoDLh-3" value="" style="group" vertex="1" connectable="0" parent="a3_lane">
+          <mxGeometry x="24" width="1240" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="KqxfWswAXYcRT2SMoDLh-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="KqxfWswAXYcRT2SMoDLh-3">
+          <mxGeometry width="1240" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="5tuQ1eRPGEyjh_KzSTel-1" value="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;b&gt;Step 1: &lt;/b&gt;&lt;br&gt;User A (Web UI) &lt;br&gt;clicks &quot;Create &amp;amp; Assign Task&quot;&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;align=left;spacingLeft=10;" vertex="1" parent="KqxfWswAXYcRT2SMoDLh-3">
+          <mxGeometry x="10" y="85" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5tuQ1eRPGEyjh_KzSTel-2" value="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;b&gt;Step 2: &lt;/b&gt;&lt;br&gt;API Gateway &lt;br&gt;– validate token &lt;br&gt;– route request" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;align=left;spacingLeft=10;" vertex="1" parent="KqxfWswAXYcRT2SMoDLh-3">
+          <mxGeometry x="280" y="85" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5tuQ1eRPGEyjh_KzSTel-3" value="&lt;b&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Step 3: &lt;/b&gt;&lt;br&gt;Task Service &lt;br&gt;– validate business rules &lt;br&gt;– save task" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;align=left;spacingLeft=10;" vertex="1" parent="KqxfWswAXYcRT2SMoDLh-3">
+          <mxGeometry x="470" y="80" width="170" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5tuQ1eRPGEyjh_KzSTel-4" value="Task DB" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="KqxfWswAXYcRT2SMoDLh-3">
+          <mxGeometry x="512.5" y="220" width="85" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5tuQ1eRPGEyjh_KzSTel-5" value="&lt;b&gt;Step 4: &lt;/b&gt;&lt;br&gt;Event Bus (topic: task-events)&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;spacingLeft=10;" vertex="1" parent="KqxfWswAXYcRT2SMoDLh-3">
+          <mxGeometry x="760" y="85" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5tuQ1eRPGEyjh_KzSTel-6" value="&lt;b&gt;Step 5a:&lt;/b&gt; Notification Service &lt;br&gt;– build message &lt;br&gt;– send email / push to User B" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;align=left;spacingLeft=10;" vertex="1" parent="KqxfWswAXYcRT2SMoDLh-3">
+          <mxGeometry x="1000" y="20" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5tuQ1eRPGEyjh_KzSTel-7" value="&lt;b&gt;Step 5b:&lt;/b&gt; Analytics Service &lt;br&gt;– update team dashboard &lt;br&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;– increase &quot;tasks assigned&quot; counter&lt;/span&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;align=left;spacingLeft=10;" vertex="1" parent="KqxfWswAXYcRT2SMoDLh-3">
+          <mxGeometry x="1000" y="130" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5tuQ1eRPGEyjh_KzSTel-8" value="&lt;span style=&quot;&quot;&gt;HTTP POST &lt;br&gt;/boards/{id}&lt;br&gt;/tasks&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;align=left;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=none;" edge="1" parent="KqxfWswAXYcRT2SMoDLh-3" source="5tuQ1eRPGEyjh_KzSTel-1" target="5tuQ1eRPGEyjh_KzSTel-2">
+          <mxGeometry x="-0.75" y="25" relative="1" as="geometry">
+            <mxPoint x="190" y="125" as="sourcePoint" />
+            <mxPoint x="260" y="125" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5tuQ1eRPGEyjh_KzSTel-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;" edge="1" parent="KqxfWswAXYcRT2SMoDLh-3" source="5tuQ1eRPGEyjh_KzSTel-2" target="5tuQ1eRPGEyjh_KzSTel-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5tuQ1eRPGEyjh_KzSTel-10" value="insert new task" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;" edge="1" parent="KqxfWswAXYcRT2SMoDLh-3" source="5tuQ1eRPGEyjh_KzSTel-3" target="5tuQ1eRPGEyjh_KzSTel-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5tuQ1eRPGEyjh_KzSTel-11" value="&lt;span&gt;publish TaskCreated &lt;br&gt;(or TaskAssigned)&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;dashed=1;strokeColor=#9673a6;labelBackgroundColor=none;" edge="1" parent="KqxfWswAXYcRT2SMoDLh-3" source="5tuQ1eRPGEyjh_KzSTel-3" target="5tuQ1eRPGEyjh_KzSTel-5">
+          <mxGeometry x="-0.0769" y="25" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5tuQ1eRPGEyjh_KzSTel-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;dashed=1;strokeColor=#9673a6;" edge="1" parent="KqxfWswAXYcRT2SMoDLh-3" source="5tuQ1eRPGEyjh_KzSTel-5" target="5tuQ1eRPGEyjh_KzSTel-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5tuQ1eRPGEyjh_KzSTel-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;dashed=1;strokeColor=#9673a6;" edge="1" parent="KqxfWswAXYcRT2SMoDLh-3" source="5tuQ1eRPGEyjh_KzSTel-5" target="5tuQ1eRPGEyjh_KzSTel-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3_legend" value="&lt;b&gt;Legend: &lt;/b&gt;&lt;br&gt;• Solid arrows = synchronous HTTP calls. &lt;br&gt;• Dashed arrows = asynchronous events on the bus. &lt;br&gt;• Each box labelled Step 1..5 shows how responsibility moves across the system." style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f8f8;strokeColor=#999999;fontSize=11;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="190" y="430" width="430" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="a3_failure" value="&lt;b&gt;Failure handling ideas: &lt;/b&gt;&lt;br&gt;• If Notification Service is down → events stay in queue or go to Dead Letter Queue, UI still shows task as created. &lt;br&gt;• Consumers must be idempotent to handle duplicate events. &lt;br&gt;• Event Bus should be replicated and persistent so events are not lost. &lt;br&gt;&amp;nbsp; Goal for students: extend this diagram with your own error cases." style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="660" y="430" width="640" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

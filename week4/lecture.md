@@ -115,7 +115,7 @@ A: Monolithic = ลักษณะการ deploy (ก้อนเดียว)
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│              MICROSERVICES ARCHITECTURE                       │
+│              MICROSERVICES ARCHITECTURE                      │
 └──────────────────────────────────────────────────────────────┘
 
                     [Client/User]
@@ -138,10 +138,10 @@ A: Monolithic = ลักษณะการ deploy (ก้อนเดียว)
        │               │               │
        └───────────────┴───────────────┘
                        │
-              ┌────────▼────────┐
-              │  Message Bus    │ ← Event Communication
+              ┌────────▼─────────┐
+              │  Message Bus     │ ← Event Communication
               │ (Kafka, RabbitMQ)│
-              └─────────────────┘
+              └──────────────────┘
 ```
 
 ### 🎨 Text Infographic: องค์ประกอบหลักของ Microservices
