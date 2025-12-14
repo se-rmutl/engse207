@@ -1511,7 +1511,6 @@ Layered:
 
 ## โครงสร้างโปรเจกต์
 
-```
 week4-layered/
 ├── src/
 │   ├── controllers/    # Presentation Layer
@@ -1522,7 +1521,6 @@ week4-layered/
 ├── database/
 ├── public/
 └── server.js
-```
 
 ## การติดตั้ง
 
@@ -1533,12 +1531,11 @@ npm install
 ## การตั้งค่า
 
 สร้างไฟล์ `.env`:
-```
+
 NODE_ENV=development
 PORT=3000
 DB_PATH=./database/tasks.db
 LOG_LEVEL=debug
-```
 
 ## การรัน
 
@@ -1651,44 +1648,44 @@ npm start
 
 ## High-Level Architecture
 
-```
+
 ┌─────────────────────────────────────────────────────────┐
-│                     CLIENT (Browser)                     │
-│                    (HTML/CSS/JavaScript)                 │
+│                     CLIENT (Browser)                    │
+│                    (HTML/CSS/JavaScript)                │
 └─────────────────────────────────────────────────────────┘
                            │
                            │ HTTP Requests
                            ▼
 ┌─────────────────────────────────────────────────────────┐
-│              PRESENTATION LAYER (Controllers)            │
-│                                                          │
-│  ┌──────────────┐    ┌─────────────────────────┐       │
-│  │Task          │    │  - Input Validation      │       │
-│  │Controller    │───▶│  - Response Formatting   │       │
-│  └──────────────┘    │  - HTTP Error Handling   │       │
-│                      └─────────────────────────┘       │
+│              PRESENTATION LAYER (Controllers)           │
+│                                                         │
+│  ┌──────────────┐    ┌─────────────────────────┐        │
+│  │Task          │    │  - Input Validation     │        │
+│  │Controller    │───▶│  - Response Formatting  │        │
+│  └──────────────┘    │  - HTTP Error Handling  │        │
+│                      └─────────────────────────┘        │
 └─────────────────────────────────────────────────────────┘
                            │
                            ▼
 ┌─────────────────────────────────────────────────────────┐
-│            BUSINESS LOGIC LAYER (Services)               │
-│                                                          │
-│  ┌──────────────┐    ┌─────────────────────────┐       │
-│  │Task          │    │  - Business Rules        │       │
-│  │Service       │───▶│  - Validation Logic      │       │
-│  └──────────────┘    │  - Orchestration         │       │
-│                      └─────────────────────────┘       │
+│            BUSINESS LOGIC LAYER (Services)              │
+│                                                         │
+│  ┌──────────────┐    ┌─────────────────────────┐        │
+│  │Task          │    │  - Business Rules       │        │
+│  │Service       │───▶│  - Validation Logic     │        │
+│  └──────────────┘    │  - Orchestration        │        │
+│                      └─────────────────────────┘        │
 └─────────────────────────────────────────────────────────┘
                            │
                            ▼
 ┌─────────────────────────────────────────────────────────┐
-│           DATA ACCESS LAYER (Repositories)               │
-│                                                          │
-│  ┌──────────────┐    ┌─────────────────────────┐       │
-│  │Task          │    │  - CRUD Operations       │       │
-│  │Repository    │───▶│  - Query Execution       │       │
-│  └──────────────┘    │  - Data Mapping          │       │
-│                      └─────────────────────────┘       │
+│           DATA ACCESS LAYER (Repositories)              │
+│                                                         │
+│  ┌──────────────┐    ┌─────────────────────────┐        │
+│  │Task          │    │  - CRUD Operations      │        │
+│  │Repository    │───▶│  - Query Execution      │        │
+│  └──────────────┘    │  - Data Mapping         │        │
+│                      └─────────────────────────┘        │
 └─────────────────────────────────────────────────────────┘
                            │
                            ▼
@@ -1696,11 +1693,9 @@ npm start
                    │   DATABASE   │
                    │   (SQLite)   │
                    └──────────────┘
-```
 
 ## Data Flow Example: Create Task
 
-```
 1. Client sends POST /api/tasks
    ↓
 2. TaskController.createTask()
@@ -1717,7 +1712,7 @@ npm start
    ↓
 5. Response flows back up
    Repository → Service → Controller → Client
-```
+
 ```
 
 ---
