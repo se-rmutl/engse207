@@ -55,11 +55,11 @@
 
 **- ถ้าใช้เครื่อง Windows**
 **Ubuntu Server for amd64 (64-bit Intel/AMD)**
-https://releases.ubuntu.com/22.04.5/ubuntu-22.04.5-live-server-amd64.iso
+- https://releases.ubuntu.com/22.04.5/ubuntu-22.04.5-live-server-amd64.iso
 
 **- ถ้าใช้เครื่อง iMac/Mac book**
 **Ubuntu Server for ARM (Apple Silicon)**
-https://cdimage.ubuntu.com/releases/22.04.5/release/ubuntu-22.04.5-live-server-arm64.iso
+- https://cdimage.ubuntu.com/releases/22.04.5/release/ubuntu-22.04.5-live-server-arm64.iso
 
 #### 3. สิ่งที่ต้องมีจากสัปดาห์ก่อน:
 - ✅ โค้ด Week 4 Layered Architecture
