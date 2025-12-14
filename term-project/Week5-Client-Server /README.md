@@ -1,5 +1,5 @@
 # 🖥️ คู่มือปฏิบัติการ ENGSE207 - สัปดาห์ที่ 5
-## Client-Server Architecture: VM Deployment & REST API
+## Client-Server Architecture: VM Deployment & REST API 
 
 **สัปดาห์:** 5 | **ระยะเวลา:** 4 ชั่วโมง | **ระดับความยาก:** ⭐⭐⭐⭐
 
@@ -47,10 +47,19 @@
 - แนะนำ Version 7.0+
 
 #### 2. Ubuntu Server 22.04 LTS ISO
-**ดาวน์โหลด:**
+**web site:**
 - https://ubuntu.com/download/server
-- ไฟล์: `ubuntu-22.04.x-live-server-amd64.iso` (~1.5 GB)
-- **ทางเลือก (เบากว่า):** Ubuntu Server 22.04 Minimal
+- ไฟล์: `ubuntu-22.04.x-live-server-amd64.iso` (~2.0 GB)
+
+**ดาวน์โหลด:**
+
+**- ถ้าใช้เครื่อง Windows**
+**Ubuntu Server for amd64 (64-bit Intel/AMD)**
+https://releases.ubuntu.com/22.04.5/ubuntu-22.04.5-live-server-amd64.iso
+
+**- ถ้าใช้เครื่อง iMac/Mac book**
+**Ubuntu Server for ARM (Apple Silicon)**
+https://cdimage.ubuntu.com/releases/22.04.5/release/ubuntu-22.04.5-live-server-arm64.iso
 
 #### 3. สิ่งที่ต้องมีจากสัปดาห์ก่อน:
 - ✅ โค้ด Week 4 Layered Architecture

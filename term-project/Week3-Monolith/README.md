@@ -1,7 +1,7 @@
 # 📘 Week 3 Lab Summary - Quick Reference Guide
 
 ## ENGSE207 Software Architecture
-### Monolithic Architecture: Task Board Application
+### Monolithic Architecture: Task Board Application 
 
 ---
 
