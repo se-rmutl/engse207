@@ -1,0 +1,442 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3" pages="6">
+  <diagram name="Example 1: Food Delivery - Context" id="context-food-delivery">
+    <mxGraphModel dx="1018" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title-1" value="C4 Context Diagram: Food Delivery System" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="330" y="50" width="800" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="customer" value="&lt;b&gt;ลูกค้า&lt;/b&gt;&lt;br&gt;(Person)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="360" y="120" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="restaurant" value="&lt;b&gt;เจ้าของร้านอาหาร&lt;/b&gt;&lt;br&gt;(Person)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="650" y="120" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="driver" value="&lt;b&gt;คนส่งอาหาร&lt;/b&gt;&lt;br&gt;(Person)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="950" y="120" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="system" value="&lt;b&gt;Food Delivery System&lt;/b&gt;&lt;br&gt;(Software System)&lt;br&gt;&lt;br&gt;ระบบสั่งอาหารออนไลน์&lt;br&gt;และบริการจัดส่ง" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="550" y="320" width="340" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="payment" value="&lt;b&gt;Payment Gateway&lt;/b&gt;&lt;br&gt;(External System)&lt;br&gt;&lt;br&gt;ระบบชำระเงิน" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="320" y="540" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="sms" value="&lt;b&gt;SMS Service&lt;/b&gt;&lt;br&gt;(External System)&lt;br&gt;&lt;br&gt;ส่ง SMS แจ้งเตือน" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="630" y="540" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="maps" value="&lt;b&gt;Google Maps API&lt;/b&gt;&lt;br&gt;(External System)&lt;br&gt;&lt;br&gt;แสดงแผนที่และ&lt;br&gt;คำนวณเส้นทาง" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="540" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="rel1" value="สั่งอาหาร&lt;br&gt;ติดตามออเดอร์" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;fontSize=12;" parent="1" source="customer" target="system" edge="1">
+          <mxGeometry x="-0.0164" y="20" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel2" value="จัดการเมนู&lt;br&gt;รับออเดอร์" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;" parent="1" source="restaurant" target="system" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel3" value="รับงาน&lt;br&gt;อัพเดทสถานะ" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;fontSize=12;" parent="1" source="driver" target="system" edge="1">
+          <mxGeometry x="0.0149" y="-20" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel4" value="ชำระเงิน" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;" parent="1" source="system" target="payment" edge="1">
+          <mxGeometry x="0.0164" y="-10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel5" value="ส่งการแจ้งเตือน" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;" parent="1" source="system" target="sms" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel6" value="ดึงข้อมูลแผนที่&lt;br&gt;คำนวณระยะทาง" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;" parent="1" source="system" target="maps" edge="1">
+          <mxGeometry x="0.0685" y="20" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;dashed=1;" parent="1" vertex="1">
+          <mxGeometry x="220" y="330" width="280" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-title" value="&lt;b&gt;Legend&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="230" y="340" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-person" value="Person" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="240" y="370" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-system" value="Software System" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="240" y="410" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-external" value="External System" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="380" y="410" width="100" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Example 2: Food Delivery - Container" id="container-food-delivery">
+    <mxGraphModel dx="1018" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title-2" value="C4 Container Diagram: Food Delivery System" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="290" y="60" width="600" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="customer-2" value="&lt;b&gt;ลูกค้า&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="140" y="130" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="restaurant-2" value="&lt;b&gt;เจ้าของร้าน&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="610" y="130" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="driver-2" value="&lt;b&gt;คนส่งอาหาร&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="390" y="130" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="mobile-app" value="&lt;b&gt;Mobile App&lt;/b&gt;&lt;br&gt;[React Native]&lt;br&gt;&lt;br&gt;แอปมือถือสำหรับ&lt;br&gt;ลูกค้าและคนส่ง" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="100" y="240" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="web-app" value="&lt;b&gt;Web Application&lt;/b&gt;&lt;br&gt;[React + TypeScript]&lt;br&gt;&lt;br&gt;เว็บไซต์สำหรับลูกค้า" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="340" y="240" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="admin-portal" value="&lt;b&gt;Admin Portal&lt;/b&gt;&lt;br&gt;[Next.js]&lt;br&gt;&lt;br&gt;Dashboard สำหรับ&lt;br&gt;จัดการระบบ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="780" y="240" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="restaurant-app" value="&lt;b&gt;Restaurant App&lt;/b&gt;&lt;br&gt;[Flutter]&lt;br&gt;&lt;br&gt;แอปจัดการร้าน" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="570" y="240" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="&lt;b&gt;Backend API&lt;/b&gt;&lt;br&gt;[Node.js + Express]&lt;br&gt;&lt;br&gt;RESTful API สำหรับ&lt;br&gt;ทุก Clients" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="380" y="420" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="mysql" value="&lt;b&gt;MySQL Database&lt;/b&gt;&lt;br&gt;[MySQL 8.0]&lt;br&gt;&lt;br&gt;เก็บข้อมูล Users,&lt;br&gt;Orders, Restaurants" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="100" y="600" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="redis" value="&lt;b&gt;Redis Cache&lt;/b&gt;&lt;br&gt;[Redis 7.0]&lt;br&gt;&lt;br&gt;Cache session,&lt;br&gt;ตะกร้าสินค้า" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="330" y="600" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="mongodb" value="&lt;b&gt;MongoDB&lt;/b&gt;&lt;br&gt;[MongoDB 6.0]&lt;br&gt;&lt;br&gt;เก็บ Logs,&lt;br&gt;Analytics Data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="570" y="600" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="&lt;b&gt;Amazon S3&lt;/b&gt;&lt;br&gt;[Cloud Storage]&lt;br&gt;&lt;br&gt;เก็บรูปภาพ&lt;br&gt;เมนูอาหาร" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="800" y="600" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-2" value="&lt;b&gt;Payment Gateway&lt;/b&gt;&lt;br&gt;(External)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="970" y="380" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="maps-2" value="&lt;b&gt;Google Maps&lt;/b&gt;&lt;br&gt;(External)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="970" y="500" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-1" value="HTTPS/JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.44;entryDx=0;entryDy=0;fontSize=10;entryPerimeter=0;" parent="1" source="mobile-app" target="api" edge="1">
+          <mxGeometry x="-0.1083" y="10" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="190" y="390" />
+              <mxPoint x="310" y="390" />
+              <mxPoint x="310" y="464" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-2" value="HTTPS/JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" parent="1" source="web-app" target="api" edge="1">
+          <mxGeometry x="0.1034" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-3" value="HTTPS/JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;fontSize=10;" parent="1" source="restaurant-app" target="api" edge="1">
+          <mxGeometry x="-0.04" y="-10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-4" value="WebSocket" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" parent="1" source="admin-portal" target="realtime" edge="1">
+          <mxGeometry x="-0.0435" y="-10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-5" value="SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" parent="1" source="api" target="mysql" edge="1">
+          <mxGeometry x="0.1186" y="-10" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="495" />
+              <mxPoint x="310" y="560" />
+              <mxPoint x="190" y="560" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-6" value="TCP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" parent="1" target="redis" edge="1">
+          <mxGeometry x="0.0345" y="-10" relative="1" as="geometry">
+            <mxPoint x="470" y="520" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="470" y="520" />
+              <mxPoint x="470" y="570" />
+              <mxPoint x="430" y="570" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-7" value="TCP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.613;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;exitPerimeter=0;" parent="1" source="api" target="mongodb" edge="1">
+          <mxGeometry x="-0.2152" y="10" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="521" y="570" />
+              <mxPoint x="660" y="570" />
+            </Array>
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-8" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=10;" parent="1" edge="1">
+          <mxGeometry x="0.6585" y="-10" relative="1" as="geometry">
+            <mxPoint x="610" y="460" as="sourcePoint" />
+            <mxPoint x="970" y="410" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="870" y="460" />
+              <mxPoint x="870" y="410" />
+              <mxPoint x="970" y="410" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-9" value="HTTPS/REST" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;" parent="1" source="api" target="maps-2" edge="1">
+          <mxGeometry x="0.6883" y="10" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="495" />
+              <mxPoint x="870" y="530" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-10" value="S3 API" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.909;exitY=1.01;exitDx=0;exitDy=0;fontSize=10;exitPerimeter=0;" parent="1" source="api" edge="1">
+          <mxGeometry y="10" relative="1" as="geometry">
+            <mxPoint x="850" y="600" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="589" y="550" />
+              <mxPoint x="850" y="550" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-11" value="Uses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;dashed=1;" parent="1" source="customer-2" target="mobile-app" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-12" value="Uses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;dashed=1;" parent="1" source="restaurant-2" target="restaurant-app" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-13" value="Uses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;fontSize=10;dashed=1;" parent="1" source="driver-2" target="mobile-app" edge="1">
+          <mxGeometry x="0.0196" y="-10" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="210" />
+              <mxPoint x="235" y="210" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="realtime" value="&lt;b&gt;Real-time Service&lt;/b&gt;&lt;br&gt;[Socket.io]&lt;br&gt;&lt;br&gt;อัพเดทสถานะแบบ&lt;br&gt;Real-time" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="620" y="420" width="200" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Example 3: LINE - Context" id="context-line">
+    <mxGraphModel dx="1018" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title-3" value="C4 Context Diagram: LINE Messaging App" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="340" y="70" width="800" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user" value="&lt;b&gt;ผู้ใช้งาน LINE&lt;/b&gt;&lt;br&gt;(Person)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="650" y="140" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="line-system" value="&lt;b&gt;LINE Messaging Application&lt;/b&gt;&lt;br&gt;(Software System)&lt;br&gt;&lt;br&gt;ส่งข้อความ, โทร, แชร์รูป/วิดีโอ&lt;br&gt;และใช้งานฟีเจอร์ต่างๆ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="550" y="320" width="360" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="firebase" value="&lt;b&gt;Firebase Cloud&lt;/b&gt;&lt;br&gt;&lt;b&gt;Messaging&lt;/b&gt;&lt;br&gt;(External System)&lt;br&gt;&lt;br&gt;ส่ง Push Notification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=13;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="300" y="540" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="storage" value="&lt;b&gt;Cloud Storage&lt;/b&gt;&lt;br&gt;(S3/GCS)&lt;br&gt;(External System)&lt;br&gt;&lt;br&gt;เก็บรูปภาพ/วิดีโอ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=13;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="630" y="540" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="line-pay" value="&lt;b&gt;Payment Service&lt;/b&gt;&lt;br&gt;(LINE Pay)&lt;br&gt;(External System)&lt;br&gt;&lt;br&gt;ชำระเงิน, โอนเงิน" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=13;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="950" y="540" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-line-1" value="ส่งข้อความ&lt;br&gt;โทร, ส่งรูป/วิดีโอ&lt;br&gt;ใช้ฟีเจอร์ต่างๆ" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;" parent="1" source="user" target="line-system" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-line-2" value="ส่ง Push Notification&lt;br&gt;แจ้งเตือนข้อความใหม่" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=11;" parent="1" source="line-system" target="firebase" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-line-3" value="จัดเก็บและดึง&lt;br&gt;รูปภาพ/วิดีโอ" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=11;" parent="1" source="line-system" target="storage" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-line-4" value="ชำระเงิน&lt;br&gt;โอนเงิน" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=11;" parent="1" source="line-system" target="line-pay" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="&lt;b&gt;Note:&lt;/b&gt; นี่คือ Context Diagram แบบง่าย&lt;br&gt;ระบบจริงของ LINE ซับซ้อนกว่านี้มาก&lt;br&gt;มี External Systems เพิ่มเติมอีกมาก&lt;br&gt;เช่น Sticker Shop, Official Account Platform,&lt;br&gt;LINE Music, LINE MAN, etc." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;fontSize=11;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="960" y="345" width="240" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Example 4: Shopee - Context" id="context-shopee">
+    <mxGraphModel dx="1397" dy="1034" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title-4" value="C4 Context Diagram: Shopee E-Commerce Platform" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="320" y="30" width="900" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="buyer" value="&lt;b&gt;ผู้ซื้อ&lt;/b&gt;&lt;br&gt;(Person)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="430" y="120" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="seller" value="&lt;b&gt;ผู้ขาย&lt;/b&gt;&lt;br&gt;(Person)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="960" y="120" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="shopee-system" value="&lt;b&gt;Shopee E-Commerce Platform&lt;/b&gt;&lt;br&gt;(Software System)&lt;br&gt;&lt;br&gt;ซื้อ-ขายสินค้าออนไลน์&lt;br&gt;จัดการออเดอร์, ชำระเงิน, จัดส่ง" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="550" y="300" width="400" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-shopee" value="&lt;b&gt;Payment Gateway&lt;/b&gt;&lt;br&gt;(Shopee Pay/&lt;br&gt;Credit Card)&lt;br&gt;(External System)&lt;br&gt;&lt;br&gt;ชำระเงิน" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="200" y="530" width="180" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="shipping" value="&lt;b&gt;Logistics Service&lt;/b&gt;&lt;br&gt;(Kerry, Flash,&lt;br&gt;J&amp;T Express)&lt;br&gt;(External System)&lt;br&gt;&lt;br&gt;จัดส่งสินค้า" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="430" y="530" width="180" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="bank" value="&lt;b&gt;Banking System&lt;/b&gt;&lt;br&gt;(External System)&lt;br&gt;&lt;br&gt;โอนเงินให้ผู้ขาย" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="660" y="530" width="180" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="social" value="&lt;b&gt;Social Login&lt;/b&gt;&lt;br&gt;(Facebook,&lt;br&gt;Google)&lt;br&gt;(External System)&lt;br&gt;&lt;br&gt;Login ผ่าน Social" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="920" y="530" width="180" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sms-shopee" value="&lt;b&gt;SMS Service&lt;/b&gt;&lt;br&gt;(External System)&lt;br&gt;&lt;br&gt;ส่ง OTP, การแจ้งเตือน" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="1160" y="530" width="180" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-s1" value="ค้นหา, ซื้อสินค้า&lt;br&gt;ติดตามออเดอร์" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;fontSize=11;" parent="1" source="buyer" target="shopee-system" edge="1">
+          <mxGeometry x="-0.0385" y="25" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-s2" value="ลงขายสินค้า&lt;br&gt;จัดการออเดอร์&lt;br&gt;รับเงิน" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;fontSize=11;" parent="1" source="seller" target="shopee-system" edge="1">
+          <mxGeometry y="-25" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-s3" value="ชำระเงิน" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.557;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=11;" parent="1" target="payment-shopee" edge="1">
+          <mxGeometry x="-0.2718" y="-8" relative="1" as="geometry">
+            <mxPoint x="550" y="370" as="sourcePoint" />
+            <mxPoint x="290" y="522.02" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="290" y="370" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-s4" value="จองการจัดส่ง&lt;br&gt;ติดตามพัสดุ" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.35;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=11;" parent="1" source="shopee-system" target="shipping" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-s5" value="โอนเงิน" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=11;" parent="1" source="shopee-system" target="bank" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-s6" value="Authentication" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.65;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=11;" parent="1" source="shopee-system" target="social" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-s7" value="ส่ง OTP&lt;br&gt;แจ้งเตือน" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=11;" parent="1" source="shopee-system" target="sms-shopee" edge="1">
+          <mxGeometry x="-0.24" y="20" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Template: Blank Context" id="template-context">
+    <mxGraphModel dx="1397" dy="1034" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title-template" value="C4 Context Diagram: [Your System Name]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="400" y="50" width="800" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="instructions" value="&lt;b&gt;Instructions:&lt;/b&gt;&lt;br&gt;1. Replace title with your system name&lt;br&gt;2. Add Person shapes (blue) for users&lt;br&gt;3. Add your Software System (green) in the center&lt;br&gt;4. Add External Systems (gray)&lt;br&gt;5. Connect with arrows and add descriptions&lt;br&gt;6. Delete this instruction box when done" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;fontSize=12;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="970" y="320" width="310" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-t" value="&lt;b&gt;Legend&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="340" y="470" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="person-t" value="Person" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="340" y="500" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="system-t" value="Software System" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="340" y="550" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="external-t" value="External System" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="340" y="600" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="person-example" value="&lt;b&gt;User&lt;/b&gt;&lt;br&gt;(Person)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="680" y="150" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="system-example" value="&lt;b&gt;Your System Name&lt;/b&gt;&lt;br&gt;(Software System)&lt;br&gt;&lt;br&gt;Brief description" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="600" y="320" width="300" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="external-example" value="&lt;b&gt;External System&lt;/b&gt;&lt;br&gt;(External System)&lt;br&gt;&lt;br&gt;What it does" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=13;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="650" y="540" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-example" value="Relationship&lt;br&gt;description" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;" parent="1" source="person-example" target="system-example" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-example-2" value="Uses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;" parent="1" source="system-example" target="external-example" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QjMATeG4nLly4u-tnyTZ-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="460" width="180" height="200" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Template: Blank Container" id="template-container">
+    <mxGraphModel dx="1397" dy="1034" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title-container" value="C4 Container Diagram: [Your System Name]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="210" y="60" width="540" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="instructions-c" value="&lt;b&gt;Instructions:&lt;/b&gt;&lt;br&gt;1. Replace title with your system name&lt;br&gt;2. Add Person shapes (blue) at the top&lt;br&gt;3. Add Frontend Containers (yellow)&lt;br&gt;4. Add Backend Containers (green)&lt;br&gt;5. Add Database/Storage Containers (orange)&lt;br&gt;6. Add External Systems (gray)&lt;br&gt;7. Specify technology for each Container&lt;br&gt;8. Connect with arrows showing protocol&lt;br&gt;9. Delete this instruction box when done" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;fontSize=11;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="450" y="180" width="340" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-c" value="&lt;b&gt;Legend&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="610" y="395" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="person-c" value="Person" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="620" y="425" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="frontend-c" value="Frontend Container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="620" y="465" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="backend-c" value="Backend Container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="620" y="505" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="data-c" value="Database/Storage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="620" y="545" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="external-c" value="External System" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="620" y="585" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="person-c-ex" value="&lt;b&gt;User&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="220" y="140" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="web-c-ex" value="&lt;b&gt;Web App&lt;/b&gt;&lt;br&gt;[React]&lt;br&gt;&lt;br&gt;Description" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="190" y="240" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="api-c-ex" value="&lt;b&gt;Backend API&lt;/b&gt;&lt;br&gt;[Node.js]&lt;br&gt;&lt;br&gt;Description" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="190" y="380" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="db-c-ex" value="&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;[MySQL]&lt;br&gt;&lt;br&gt;Description" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="190" y="535" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-c-1" value="Uses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" parent="1" source="person-c-ex" target="web-c-ex" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-c-2" value="HTTPS/JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" parent="1" source="web-c-ex" target="api-c-ex" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-c-3" value="SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" parent="1" source="api-c-ex" target="db-c-ex" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n4HhntHjJMTxw1TJIKE4-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="380" width="190" height="250" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
