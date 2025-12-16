@@ -328,13 +328,6 @@ async create(task) {
    - **คำตอบ:** ________________
    - **เหตุผล:** ________________
 
-**💡 เฉลย:**
-1. Repository - เป็น database query
-2. Service - เป็น business validation
-3. Controller - เป็น HTTP response
-4. Service - เป็น business rule
-5. Controller - extract ข้อมูลจาก HTTP request
-
 ---
 
 ## ส่วนที่ 2: Refactoring เป็น 3-Tier (90 นาที)
@@ -1419,7 +1412,6 @@ Layered:
 
 
 
-
 ```
 
 2. **Performance Overhead**
@@ -1429,7 +1421,6 @@ Layered:
 
 **คำตอบของคุณ:**
 ```
-
 
 
 
@@ -1476,7 +1467,6 @@ Layered:
 
 
 
-
 ```
 
 ---
@@ -1485,7 +1475,7 @@ Layered:
 
 ### สร้าง README.md
 
-```markdown
+````markdown
 # Week 4: Task Board - Layered Architecture
 
 ## ภาพรวม
@@ -1510,7 +1500,7 @@ Layered:
    - จัดเก็บข้อมูล
 
 ## โครงสร้างโปรเจกต์
-
+```
 week4-layered/
 ├── src/
 │   ├── controllers/    # Presentation Layer
@@ -1521,7 +1511,7 @@ week4-layered/
 ├── database/
 ├── public/
 └── server.js
-
+```
 ## การติดตั้ง
 
 ```bash
@@ -1596,7 +1586,7 @@ npm start
 [ชื่อของคุณ] - ENGSE207 สัปดาห์ที่ 4
 
 ---
-```
+````
 
 ### สร้าง REFLECTION.md
 
@@ -1643,7 +1633,7 @@ npm start
 
 **Create `ARCHITECTURE.md` with diagram:**
 
-```markdown
+````markdown
 # Architecture Diagram
 
 ## High-Level Architecture
@@ -1713,7 +1703,7 @@ npm start
 5. Response flows back up
    Repository → Service → Controller → Client
 
-```
+````
 
 ---
 

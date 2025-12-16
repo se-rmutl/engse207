@@ -216,23 +216,20 @@ VirtualBox → New
   - เลือก: ubuntu-22.04.x-live-server-amd64.iso
 ```
 
-**Network: (ต้องมีทั้ง คู่)**
+**Network: [ต้องมีทั้ง คู่]**
 
-**Network A: Host-Only Adapter**
+**- Network A: Host-Only Adapter หรือ Host-Only Network(Mac)**
 ```
 Adapter 1:
-- Attached to: Host-Only Adapter
+- Attached to: Host-Only Adapter หรือ Host-Only Network(Mac)
 - Name: [WiFi/Ethernet adapter ของคุณ]
 - Advanced → Promiscuous Mode: Allow All
 ```
 
-**Network B: NAT (สำหรับใช้ออก Internet)**
+**- Network B: NAT (สำหรับใช้ออก Internet)**
 ```
-Adapter 1:
+Adapter 2:
 - Attached to: NAT
-- Advanced → Port Forwarding:
-  - Name: Node.js API
-  - Protocol: TCP
 ```
 
 ### 1.3 ติดตั้ง Ubuntu Server (25 นาที)
@@ -475,7 +472,7 @@ node test-server.js
 http://YOUR_VM_IP:3000
 # ตัวอย่าง: http://192.168.56.101:3000
 
-ผลลัพธ์ที่คาดหวัง: สวัสดีจาก VM!
+ผลลัพธ์ที่คาดหวัง: Hello from VM!
 ```
 
 **หยุด test server:**
@@ -1029,7 +1026,7 @@ ls -lh logs/
 
 **Create DEPLOYMENT.md:**
 
-```markdown
+````markdown
 # Deployment Guide - Week 5
 
 ## Server Information
@@ -1088,12 +1085,10 @@ pm2 logs task-board-api --lines 20
 http://192.168.56.101:3000/api/tasks
 http://192.168.56.101:3000/api/tasks/stats
 ```
-
 ### Frontend (local)
 ```
 http://localhost:8080
 ```
-
 ## Troubleshooting
 
 ### API not accessible
@@ -1148,12 +1143,11 @@ npm install
 pm2 restart task-board-api
 ```
 
----
-```
+````
 
 ### 8.2 Update README.md (10 min)
 
-```markdown
+````markdown
 # Week 5: Task Board - Client-Server Architecture
 
 ## Overview
@@ -1166,17 +1160,17 @@ This project demonstrates **Client-Server Architecture** with:
 ## Architecture Comparison
 
 ### Week 4: Layered (Single Machine)
-
+```
 Browser → Node.js (all layers) → Database
         (localhost:3000)
-
+```
 ### Week 5: Client-Server (Two Machines)
-
+```
 Local Browser    → Network → VM (Node.js) → Database
 (localhost:8080)             (192.168.56.101:3000)
-
+```
 ## Project Structure
-
+```
 Local Machine:
 └── public/
     ├── index.html    # Frontend UI
@@ -1262,6 +1256,7 @@ fetch('http://192.168.56.101:3000/api/tasks', {
 .then(r => r.json())
 .then(d => console.log(d));
 ```
+````
 
 ---
 
