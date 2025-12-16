@@ -1040,11 +1040,11 @@ ls -lh logs/
 
 ```
 Local Machine (Client)          Virtual Machine (Server)
-─────────────────────          ────────────────────────
-Frontend (Browser)     ─HTTP─> Backend (Node.js + PM2)
+─────────────────────           ────────────────────────
+Frontend (Browser)     ─HTTP─>  Backend (Node.js + PM2)
 http://localhost:8080           http://192.168.56.101:3000
-                                      │
-                                      ▼
+                                        │
+                                        ▼
                                    Database (SQLite)
 ```
 

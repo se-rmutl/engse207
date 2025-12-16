@@ -100,11 +100,11 @@ task-board-monolith/
 │  │  (SQLite queries)          │  │
 │  └────────────────────────────┘  │
 └──────────────────────────────────┘
-         │
-         ▼
-   ┌──────────┐
-   │ SQLite DB│
-   └──────────┘
+                 │
+                 ▼
+           ┌───────────┐
+           │ SQLite DB │
+           └───────────┘
 ```
 
 ### 🎓 Lab Activities (3 hours)
@@ -150,9 +150,9 @@ task-board-monolith/
 ### 🛠️ Technical Stack
 ```
 ├─ Backend: Node.js + Express.js (Same)
-├─ Database: SQLite → PostgreSQL (Migration)
+├─ Database: SQLite → (Same)
 ├─ Frontend: HTML + CSS + JS (เหมือนเดิม)
-└─ New Tools: pg (PostgreSQL driver), dotenv
+└─ New Tools: dotenv
 ```
 
 ### 📂 Project Structure
@@ -194,7 +194,7 @@ task-board-layered/
 - ✅ **Validation Rules** (Title required, max length 200)
 - ✅ **Business Logic** (Cannot delete IN_PROGRESS tasks)
 - ✅ **Error Handling** (Proper error responses)
-- ✅ **Migration to PostgreSQL** (More professional DB)
+
 
 ### 📊 Architecture Characteristics
 ```
@@ -226,7 +226,7 @@ task-board-layered/
                │
                ▼
           ┌──────────┐
-          │PostgreSQL│
+          │  SQLite  │
           └──────────┘
 ```
 
@@ -245,11 +245,6 @@ task-board-layered/
    - Test all features still work
    - Compare with Week 3 code
    - Document differences
-
-### 📝 Homework
-- เพิ่ม User Authentication (Basic)
-- เพิ่ม Unit Tests (Jest)
-- ศึกษา: MVC Pattern
 
 ### 🎯 Deliverables
 - ✅ Refactored codebase (3 layers)
@@ -329,9 +324,12 @@ PATCH  /api/tasks/:id/status   # Update status only
 └──────────────────┘          └─────────┼────────┘
                                         │
                                         ▼
-                                  ┌──────────┐
-                                  │PostgreSQL│
-                                  └──────────┘
+                              ┌─────────────────┐
+                              │SQLite (tasks.db)│
+                              │    Migration    │
+                              │        to       │
+                              │   'PostgreSQL'  │
+                              └─────────────────┘
 ```
 
 ### 🎓 Lab Activities (3 hours)
@@ -346,16 +344,19 @@ PATCH  /api/tasks/:id/status   # Update status only
    - Error handling
 
 3. **Documentation** (30 min)
-   - Swagger/OpenAPI spec
    - Postman collection
    - README update
 
-### 📝 Homework
-- เพิ่ม Pagination (limit, offset)
-- เพิ่ม Search/Filter API
-- เพิ่ม JWT Authentication
+### 🛠️ Technical Stack
+```
+├─ Backend: Node.js + Express.js (Same)
+├─ Database: SQLite → PostgreSQL (Migration)
+├─ Frontend: HTML + CSS + JS (เหมือนเดิม)
+└─ New Tools: pg (PostgreSQL driver), dotenv
+```
 
 ### 🎯 Deliverables
+- ✅ **Migration to PostgreSQL** (More professional DB)
 - ✅ RESTful API (tested with Postman)
 - ✅ Separate Frontend project
 - ✅ API Documentation (Swagger)
@@ -417,14 +418,14 @@ task-board-n-tier/
 └────┬──────┘ └────┬──────┘ └────┬──────┘
      │             │             │
      └─────────────┴─────────────┘
-                 │
-        ┌────────┴────────┐
-        │                 │
-        ▼                 ▼
-   ┌─────────┐      ┌──────────┐
-   │  Redis  │      │PostgreSQL│ ← Tier 3: Data Tier
-   │ (Cache) │      │ (Storage)│
-   └─────────┘      └──────────┘
+                   │
+          ┌────────┴────────┐
+          │                 │
+          ▼                 ▼
+     ┌─────────┐      ┌──────────┐
+     │  Redis  │      │PostgreSQL│ ← Tier 3: Data Tier
+     │ (Cache) │      │ (Storage)│
+     └─────────┘      └──────────┘
 ```
 
 ### ⚙️ New Features
@@ -625,15 +626,15 @@ task-board-microservices/
         ┌───────────────┼───────────────┐
         │               │               │
         ▼               ▼               ▼
-   ┌─────────┐    ┌─────────┐     ┌─────────┐
-   │  User   │    │  Task   │     │  Notif  │
-   │ Service │    │ Service │     │ Service │
-   └────┬────┘    └────┬────┘     └────┬────┘
-        │              │               │
-        ▼              ▼               ▼
-   ┌────────┐    ┌────────┐      ┌────────┐
-   │User DB │    │Task DB │      │ Queue  │
-   └────────┘    └────────┘      └────────┘
+   ┌─────────┐     ┌─────────┐     ┌─────────┐
+   │  User   │     │  Task   │     │  Notif  │
+   │ Service │     │ Service │     │ Service │
+   └────┬────┘     └────┬────┘     └────┬────┘
+        │               │               │
+        ▼               ▼               ▼
+   ┌────────┐      ┌────────┐      ┌────────┐
+   │User DB │      │Task DB │      │ Queue  │
+   └────────┘      └────────┘      └────────┘
 ```
 
 ### ⚙️ Features to Implement
@@ -975,7 +976,7 @@ Skills Acquired:
 ---
 
 *Document Version: 1.0*  
-*Last Updated: 2025-01-15*  
+*Last Updated: 2025-12-15*  
 *Course: ENGSE207 Software Architecture*  
 *Instructor: นายธนิต เกตุแก้ว*  
 *มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา*
