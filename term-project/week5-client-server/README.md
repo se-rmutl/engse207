@@ -103,7 +103,7 @@
 │                        │ (Network Request)          │
 └────────────────────────┼────────────────────────────┘
                          │
-                         │ Network Bridge / Port Forward
+                         │ Host-Only Network / NAT
                          │
 ┌────────────────────────▼────────────────────────────┐
 │    VIRTUAL MACHINE (Ubuntu Server 22.04)            │
