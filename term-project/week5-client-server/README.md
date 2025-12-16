@@ -79,7 +79,8 @@
 - RAM: 2048 MB (2 GB)
 - CPU: 2 cores
 - Storage: 10 GB (dynamic)
-- Network: Bridged Adapter หรือ NAT with Port Forwarding
+- Network1: Host-Only Adapter หรือ  Host-Only Network 
+- Network2: NAT (สำหรับใช้ออก Internet)
 
 ---
 
@@ -188,7 +189,7 @@ VirtualBox → New
 - **Hard Disk:** Create virtual hard disk now
 
 **ขั้นตอนที่ 2: Virtual Hard Disk**
-- **Size:** 10 GB
+- **Size:** 50 GB
 - **Type:** VDI (VirtualBox Disk Image)
 - **Storage:** Dynamically allocated
 
@@ -215,25 +216,23 @@ VirtualBox → New
   - เลือก: ubuntu-22.04.x-live-server-amd64.iso
 ```
 
-**Network:**
+**Network: (ต้องมีทั้ง คู่)**
 
-**ตัวเลือก A: Bridged Adapter (แนะนำ)**
+**Network A: Host-Only Adapter**
 ```
 Adapter 1:
-- Attached to: Bridged Adapter
+- Attached to: Host-Only Adapter
 - Name: [WiFi/Ethernet adapter ของคุณ]
 - Advanced → Promiscuous Mode: Allow All
 ```
 
-**ตัวเลือก B: NAT with Port Forwarding (ถ้า Bridged ไม่ได้)**
+**Network B: NAT (สำหรับใช้ออก Internet)**
 ```
 Adapter 1:
 - Attached to: NAT
 - Advanced → Port Forwarding:
   - Name: Node.js API
   - Protocol: TCP
-  - Host Port: 3000
-  - Guest Port: 3000
 ```
 
 ### 1.3 ติดตั้ง Ubuntu Server (25 นาที)
@@ -255,7 +254,7 @@ Adapter 1:
 4. การเชื่อมต่อ Network:
    - ควรแสดง: enp0s3 (หรือคล้ายกัน)
    - DHCP: Enabled (ตั้งค่าอัตโนมัติ)
-   - จดไว้ IP address ที่แสดง (เช่น 192.168.1.100)
+   - จดไว้ IP address ที่แสดง (เช่น 192.168.56.101)
 
 5. Proxy: เว้นว่างไว้ (เว้นแต่คุณต้องใช้)
 
@@ -268,7 +267,7 @@ Adapter 1:
 8. การตั้งค่า Profile:
    Your name: ชื่อคุณ
    Server name: engse207-server
-   Username: student
+   Username: devlab
    Password: [สร้างรหัสผ่านที่ปลอดภัย]
    
    ⚠️ จำรหัสผ่านนี้ไว้!
@@ -289,7 +288,7 @@ Adapter 1:
 
 **ขั้นตอนที่ 3: Login ครั้งแรก**
 ```
-Login: student
+Login: devlab
 Password: [รหัสผ่านของคุณ]
 
 คุณควรเห็น:
@@ -301,8 +300,8 @@ Welcome to Ubuntu 22.04.x LTS
 ip addr show
 
 # มองหา inet ใต้ enp0s3:
-# ตัวอย่าง: inet 192.168.1.100/24
-# VM IP ของคุณ: 192.168.1.100
+# ตัวอย่าง: inet 192.168.56.101/24
+# VM IP ของคุณ: 192.168.56.101
 ```
 
 **⚠️ สำคัญ: จด IP address นี้ไว้!**
@@ -375,7 +374,7 @@ ping -c 4 google.com
 
 # หา VM IP
 hostname -I
-# ตัวอย่างผลลัพธ์: 192.168.1.100
+# ตัวอย่างผลลัพธ์: 192.168.56.101
 ```
 
 **📝 บันทึก VM IP อีกครั้ง:**
@@ -388,21 +387,21 @@ VM IP ของฉัน: ___________________
 **Windows (PowerShell):**
 ```powershell
 # เปลี่ยนเป็น VM IP ของคุณ
-ping 192.168.1.100
+ping 192.168.56.101
 ```
 
 **Mac/Linux:**
 ```bash
-ping -c 4 192.168.1.100
+ping -c 4 192.168.56.101
 ```
 
 **ผลลัพธ์ที่คาดหวัง:**
 ```
-Reply from 192.168.1.100: bytes=32 time<1ms TTL=64
+Reply from 192.168.56.101: bytes=32 time<1ms TTL=64
 ```
 
 **ถ้า ping ล้มเหลว:**
-- ตรวจสอบการตั้งค่า network ของ VM (Bridged vs NAT)
+- ตรวจสอบการตั้งค่า network ของ VM (Host-Only vs NAT)
 - ตรวจสอบ firewall บนเครื่องของคุณ
 - ดูส่วนแก้ปัญหา
 
@@ -448,7 +447,7 @@ git config --global user.email "email@ของคุณ.com"
 
 # ตรวจสอบ
 pwd
-# ควรแสดง: /home/student/projects
+# ควรแสดง: /home/devlab/projects
 ```
 
 ### 3.4 ทดสอบ Node.js (10 นาที)
@@ -460,10 +459,10 @@ cat > test-server.js << 'EOF'
 const http = require('http');
 const server = http.createServer((req, res) => {
   res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('สวัสดีจาก VM!\n');
+  res.end('Hello from VM!\n');
 });
 server.listen(3000, '0.0.0.0', () => {
-  console.log('Test server ทำงานที่ port 3000');
+  console.log('Test server on port 3000');
 });
 EOF
 
@@ -474,7 +473,7 @@ node test-server.js
 **ทดสอบจาก browser บนเครื่องของคุณ:**
 ```
 http://YOUR_VM_IP:3000
-# ตัวอย่าง: http://192.168.1.100:3000
+# ตัวอย่าง: http://192.168.56.101:3000
 
 ผลลัพธ์ที่คาดหวัง: สวัสดีจาก VM!
 ```
@@ -536,7 +535,7 @@ cd ~/engse207-labs/week4-layered
 tar -czf task-board.tar.gz --exclude='node_modules' --exclude='*.db' .
 
 # คัดลอกไปยัง VM (เปลี่ยน IP)
-scp task-board.tar.gz student@192.168.1.100:~/projects/
+scp task-board.tar.gz devlab@192.168.56.101:~/projects/
 ```
 
 **บน VM:**
@@ -556,7 +555,7 @@ cd ~/projects/task-board-api
 cat > .env << 'EOF'
 NODE_ENV=production
 PORT=3000
-DB_PATH=/home/student/projects/task-board-api/database/tasks.db
+DB_PATH=/home/devlab/projects/task-board-api/database/tasks.db
 LOG_LEVEL=info
 HOST=0.0.0.0
 EOF
@@ -655,7 +654,7 @@ cat > public/config.js << 'EOF'
 // การตั้งค่า API
 const API_CONFIG = {
     // เปลี่ยนเป็น VM IP ของคุณ
-    BASE_URL: 'http://192.168.1.100:3000',
+    BASE_URL: 'http://192.168.56.101:3000',
     ENDPOINTS: {
         TASKS: '/api/tasks',
         STATS: '/api/tasks/stats'
@@ -862,11 +861,11 @@ mkdir -p logs
 pm2 start ecosystem.config.js
 
 # ควรเห็น:
-┌────┬────────────────────┬──────────┬───────┐
-│ id │ name               │ mode     │ status│
-├────┼────────────────────┼──────────┼───────┤
-│ 0  │ task-board-api     │ fork     │ online│
-└────┴────────────────────┴──────────┴───────┘
+┌────┬────────────────────┬─────────┬────────┐
+│ id │      name          │  mode   │ status │
+├────┼────────────────────┼─────────┼────────┤
+│ 0  │ task-board-api     │  fork   │ online │
+└────┴────────────────────┴─────────┴────────┘
 
 # ตรวจสอบสถานะ
 pm2 status
@@ -915,7 +914,7 @@ pm2 startup
 
 # คัดลอกและรันคำสั่งที่แสดง
 # จะมีลักษณะแบบนี้:
-# sudo env PATH=$PATH:/usr/bin pm2 startup systemd -u student --hp /home/student
+# sudo env PATH=$PATH:/usr/bin pm2 startup systemd -u devlab --hp /home/devlab
 
 # บันทึก PM2 processes ปัจจุบัน
 pm2 save
@@ -967,7 +966,10 @@ echo ""
 
 echo "✅ Tests completed!"
 EOF
+```
 
+```bash
+# Change file attribute the can execute
 chmod +x test-api.sh
 
 # Install jq for JSON parsing
@@ -1033,9 +1035,9 @@ ls -lh logs/
 ## Server Information
 
 - **VM OS:** Ubuntu Server 22.04 LTS
-- **VM IP:** 192.168.1.100 (example - yours may differ)
-- **SSH Access:** ssh student@192.168.1.100
-- **API Endpoint:** http://192.168.1.100:3000
+- **VM IP:** 192.168.56.101 (example - yours may differ)
+- **SSH Access:** ssh devlab@192.168.56.101
+- **API Endpoint:** http://192.168.56.101:3000
 
 ## Architecture
 
@@ -1043,7 +1045,7 @@ ls -lh logs/
 Local Machine (Client)          Virtual Machine (Server)
 ─────────────────────          ────────────────────────
 Frontend (Browser)     ─HTTP─> Backend (Node.js + PM2)
-http://localhost:8080           http://192.168.1.100:3000
+http://localhost:8080           http://192.168.56.101:3000
                                       │
                                       ▼
                                    Database (SQLite)
@@ -1053,7 +1055,7 @@ http://localhost:8080           http://192.168.1.100:3000
 
 ### 1. Access VM
 ```bash
-ssh student@192.168.1.100
+ssh devlab@192.168.56.101
 password: [your-vm-password]
 ```
 
@@ -1083,8 +1085,8 @@ pm2 logs task-board-api --lines 20
 
 ### API (from local machine)
 ```
-http://192.168.1.100:3000/api/tasks
-http://192.168.1.100:3000/api/tasks/stats
+http://192.168.56.101:3000/api/tasks
+http://192.168.56.101:3000/api/tasks/stats
 ```
 
 ### Frontend (local)
@@ -1164,20 +1166,17 @@ This project demonstrates **Client-Server Architecture** with:
 ## Architecture Comparison
 
 ### Week 4: Layered (Single Machine)
-```
+
 Browser → Node.js (all layers) → Database
         (localhost:3000)
-```
 
 ### Week 5: Client-Server (Two Machines)
-```
-Local Browser → Network → VM (Node.js) → Database
-(localhost:8080)         (192.168.1.100:3000)
-```
+
+Local Browser    → Network → VM (Node.js) → Database
+(localhost:8080)             (192.168.56.101:3000)
 
 ## Project Structure
 
-```
 Local Machine:
 └── public/
     ├── index.html    # Frontend UI
@@ -1251,7 +1250,7 @@ Base URL: `http://VM_IP:3000`
 
 ### Example Request
 ```javascript
-fetch('http://192.168.1.100:3000/api/tasks', {
+fetch('http://192.168.56.101:3000/api/tasks', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -1694,7 +1693,7 @@ ping 8.8.8.8
 ```
 1. ตรวจสอบ VM IP: hostname -I
 2. ตรวจสอบ VM firewall: sudo ufw status
-3. ลอง NAT with port forwarding แทน Bridged
+3. ลอง NAT with port forwarding แทน Host-Only
 4. ปิด host firewall ชั่วคราวเพื่อทดสอบ
 ```
 
