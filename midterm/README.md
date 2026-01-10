@@ -247,7 +247,7 @@ node_modules/
 EOF
 
 # 4. Add remote repository
-git remote add origin https://github.com/RMUTL-ENGSE207/midterm-2567-<รหัสนักศึกษา>.git
+git remote add origin https://github.com/RMUTL-ENGSE207/midterm-2568-<รหัสนักศึกษา>.git
 ```
 
 ### **Step 2: Develop & Commit Regularly**
@@ -305,7 +305,7 @@ git push -u origin main
 
 ```bash
 # 1. เปิด GitHub repository ของคุณ
-# URL: https://github.com/RMUTL-ENGSE207/midterm-2567-<รหัสนักศึกษา>
+# URL: https://github.com/RMUTL-ENGSE207/midterm-2568-<รหัสนักศึกษา>
 
 # 2. ตรวจสอบว่าไฟล์ครบถ้วน:
 ✅ src/presentation/ (routes, controllers, middlewares)
@@ -328,7 +328,7 @@ git push -u origin main
 2. ไปที่ Assignment: "ENGSE207 - Midterm Practical Exam (Individual)"
 3. วาง GitHub URL:
    ```
-   https://github.com/RMUTL-ENGSE207/midterm-2567-<รหัสนักศึกษา>
+   https://github.com/RMUTL-ENGSE207/midterm-2568-<รหัสนักศึกษา>
    ```
 4. กดส่งงาน
 
