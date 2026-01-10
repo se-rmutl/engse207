@@ -105,6 +105,9 @@
 
 1. [**workshop_guide.md**](workshop_exam_guide) - คู่มือสอน Refactoring ทีละขั้นตอน (60 นาที)
 2. [**complete_working_example.md**](workshop_exam_guide/complete_working_example.md) - ตัวอย่างโค้ดสมบูรณ์ที่รันได้จริง (Product Management System)
+   
+3. [**WORKSHOP_UI_PACKAGE.md**](workshop_exam_guide/WORKSHOP_UI_PACKAGE.md) - เอกสาร UI สมบูรณ์สำหรับ Product Management System Workshop
+4. [**WORKSHOP_ARCHITECTURE_GUIDE.md**](workshop_exam_guide/WORKSHOP_ARCHITECTURE_GUIDE.md) - แนวทางการสร้าง `ARCHITECTURE.md` สำหรับ Product Management System Workshop
 
 ---
 
