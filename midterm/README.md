@@ -324,7 +324,7 @@ git push -u origin main
 
 ### **Step 6: ส่ง URL ผ่าน LMS**
 
-1. เข้าระบบ LMS
+1. เข้า email ของมหาวิทยาลัย และส่ง email ที่ thanit@rmutl.ac.th พร้อมรายละเอียด ชื่อ-นามสกุล รหัสนักศึกษา และ sec ที่เรียน
 2. ไปที่ Assignment: "ENGSE207 - Midterm Practical Exam (Individual)"
 3. วาง GitHub URL:
    ```
