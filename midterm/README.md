@@ -62,13 +62,6 @@
 | **Week 5** | C4 Model (Context, Container, Component Diagrams) | CLO1, CLO3, CLO5, CLO6, CLO8, CLO9 |
 | **Week 6** | ADD-Lite Methodology, ADR, Architectural Decision Making | CLO3, CLO5, CLO6, CLO7, CLO8 |
 
-### 📄 ไฟล์ข้อสอบ
-
-มีข้อสอบ **2 versions** สำหรับนักศึกษา 2 กลุ่ม:
-
-- **Version 1:** `midterm_theory_exam_v1.md`
-- **Version 2:** `midterm_theory_exam_v2.md`
-
 ---
 
 ## 💻 ส่วนที่ 2: ข้อสอบปฏิบัติเดี่ยว (15 คะแนน)
@@ -105,12 +98,6 @@
 | - ARCHITECTURE.md | 2.5 | Diagram + Explanation |
 | **รวม** | **15** | |
 
-### 📄 ไฟล์ข้อสอบ
-
-มีข้อสอบ **2 versions** สำหรับนักศึกษา 2 กลุ่ม:
-
-- **Version 1:** `midterm_practical_individual_v1.md` (Library Management System)
-- **Version 2:** `midterm_practical_individual_v2.md` (Student Management System)
 
 ### 🎓 Workshop Materials
 
