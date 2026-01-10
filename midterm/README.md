@@ -66,8 +66,8 @@
 
 มีข้อสอบ **2 versions** สำหรับนักศึกษา 2 กลุ่ม:
 
-- **Version 1:** `midterm_theory_exam_v1.md` + เฉลย `midterm_theory_solution_v1.md`
-- **Version 2:** `midterm_theory_exam_v2.md` + เฉลย `midterm_theory_solution_v2.md`
+- **Version 1:** `midterm_theory_exam_v1.md`
+- **Version 2:** `midterm_theory_exam_v2.md`
 
 ---
 
