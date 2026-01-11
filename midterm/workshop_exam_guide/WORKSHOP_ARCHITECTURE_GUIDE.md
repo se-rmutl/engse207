@@ -385,13 +385,13 @@ async function findAll(category = null) {
 ┌──────────────────────────────────────────────────────────────┐
 │ 2. PRESENTATION LAYER                                        │
 │                                                              │
-│    Routes (productRoutes.js)                                │
-│    ├─ router.post('/', ...)                                 │
+│    Routes (productRoutes.js)                                 │
+│    ├─ router.post('/', ...)                                  │
 │    │                                                         │
-│    Controller (productController.js)                        │
-│    ├─ createProduct(req, res, next)                         │
-│    ├─ Parse productData from req.body                       │
-│    └─ Call: productService.createProduct(productData)       │
+│    Controller (productController.js)                         │
+│    ├─ createProduct(req, res, next)                          │
+│    ├─ Parse productData from req.body                        │
+│    └─ Call: productService.createProduct(productData)        │
 └────────────┬─────────────────────────────────────────────────┘
              │
              ▼
