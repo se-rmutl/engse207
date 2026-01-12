@@ -451,26 +451,18 @@ git push -u origin main
 ### สำหรับนักศึกษา
 
 #### ข้อสอบทฤษฎี
-- `midterm_theory_exam_v1.md` - ข้อสอบ Version 1
-- `midterm_theory_exam_v2.md` - ข้อสอบ Version 2
+- `midterm_theory_exam_v1.md` - ข้อสอบ Version 1Version 2
 
 #### ข้อสอบปฏิบัติ
 - `midterm_practical_individual_v1.md` - ข้อสอบ Version 1 (Library Management)
-- `midterm_practical_individual_v2.md` - ข้อสอบ Version 2 (Student Management)
 
 #### ข้อสอบ Bonus 🎁
 - `midterm_bonus_v1.md` - ข้อสอบ Bonus Version 1 (Library → Client-Server)
-- `midterm_bonus_v2.md` - ข้อสอบ Bonus Version 2 (Student → Client-Server)
 
 #### Workshop Materials (ศึกษาก่อนสอบ)
 - `workshop_guide.md` - คู่มือ Refactoring ทีละขั้นตอน
 - `complete_working_example.md` - ตัวอย่างโค้ดสมบูรณ์ (Product Management)
 
-### สำหรับอาจารย์
-
-#### เฉลยข้อสอบทฤษฎี
-- `midterm_theory_solution_v1.md` - เฉลย Version 1
-- `midterm_theory_solution_v2.md` - เฉลย Version 2
 
 ---
 
