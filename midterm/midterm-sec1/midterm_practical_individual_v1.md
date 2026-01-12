@@ -974,13 +974,15 @@ git push -u origin main
 # 3. ตรวจสอบ commits (ควรมีอย่างน้อย 4-5 commits)
 ```
 
-#### **Step 6: Submit GitHub Link**
+### **Step 6: ส่ง URL ผ่าน email**
 
-ส่ง GitHub repository URL ผ่านระบบ LMS:
-```
-https://github.com/RMUTL-ENGSE207/midterm-2568-<รหัสนักศึกษา>
-```
-
+1. เข้า email ของมหาวิทยาลัย และส่ง email ที่ thanit@rmutl.ac.th พร้อมรายละเอียด ชื่อ-นามสกุล รหัสนักศึกษา และ sec ที่เรียน
+2. ไปที่ Assignment: "ENGSE207 - Midterm Practical Exam (Individual)"
+3. วาง GitHub URL:
+   ```
+   https://github.com/RMUTL-ENGSE207/midterm-2568-<รหัสนักศึกษา>
+   ```
+4. กดส่งงาน
 ---
 
 ## ✅ Checklist ก่อนส่งงาน
