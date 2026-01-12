@@ -835,7 +835,7 @@ npm start
 ```
 
 #### **2.2 สร้าง Architecture Diagram (1.5 คะแนน)**
-**แนวทางทำเอกสาร** [WORKSHOP_ARCHITECTURE_GUIDE](workshop_exam_guide/WORKSHOP_ARCHITECTURE_GUIDE.md)
+**แนวทางทำเอกสาร** [WORKSHOP_ARCHITECTURE_GUIDE](../workshop_exam_guide/WORKSHOP_ARCHITECTURE_GUIDE.md)
 
 สร้างไฟล์ `ARCHITECTURE.md` ที่มี:
 
