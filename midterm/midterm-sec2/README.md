@@ -1,5 +1,5 @@
 # 📝 ENGSE207 Software Architecture - MIDTERM EXAMINATION
-## การสอบกลางภาค ภาคเรียนที่ 2/2567
+## การสอบกลางภาค ภาคเรียนที่ 2/2568
 
 ---
 
@@ -158,9 +158,7 @@
 
 ### 📄 ไฟล์ข้อสอบ
 
-มีข้อสอบ **2 versions** สำหรับนักศึกษา 2 กลุ่ม:
-
-- **Version 1:** `midterm_bonus_v1.md` (Library Management System)
+มีข้อสอบสำหรับนักศึกษา:
 - **Version 2:** `midterm_bonus_v2.md` (Student Management System)
 
 ### 📹 Video Demo (สำคัญมาก!)
@@ -237,7 +235,7 @@ node_modules/
 EOF
 
 # 4. Add remote repository
-git remote add origin https://github.com/RMUTL-ENGSE207/midterm-2567-<รหัสนักศึกษา>.git
+git remote add origin https://github.com/RMUTL-ENGSE207/midterm-2568-<รหัสนักศึกษา>.git
 ```
 
 ### **Step 2: Develop & Commit Regularly**
@@ -295,7 +293,7 @@ git push -u origin main
 
 ```bash
 # 1. เปิด GitHub repository ของคุณ
-# URL: https://github.com/RMUTL-ENGSE207/midterm-2567-<รหัสนักศึกษา>
+# URL: https://github.com/RMUTL-ENGSE207/midterm-2568-<รหัสนักศึกษา>
 
 # 2. ตรวจสอบว่าไฟล์ครบถ้วน:
 ✅ src/presentation/ (routes, controllers, middlewares)
@@ -318,7 +316,7 @@ git push -u origin main
 2. ไปที่ Assignment: "ENGSE207 - Midterm Practical Exam (Individual)"
 3. วาง GitHub URL:
    ```
-   https://github.com/RMUTL-ENGSE207/midterm-2567-<รหัสนักศึกษา>
+   https://github.com/RMUTL-ENGSE207/midterm-2568-<รหัสนักศึกษา>
    ```
 4. กดส่งงาน
 

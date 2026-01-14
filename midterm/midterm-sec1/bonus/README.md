@@ -756,7 +756,7 @@ backend/.env
 EOF
 
 # Add remote
-git remote add origin https://github.com/RMUTL-ENGSE207/midterm-bonus-2567-<รหัส>.git
+git remote add origin https://github.com/RMUTL-ENGSE207/midterm-bonus-2568-<รหัส>.git
 ```
 
 ### **Step 3: Commit & Push**
