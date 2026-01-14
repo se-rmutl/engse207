@@ -846,7 +846,52 @@ cd frontend
 
 ## 📤 การส่งงาน
 
-### **Step 1-3:** [เหมือน Version 1]
+
+### **Step 1: Organize Project**
+
+```bash
+# สร้างโครงสร้างตามที่กำหนด
+midterm-bonus-<รหัสนักศึกษา>/
+├── backend/
+├── frontend/
+└── README.md
+```
+
+### **Step 2: Git Setup**
+
+```bash
+# ใน root folder
+cd midterm-bonus-<รหัสนักศึกษา>
+
+# Initialize Git
+git init
+
+# สร้าง .gitignore
+cat > .gitignore << 'EOF'
+backend/node_modules/
+backend/*.db
+backend/.env
+.DS_Store
+EOF
+
+# Add remote
+git remote add origin https://github.com/RMUTL-ENGSE207/midterm-bonus-2568-<รหัส>.git
+```
+
+### **Step 3: Commit & Push**
+
+```bash
+git add .
+git commit -m "feat: refactor layered to client-server architecture"
+
+git add .
+git commit -m "feat: implement frontend with API client"
+
+git add .
+git commit -m "docs: add documentation"
+
+git push -u origin main
+```
 
 ### **Step 4: Record Demo Video (สำคัญ!)**
 
