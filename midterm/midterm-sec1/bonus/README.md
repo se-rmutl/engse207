@@ -838,7 +838,7 @@ git push -u origin main
 ### Git
 - [ ] มี commits หลายครั้ง
 - [ ] Push ไปยัง GitHub
-- [ ] ส่ง URL ผ่าน LMS
+- [ ] ส่ง URL ผ่าน email
 
 ---
 

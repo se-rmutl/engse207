@@ -887,9 +887,65 @@ cd frontend
 
 ## ✅ Checklist ก่อนส่ง
 
-[เหมือน Version 1]
+
+## ✅ Checklist ก่อนส่ง
+
+### Backend
+- [ ] มี CORS middleware
+- [ ] API ทุกตัวทำงานได้
+- [ ] Response format สม่ำเสมอ
+- [ ] มี API_TESTS.md
+
+### Frontend
+- [ ] API Client ครบทุก method
+- [ ] UI ใช้งานได้จริง
+- [ ] แสดง Loading state
+- [ ] Error handling
+
+### Documentation
+- [ ] README.md อธิบายชัดเจน
+- [ ] ARCHITECTURE_COMPARISON.md
+- [ ] มี Screenshots
+
+### Demo Video
+- [ ] แสดง Backend บน VM
+- [ ] แสดง Frontend บน Local
+- [ ] Demo การใช้งาน
+- [ ] แสดง Network Tab
+
+### Git
+- [ ] มี commits หลายครั้ง
+- [ ] Push ไปยัง GitHub
+- [ ] ส่ง URL ผ่าน email
 
 ---
+
+## 💡 Tips
+
+### การ Debug CORS:
+```javascript
+// ตรวจสอบว่า CORS headers ถูกต้อง
+console.log(response.headers.get('Access-Control-Allow-Origin'));
+```
+
+### การ Test API:
+```bash
+# Test จาก local
+curl http://localhost:3000/api/books
+
+# Test จาก IP ของ VM
+curl http://<VM-IP>:3000/api/books
+```
+
+### การรัน Frontend:
+```bash
+# วิธีที่ 1: เปิดไฟล์ HTML ตรงๆ
+open index.html
+
+# วิธีที่ 2: ใช้ local server
+python3 -m http.server 8000
+# แล้วเปิด http://localhost:8000
+```
 
 ## ⏰ กำหนดส่ง
 
