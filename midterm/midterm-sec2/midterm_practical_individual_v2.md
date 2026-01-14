@@ -1114,12 +1114,12 @@ git push -u origin main
 ### **Step 6: ส่ง URL ผ่าน email**
 
 1. เข้า email ของมหาวิทยาลัย และส่ง email ที่ thanit@rmutl.ac.th พร้อมรายละเอียด ชื่อ-นามสกุล รหัสนักศึกษา และ sec ที่เรียน
-2. ไปที่ Assignment: "ENGSE207 - Midterm Practical Exam (Individual)"
+2. ชืิ่อหัวข้อ email คิือ Assignment: "ENGSE207 - Midterm Practical Exam (Individual)"
 3. วาง GitHub URL:
    ```
    https://github.com/RMUTL-ENGSE207/midterm-2568-<รหัสนักศึกษา>
    ```
-4. กดส่งงาน
+4. กด send
 ---
 
 ## ✅ Checklist ก่อนส่งงาน
