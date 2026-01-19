@@ -1,0 +1,1364 @@
+# ⚙️ คู่มือ PM2 Process Manager
+## สำหรับ ENGSE207 Software Architecture
+
+**ระยะเวลาศึกษา:** 30-45 นาที | **ระดับ:** เริ่มต้น-กลาง
+
+---
+
+## 📋 สารบัญ
+
+1. [PM2 คืออะไร?](#1-pm2-คืออะไร)
+2. [ทำไมต้องใช้ PM2?](#2-ทำไมต้องใช้-pm2)
+3. [การติดตั้ง PM2](#3-การติดตั้ง-pm2)
+4. [คำสั่งพื้นฐาน](#4-คำสั่งพื้นฐาน)
+5. [การจัดการ Process](#5-การจัดการ-process)
+6. [Ecosystem File](#6-ecosystem-file)
+7. [Monitoring และ Logs](#7-monitoring-และ-logs)
+8. [Cluster Mode](#8-cluster-mode)
+9. [การทดสอบ PM2](#9-การทดสอบ-pm2)
+10. [แก้ปัญหาที่พบบ่อย](#10-แก้ปัญหาที่พบบ่อย)
+11. [Best Practices](#11-best-practices)
+
+---
+
+## 1. PM2 คืออะไร?
+
+### 1.1 คำจำกัดความ
+
+**PM2 (Process Manager 2)** คือ Production-grade Process Manager สำหรับ Node.js ที่ช่วยจัดการ application ให้ทำงานต่อเนื่อง
+
+```
+┌───────────────────────────────────────────────────────────────────┐
+│                         PM2 Overview                              │
+├───────────────────────────────────────────────────────────────────┤
+│                                                                   │
+│   ก่อนใช้ PM2:                         หลังใช้ PM2:                   │
+│   ────────────                      ───────────                   │
+│                                                                   │
+│   $ node server.js                  $ pm2 start server.js         │
+│   Server running...                 ┌─────────────────────────┐   │
+│   ^C                                │         PM2             │   │
+│   (หยุดทำงาน)                        │   Process Manager       │   │
+│                                     ├─────────────────────────┤   │
+│   ❌ ปิด terminal = App หยุด          │  ┌─────┐  ┌─────┐       │   │
+│   ❌ Error = App crash              │  │App 1│  │App 2│  ...  │   │
+│   ❌ Restart manual                 │  └─────┘  └─────┘       │   │
+│   ❌ ไม่มี logs                       │                         │   │
+│                                     │  ✅ Auto Restart        │   │
+│                                     │  ✅ Background Run      │   │
+│                                     │  ✅ Log Management      │   │
+│                                     │  ✅ Monitoring          │   │
+│                                     └─────────────────────────┘   │
+│                                                                   │
+└───────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🔗 ความสัมพันธ์กับ Week 6 Lab
+```
+┌──────────────────────────────────────────────────────────────────┐
+│                    Week 6 N-Tier Architecture                    │
+├──────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│   Browser  ───► Nginx (HTTPS) ───► Node.js (PM2) ───► PostgreSQL │
+│                    │                    │                        │
+│                    ▼                    ▼                        │
+│          ┌─────────────────┐  ┌─────────────────┐                │
+│          │ HTTPS_SSL_GUIDE │  │   PM2_GUIDE     │                │
+│          │                 │  │                 │                │
+│          │ • SSL/TLS       │  │ • Process Mgmt  │                │
+│          │ • Self-signed   │  │ • Auto Restart  │                │
+│          │ • Nginx config  │  │ • Cluster Mode  │                │
+│          │ • Testing       │  │ • Monitoring    │                │
+│          └─────────────────┘  └─────────────────┘                │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘
+```
+
+### 1.2 ความสามารถหลักของ PM2
+
+| Feature | รายละเอียด |
+|---------|-----------|
+| **Process Management** | Start, Stop, Restart, Delete processes |
+| **Auto Restart** | Restart อัตโนมัติเมื่อ crash |
+| **Cluster Mode** | Load balance ด้วยหลาย instances |
+| **Log Management** | เก็บและจัดการ logs |
+| **Monitoring** | ดู CPU, Memory, Status real-time |
+| **Startup Script** | รันอัตโนมัติเมื่อ boot เครื่อง |
+| **Zero Downtime Reload** | Reload ไม่มี downtime |
+| **Environment Management** | จัดการ env variables |
+
+---
+
+## 2. ทำไมต้องใช้ PM2?
+
+### 2.1 เปรียบเทียบวิธีการรัน Node.js
+
+```
+┌────────────────────────────────────────────────────────────────────┐
+│                   วิธีการรัน Node.js Application                      │
+├────────────────────────────────────────────────────────────────────┤
+│                                                                    │
+│   1. node server.js (Development)                                  │
+│   ───────────────────────────────                                  │
+│   ❌ Foreground process                                            │
+│   ❌ หยุดเมื่อปิด terminal                                             │
+│   ❌ ไม่ restart เมื่อ crash                                          │
+│   ❌ ไม่เหมาะกับ production                                          │
+│                                                                    │
+│   2. node server.js & (Background)                                 │
+│   ────────────────────────────────                                 │
+│   ✅ Background process                                            │
+│   ❌ หยุดเมื่อ logout                                                 │
+│   ❌ ไม่ restart เมื่อ crash                                          │
+│   ❌ Log หายไป                                                     │
+│                                                                    │
+│   3. nohup node server.js & (Persistent)                           │
+│   ──────────────────────────────────────                           │
+│   ✅ ไม่หยุดเมื่อ logout                                               │
+│   ❌ ไม่ restart เมื่อ crash                                          │
+│   ❌ จัดการยาก                                                      │
+│   ❌ ไม่มี monitoring                                                │
+│                                                                    │
+│   4. PM2 (Production Ready) ⭐                                     │
+│   ────────────────────────────                                     │
+│   ✅ Background + Persistent                                       │
+│   ✅ Auto restart เมื่อ crash                                        │
+│   ✅ Log management                                                │
+│   ✅ Monitoring                                                    │
+│   ✅ Cluster mode                                                  │
+│   ✅ Zero downtime reload                                          │
+│                                                                    │
+└────────────────────────────────────────────────────────────────────┘
+```
+
+### 2.2 PM2 vs Alternatives
+
+| Feature | PM2 | Forever | Nodemon | systemd |
+|---------|-----|---------|---------|---------|
+| Auto Restart | ✅ | ✅ | ✅ | ✅ |
+| Cluster Mode | ✅ | ❌ | ❌ | ❌ |
+| Log Management | ✅ | ⚠️ | ❌ | ✅ |
+| Monitoring | ✅ | ❌ | ❌ | ⚠️ |
+| Zero Downtime | ✅ | ❌ | ❌ | ⚠️ |
+| Easy to Use | ✅ | ✅ | ✅ | ❌ |
+| Node.js Native | ✅ | ✅ | ✅ | ❌ |
+
+---
+
+## 3. การติดตั้ง PM2
+
+### 3.1 ติดตั้งด้วย npm
+
+```bash
+# ติดตั้ง PM2 globally
+sudo npm install -g pm2
+
+# ตรวจสอบ version
+pm2 --version
+# 5.3.0
+
+# ตรวจสอบ path
+which pm2
+# /usr/bin/pm2 หรือ ~/.npm-global/bin/pm2
+```
+
+### 3.2 ติดตั้งด้วย yarn
+
+```bash
+# ติดตั้งด้วย yarn
+sudo yarn global add pm2
+
+# ตรวจสอบ
+pm2 --version
+```
+
+### 3.3 Update PM2
+
+```bash
+# Update PM2
+sudo npm install -g pm2@latest
+
+# Update in-memory PM2
+pm2 update
+```
+
+---
+
+## 4. คำสั่งพื้นฐาน
+
+### 4.1 Start Application
+
+```bash
+# วิธีที่ 1: Start ด้วยชื่อไฟล์
+pm2 start server.js
+
+# วิธีที่ 2: Start พร้อมตั้งชื่อ
+pm2 start server.js --name "taskboard-api"
+
+# วิธีที่ 3: Start พร้อม options
+pm2 start server.js --name "taskboard-api" --watch --env production
+
+# วิธีที่ 4: Start ด้วย npm script
+pm2 start npm --name "taskboard-api" -- start
+
+# วิธีที่ 5: Start ด้วย ecosystem file
+pm2 start ecosystem.config.js
+```
+
+### 4.2 Quick Reference Commands
+
+```bash
+# ═══════════════════════════════════════════════════════
+#                 PM2 QUICK REFERENCE
+# ═══════════════════════════════════════════════════════
+
+# ─────────── Process Management ───────────
+pm2 start app.js              # Start application
+pm2 start app.js --name "api" # Start with name
+pm2 stop <name|id|all>        # Stop process
+pm2 restart <name|id|all>     # Restart process
+pm2 reload <name|id|all>      # Reload (0 downtime)
+pm2 delete <name|id|all>      # Delete from PM2
+
+# ─────────── Information ───────────
+pm2 list                      # List all processes
+pm2 status                    # Same as list
+pm2 show <name|id>            # Process details
+pm2 describe <name|id>        # Same as show
+
+# ─────────── Monitoring ───────────
+pm2 monit                     # Real-time monitor
+pm2 logs                      # Show all logs
+pm2 logs <name|id>            # Show specific logs
+pm2 logs --lines 100          # Last 100 lines
+
+# ─────────── Cluster ───────────
+pm2 start app.js -i max       # Start max instances
+pm2 start app.js -i 4         # Start 4 instances
+pm2 scale <name> 4            # Scale to 4 instances
+
+# ─────────── Startup ───────────
+pm2 startup                   # Generate startup script
+pm2 save                      # Save current processes
+pm2 resurrect                 # Restore saved processes
+
+# ─────────── Others ───────────
+pm2 flush                     # Clear all logs
+pm2 reset <name|id>           # Reset restart count
+pm2 update                    # Update PM2 in-memory
+pm2 kill                      # Kill PM2 daemon
+```
+
+### 4.3 Command Examples with Output
+
+```bash
+# Start application
+$ pm2 start server.js --name "taskboard-api"
+
+[PM2] Starting /home/user/app/server.js in fork_mode (1 instance)
+[PM2] Done.
+┌────┬────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name           │ mode     │ ↺    │ status    │ cpu      │ memory   │
+├────┼────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
+│ 0  │ taskboard-api  │ fork     │ 0    │ online    │ 0%       │ 45.2mb   │
+└────┴────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+
+# List processes
+$ pm2 list
+
+┌────┬────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name           │ mode     │ ↺    │ status    │ cpu      │ memory   │
+├────┼────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
+│ 0  │ taskboard-api  │ fork     │ 0    │ online    │ 0.3%     │ 52.1mb   │
+└────┴────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+
+# Show process details
+$ pm2 show taskboard-api
+
+┌───────────────────┬──────────────────────────────────────────────┐
+│ status            │ online                                       │
+│ name              │ taskboard-api                                │
+│ namespace         │ default                                      │
+│ version           │ 1.0.0                                        │
+│ restarts          │ 0                                            │
+│ uptime            │ 2h                                           │
+│ script path       │ /home/user/app/server.js                     │
+│ script args       │ N/A                                          │
+│ error log path    │ /home/user/.pm2/logs/taskboard-api-error.log │
+│ out log path      │ /home/user/.pm2/logs/taskboard-api-out.log   │
+│ pid               │ 12345                                        │
+│ interpreter       │ node                                         │
+│ node.js version   │ 20.10.0                                      │
+│ created at        │ 2024-01-15T10:00:00.000Z                     │
+└───────────────────┴──────────────────────────────────────────────┘
+```
+
+---
+
+## 5. การจัดการ Process
+
+### 5.1 Process States
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                       PM2 Process States                            │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   ┌────────┐    start    ┌────────┐                                 │
+│   │stopped │ ──────────► │ online │ ◄─── restart                    │
+│   └────────┘             └────────┘         │                       │
+│       ▲                       │             │                       │
+│       │                       │ crash       │                       │
+│       │                       ▼             │                       │
+│       │      stop        ┌────────┐         │                       │
+│       │ ◄──────────────  │errored │ ────────┘                       │
+│       │                  └────────┘   auto-restart                  │
+│       │                                                             │
+│       │     delete                                                  │
+│       └─────────────────► [removed from PM2]                        │
+│                                                                     │
+│   Status Colors:                                                    │
+│   🟢 online   - ทำงานปกติ                                            │
+│   🔴 stopped  - หยุดทำงาน                                            │
+│   🔴 errored  - มี error (กำลัง restart)                              │
+│   🟡 launching - กำลัง start                                         │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### 5.2 Start Options
+
+```bash
+# Start with specific options
+pm2 start server.js \
+    --name "taskboard-api" \        # ชื่อ process
+    --watch \                        # Auto-restart เมื่อไฟล์เปลี่ยน
+    --ignore-watch="node_modules" \  # ไม่ watch folders นี้
+    --max-memory-restart 200M \      # Restart ถ้า memory > 200MB
+    --env production \               # Set NODE_ENV
+    --log /var/log/app.log \         # Log file path
+    --time \                         # Add timestamp to logs
+    --cron-restart="0 0 * * *" \     # Restart ทุกเที่ยงคืน
+    --no-autorestart                 # ปิด auto-restart
+
+# Start with interpreter
+pm2 start app.ts --interpreter ts-node
+pm2 start app.py --interpreter python3
+```
+
+### 5.3 Stop, Restart, Delete
+
+```bash
+# ─────────── Stop ───────────
+pm2 stop taskboard-api          # Stop by name
+pm2 stop 0                      # Stop by id
+pm2 stop all                    # Stop all
+
+# ─────────── Restart ───────────
+pm2 restart taskboard-api       # Restart (has downtime)
+pm2 restart all
+
+# ─────────── Reload (Zero Downtime) ───────────
+pm2 reload taskboard-api        # Reload gracefully
+pm2 reload all
+
+# ─────────── Delete ───────────
+pm2 delete taskboard-api        # Remove from PM2
+pm2 delete all                  # Remove all
+
+# ─────────── Kill PM2 ───────────
+pm2 kill                        # Stop daemon completely
+```
+
+### 5.4 Restart vs Reload
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                     Restart vs Reload                               │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   pm2 restart (มี Downtime)                                          │
+│   ─────────────────────────                                         │
+│   [Old Process] ─────► STOP ─────► [New Process] START              │
+│        ▼                                   ▲                        │
+│   ❌ Downtime                              │                        │
+│      (ช่วงที่ไม่มี process)                     │                        │
+│                                                                     │
+│   pm2 reload (Zero Downtime) - Cluster Mode Only                    │
+│   ──────────────────────────────────────────────                    │
+│   [Process 1] ─────────────────────────────────────────►            │
+│   [Process 2] ─── STOP ──► [Process 2 New] START ─────►             │
+│   [Process 3] ─────────────────────────────────────────►            │
+│        ▼                                                            │
+│   ✅ ไม่มี Downtime (มี process อื่นรับ request)                          │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 6. Ecosystem File
+
+### 6.1 Ecosystem File คืออะไร?
+
+**Ecosystem File** คือไฟล์ configuration สำหรับ PM2 ที่กำหนด settings ทั้งหมดไว้ในที่เดียว
+
+### 6.2 สร้าง Ecosystem File
+
+```bash
+# สร้างไฟล์ตัวอย่าง
+pm2 ecosystem
+
+# จะได้ไฟล์ ecosystem.config.js
+```
+
+### 6.3 ตัวอย่าง Ecosystem File
+
+**สร้างไฟล์ `ecosystem.config.js`:**
+
+```javascript
+// ecosystem.config.js
+// PM2 Configuration for Task Board Application
+
+module.exports = {
+  apps: [
+    {
+      // ─────────── Basic Settings ───────────
+      name: 'taskboard-api',
+      script: './server.js',
+      cwd: '/home/user/engse207-labs/week6-ntier',
+      
+      // ─────────── Instance Settings ───────────
+      instances: 1,                    // จำนวน instances (หรือ 'max')
+      exec_mode: 'fork',               // 'fork' หรือ 'cluster'
+      
+      // ─────────── Watch Settings ───────────
+      watch: false,                    // Watch for file changes
+      ignore_watch: [                  // Folders to ignore
+        'node_modules',
+        'logs',
+        '.git',
+        '*.log'
+      ],
+      watch_delay: 1000,               // Delay before restart (ms)
+      
+      // ─────────── Environment Variables ───────────
+      env: {
+        NODE_ENV: 'development',
+        PORT: 3000,
+        DB_HOST: 'localhost',
+        DB_PORT: 5432,
+        DB_NAME: 'taskboard_db',
+        DB_USER: 'taskboard',
+        DB_PASSWORD: 'taskboard123'
+      },
+      env_production: {
+        NODE_ENV: 'production',
+        PORT: 3000
+      },
+      env_staging: {
+        NODE_ENV: 'staging',
+        PORT: 3001
+      },
+      
+      // ─────────── Log Settings ───────────
+      log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
+      error_file: './logs/error.log',
+      out_file: './logs/out.log',
+      merge_logs: true,
+      log_type: 'json',                // 'json' หรือ undefined
+      
+      // ─────────── Restart Settings ───────────
+      autorestart: true,               // Auto restart on crash
+      max_restarts: 10,                // Max restarts within min_uptime
+      min_uptime: '10s',               // Min uptime before considered stable
+      restart_delay: 4000,             // Delay between restarts (ms)
+      exp_backoff_restart_delay: 100,  // Exponential backoff
+      
+      // ─────────── Memory Settings ───────────
+      max_memory_restart: '300M',      // Restart if memory exceeds
+      
+      // ─────────── Cron Settings ───────────
+      cron_restart: '0 0 * * *',       // Restart at midnight daily
+      
+      // ─────────── Advanced Settings ───────────
+      kill_timeout: 5000,              // Time before SIGKILL (ms)
+      wait_ready: true,                // Wait for process.send('ready')
+      listen_timeout: 8000,            // Time to wait for ready
+      
+      // ─────────── Source Map Support ───────────
+      source_map_support: true
+    }
+  ],
+
+  // ─────────── Deploy Configuration (Optional) ───────────
+  deploy: {
+    production: {
+      user: 'deploy',
+      host: '192.168.1.100',
+      ref: 'origin/main',
+      repo: 'git@github.com:user/taskboard.git',
+      path: '/var/www/taskboard',
+      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production'
+    }
+  }
+};
+```
+
+### 6.4 ใช้งาน Ecosystem File
+
+```bash
+# Start ทั้งหมด
+pm2 start ecosystem.config.js
+
+# Start เฉพาะบาง app
+pm2 start ecosystem.config.js --only taskboard-api
+
+# Start ด้วย environment
+pm2 start ecosystem.config.js --env production
+pm2 start ecosystem.config.js --env staging
+
+# Restart
+pm2 restart ecosystem.config.js
+
+# Reload (zero downtime)
+pm2 reload ecosystem.config.js
+
+# Stop
+pm2 stop ecosystem.config.js
+
+# Delete
+pm2 delete ecosystem.config.js
+```
+
+### 6.5 Ecosystem File แบบง่าย (สำหรับ Lab)
+
+```javascript
+// ecosystem.config.js - Simple version for Lab
+
+module.exports = {
+  apps: [{
+    name: 'taskboard-api',
+    script: 'server.js',
+    instances: 1,
+    autorestart: true,
+    watch: false,
+    max_memory_restart: '200M',
+    env: {
+      NODE_ENV: 'development',
+      PORT: 3000,
+      DB_HOST: 'localhost',
+      DB_PORT: 5432,
+      DB_NAME: 'taskboard_db',
+      DB_USER: 'taskboard',
+      DB_PASSWORD: 'taskboard123'
+    }
+  }]
+};
+```
+
+---
+
+## 7. Monitoring และ Logs
+
+### 7.1 Real-time Monitoring
+
+```bash
+# เปิด Dashboard
+pm2 monit
+```
+
+**PM2 Monit Dashboard:**
+```
+┌───────────────────────────────────────────────────────────────────────┐
+│ PM2 Monit                                                             │
+├───────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  ┌─ Process List ──────────────────────────────────────────────────┐  │
+│  │ ● taskboard-api                CPU: 2.3%    MEM: 52.4 MB        │  │
+│  │   pid: 12345  restarts: 0      uptime: 2h 15m                   │  │
+│  └─────────────────────────────────────────────────────────────────┘  │
+│                                                                       │
+│  ┌─ Logs ──────────────────────────────────────────────────────────┐  │
+│  │ 2024-01-15 10:30:15: Server running on port 3000                │  │
+│  │ 2024-01-15 10:30:16: Connected to PostgreSQL                    │  │
+│  │ 2024-01-15 10:35:22: GET /api/tasks 200 12ms                    │  │
+│  │ 2024-01-15 10:35:45: POST /api/tasks 201 25ms                   │  │
+│  └─────────────────────────────────────────────────────────────────┘  │
+│                                                                       │
+│  ┌─ Metadata ──────────────────────────────────────────────────────┐  │
+│  │ App Name: taskboard-api                                         │  │
+│  │ Version: 1.0.0                                                  │  │
+│  │ Mode: fork                                                      │  │
+│  │ Node: v20.10.0                                                  │  │
+│  └─────────────────────────────────────────────────────────────────┘  │
+│                                                                       │
+│  [↑↓] Navigate  [Enter] Select  [q] Quit                              │
+└───────────────────────────────────────────────────────────────────────┘
+```
+
+### 7.2 Log Management
+
+```bash
+# ─────────── View Logs ───────────
+pm2 logs                        # All logs (stream)
+pm2 logs taskboard-api          # Specific app logs
+pm2 logs --lines 100            # Last 100 lines
+pm2 logs --nostream             # Don't stream, just show
+
+# ─────────── Log Files Location ───────────
+ls ~/.pm2/logs/
+# taskboard-api-error.log
+# taskboard-api-out.log
+
+# ─────────── Clear Logs ───────────
+pm2 flush                       # Clear all logs
+pm2 flush taskboard-api         # Clear specific logs
+
+# ─────────── Rotate Logs ───────────
+pm2 install pm2-logrotate       # Install log rotation
+pm2 set pm2-logrotate:max_size 10M
+pm2 set pm2-logrotate:retain 7
+pm2 set pm2-logrotate:compress true
+```
+
+### 7.3 Log Output Examples
+
+```bash
+$ pm2 logs taskboard-api --lines 20
+
+/home/user/.pm2/logs/taskboard-api-out.log last 20 lines:
+0|taskboard | 2024-01-15 10:30:15: ═══════════════════════════════════
+0|taskboard | 2024-01-15 10:30:15:   🏗️  N-TIER ARCHITECTURE - TASK BOARD API
+0|taskboard | 2024-01-15 10:30:15: ═══════════════════════════════════
+0|taskboard | 2024-01-15 10:30:15:   📡 Server running on port 3000
+0|taskboard | 2024-01-15 10:30:15:   🌍 Environment: development
+0|taskboard | 2024-01-15 10:30:16:   ✅ New client connected to PostgreSQL
+0|taskboard | 2024-01-15 10:35:22:   📊 Query executed: 5ms | Rows: 7
+0|taskboard | 2024-01-15 10:35:22:   GET /api/tasks - 200 - 12.345 ms
+
+/home/user/.pm2/logs/taskboard-api-error.log last 20 lines:
+(empty if no errors)
+```
+
+### 7.4 Process Information
+
+```bash
+# รายละเอียด process
+pm2 show taskboard-api
+
+# Output:
+┌───────────────────┬──────────────────────────────────────────────┐
+│ status            │ online                                       │
+│ name              │ taskboard-api                                │
+│ namespace         │ default                                      │
+│ version           │ 1.0.0                                        │
+│ restarts          │ 0                                            │
+│ uptime            │ 5h                                           │
+│ script path       │ /home/user/app/server.js                     │
+│ script args       │ N/A                                          │
+│ error log path    │ /home/user/.pm2/logs/taskboard-api-error.log │
+│ out log path      │ /home/user/.pm2/logs/taskboard-api-out.log   │
+│ pid               │ 12345                                        │
+│ interpreter       │ node                                         │
+│ interpreter args  │ N/A                                          │
+│ script id         │ 0                                            │
+│ exec cwd          │ /home/user/app                               │
+│ exec mode         │ fork_mode                                    │
+│ node.js version   │ 20.10.0                                      │
+│ node env          │ development                                  │
+│ watch & reload    │ ✘                                            │
+│ unstable restarts │ 0                                            │
+│ created at        │ 2024-01-15T05:30:00.000Z                     │
+└───────────────────┴──────────────────────────────────────────────┘
+```
+
+---
+
+## 8. Cluster Mode
+
+### 8.1 Cluster Mode คืออะไร?
+
+**Cluster Mode** คือการรัน Node.js หลาย instances เพื่อ load balance และใช้ CPU หลาย cores
+
+```
+┌───────────────────────────────────────────────────────────────────┐
+│                   Fork Mode vs Cluster Mode                       │
+├───────────────────────────────────────────────────────────────────┤
+│                                                                   │
+│   Fork Mode (Default):              Cluster Mode:                 │
+│   ────────────────────              ─────────────                 │
+│                                                                   │
+│   ┌──────────┐                      ┌──────────┐                  │
+│   │  Client  │                      │  Client  │                  │
+│   └────┬─────┘                      └────┬─────┘                  │
+│        │                                 │                        │
+│        ▼                                 ▼                        │
+│   ┌──────────┐                      ┌──────────┐                  │
+│   │  PM2     │                      │  PM2     │                  │
+│   └────┬─────┘                      │ (Master) │                  │
+│        │                            └────┬─────┘                  │
+│        ▼                                 │ Load Balance           │
+│   ┌──────────┐                     ┌─────┴─────┐                  │
+│   │  Node.js │                     ▼           ▼                  │
+│   │ Process  │               ┌──────────┐ ┌──────────┐            │
+│   └──────────┘               │ Worker 1 │ │ Worker 2 │            │
+│                              └──────────┘ └──────────┘            │
+│   1 Process                  │ Worker 3 │ │ Worker 4 │            │
+│   1 CPU Core                 └──────────┘ └──────────┘            │
+│                                                                   │
+│                              4 Processes                          │
+│                              4 CPU Cores                          │
+│                              Zero Downtime Reload                 │
+│                                                                   │
+└───────────────────────────────────────────────────────────────────┘
+```
+
+### 8.2 เปิดใช้ Cluster Mode
+
+```bash
+# Start with cluster mode
+pm2 start server.js -i max           # ใช้ทุก CPU cores
+pm2 start server.js -i 0             # เหมือน max
+pm2 start server.js -i 4             # ใช้ 4 instances
+pm2 start server.js -i -1            # max - 1 (เหลือ 1 core ว่าง)
+
+# Scale up/down
+pm2 scale taskboard-api 4            # Scale to 4 instances
+pm2 scale taskboard-api +2           # Add 2 instances
+pm2 scale taskboard-api -1           # Remove 1 instance
+```
+
+### 8.3 Cluster Mode ใน Ecosystem File
+
+```javascript
+// ecosystem.config.js
+
+module.exports = {
+  apps: [{
+    name: 'taskboard-api',
+    script: 'server.js',
+    instances: 'max',           // หรือ 4, 2, -1
+    exec_mode: 'cluster',       // ต้องเป็น 'cluster'
+    
+    // Cluster specific settings
+    instance_var: 'INSTANCE_ID',
+    
+    // Graceful reload
+    listen_timeout: 8000,
+    kill_timeout: 5000,
+    wait_ready: true
+  }]
+};
+```
+
+### 8.4 Graceful Shutdown (สำคัญสำหรับ Cluster)
+
+```javascript
+// server.js - Graceful shutdown support
+
+const http = require('http');
+const app = require('./app');
+
+const server = http.createServer(app);
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    
+    // บอก PM2 ว่าพร้อมแล้ว
+    if (process.send) {
+        process.send('ready');
+    }
+});
+
+// Graceful shutdown
+process.on('SIGINT', gracefulShutdown);
+process.on('SIGTERM', gracefulShutdown);
+
+function gracefulShutdown(signal) {
+    console.log(`Received ${signal}. Shutting down gracefully...`);
+    
+    server.close(() => {
+        console.log('HTTP server closed');
+        
+        // Close database connections, etc.
+        // ...
+        
+        process.exit(0);
+    });
+    
+    // Force close after 10 seconds
+    setTimeout(() => {
+        console.error('Forcing shutdown...');
+        process.exit(1);
+    }, 10000);
+}
+```
+
+---
+
+## 9. การทดสอบ PM2
+
+### 9.1 สร้าง Test Application
+
+**สร้างไฟล์ `test-app.js`:**
+
+```javascript
+// test-app.js - Simple test application
+
+const http = require('http');
+
+const PORT = process.env.PORT || 3000;
+const INSTANCE_ID = process.env.INSTANCE_ID || 0;
+
+const server = http.createServer((req, res) => {
+    // Log request
+    console.log(`[Instance ${INSTANCE_ID}] ${req.method} ${req.url}`);
+    
+    // Health check
+    if (req.url === '/health') {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+            status: 'healthy',
+            instance: INSTANCE_ID,
+            pid: process.pid,
+            uptime: process.uptime(),
+            memory: process.memoryUsage()
+        }));
+        return;
+    }
+    
+    // Simulate crash (for testing)
+    if (req.url === '/crash') {
+        console.log('Simulating crash...');
+        process.exit(1);
+    }
+    
+    // Simulate memory leak (for testing)
+    if (req.url === '/leak') {
+        const leak = [];
+        for (let i = 0; i < 1000000; i++) {
+            leak.push(new Array(1000).fill('x'));
+        }
+        res.end('Memory increased');
+        return;
+    }
+    
+    // Default response
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end(`Hello from instance ${INSTANCE_ID} (PID: ${process.pid})\n`);
+});
+
+server.listen(PORT, () => {
+    console.log(`[Instance ${INSTANCE_ID}] Server running on port ${PORT}`);
+    
+    if (process.send) {
+        process.send('ready');
+    }
+});
+
+// Graceful shutdown
+process.on('SIGINT', () => {
+    console.log('Shutting down...');
+    server.close(() => process.exit(0));
+});
+```
+
+### 9.2 Test Script
+
+**สร้างไฟล์ `scripts/test-pm2.sh`:**
+
+```bash
+#!/bin/bash
+# scripts/test-pm2.sh - PM2 Test Script
+
+echo "═══════════════════════════════════════════════════════"
+echo "  🧪 PM2 Test Suite"
+echo "═══════════════════════════════════════════════════════"
+echo ""
+
+PASSED=0
+FAILED=0
+
+# Colors
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+# Helper function
+test_result() {
+    if [ $1 -eq 0 ]; then
+        echo -e "   ${GREEN}✓ PASSED${NC}: $2"
+        ((PASSED++))
+    else
+        echo -e "   ${RED}✗ FAILED${NC}: $2"
+        ((FAILED++))
+    fi
+}
+
+# ═══════════════════════════════════════════════════════
+# Test 1: PM2 Installation
+# ═══════════════════════════════════════════════════════
+echo "Test 1: PM2 Installation"
+pm2 --version > /dev/null 2>&1
+test_result $? "PM2 is installed"
+echo ""
+
+# ═══════════════════════════════════════════════════════
+# Test 2: Start Application
+# ═══════════════════════════════════════════════════════
+echo "Test 2: Start Application"
+
+# Clean up first
+pm2 delete test-app 2>/dev/null
+
+# Start
+pm2 start test-app.js --name test-app > /dev/null 2>&1
+sleep 2
+
+# Check if running
+pm2 list | grep -q "test-app.*online"
+test_result $? "Application started successfully"
+echo ""
+
+# ═══════════════════════════════════════════════════════
+# Test 3: Health Check
+# ═══════════════════════════════════════════════════════
+echo "Test 3: Health Check"
+HEALTH=$(curl -s http://localhost:3000/health)
+echo "$HEALTH" | grep -q "healthy"
+test_result $? "Health endpoint responds"
+echo ""
+
+# ═══════════════════════════════════════════════════════
+# Test 4: Auto Restart on Crash
+# ═══════════════════════════════════════════════════════
+echo "Test 4: Auto Restart on Crash"
+
+# Get initial restart count
+INITIAL_RESTARTS=$(pm2 jlist | jq '.[0].pm2_env.restart_time')
+
+# Trigger crash
+curl -s http://localhost:3000/crash > /dev/null 2>&1
+sleep 3
+
+# Check if restarted
+CURRENT_RESTARTS=$(pm2 jlist | jq '.[0].pm2_env.restart_time')
+if [ "$CURRENT_RESTARTS" -gt "$INITIAL_RESTARTS" ]; then
+    test_result 0 "Application auto-restarted after crash"
+else
+    test_result 1 "Application auto-restarted after crash"
+fi
+echo ""
+
+# ═══════════════════════════════════════════════════════
+# Test 5: Stop Application
+# ═══════════════════════════════════════════════════════
+echo "Test 5: Stop Application"
+pm2 stop test-app > /dev/null 2>&1
+sleep 1
+pm2 list | grep -q "test-app.*stopped"
+test_result $? "Application stopped"
+echo ""
+
+# ═══════════════════════════════════════════════════════
+# Test 6: Restart Application
+# ═══════════════════════════════════════════════════════
+echo "Test 6: Restart Application"
+pm2 restart test-app > /dev/null 2>&1
+sleep 2
+pm2 list | grep -q "test-app.*online"
+test_result $? "Application restarted"
+echo ""
+
+# ═══════════════════════════════════════════════════════
+# Test 7: Logs
+# ═══════════════════════════════════════════════════════
+echo "Test 7: Logs"
+LOG_LINES=$(pm2 logs test-app --nostream --lines 5 2>&1)
+if [ -n "$LOG_LINES" ]; then
+    test_result 0 "Logs are available"
+else
+    test_result 1 "Logs are available"
+fi
+echo ""
+
+# ═══════════════════════════════════════════════════════
+# Test 8: Cluster Mode
+# ═══════════════════════════════════════════════════════
+echo "Test 8: Cluster Mode"
+
+# Start in cluster mode
+pm2 delete test-app > /dev/null 2>&1
+pm2 start test-app.js --name test-app -i 2 > /dev/null 2>&1
+sleep 3
+
+# Check instances
+INSTANCES=$(pm2 jlist | jq 'length')
+if [ "$INSTANCES" -eq 2 ]; then
+    test_result 0 "Cluster mode with 2 instances"
+else
+    test_result 1 "Cluster mode with 2 instances (got $INSTANCES)"
+fi
+echo ""
+
+# ═══════════════════════════════════════════════════════
+# Test 9: Load Balancing (Cluster Mode)
+# ═══════════════════════════════════════════════════════
+echo "Test 9: Load Balancing"
+
+# Make multiple requests
+PIDS=""
+for i in {1..10}; do
+    PID=$(curl -s http://localhost:3000/health | jq -r '.pid')
+    PIDS="$PIDS $PID"
+done
+
+# Check if different PIDs (load balanced)
+UNIQUE_PIDS=$(echo $PIDS | tr ' ' '\n' | sort -u | wc -l)
+if [ "$UNIQUE_PIDS" -gt 1 ]; then
+    test_result 0 "Requests distributed across instances"
+else
+    test_result 1 "Requests distributed across instances"
+fi
+echo ""
+
+# ═══════════════════════════════════════════════════════
+# Cleanup
+# ═══════════════════════════════════════════════════════
+echo "Cleaning up..."
+pm2 delete test-app > /dev/null 2>&1
+echo ""
+
+# ═══════════════════════════════════════════════════════
+# Summary
+# ═══════════════════════════════════════════════════════
+echo "═══════════════════════════════════════════════════════"
+TOTAL=$((PASSED + FAILED))
+echo -e "  Results: ${GREEN}$PASSED passed${NC}, ${RED}$FAILED failed${NC} (Total: $TOTAL)"
+echo "═══════════════════════════════════════════════════════"
+```
+
+### 9.3 Manual Test Checklist
+
+```
+┌────────────────────────────────────────────────────────────────────┐
+│                     PM2 TEST CHECKLIST                             │
+├────────────────────────────────────────────────────────────────────┤
+│                                                                    │
+│  Basic Operations:                                                 │
+│  [ ] pm2 start server.js --name "app"                              │
+│  [ ] pm2 list (ดู status เป็น online)                                │
+│  [ ] pm2 stop app                                                  │
+│  [ ] pm2 restart app                                               │
+│  [ ] pm2 delete app                                                │
+│                                                                    │
+│  Monitoring:                                                       │
+│  [ ] pm2 monit (ดู real-time dashboard)                             │
+│  [ ] pm2 logs (ดู logs)                                             │
+│  [ ] pm2 show app (ดู details)                                      │
+│                                                                    │
+│  Auto Restart:                                                     │
+│  [ ] สร้าง endpoint ที่ crash (process.exit(1))                       │
+│  [ ] เรียก endpoint → App ต้อง restart อัตโนมัติ                        │
+│  [ ] pm2 list → restart count เพิ่มขึ้น                                │
+│                                                                    │
+│  Cluster Mode:                                                     │
+│  [ ] pm2 start app.js -i 2                                         │
+│  [ ] pm2 list (ดู 2 instances)                                      │
+│  [ ] เรียก API หลายครั้ง → PID ต่างกัน (load balanced)                  │
+│  [ ] pm2 reload app (zero downtime)                                │
+│                                                                    │
+│  Startup:                                                          │
+│  [ ] pm2 startup (สร้าง startup script)                             │
+│  [ ] pm2 save (บันทึก process list)                                  │
+│  [ ] reboot เครื่อง → App ต้อง start อัตโนมัติ                           │
+│                                                                    │
+└────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 10. แก้ปัญหาที่พบบ่อย
+
+### 10.1 App keeps restarting
+
+```bash
+# ดู logs หาสาเหตุ
+pm2 logs app-name --lines 50
+
+# ดู restart count และ status
+pm2 show app-name
+
+# สาเหตุที่พบบ่อย:
+# 1. Port already in use
+# 2. Missing dependencies
+# 3. Environment variables not set
+# 4. Database connection failed
+
+# แก้ไข
+pm2 delete app-name
+pm2 start app.js --name app-name
+```
+
+### 10.2 Command not found: pm2
+
+```bash
+# ตรวจสอบ npm global path
+npm config get prefix
+
+# เพิ่ม path ใน ~/.bashrc หรือ ~/.zshrc
+export PATH="$PATH:$(npm config get prefix)/bin"
+
+# หรือติดตั้งใหม่
+sudo npm install -g pm2
+```
+
+### 10.3 Permission denied
+
+```bash
+# ปัญหา: pm2 ไม่มีสิทธิ์เขียน log
+# แก้ไข: ตั้งค่า PM2_HOME
+export PM2_HOME=/home/user/.pm2
+
+# หรือ run ด้วย sudo (ไม่แนะนำ)
+sudo pm2 start app.js
+```
+
+### 10.4 Watch not working
+
+```bash
+# ตรวจสอบว่าเปิด watch
+pm2 show app-name | grep watch
+
+# Start ใหม่พร้อม watch
+pm2 delete app-name
+pm2 start app.js --name app-name --watch --ignore-watch="node_modules logs"
+
+# ตรวจสอบ inotify limit (Linux)
+cat /proc/sys/fs/inotify/max_user_watches
+
+# เพิ่ม limit
+echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+```
+
+### 10.5 Memory leak / high memory usage
+
+```bash
+# ดู memory usage
+pm2 monit
+
+# ตั้ง memory limit
+pm2 start app.js --max-memory-restart 200M
+
+# Force garbage collection (ต้อง start ด้วย flag)
+pm2 start app.js --node-args="--expose-gc"
+
+# ใน code
+if (global.gc) {
+    global.gc();
+}
+```
+
+### 10.6 Cluster mode issues
+
+```bash
+# ปัญหา: Reload ไม่ work
+# ต้องใช้ cluster mode
+pm2 start app.js -i max --name app
+
+# ปัญหา: Sessions ไม่ share ระหว่าง instances
+# แก้ไข: ใช้ external session store (Redis)
+
+# ปัญหา: Graceful shutdown ไม่ work
+# แก้ไข: เพิ่ม wait_ready และ listen_timeout ใน config
+```
+
+---
+
+## 11. Best Practices
+
+### 11.1 Production Checklist
+
+```bash
+# ═══════════════════════════════════════════════════════
+#           PM2 PRODUCTION CHECKLIST
+# ═══════════════════════════════════════════════════════
+
+# ✅ 1. ใช้ Ecosystem file
+pm2 start ecosystem.config.js --env production
+
+# ✅ 2. ตั้งค่า Startup
+pm2 startup
+pm2 save
+
+# ✅ 3. ตั้งค่า Log rotation
+pm2 install pm2-logrotate
+pm2 set pm2-logrotate:max_size 50M
+pm2 set pm2-logrotate:retain 7
+
+# ✅ 4. ใช้ Cluster mode (multi-core)
+pm2 start app.js -i max
+
+# ✅ 5. ตั้งค่า Memory limit
+pm2 start app.js --max-memory-restart 300M
+
+# ✅ 6. Monitor
+pm2 monit
+# หรือใช้ PM2 Plus (cloud monitoring)
+```
+
+### 11.2 Ecosystem File Best Practices
+
+```javascript
+// ecosystem.config.js - Production Ready
+
+module.exports = {
+  apps: [{
+    name: 'api',
+    script: './dist/server.js',    // ใช้ compiled version
+    instances: 'max',              // ใช้ทุก CPU cores
+    exec_mode: 'cluster',
+    
+    // Auto restart
+    autorestart: true,
+    watch: false,                  // ปิด watch ใน production
+    max_memory_restart: '500M',
+    
+    // Logging
+    log_date_format: 'YYYY-MM-DD HH:mm:ss',
+    error_file: '/var/log/api/error.log',
+    out_file: '/var/log/api/out.log',
+    merge_logs: true,
+    
+    // Environment
+    env_production: {
+      NODE_ENV: 'production',
+      PORT: 3000
+    },
+    
+    // Graceful shutdown
+    kill_timeout: 5000,
+    wait_ready: true,
+    listen_timeout: 10000
+  }]
+};
+```
+
+### 11.3 Logging Best Practices
+
+```javascript
+// ใช้ structured logging
+const log = (level, message, data = {}) => {
+    console.log(JSON.stringify({
+        timestamp: new Date().toISOString(),
+        level,
+        message,
+        ...data,
+        pid: process.pid,
+        instance: process.env.INSTANCE_ID
+    }));
+};
+
+// Usage
+log('info', 'Server started', { port: 3000 });
+log('error', 'Database error', { error: err.message });
+```
+
+### 11.4 Graceful Shutdown Best Practices
+
+```javascript
+// ตัวอย่างที่ถูกต้อง
+const server = app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    
+    // บอก PM2 ว่า ready
+    if (process.send) {
+        process.send('ready');
+    }
+});
+
+// Handle graceful shutdown
+const shutdown = async (signal) => {
+    console.log(`${signal} received. Graceful shutdown...`);
+    
+    // 1. หยุดรับ connection ใหม่
+    server.close(async () => {
+        console.log('HTTP server closed');
+        
+        // 2. ปิด database connections
+        await db.close();
+        console.log('Database connections closed');
+        
+        // 3. Exit
+        process.exit(0);
+    });
+    
+    // Force exit หลัง 10 วินาที
+    setTimeout(() => {
+        console.error('Force shutdown');
+        process.exit(1);
+    }, 10000);
+};
+
+process.on('SIGTERM', () => shutdown('SIGTERM'));
+process.on('SIGINT', () => shutdown('SIGINT'));
+```
+
+---
+
+## 📚 Quick Reference Card
+
+```
+┌────────────────────────────────────────────────────────────────────┐
+│                      PM2 QUICK REFERENCE                           │
+├────────────────────────────────────────────────────────────────────┤
+│                                                                    │
+│  🚀 START:                                                         │
+│  pm2 start app.js                   # Basic start                  │
+│  pm2 start app.js --name "api"      # With name                    │
+│  pm2 start app.js -i max            # Cluster mode                 │
+│  pm2 start ecosystem.config.js      # Use config file              │
+│                                                                    │
+│  ⏹️ STOP/RESTART:                                                  │
+│  pm2 stop <name|id|all>             # Stop                         │
+│  pm2 restart <name|id|all>          # Restart                      │
+│  pm2 reload <name|id|all>           # Zero downtime reload         │
+│  pm2 delete <name|id|all>           # Remove from PM2              │
+│                                                                    │
+│  📊 MONITORING:                                                    │
+│  pm2 list                           # List all processes           │
+│  pm2 show <name>                    # Process details              │
+│  pm2 monit                          # Real-time dashboard          │
+│  pm2 logs                           # View logs                    │
+│                                                                    │
+│  📈 SCALING:                                                       │
+│  pm2 scale <name> 4                 # Scale to 4 instances         │
+│  pm2 scale <name> +2                # Add 2 instances              │
+│                                                                    │
+│  🔄 STARTUP:                                                       │
+│  pm2 startup                        # Generate startup script      │
+│  pm2 save                           # Save process list            │
+│  pm2 resurrect                      # Restore saved processes      │
+│                                                                    │
+│  🧹 MAINTENANCE:                                                   │
+│  pm2 flush                          # Clear all logs               │
+│  pm2 reset <name>                   # Reset restart count          │
+│  pm2 update                         # Update PM2 daemon            │
+│                                                                    │
+│  📁 LOG PATHS:                                                     │
+│  ~/.pm2/logs/<name>-out.log         # Standard output              │
+│  ~/.pm2/logs/<name>-error.log       # Error output                 │
+│                                                                    │
+└────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+*ENGSE207 - Software Architecture*  
+*เอกสารประกอบ: PM2 Process Manager*
