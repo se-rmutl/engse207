@@ -223,7 +223,7 @@ docker-workshops/
 | **รูปแบบ** | Step-by-Step Tutorial | Scenario-Based Simulation |
 | **การเรียนรู้** | ทำทีละขั้น | จำลองสถานการณ์ทีม |
 | **Bug Scenario** | Debug container ที่พัง | VARCHAR overflow + validation |
-| **บรรทัด** | ~2,000 | ~2,200 |
+
 
 ---
 
