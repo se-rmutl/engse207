@@ -82,28 +82,28 @@ git config --list
 ### ความหมายของคำสั่ง Git พื้นฐาน
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                          GIT COMMANDS OVERVIEW                               │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│  Working Directory    Staging Area       Local Repository    Remote        │
-│  (โฟลเดอร์ทำงาน)        (พื้นที่เตรียม)        (Git local)         (GitHub)    │
-│                                                                             │
-│       ┌───┐              ┌───┐              ┌───┐            ┌───┐         │
-│       │   │  git add     │   │  git commit  │   │  git push  │   │         │
-│       │   │ ──────────►  │   │ ──────────►  │   │ ────────►  │   │         │
-│       │   │              │   │              │   │            │   │         │
-│       │   │  ◄────────── │   │              │   │ ◄──────────│   │         │
-│       │   │  git restore │   │              │   │  git pull  │   │         │
-│       └───┘              └───┘              └───┘            └───┘         │
-│                                                                             │
-│  git status  : ดูสถานะไฟล์                                                   │
+┌───────────────────────────────────────────────────────────────────────────┐
+│                          GIT COMMANDS OVERVIEW                            │
+├───────────────────────────────────────────────────────────────────────────┤
+│                                                                           │
+│  Working Directory    Staging Area       Local Repository    Remote       │
+│  (โฟลเดอร์ทำงาน)        (พื้นที่เตรียม)        (Git local)         (GitHub)     │
+│                                                                           │
+│       ┌───┐              ┌───┐              ┌───┐            ┌───┐        │
+│       │   │  git add     │   │  git commit  │   │  git push  │   │        │
+│       │   │ ──────────►  │   │ ──────────►  │   │ ────────►  │   │        │
+│       │   │              │   │              │   │            │   │        │
+│       │   │  ◄────────── │   │              │   │ ◄──────────│   │        │
+│       │   │  git restore │   │              │   │  git pull  │   │        │
+│       └───┘              └───┘              └───┘            └───┘        │
+│                                                                           │
+│  git status  : ดูสถานะไฟล์                                                  │
 │  git log     : ดูประวัติ commits                                             │
-│  git branch  : ดู/สร้าง branch                                               │
-│  git checkout: สลับ branch                                                  │
-│  git merge   : รวม branch                                                   │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
+│  git branch  : ดู/สร้าง branch                                              │
+│  git checkout: สลับ branch                                                 │
+│  git merge   : รวม branch                                                 │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -128,7 +128,9 @@ git init
 # ตรวจสอบสถานะ
 git status
 # Output: On branch main, No commits yet
+```
 
+```bash
 # สร้างไฟล์ README.md
 cat > README.md << 'EOF'
 # 📇 Contact Manager
@@ -147,12 +149,13 @@ cat > README.md << 'EOF'
 - Container: Docker Compose
 
 ## How to Run
-```
 docker compose up -d
-```
+
 Open: http://localhost:8080
 EOF
+```
 
+```bash
 # สร้าง .gitignore
 cat > .gitignore << 'EOF'
 # Dependencies
@@ -166,7 +169,9 @@ node_modules/
 .DS_Store
 Thumbs.db
 EOF
+```
 
+```bash
 # สร้าง .env.example
 cat > .env.example << 'EOF'
 DB_HOST=db
@@ -178,7 +183,9 @@ POSTGRES_USER=contactuser
 POSTGRES_PASSWORD=contactpass
 POSTGRES_DB=contactdb
 EOF
+```
 
+```bash
 # ดูสถานะ - มีไฟล์ใหม่ 3 ไฟล์
 git status
 # Output:
@@ -280,7 +287,9 @@ git branch
 # Output:
 #   main
 # * feature/frontend
+```
 
+```bash
 # ============================================
 # 📝 สร้างไฟล์ Frontend
 # ============================================
@@ -350,7 +359,9 @@ cat > frontend/index.html << 'EOF'
 </body>
 </html>
 EOF
+```
 
+```bash
 # ดูสถานะหลังสร้างไฟล์
 git status
 # Output:
@@ -364,7 +375,9 @@ git status
 git add frontend/index.html
 git commit -m "feat(frontend): add index.html structure"
 # Output: [feature/frontend 1a2b3c4] feat(frontend): add index.html structure
+```
 
+```bash
 # ----- 2. สร้าง style.css -----
 cat > frontend/css/style.css << 'EOF'
 /* Contact Manager Styles - by สมชาย */
@@ -545,7 +558,9 @@ body {
     display: block;
 }
 EOF
+```
 
+```bash
 # Commit CSS
 git add frontend/css/style.css
 git status
@@ -558,7 +573,9 @@ git log --oneline
 # 1a2b3c4 feat(frontend): add index.html structure
 # def5678 Add project folder structure
 # abc1234 Initial commit: project setup
+```
 
+```bash
 # ----- 3. สร้าง app.js -----
 cat > frontend/js/app.js << 'EOF'
 // ============================================
@@ -726,7 +743,9 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
 
 document.addEventListener('DOMContentLoaded', loadContacts);
 EOF
+```
 
+```bash
 # Commit JavaScript
 git add frontend/js/app.js
 git commit -m "feat(frontend): add JavaScript functionality"
@@ -811,7 +830,9 @@ git branch
 #   feature/frontend
 # * feature/backend
 #   main
+```
 
+```bash
 # ============================================
 # 📝 สร้างไฟล์ Backend
 # ============================================
@@ -841,11 +862,15 @@ INSERT INTO contacts (name, email, phone) VALUES
 -- แสดงข้อมูลที่เพิ่ม
 SELECT * FROM contacts;
 EOF
+```
 
+```bash
 # Commit database schema
 git add database/init.sql
 git commit -m "feat(db): add database schema and seed data"
+```
 
+```bash
 # ----- 2. สร้าง backend/package.json -----
 cat > backend/package.json << 'EOF'
 {
@@ -866,10 +891,14 @@ cat > backend/package.json << 'EOF'
   "license": "MIT"
 }
 EOF
+```
 
+```bash
 git add backend/package.json
 git commit -m "feat(backend): add package.json with dependencies"
+```
 
+```bash
 # ----- 3. สร้าง backend/src/database/db.js -----
 cat > backend/src/database/db.js << 'EOF'
 // ============================================
@@ -897,10 +926,14 @@ pool.on('error', (err) => {
 
 module.exports = pool;
 EOF
+```
 
+```bash
 git add backend/src/database/db.js
 git commit -m "feat(backend): add database connection module"
+```
 
+```bash
 # ----- 4. สร้าง backend/src/controllers/contactController.js -----
 cat > backend/src/controllers/contactController.js << 'EOF'
 // ============================================
@@ -1006,7 +1039,9 @@ exports.deleteContact = async (req, res) => {
     }
 };
 EOF
+```
 
+```bash
 git add backend/src/controllers/contactController.js
 git commit -m "feat(backend): add contact controller with CRUD operations"
 
@@ -1031,10 +1066,14 @@ router.delete('/:id', contactController.deleteContact);
 
 module.exports = router;
 EOF
+```
 
+```bash
 git add backend/src/routes/contactRoutes.js
 git commit -m "feat(backend): add contact routes"
+```
 
+```bash
 # ----- 6. สร้าง backend/server.js -----
 cat > backend/server.js << 'EOF'
 // ============================================
@@ -1097,10 +1136,14 @@ app.listen(PORT, () => {
     console.log('=====================================');
 });
 EOF
+```
 
+```bash
 git add backend/server.js
 git commit -m "feat(backend): add Express server with middleware"
+```
 
+```bash
 # ----- 7. สร้าง backend/Dockerfile -----
 cat > backend/Dockerfile << 'EOF'
 # ============================================
@@ -1131,7 +1174,9 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s \
 # Start server
 CMD ["node", "server.js"]
 EOF
+```
 
+```bash
 git add backend/Dockerfile
 git commit -m "feat(backend): add Dockerfile"
 
@@ -1200,7 +1245,9 @@ cd ~/projects/contact-manager
 
 # อยู่ที่ main branch
 git checkout main
+```
 
+```bash
 # สร้าง docker-compose.yml
 cat > docker-compose.yml << 'EOF'
 # ============================================
@@ -1260,7 +1307,9 @@ services:
 volumes:
   postgres_data:
 EOF
+```
 
+```bash
 git add docker-compose.yml
 git commit -m "feat(infra): add docker-compose.yml"
 
@@ -1299,7 +1348,9 @@ server {
     }
 }
 EOF
+```
 
+```bash
 git add nginx/default.conf
 git commit -m "feat(infra): add nginx configuration"
 
@@ -1603,6 +1654,9 @@ cd ~/projects/contact-manager
 
 # สร้าง Bug Report
 mkdir -p docs
+```
+
+```bash
 cat > docs/BUG_REPORT.md << 'EOF'
 # 🐛 Bug Report
 
@@ -1693,7 +1747,9 @@ if (name.length > MAX_NAME_LENGTH) {
 **Assigned to:** สมชาย (Frontend), สมหญิง (Backend)  
 **Due:** Day 3
 EOF
+```
 
+```bash
 # Commit Bug Report
 git add docs/BUG_REPORT.md
 git commit -m "docs: add bug report #001 - name length validation"
@@ -1729,7 +1785,9 @@ cat docs/BUG_REPORT.md
 # สร้าง branch สำหรับ fix
 git checkout -b fix/backend-validation
 # Output: Switched to a new branch 'fix/backend-validation'
+```
 
+```bash
 # ============================================
 # 📝 แก้ไฟล์ contactController.js
 # ============================================
@@ -1858,7 +1916,9 @@ exports.deleteContact = async (req, res) => {
     }
 };
 EOF
+```
 
+```bash
 # ดูความเปลี่ยนแปลง
 git diff backend/src/controllers/contactController.js
 # Output: แสดงสิ่งที่เปลี่ยน (สีเขียว = เพิ่ม, สีแดง = ลบ)
@@ -1921,7 +1981,9 @@ git pull origin main 2>/dev/null || true
 # สร้าง branch สำหรับ fix
 git checkout -b fix/frontend-validation
 # Output: Switched to a new branch 'fix/frontend-validation'
+```
 
+```bash
 # ============================================
 # 📝 แก้ไฟล์ index.html
 # ============================================
@@ -1992,10 +2054,14 @@ cat > frontend/index.html << 'EOF'
 </body>
 </html>
 EOF
+```
 
+```bash
 git add frontend/index.html
 git commit -m "fix(frontend): add maxlength and character counter to name input"
+```
 
+```bash
 # ============================================
 # 📝 เพิ่ม CSS สำหรับ character count
 # ============================================
@@ -2025,7 +2091,9 @@ cat >> frontend/css/style.css << 'EOF'
     border-color: #f44336;
 }
 EOF
+```
 
+```bash
 git add frontend/css/style.css
 git commit -m "fix(frontend): add character count styling"
 
@@ -2237,7 +2305,9 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCharCount();
 });
 EOF
+```
 
+```bash
 git add frontend/js/app.js
 git commit -m "fix(frontend): add name length validation in JavaScript
 
@@ -2519,39 +2589,39 @@ git commit -m "docs: update README"
 ## 🎯 สรุป Git Workflow ของทีม
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                        TEAM GIT WORKFLOW SUMMARY                            │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│  1️⃣ SETUP                                                                    │
+┌────────────────────────────────────────────────────────────────────────────┐
+│                        TEAM GIT WORKFLOW SUMMARY                           │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  1️⃣ SETUP                                                                  │
 │     └── Team Lead: git init → Initial commit → Create structure            │
-│                                                                             │
-│  2️⃣ DEVELOPMENT                                                              │
+│                                                                            │
+│  2️⃣ DEVELOPMENT                                                            │
 │     ├── Developer A: git checkout -b feature/xxx                           │
 │     │               └── work → git add → git commit → ...                  │
-│     │                                                                       │
+│     │                                                                      │
 │     └── Developer B: git checkout -b feature/yyy                           │
 │                     └── work → git add → git commit → ...                  │
-│                                                                             │
-│  3️⃣ INTEGRATION                                                              │
+│                                                                            │
+│  3️⃣ INTEGRATION                                                            │
 │     └── Team Lead: git checkout main                                       │
 │                   └── git merge feature/xxx                                │
 │                   └── git merge feature/yyy                                │
-│                                                                             │
-│  4️⃣ TESTING                                                                  │
-│     └── Tester: docker compose up → run tests → report bugs               │
-│                                                                             │
-│  5️⃣ BUG FIX                                                                  │
+│                                                                            │
+│  4️⃣ TESTING                                                                │
+│     └── Tester: docker compose up → run tests → report bugs                │
+│                                                                            │
+│  5️⃣ BUG FIX                                                                │
 │     ├── Developer: git checkout -b fix/bug-xxx                             │
 │     │             └── fix → git commit → git checkout main                 │
 │     │             └── git merge fix/bug-xxx                                │
-│     │                                                                       │
-│     └── Tester: retest → verify → close bug                               │
-│                                                                             │
-│  6️⃣ RELEASE                                                                  │
+│     │                                                                      │
+│     └── Tester: retest → verify → close bug                                │
+│                                                                            │
+│  6️⃣ RELEASE                                                                │
 │     └── Team Lead: git tag -a v1.0 -m "Release v1.0"                       │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
