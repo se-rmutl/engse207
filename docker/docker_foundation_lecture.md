@@ -51,15 +51,15 @@
 
 ```
 ╔═════════════════════════════════════════════════════════════════╗
-║                  Ubuntu VM - Week 6 Setup                        ║
+║                  Ubuntu VM - Week 6 Setup                       ║
 ║  ┌───────────────────────────────────────────────────────────┐  ║
 ║  │  🌐 Nginx (Web Server)         Port 443                   │  ║
 ║  └───────────────────────────────────────────────────────────┘  ║
-║                              │                                   ║
+║                              │                                  ║
 ║  ┌───────────────────────────────────────────────────────────┐  ║
 ║  │  ⚙️ Node.js + Express (App)    Port 3000                  │  ║
 ║  └───────────────────────────────────────────────────────────┘  ║
-║                              │                                   ║
+║                              │                                  ║
 ║  ┌───────────────────────────────────────────────────────────┐  ║
 ║  │  🗄️ PostgreSQL (Database)      Port 5432                  │  ║
 ║  └───────────────────────────────────────────────────────────┘  ║
@@ -71,51 +71,51 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                 PROBLEMS WITH TRADITIONAL DEPLOYMENT                     │
+│                 PROBLEMS WITH TRADITIONAL DEPLOYMENT                    │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  1. 😰 "It works on my machine!" Problem                                 │
-│     ┌─────────────┐                      ┌─────────────┐                │
-│     │ Developer's │  Deploy to Server    │   Server    │                │
-│     │   Machine   │ ─────────────────────►│   Machine   │                │
-│     │  Node 20    │       ❌ ERROR!       │  Node 18    │                │
-│     │  Ubuntu 24  │                      │  Ubuntu 22  │                │
-│     └─────────────┘                      └─────────────┘                │
-│                                                                          │
-│  2. 📦 Dependency Hell                                                   │
-│     ┌──────────────────────────────────────────────────────────┐       │
-│     │  Same Server                                              │       │
-│     │  ┌──────────┐   ┌──────────┐   ┌──────────┐              │       │
-│     │  │  App A   │   │  App B   │   │  App C   │              │       │
-│     │  │ Node 16  │   │ Node 18  │   │ Node 20  │ ← Conflict!  │       │
-│     │  │ pg 8.0   │   │ pg 8.5   │   │ pg 8.7   │              │       │
-│     │  └──────────┘   └──────────┘   └──────────┘              │       │
-│     └──────────────────────────────────────────────────────────┘       │
-│                                                                          │
-│  3. ⏱️ Environment Setup Takes Forever                                   │
+│                                                                         │
+│  1. 😰 "It works on my machine!" Problem                                │
+│     ┌─────────────┐                       ┌─────────────┐               │
+│     │ Developer's │  Deploy to Server     │   Server    │               │
+│     │   Machine   │ ─────────────────────►│   Machine   │               │
+│     │  Node 20    │       ❌ ERROR!       │  Node 18    │               │
+│     │  Ubuntu 24  │                       │  Ubuntu 22  │               │
+│     └─────────────┘                       └─────────────┘               │
+│                                                                         │
+│  2. 📦 Dependency Hell                                                  │
+│     ┌──────────────────────────────────────────────────────────┐        │
+│     │  Same Server                                             │        │
+│     │  ┌──────────┐   ┌──────────┐   ┌──────────┐              │        │
+│     │  │  App A   │   │  App B   │   │  App C   │              │        │
+│     │  │ Node 16  │   │ Node 18  │   │ Node 20  │ ← Conflict!  │        │
+│     │  │ pg 8.0   │   │ pg 8.5   │   │ pg 8.7   │              │        │
+│     │  └──────────┘   └──────────┘   └──────────┘              │        │
+│     └──────────────────────────────────────────────────────────┘        │
+│                                                                         │
+│  3. ⏱️ Environment Setup Takes Forever                                  │
 │     Developer joins team → Setup environment → 1-2 days!                │
 │     - Install Node.js (specific version)                                │
-│     - Install PostgreSQL                                                 │
-│     - Install Nginx                                                      │
-│     - Configure everything...                                            │
-│                                                                          │
-│  4. 🔄 Hard to Scale                                                     │
-│     ┌─────────────┐                                                      │
+│     - Install PostgreSQL                                                │
+│     - Install Nginx                                                     │
+│     - Configure everything...                                           │
+│                                                                         │
+│  4. 🔄 Hard to Scale                                                    │
+│     ┌─────────────┐                                                     │
 │     │   VM 1      │  Need to clone?                                     │
 │     │ All setup   │  → Manual setup each new server                     │
 │     └─────────────┘  → Configuration drift                              │
-│                                                                          │
+│                                                                         │
 │  5. 🏗️ Resource Inefficiency                                            │
-│     ┌─────────────────────────────────────────────────────────┐        │
-│     │  Physical Server (32GB RAM, 8 CPU)                      │        │
-│     │  ┌───────────┐  ┌───────────┐  ┌───────────┐           │        │
-│     │  │   VM 1    │  │   VM 2    │  │   VM 3    │           │        │
-│     │  │  8GB RAM  │  │  8GB RAM  │  │  8GB RAM  │           │        │
-│     │  │  Full OS  │  │  Full OS  │  │  Full OS  │  ← Heavy! │        │
-│     │  │   App A   │  │   App B   │  │   App C   │           │        │
-│     │  └───────────┘  └───────────┘  └───────────┘           │        │
-│     └─────────────────────────────────────────────────────────┘        │
-│                                                                          │
+│     ┌─────────────────────────────────────────────────────────┐         │
+│     │  Physical Server (32GB RAM, 8 CPU)                      │         │
+│     │  ┌───────────┐  ┌───────────┐  ┌───────────┐            │         │
+│     │  │   VM 1    │  │   VM 2    │  │   VM 3    │            │         │
+│     │  │  8GB RAM  │  │  8GB RAM  │  │  8GB RAM  │            │         │
+│     │  │  Full OS  │  │  Full OS  │  │  Full OS  │  ← Heavy!  │         │
+│     │  │   App A   │  │   App B   │  │   App C   │            │         │
+│     │  └───────────┘  └───────────┘  └───────────┘            │         │
+│     └─────────────────────────────────────────────────────────┘         │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -125,30 +125,30 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    REAL-WORLD SCENARIO                                   │
+│                    REAL-WORLD SCENARIO                                  │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  👨‍💻 นักศึกษา A (Windows 11)                                              │
-│  - Node.js: 20.10.0                                                      │
-│  - npm: 10.2.3                                                           │
-│  - PostgreSQL: 16.1                                                      │
-│                                                                          │
+│                                                                         │
+│  👨‍💻 นักศึกษา A (Windows 11)                                               │
+│  - Node.js: 20.10.0                                                     │
+│  - npm: 10.2.3                                                          │
+│  - PostgreSQL: 16.1                                                     │
+│                                                                         │
 │  👩‍💻 นักศึกษา B (macOS Sonoma)                                             │
-│  - Node.js: 18.19.0                                                      │
-│  - npm: 9.8.1                                                            │
-│  - PostgreSQL: 15.4                                                      │
-│                                                                          │
+│  - Node.js: 18.19.0                                                     │
+│  - npm: 9.8.1                                                           │
+│  - PostgreSQL: 15.4                                                     │
+│                                                                         │
 │  👨‍💻 นักศึกษา C (Ubuntu 22.04)                                             │
-│  - Node.js: 20.11.1                                                      │
-│  - npm: 10.5.0                                                           │
-│  - PostgreSQL: 14.10                                                     │
-│                                                                          │
-│  🖥️ Production Server (Ubuntu 24.04)                                     │
-│  - Node.js: ???                                                          │
-│  - PostgreSQL: ???                                                       │
-│                                                                          │
-│  ❓ คำถาม: ใช้ version อะไรดี? ทำไม Code ของ A ไม่ทำงานบนเครื่อง B?         │
-│                                                                          │
+│  - Node.js: 20.11.1                                                     │
+│  - npm: 10.5.0                                                          │
+│  - PostgreSQL: 14.10                                                    │
+│                                                                         │
+│  🖥️ Production Server (Ubuntu 24.04)                                    │
+│  - Node.js: ???                                                         │
+│  - PostgreSQL: ???                                                      │
+│                                                                         │
+│  ❓ คำถาม: ใช้ version อะไรดี? ทำไม Code ของ A ไม่ทำงานบนเครื่อง B?          │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -156,32 +156,32 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    DOCKER SOLUTION                                       │
+│                    DOCKER SOLUTION                                      │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  ✅ "Build Once, Run Anywhere"                                           │
-│                                                                          │
+│                                                                         │
+│  ✅ "Build Once, Run Anywhere"                                          │
+│                                                                         │
 │     ┌─────────────────────────────────────────────────────────────┐     │
-│     │                    Docker Container                          │     │
+│     │                    Docker Container                         │     │
 │     │  ┌─────────────────────────────────────────────────────┐    │     │
-│     │  │  Application Code                                    │    │     │
+│     │  │  Application Code                                   │    │     │
 │     │  ├─────────────────────────────────────────────────────┤    │     │
-│     │  │  Dependencies (node_modules, etc.)                   │    │     │
+│     │  │  Dependencies (node_modules, etc.)                  │    │     │
 │     │  ├─────────────────────────────────────────────────────┤    │     │
 │     │  │  Runtime (Node.js 20.10.0)                          │    │     │
 │     │  ├─────────────────────────────────────────────────────┤    │     │
 │     │  │  OS Libraries (Alpine Linux)                        │    │     │
 │     │  └─────────────────────────────────────────────────────┘    │     │
 │     └─────────────────────────────────────────────────────────────┘     │
-│                              │                                           │
-│                              ▼                                           │
-│     ┌───────────┐     ┌───────────┐     ┌───────────┐                  │
-│     │ Windows   │     │  macOS    │     │  Linux    │                  │
-│     │   ✅      │     │   ✅      │     │   ✅      │                  │
-│     └───────────┘     └───────────┘     └───────────┘                  │
-│                                                                          │
-│  ทุกคนใช้ Environment เดียวกัน 100%!                                      │
-│                                                                          │
+│                              │                                          │
+│                              ▼                                          │
+│     ┌───────────┐     ┌───────────┐     ┌───────────┐                   │
+│     │ Windows   │     │  macOS    │     │  Linux    │                   │
+│     │   ✅      │     │   ✅      │     │   ✅      │                   │
+│     └───────────┘     └───────────┘     └───────────┘                   │
+│                                                                         │
+│  ทุกคนใช้ Environment เดียวกัน 100%!                                        │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -189,36 +189,36 @@
 
 ```
 ┌───────────────────────────────────────┬───────────────────────────────────────┐
-│        BEFORE DOCKER                  │         AFTER DOCKER                   │
+│        BEFORE DOCKER                  │         AFTER DOCKER                  │
 ├───────────────────────────────────────┼───────────────────────────────────────┤
-│                                       │                                        │
-│  Setup new developer:                 │  Setup new developer:                  │
-│  1. Install Node.js (30 min)          │  1. Install Docker (10 min)            │
-│  2. Install PostgreSQL (20 min)       │  2. docker compose up (1 min)          │
-│  3. Install Nginx (10 min)            │                                        │
-│  4. Configure environment (1 hr)      │  Done! ✅                               │
-│  5. Fix version conflicts (???)       │                                        │
-│                                       │                                        │
-│  Total: 2-4 hours + frustration       │  Total: 15 minutes                     │
-│                                       │                                        │
+│                                       │                                       │
+│  Setup new developer:                 │  Setup new developer:                 │
+│  1. Install Node.js (30 min)          │  1. Install Docker (10 min)           │
+│  2. Install PostgreSQL (20 min)       │  2. docker compose up (1 min)         │
+│  3. Install Nginx (10 min)            │                                       │
+│  4. Configure environment (1 hr)      │  Done! ✅                             │
+│  5. Fix version conflicts (???)       │                                       │
+│                                       │                                       │
+│  Total: 2-4 hours + frustration       │  Total: 15 minutes                    │
+│                                       │                                       │
 ├───────────────────────────────────────┼───────────────────────────────────────┤
-│                                       │                                        │
-│  Deploy to production:                │  Deploy to production:                 │
-│  1. SSH to server                     │  1. docker push (upload image)         │
-│  2. Install dependencies              │  2. docker pull (on server)            │
-│  3. Configure services                │  3. docker run                         │
-│  4. Pray it works 🙏                   │                                        │
-│                                       │  Guaranteed to work! ✅                 │
-│                                       │                                        │
+│                                       │                                       │
+│  Deploy to production:                │  Deploy to production:                │
+│  1. SSH to server                     │  1. docker push (upload image)        │
+│  2. Install dependencies              │  2. docker pull (on server)           │
+│  3. Configure services                │  3. docker run                        │
+│  4. Pray it works 🙏                   │                                      │
+│                                       │  Guaranteed to work! ✅               │
+│                                       │                                       │
 ├───────────────────────────────────────┼───────────────────────────────────────┤
-│                                       │                                        │
-│  Scale to 3 servers:                  │  Scale to 3 servers:                   │
-│  1. Setup VM 1 manually               │  1. docker run (Server 1)              │
-│  2. Setup VM 2 manually               │  2. docker run (Server 2)              │
-│  3. Setup VM 3 manually               │  3. docker run (Server 3)              │
-│  4. Each slightly different 😱        │                                        │
-│                                       │  Identical copies! ✅                   │
-│                                       │                                        │
+│                                       │                                       │
+│  Scale to 3 servers:                  │  Scale to 3 servers:                  │
+│  1. Setup VM 1 manually               │  1. docker run (Server 1)             │
+│  2. Setup VM 2 manually               │  2. docker run (Server 2)             │
+│  3. Setup VM 3 manually               │  3. docker run (Server 3)             │
+│  4. Each slightly different 😱        │                                       │
+│                                       │  Identical copies! ✅                 │
+│                                       │                                       │
 └───────────────────────────────────────┴───────────────────────────────────────┘
 ```
 
@@ -230,15 +230,15 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                         WHAT IS DOCKER?                                  │
+│                         WHAT IS DOCKER?                                 │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  Docker คือ Platform สำหรับ:                                             │
-│                                                                          │
+│                                                                         │
+│  Docker คือ Platform สำหรับ:                                              │
+│                                                                         │
 │  1. BUILD   → สร้าง Container Images จาก Application                     │
-│  2. SHIP    → แจกจ่าย Images ผ่าน Registry (เช่น Docker Hub)             │
-│  3. RUN     → รัน Containers บนเครื่องใดก็ได้ที่มี Docker                   │
-│                                                                          │
+│  2. SHIP    → แจกจ่าย Images ผ่าน Registry (เช่น Docker Hub)               │
+│  3. RUN     → รัน Containers บนเครื่องใดก็ได้ที่มี Docker                       │
+│                                                                         │
 │     ┌─────────┐          ┌─────────┐          ┌─────────┐               │
 │     │  BUILD  │ ────────►│  SHIP   │ ────────►│   RUN   │               │
 │     │         │          │         │          │         │               │
@@ -246,11 +246,11 @@
 │     │ │ 📦  │ │          │Registry │          │ │ 🏃  │ │               │
 │     │ └─────┘ │          │         │          │ └─────┘ │               │
 │     └─────────┘          └─────────┘          └─────────┘               │
-│                                                                          │
-│  "Package your application with all its dependencies                     │
-│   into a standardized unit for software development"                     │
-│                                  — Docker Inc.                           │
-│                                                                          │
+│                                                                         │
+│  "Package your application with all its dependencies                    │
+│   into a standardized unit for software development"                    │
+│                                  — Docker Inc.                          │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -260,111 +260,111 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    IMAGE vs CONTAINER                                    │
+│                    IMAGE vs CONTAINER                                   │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  🖼️ IMAGE (Read-only Template)        📦 CONTAINER (Running Instance)    │
-│  ─────────────────────────────        ──────────────────────────────     │
-│                                                                          │
-│  • เหมือน "แม่พิมพ์" หรือ "Blueprint"    • เหมือน "สิ่งที่สร้างจากแม่พิมพ์"      │
-│  • ไม่เปลี่ยนแปลง (Immutable)           • รันได้, หยุดได้, ลบได้              │
-│  • ประกอบด้วย Layers                  • มี Writable Layer ด้านบน          │
-│  • Download ได้จาก Registry           • สร้างจาก Image                   │
-│                                                                          │
+│                                                                         │
+│  🖼️ IMAGE (Read-only Template)        📦 CONTAINER (Running Instance)   │
+│  ─────────────────────────────        ──────────────────────────────    │
+│                                                                         │
+│  • เหมือน "แม่พิมพ์" หรือ "Blueprint"    • เหมือน "สิ่งที่สร้างจากแม่พิมพ์"           │
+│  • ไม่เปลี่ยนแปลง (Immutable)           • รันได้, หยุดได้, ลบได้                │
+│  • ประกอบด้วย Layers                  • มี Writable Layer ด้านบน           │
+│  • Download ได้จาก Registry           • สร้างจาก Image                    │
+│                                                                         │
 │  ┌──────────────────────────────────────────────────────────────────┐   │
-│  │                        ANALOGY                                    │   │
+│  │                        ANALOGY                                   │   │
 │  ├──────────────────────────────────────────────────────────────────┤   │
-│  │                                                                   │   │
-│  │     Image = Class (พิมพ์เขียว)         Container = Object (instance) │   │
-│  │                                                                   │   │
-│  │     class Car {                         const myCar = new Car();  │   │
-│  │       engine: V8;                       myCar.start();            │   │
-│  │       wheels: 4;                        myCar.drive();            │   │
-│  │     }                                   myCar.stop();             │   │
-│  │                                                                   │   │
-│  │     Image: node:20-alpine              Container: taskboard-api   │   │
-│  │     (Template สำเร็จรูป)                  (App ที่กำลังรันอยู่)           │   │
-│  │                                                                   │   │
+│  │                                                                  │   │
+│  │     Image = Class (พิมพ์เขียว)         Container = Object (instance)│   │
+│  │                                                                  │   │
+│  │     class Car {                         const myCar = new Car()  │   │
+│  │       engine: V8;                       myCar.start();           │   │
+│  │       wheels: 4;                        myCar.drive();           │   │
+│  │     }                                   myCar.stop();            │   │
+│  │                                                                  │   │
+│  │     Image: node:20-alpine              Container: taskboard-api  │   │
+│  │     (Template สำเร็จรูป)                  (App ที่กำลังรันอยู่)          │   │
+│  │                                                                  │   │
 │  └──────────────────────────────────────────────────────────────────┘   │
-│                                                                          │
+│                                                                         │
 │  ┌──────────────────────────────────────────────────────────────────┐   │
-│  │                     ONE IMAGE → MANY CONTAINERS                   │   │
-│  │                                                                   │   │
-│  │              ┌──────────────┐                                     │   │
-│  │              │    IMAGE     │                                     │   │
-│  │              │ node:20-alpine│                                    │   │
-│  │              └───────┬──────┘                                     │   │
-│  │                      │                                            │   │
+│  │                     ONE IMAGE → MANY CONTAINERS                  │   │
+│  │                                                                  │   │
+│  │              ┌──────────────┐                                    │   │
+│  │              │    IMAGE     │                                    │   │
+│  │              │ node:20-alpine│                                   │   │
+│  │              └───────┬──────┘                                    │   │
+│  │                      │                                           │   │
 │  │        ┌─────────────┼─────────────┐                             │   │
-│  │        │             │             │                              │   │
-│  │        ▼             ▼             ▼                              │   │
+│  │        │             │             │                             │   │
+│  │        ▼             ▼             ▼                             │   │
 │  │   ┌─────────┐   ┌─────────┐   ┌─────────┐                        │   │
 │  │   │Container│   │Container│   │Container│                        │   │
 │  │   │   #1    │   │   #2    │   │   #3    │                        │   │
 │  │   │ :3001   │   │ :3002   │   │ :3003   │                        │   │
 │  │   └─────────┘   └─────────┘   └─────────┘                        │   │
-│  │                                                                   │   │
+│  │                                                                  │   │
 │  └──────────────────────────────────────────────────────────────────┘   │
-│                                                                          │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### 2.2.2 Image Layers
 
 ```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                         IMAGE LAYERS                                     │
-├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  Docker Image ประกอบด้วยหลาย Layers ซ้อนกัน:                              │
-│                                                                          │
-│  ┌─────────────────────────────────────────────┐ ◄── Layer 5: App Code  │
-│  │  COPY . /app                                │     (Your code)        │
-│  │  CMD ["node", "server.js"]                  │     ~1 MB              │
-│  ├─────────────────────────────────────────────┤                        │
+┌───────────────────────────────────────────────────────────────────────────┐
+│                         IMAGE LAYERS                                      │
+├───────────────────────────────────────────────────────────────────────────┤
+│                                                                           │
+│  Docker Image ประกอบด้วยหลาย Layers ซ้อนกัน:                                 │
+│                                                                           │
+│  ┌─────────────────────────────────────────────┐ ◄── Layer 5: App Code    │
+│  │  COPY . /app                                │     (Your code)          │
+│  │  CMD ["node", "server.js"]                  │     ~1 MB                │
+│  ├─────────────────────────────────────────────┤                          │
 │  │  RUN npm install                            │ ◄── Layer 4: Dependencies│
-│  │  (node_modules)                             │     ~100 MB            │
-│  ├─────────────────────────────────────────────┤                        │
-│  │  WORKDIR /app                               │ ◄── Layer 3: Working Dir│
-│  │  COPY package*.json ./                      │     ~1 KB              │
-│  ├─────────────────────────────────────────────┤                        │
-│  │  Node.js 20 + npm                           │ ◄── Layer 2: Runtime   │
-│  │                                             │     ~150 MB            │
-│  ├─────────────────────────────────────────────┤                        │
-│  │  Alpine Linux (minimal OS)                  │ ◄── Layer 1: Base OS   │
-│  │                                             │     ~5 MB              │
-│  └─────────────────────────────────────────────┘                        │
-│                                                                          │
-│  ✅ ข้อดีของ Layer System:                                               │
-│                                                                          │
-│  1. 🔄 CACHING - ถ้า Layer ไม่เปลี่ยน → ใช้ Cache → Build เร็วขึ้น!        │
-│                                                                          │
-│  2. 💾 SHARING - หลาย Images ใช้ Layer เดียวกันได้                        │
-│     ┌─────────┐   ┌─────────┐   ┌─────────┐                            │
-│     │ Image A │   │ Image B │   │ Image C │                            │
-│     │  App A  │   │  App B  │   │  App C  │                            │
-│     └────┬────┘   └────┬────┘   └────┬────┘                            │
-│          │             │             │                                  │
-│          └─────────────┼─────────────┘                                  │
-│                        ▼                                                │
-│               ┌─────────────────┐                                       │
-│               │  node:20-alpine │ ← Download ครั้งเดียว!                │
-│               │   (Base Image)   │                                      │
-│               └─────────────────┘                                       │
-│                                                                          │
-│  3. 📏 SMALL SIZE - แต่ละ Layer เก็บเฉพาะส่วนที่เปลี่ยน                    │
-│                                                                          │
-└─────────────────────────────────────────────────────────────────────────┘
+│  │  (node_modules)                             │     ~100 MB              │
+│  ├─────────────────────────────────────────────┤                          │
+│  │  WORKDIR /app                               │ ◄── Layer 3: Working Dir │
+│  │  COPY package*.json ./                      │     ~1 KB                │
+│  ├─────────────────────────────────────────────┤                          │
+│  │  Node.js 20 + npm                           │ ◄── Layer 2: Runtime     │
+│  │                                             │     ~150 MB              │
+│  ├─────────────────────────────────────────────┤                          │
+│  │  Alpine Linux (minimal OS)                  │ ◄── Layer 1: Base OS     │
+│  │                                             │     ~5 MB                │
+│  └─────────────────────────────────────────────┘                          │
+│                                                                           │
+│  ✅ ข้อดีของ Layer System:                                                  │
+│                                                                           │
+│  1. 🔄 CACHING - ถ้า Layer ไม่เปลี่ยน → ใช้ Cache → Build เร็วขึ้น!               │
+│                                                                           │
+│  2. 💾 SHARING - หลาย Images ใช้ Layer เดียวกันได้                            │
+│     ┌─────────┐   ┌─────────┐   ┌─────────┐                               │
+│     │ Image A │   │ Image B │   │ Image C │                               │
+│     │  App A  │   │  App B  │   │  App C  │                               │
+│     └────┬────┘   └────┬────┘   └────┬────┘                               │
+│          │             │             │                                    │
+│          └─────────────┼─────────────┘                                    │
+│                        ▼                                                  │
+│               ┌─────────────────┐                                         │
+│               │  node:20-alpine │ ← Download ครั้งเดียว!                     │
+│               │   (Base Image)  │                                         │
+│               └─────────────────┘                                         │
+│                                                                           │
+│  3. 📏 SMALL SIZE - แต่ละ Layer เก็บเฉพาะส่วนที่เปลี่ยน                          │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### 2.2.3 Container vs Virtual Machine
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│               CONTAINERS vs VIRTUAL MACHINES                             │
+│               CONTAINERS vs VIRTUAL MACHINES                            │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│     VIRTUAL MACHINES                      CONTAINERS                     │
+│                                                                         │
+│     VIRTUAL MACHINES                      CONTAINERS                    │
 │  ┌─────────────────────────────┐      ┌─────────────────────────────┐   │
 │  │  ┌───────┐┌───────┐┌───────┐│      │  ┌───────┐┌───────┐┌───────┐│   │
 │  │  │ App A ││ App B ││ App C ││      │  │ App A ││ App B ││ App C ││   │
@@ -372,19 +372,19 @@
 │  │  │ Bins/ ││ Bins/ ││ Bins/ ││      │  │ Bins/ ││ Bins/ ││ Bins/ ││   │
 │  │  │ Libs  ││ Libs  ││ Libs  ││      │  │ Libs  ││ Libs  ││ Libs  ││   │
 │  │  ├───────┤├───────┤├───────┤│      │  └───────┘└───────┘└───────┘│   │
-│  │  │Guest  ││Guest  ││Guest  ││      │  ┌───────────────────────────┐│   │
-│  │  │  OS   ││  OS   ││  OS   ││      │  │      Docker Engine        ││   │
-│  │  └───────┘└───────┘└───────┘│      │  └───────────────────────────┘│   │
-│  │  ┌───────────────────────────┐│      │  ┌───────────────────────────┐│   │
-│  │  │       Hypervisor        ││      │  │        Host OS            ││   │
-│  │  └───────────────────────────┘│      │  └───────────────────────────┘│   │
-│  │  ┌───────────────────────────┐│      │  ┌───────────────────────────┐│   │
-│  │  │      Infrastructure     ││      │  │      Infrastructure       ││   │
-│  │  └───────────────────────────┘│      │  └───────────────────────────┘│   │
+│  │  │Guest  ││Guest  ││Guest  ││      │  ┌─────────────────────────┐│   │
+│  │  │  OS   ││  OS   ││  OS   ││      │  │    Docker Engine        ││   │
+│  │  └───────┘└───────┘└───────┘│      │  └─────────────────────────┘│   │
+│  │  ┌─────────────────────────┐│      │  ┌─────────────────────────┐│   │
+│  │  │       Hypervisor        ││      │  │      Host OS            ││   │
+│  │  └─────────────────────────┘│      │  └─────────────────────────┘│   │
+│  │  ┌─────────────────────────┐│      │  ┌─────────────────────────┐│   │
+│  │  │      Infrastructure     ││      │  │    Infrastructure       ││   │
+│  │  └─────────────────────────┘│      │  └─────────────────────────┘│   │
 │  └─────────────────────────────┘      └─────────────────────────────┘   │
-│                                                                          │
+│                                                                         │
 │  ┌───────────────────────────────────────────────────────────────────┐  │
-│  │                    COMPARISON TABLE                                │  │
+│  │                    COMPARISON TABLE                               │  │
 │  ├───────────────────┬─────────────────────┬─────────────────────────┤  │
 │  │     Aspect        │   Virtual Machine   │       Container         │  │
 │  ├───────────────────┼─────────────────────┼─────────────────────────┤  │
@@ -396,11 +396,11 @@
 │  │ Density (per host)│   10-20 VMs         │   100+ Containers       │  │
 │  │ Resource Usage    │   High (each has OS)│   Low (shared kernel)   │  │
 │  └───────────────────┴─────────────────────┴─────────────────────────┘  │
-│                                                                          │
-│  📊 Real Numbers (Task Board App):                                       │
+│                                                                         │
+│  📊 Real Numbers (Task Board App):                                      │
 │     VM with Ubuntu + Node.js:    ~2 GB, boots in ~60 seconds            │
 │     Container with Node.js:      ~150 MB, starts in ~2 seconds          │
-│                                                                          │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -412,105 +412,105 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                       DOCKER ARCHITECTURE                                │
+│                       DOCKER ARCHITECTURE                               │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
+│                                                                         │
 │  ┌───────────────────────────────────────────────────────────────────┐  │
-│  │                         CLIENT (docker CLI)                        │  │
-│  │                                                                    │  │
+│  │                         CLIENT (docker CLI)                       │  │
+│  │                                                                   │  │
 │  │    docker build    docker pull     docker run     docker push     │  │
 │  │         │              │               │               │          │  │
 │  └─────────┼──────────────┼───────────────┼───────────────┼──────────┘  │
-│            │              │               │               │              │
-│            ▼              ▼               ▼               ▼              │
+│            │              │               │               │             │
+│            ▼              ▼               ▼               ▼             │
 │  ┌───────────────────────────────────────────────────────────────────┐  │
-│  │                    DOCKER HOST (Docker Engine)                     │  │
+│  │                    DOCKER HOST (Docker Engine)                    │  │
 │  │  ┌─────────────────────────────────────────────────────────────┐  │  │
-│  │  │                     Docker Daemon (dockerd)                  │  │  │
-│  │  │                                                              │  │  │
+│  │  │                     Docker Daemon (dockerd)                 │  │  │
+│  │  │                                                             │  │  │
 │  │  │   ┌─────────────────┐    ┌─────────────────────────────┐    │  │  │
-│  │  │   │    IMAGES       │    │        CONTAINERS            │    │  │  │
-│  │  │   │                 │    │                              │    │  │  │
+│  │  │   │    IMAGES       │    │        CONTAINERS           │    │  │  │
+│  │  │   │                 │    │                             │    │  │  │
 │  │  │   │  ┌───────────┐  │    │  ┌─────────┐  ┌─────────┐   │    │  │  │
 │  │  │   │  │node:20    │  │    │  │   📦    │  │   📦    │   │    │  │  │
 │  │  │   │  └───────────┘  │    │  │ app-1   │  │ app-2   │   │    │  │  │
 │  │  │   │  ┌───────────┐  │    │  └─────────┘  └─────────┘   │    │  │  │
-│  │  │   │  │postgres:16│  │    │                              │    │  │  │
+│  │  │   │  │postgres:16│  │    │                             │    │  │  │
 │  │  │   │  └───────────┘  │    │  ┌─────────┐                │    │  │  │
-│  │  │   │  ┌───────────┐  │    │  │   📦    │                │    │  │  │
+│  │  │   │  ┌────────────┐ │    │  │   📦    │                │    │  │  │
 │  │  │   │  │nginx:latest│ │    │  │ db      │                │    │  │  │
-│  │  │   │  └───────────┘  │    │  └─────────┘                │    │  │  │
-│  │  │   │                 │    │                              │    │  │  │
+│  │  │   │  └────────────┘ │    │  └─────────┘                │    │  │  │
+│  │  │   │                 │    │                             │    │  │  │
 │  │  │   └─────────────────┘    └─────────────────────────────┘    │  │  │
-│  │  │                                                              │  │  │
+│  │  │                                                             │  │  │
 │  │  │   ┌─────────────────┐    ┌─────────────────────────────┐    │  │  │
-│  │  │   │    VOLUMES      │    │        NETWORKS              │    │  │  │
-│  │  │   │                 │    │                              │    │  │  │
-│  │  │   │  📁 db-data     │    │  🌐 taskboard-network        │    │  │  │
-│  │  │   │  📁 app-logs    │    │  🌐 bridge (default)         │    │  │  │
-│  │  │   │                 │    │                              │    │  │  │
+│  │  │   │    VOLUMES      │    │        NETWORKS             │    │  │  │
+│  │  │   │                 │    │                             │    │  │  │
+│  │  │   │  📁 db-data     │    │  🌐 taskboard-network       │    │  │  │
+│  │  │   │  📁 app-logs    │    │  🌐 bridge (default)        │    │  │  │
+│  │  │   │                 │    │                             │    │  │  │
 │  │  │   └─────────────────┘    └─────────────────────────────┘    │  │  │
-│  │  │                                                              │  │  │
+│  │  │                                                             │  │  │
 │  │  └─────────────────────────────────────────────────────────────┘  │  │
 │  └───────────────────────────────────────────────────────────────────┘  │
-│                             │               ▲                            │
-│                             ▼               │                            │
+│                             │               ▲                           │
+│                             ▼               │                           │
 │  ┌───────────────────────────────────────────────────────────────────┐  │
-│  │                         REGISTRY                                   │  │
-│  │                                                                    │  │
+│  │                         REGISTRY                                  │  │
+│  │                                                                   │  │
 │  │    ┌─────────────────────────────────────────────────────────┐    │  │
-│  │    │              🌐 Docker Hub (hub.docker.com)              │    │  │
-│  │    │                                                          │    │  │
-│  │    │    Official Images:   node, postgres, nginx, redis       │    │  │
-│  │    │    User Images:       username/taskboard:v1.0            │    │  │
-│  │    │                                                          │    │  │
+│  │    │              🌐 Docker Hub (hub.docker.com)             │    │  │
+│  │    │                                                         │    │  │
+│  │    │    Official Images:   node, postgres, nginx, redis      │    │  │
+│  │    │    User Images:       username/taskboard:v1.0           │    │  │
+│  │    │                                                         │    │  │
 │  │    └─────────────────────────────────────────────────────────┘    │  │
-│  │                                                                    │  │
+│  │                                                                   │  │
 │  └───────────────────────────────────────────────────────────────────┘  │
-│                                                                          │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
 ## 3.2 Docker Workflow
 
 ```
-┌─────────────────────────────────────────────────────────────────────────┐
+┌──────────────────────────────────────────────────────────────────────────┐
 │                       DOCKER WORKFLOW                                    │
-├─────────────────────────────────────────────────────────────────────────┤
+├──────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
 │  DEVELOPMENT                                                             │
 │  ───────────                                                             │
 │                                                                          │
-│    1️⃣ Write Code          2️⃣ Create Dockerfile     3️⃣ Build Image       │
-│    ┌─────────────┐        ┌─────────────┐         ┌─────────────┐       │
-│    │  server.js  │  ────► │  Dockerfile │  ────►  │ 📦 Image    │       │
+│    1️⃣ Write Code          2️⃣ Create Dockerfile     3️⃣ Build Image        │
+│    ┌──────────────┐        ┌─────────────┐         ┌──────────────┐      │
+│    │  server.js   │  ────► │  Dockerfile │  ────►  │ 📦 Image     │      │
 │    │  package.json│        │  (recipe)   │         │ taskboard:1.0│      │
-│    └─────────────┘        └─────────────┘         └─────────────┘       │
+│    └──────────────┘        └─────────────┘         └──────────────┘      │
 │                                                           │              │
 │                                                           ▼              │
-│  DISTRIBUTION                                    4️⃣ Push to Registry    │
-│  ────────────                                    ┌─────────────────────┐ │
-│                                                  │    Docker Hub       │ │
-│                                                  │  ┌─────────────────┐│ │
-│                                                  │  │username/taskboard││ │
-│                                                  │  │     :1.0        ││ │
-│                                                  │  └─────────────────┘│ │
-│                                                  └─────────────────────┘ │
+│  DISTRIBUTION                                    4️⃣ Push to Registry     │
+│  ────────────                                  ┌──────────────────────┐  │
+│                                                │    Docker Hub        │  │
+│                                                │ ┌──────────────────┐ │  │
+│                                                │ │username/taskboard│ │  │
+│                                                │ │     :1.0         │ │  │
+│                                                │ └──────────────────┘ │  │
+│                                                └──────────────────────┘  │
 │                                                           │              │
 │                                                           ▼              │
-│  DEPLOYMENT                                      5️⃣ Pull & Run          │
+│  DEPLOYMENT                                      5️⃣ Pull & Run           │
 │  ──────────                                                              │
-│    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐                │
-│    │  Server A   │    │  Server B   │    │  Server C   │                │
-│    │ ┌─────────┐ │    │ ┌─────────┐ │    │ ┌─────────┐ │                │
-│    │ │Container│ │    │ │Container│ │    │ │Container│ │                │
-│    │ │taskboard│ │    │ │taskboard│ │    │ │taskboard│ │                │
-│    │ └─────────┘ │    │ └─────────┘ │    │ └─────────┘ │                │
-│    └─────────────┘    └─────────────┘    └─────────────┘                │
+│    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐                 │
+│    │  Server A   │    │  Server B   │    │  Server C   │                 │
+│    │ ┌─────────┐ │    │ ┌─────────┐ │    │ ┌─────────┐ │                 │
+│    │ │Container│ │    │ │Container│ │    │ │Container│ │                 │
+│    │ │taskboard│ │    │ │taskboard│ │    │ │taskboard│ │                 │
+│    │ └─────────┘ │    │ └─────────┘ │    │ └─────────┘ │                 │
+│    └─────────────┘    └─────────────┘    └─────────────┘                 │
 │                                                                          │
-│    ทุก Server รัน Container เดียวกัน 100%!                                │
+│    ทุก Server รัน Container เดียวกัน 100%!                                   │
 │                                                                          │
-└─────────────────────────────────────────────────────────────────────────┘
+└──────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -521,38 +521,38 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                       DOCKER REGISTRY                                    │
+│                       DOCKER REGISTRY                                   │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  Registry = ที่เก็บ Docker Images (เหมือน GitHub สำหรับ Code)             │
-│                                                                          │
+│                                                                         │
+│  Registry = ที่เก็บ Docker Images (เหมือน GitHub สำหรับ Code)                │
+│                                                                         │
 │  ┌───────────────────────────────────────────────────────────────────┐  │
-│  │                    TYPES OF REGISTRIES                             │  │
+│  │                    TYPES OF REGISTRIES                            │  │
 │  ├───────────────────────────────────────────────────────────────────┤  │
-│  │                                                                    │  │
+│  │                                                                   │  │
 │  │  1. 🌐 PUBLIC REGISTRIES                                          │  │
 │  │     ┌──────────────────────────────────────────────────────────┐  │  │
-│  │     │  Docker Hub (hub.docker.com)    ← Default, Free           │  │  │
-│  │     │  GitHub Container Registry (ghcr.io)                      │  │  │
-│  │     │  Quay.io (Red Hat)                                        │  │  │
+│  │     │  Docker Hub (hub.docker.com)    ← Default, Free          │  │  │
+│  │     │  GitHub Container Registry (ghcr.io)                     │  │  │
+│  │     │  Quay.io (Red Hat)                                       │  │  │
 │  │     └──────────────────────────────────────────────────────────┘  │  │
-│  │                                                                    │  │
+│  │                                                                   │  │
 │  │  2. 🏢 CLOUD PROVIDER REGISTRIES                                  │  │
 │  │     ┌──────────────────────────────────────────────────────────┐  │  │
-│  │     │  AWS ECR (Elastic Container Registry)                     │  │  │
-│  │     │  Google GCR / Artifact Registry                           │  │  │
-│  │     │  Azure ACR (Container Registry)                           │  │  │
+│  │     │  AWS ECR (Elastic Container Registry)                    │  │  │
+│  │     │  Google GCR / Artifact Registry                          │  │  │
+│  │     │  Azure ACR (Container Registry)                          │  │  │
 │  │     └──────────────────────────────────────────────────────────┘  │  │
-│  │                                                                    │  │
+│  │                                                                   │  │
 │  │  3. 🔒 PRIVATE/SELF-HOSTED                                        │  │
 │  │     ┌──────────────────────────────────────────────────────────┐  │  │
-│  │     │  Harbor (VMware)                                          │  │  │
-│  │     │  GitLab Container Registry                                │  │  │
-│  │     │  JFrog Artifactory                                        │  │  │
+│  │     │  Harbor (VMware)                                         │  │  │
+│  │     │  GitLab Container Registry                               │  │  │
+│  │     │  JFrog Artifactory                                       │  │  │
 │  │     └──────────────────────────────────────────────────────────┘  │  │
-│  │                                                                    │  │
+│  │                                                                   │  │
 │  └───────────────────────────────────────────────────────────────────┘  │
-│                                                                          │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -560,41 +560,41 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                          DOCKER HUB                                      │
-│                       hub.docker.com                                     │
+│                          DOCKER HUB                                     │
+│                       hub.docker.com                                    │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  🌐 Docker Hub คือ Registry หลักของ Docker (Default)                     │
-│                                                                          │
+│                                                                         │
+│  🌐 Docker Hub คือ Registry หลักของ Docker (Default)                      │
+│                                                                         │
 │  ┌───────────────────────────────────────────────────────────────────┐  │
-│  │                    FEATURES                                        │  │
+│  │                    FEATURES                                       │  │
 │  ├───────────────────────────────────────────────────────────────────┤  │
-│  │                                                                    │  │
+│  │                                                                   │  │
 │  │  📦 OFFICIAL IMAGES                                               │  │
-│  │     Images ที่ Docker และ Vendor รับรอง                            │  │
+│  │     Images ที่ Docker และ Vendor รับรอง                              │  │
 │  │     • node          (Node.js official)                            │  │
 │  │     • postgres      (PostgreSQL official)                         │  │
 │  │     • nginx         (Nginx official)                              │  │
 │  │     • redis         (Redis official)                              │  │
 │  │     • ubuntu        (Ubuntu official)                             │  │
 │  │     • python        (Python official)                             │  │
-│  │                                                                    │  │
+│  │                                                                   │  │
 │  │  👤 USER IMAGES                                                   │  │
-│  │     Images ที่ผู้ใช้สร้างขึ้นเอง                                      │  │
+│  │     Images ที่ผู้ใช้สร้างขึ้นเอง                                          │  │
 │  │     • username/myapp:v1.0                                         │  │
 │  │     • company/backend:latest                                      │  │
 │  │     • student123/taskboard:1.0.0                                  │  │
-│  │                                                                    │  │
+│  │                                                                   │  │
 │  │  🏢 VERIFIED PUBLISHERS                                           │  │
-│  │     Images จากบริษัทที่ได้รับการยืนยัน                               │  │
+│  │     Images จากบริษัทที่ได้รับการยืนยัน                                    │  │
 │  │     • bitnami/postgresql                                          │  │
 │  │     • grafana/grafana                                             │  │
 │  │     • portainer/portainer                                         │  │
-│  │                                                                    │  │
+│  │                                                                   │  │
 │  └───────────────────────────────────────────────────────────────────┘  │
-│                                                                          │
+│                                                                         │
 │  ┌───────────────────────────────────────────────────────────────────┐  │
-│  │                    PRICING PLANS                                   │  │
+│  │                    PRICING PLANS                                  │  │
 │  ├─────────────┬───────────────────┬─────────────────────────────────┤  │
 │  │    Plan     │       Price       │         Features                │  │
 │  ├─────────────┼───────────────────┼─────────────────────────────────┤  │
@@ -610,9 +610,9 @@
 │  │             │                   │ • Team management               │  │
 │  │             │                   │ • Audit logs                    │  │
 │  └─────────────┴───────────────────┴─────────────────────────────────┘  │
-│                                                                          │
-│  💡 สำหรับการเรียน: Free Plan เพียงพอแล้ว!                                │
-│                                                                          │
+│                                                                         │
+│  💡 สำหรับการเรียน: Free Plan เพียงพอแล้ว!                                  │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -620,18 +620,18 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    IMAGE NAMING CONVENTION                               │
+│                    IMAGE NAMING CONVENTION                              │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  Full Image Name Format:                                                 │
-│                                                                          │
-│    [registry/]repository[:tag]                                           │
-│                                                                          │
+│                                                                         │
+│  Full Image Name Format:                                                │
+│                                                                         │
+│    [registry/]repository[:tag]                                          │
+│                                                                         │
 │  ┌─────────────────────────────────────────────────────────────────┐    │
-│  │                       EXAMPLES                                   │    │
+│  │                       EXAMPLES                                  │    │
 │  ├─────────────────────────────────────────────────────────────────┤    │
-│  │                                                                  │    │
-│  │  1. OFFICIAL IMAGES (ไม่มี username)                             │    │
+│  │                                                                 │    │
+│  │  1. OFFICIAL IMAGES (ไม่มี username)                              │    │
 │  │     ┌──────────────────────────────────────────────────────┐    │    │
 │  │     │  node:20              ← Tag "20" (Node.js version)   │    │    │
 │  │     │  node:20-alpine       ← Tag "20-alpine" (smaller)    │    │    │
@@ -639,30 +639,30 @@
 │  │     │  postgres:16          ← PostgreSQL version 16        │    │    │
 │  │     │  nginx:1.25           ← Nginx version 1.25           │    │    │
 │  │     └──────────────────────────────────────────────────────┘    │    │
-│  │                                                                  │    │
+│  │                                                                 │    │
 │  │  2. USER IMAGES (มี username)                                    │    │
 │  │     ┌──────────────────────────────────────────────────────┐    │    │
 │  │     │  thanit/taskboard:1.0         ← User: thanit         │    │    │
 │  │     │  rmutl/engse207-lab:v2        ← User: rmutl          │    │    │
 │  │     │  mycompany/backend:prod       ← User: mycompany      │    │    │
 │  │     └──────────────────────────────────────────────────────┘    │    │
-│  │                                                                  │    │
-│  │  3. CUSTOM REGISTRY                                              │    │
+│  │                                                                 │    │
+│  │  3. CUSTOM REGISTRY                                             │    │
 │  │     ┌──────────────────────────────────────────────────────┐    │    │
 │  │     │  ghcr.io/username/app:1.0     ← GitHub Container     │    │    │
 │  │     │  gcr.io/project/app:v1        ← Google Cloud         │    │    │
 │  │     │  123456.dkr.ecr.region.amazonaws.com/app:latest      │    │    │
-│  │     │                                 ↑ AWS ECR             │    │    │
+│  │     │                                 ↑ AWS ECR            │    │    │
 │  │     └──────────────────────────────────────────────────────┘    │    │
-│  │                                                                  │    │
+│  │                                                                 │    │
 │  └─────────────────────────────────────────────────────────────────┘    │
-│                                                                          │
-│  ⚠️ Common Tags:                                                         │
-│     • latest    → ล่าสุด (แต่ไม่แนะนำใช้ใน Production)                    │
-│     • v1.0.0    → Semantic versioning (แนะนำ)                            │
+│                                                                         │
+│  ⚠️ Common Tags:                                                        │
+│     • latest    → ล่าสุด (แต่ไม่แนะนำใช้ใน Production)                       │
+│     • v1.0.0    → Semantic versioning (แนะนำ)                           │
 │     • alpine    → Image ขนาดเล็ก (based on Alpine Linux)                 │
 │     • slim      → Image ขนาดเล็ก (removed some packages)                 │
-│                                                                          │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -670,9 +670,9 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                 DOCKER HUB REGISTRATION & USAGE                          │
+│                 DOCKER HUB REGISTRATION & USAGE                         │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
+│                                                                         │
 │  📝 STEP 1: สมัครสมาชิก                                                  │
 │  ─────────────────────                                                   │
 │                                                                          │
@@ -686,31 +686,31 @@
 │  5. Done! ✅                                                             │
 │                                                                          │
 │  ┌─────────────────────────────────────────────────────────────────┐    │
-│  │                                                                  │    │
-│  │   💡 TIP: Username จะใช้เป็นชื่อ namespace                        │    │
-│  │           เช่น sompong → sompong/taskboard:1.0                  │    │
-│  │           ดังนั้นควรเลือกชื่อที่จำง่ายและเป็นมืออาชีพ                  │    │
-│  │                                                                  │    │
+│  │                                                                 │    │
+│  │   💡 TIP: Username จะใช้เป็นชื่อ namespace                          │    │
+│  │           เช่น sompong → sompong/taskboard:1.0                   │    │
+│  │           ดังนั้นควรเลือกชื่อที่จำง่ายและเป็นมืออาชีพ                       │    │
+│  │                                                                 │    │
 │  └─────────────────────────────────────────────────────────────────┘    │
 │                                                                          │
 │  🔐 STEP 2: Login จาก Terminal                                          │
 │  ────────────────────────────                                            │
 │                                                                          │
 │  ┌─────────────────────────────────────────────────────────────────┐    │
-│  │  $ docker login                                                  │    │
-│  │  Username: your-username                                         │    │
-│  │  Password: ********                                              │    │
-│  │  Login Succeeded ✅                                               │    │
-│  │                                                                  │    │
-│  │  # หรือใช้ Token (แนะนำสำหรับ CI/CD)                              │    │
-│  │  $ docker login -u your-username -p your-token                   │    │
+│  │  $ docker login                                                 │    │
+│  │  Username: your-username                                        │    │
+│  │  Password: ********                                             │    │
+│  │  Login Succeeded ✅                                             │    │
+│  │                                                                 │    │
+│  │  # หรือใช้ Token (แนะนำสำหรับ CI/CD)                               │    │
+│  │  $ docker login -u your-username -p your-token                  │    │
 │  └─────────────────────────────────────────────────────────────────┘    │
 │                                                                          │
 │  📤 STEP 3: Push Image ไปยัง Docker Hub                                 │
 │  ─────────────────────────────────────                                   │
 │                                                                          │
 │  ┌─────────────────────────────────────────────────────────────────┐    │
-│  │  # 1. Tag image ด้วย username ของคุณ                             │    │
+│  │  # 1. Tag image ด้วย username ของคุณ                              │    │
 │  │  $ docker tag taskboard:1.0 your-username/taskboard:1.0         │    │
 │  │                                                                  │    │
 │  │  # 2. Push ไปยัง Docker Hub                                      │    │
