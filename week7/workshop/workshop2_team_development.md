@@ -30,20 +30,20 @@
 │                        🏢 TechStart Development Team                        │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│   🎨 Frontend Developer         ⚙️ Backend Developer         🧪 Tester      │
-│   ┌─────────────────────┐      ┌─────────────────────┐    ┌────────────────┐│
-│   │                     │      │                     │    │                ││
-│   │      สมชาย          │      │      สมหญิง          │    │    สมศักดิ์       ││
-│   │                     │      │                     │    │                ││
-│   │  หน้าที่:              │      │  หน้าที่:              │    │  หน้าที่:         ││
-│   │  • UI Design        │      │  • REST API         │    │  • Test Cases  ││
-│   │  • HTML/CSS/JS      │      │  • Database         │    │  • Bug Report  ││
-│   │  • API Integration  │      │  • Validation       │    │  • Verify Fix  ││
-│   │                     │      │                     │    │                ││
-│   │  Branch:            │      │  Branch:            │    │  Branch:       ││
-│   │  feature/frontend   │      │  feature/backend    │    │  main          ││
-│   │                     │      │                     │    │                ││
-│   └─────────────────────┘      └─────────────────────┘    └────────────────┘│
+│   🎨 Frontend Developer       ⚙️ Backend Developer         🧪 Tester        │
+│   ┌─────────────────────┐    ┌─────────────────────┐    ┌────────────────┐  │
+│   │                     │    │                     │    │                │  │
+│   │      สมชาย          │    │      สมหญิง          │    │    สมศักดิ์       │  │
+│   │                     │    │                     │    │                │  │
+│   │  หน้าที่:              │    │  หน้าที่:              │    │  หน้าที่:         │  │
+│   │  • UI Design        │    │  • REST API         │    │  • Test Cases  │  │
+│   │  • HTML/CSS/JS      │    │  • Database         │    │  • Bug Report  │  │
+│   │  • API Integration  │    │  • Validation       │    │  • Verify Fix  │  │
+│   │                     │    │                     │    │                │  │
+│   │  Branch:            │    │  Branch:            │    │  Branch:       │  │
+│   │  feature/frontend   │    │  feature/backend    │    │  main          │  │
+│   │                     │    │                     │    │                │  │
+│   └─────────────────────┘    └─────────────────────┘    └────────────────┘  │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
