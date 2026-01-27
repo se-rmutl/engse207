@@ -61,17 +61,17 @@
 │  │          │     │   Phase     │       │   Testing   │       │ Release  │  │
 │  └──────────┘     └─────────────┘       └─────────────┘       └──────────┘  │
 │                                                                             │
-│  📋 ตกลง API       🎨 Frontend:          🔄 Merge:             🐛 Bug Fix:  │
-│  Contract         • สร้าง UI            • รวม code            • Validation   │
-│  ก่อนเริ่มทำ         • Mock Data ⭐       • ปิด Mock Mode        • ทั้ง 2 ฝั่ง      │
-│                   • ทดสอบได้เลย         • Docker Compose                     │
+│  📋 ตกลง API     🎨 Frontend:          🔄 Merge:             🐛 Bug Fix:    │
+│  Contract         • สร้าง UI             • รวม code             • Validation │
+│  ก่อนเริ่มทำ         • Mock Data ⭐        • ปิด Mock Mode         • ทั้ง 2 ฝั่ง    │
+│                   • ทดสอบได้เลย          • Docker Compose                    │
 │                                                                             │
-│                   ⚙️ Backend:           🧪 Testing:           ✅ Release:   │ 
-│                   • สร้าง API           • TC1-TC4             • Retest       │
-│                   • Database           • ❌ พบ Bug!          • Tag v2.0     │
+│                  ⚙️ Backend:           🧪 Testing:           ✅ Release:    │ 
+│                   • สร้าง API            • TC1-TC4              • Retest     │
+│                   • Database            • ❌ พบ Bug!           • Tag v2.0   │
 │                   • ทดสอบด้วย curl                                           │
 │                                                                             │
-│  ⏱️ 10 นาที        ⏱️ 30 นาที            ⏱️ 20 นาที             ⏱️ 20 นาที      │
+│   ⏱️ 10 นาที        ⏱️ 30 นาที              ⏱️ 20 นาที            ⏱️ 20 นาที    │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
