@@ -26,7 +26,6 @@
 ### 1. [workshop2_git_workflow.md](./workshop2_git_workflow.md)
 
 **ประเภท:** คู่มืออ้างอิง (Reference Guide)  
-**ความยาว:** ~500 บรรทัด  
 **เน้น:** Workflow, Diagrams, คำสั่ง Git
 
 **เนื้อหาหลัก:**
@@ -47,7 +46,6 @@
 ### 2. [workshop2_team_development.md](./workshop2_team_development.md)
 
 **ประเภท:** คู่มือปฏิบัติ (Step-by-Step Guide)  
-**ความยาว:** ~1,200 บรรทัด  
 **เน้น:** Code, Commands, ขั้นตอนละเอียด
 
 **เนื้อหาหลัก:**
