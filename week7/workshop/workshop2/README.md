@@ -97,8 +97,8 @@ Phase 0 (10 นาที)     ตกลง API Contract
         ↓
 Phase 1 (15 นาที)     สมศักดิ์: สร้าง Repository
         ↓
-Phase 2 (25 นาที)     สมชาย: Frontend + Mock Data  ┐
-                      สมหญิง: Backend + API        ┘ พร้อมกัน!
+Phase 2 (25 นาที)     สมชาย: Frontend + Mock Data ┐
+                     สมหญิง: Backend + API        ┘ พร้อมกัน!
         ↓
 Phase 3 (15 นาที)     Merge → ปิด Mock → Test → พบ Bug
         ↓

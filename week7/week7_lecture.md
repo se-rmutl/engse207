@@ -117,12 +117,12 @@
 สัปดาห์นี้เราจะเรียนรู้ **"จะ Deploy สถาปัตยกรรมที่ออกแบบไว้อย่างไร?"** บน Cloud Platform
 
 ```
-สัปดาห์ที่ 6                    สัปดาห์ที่ 7
-┌────────────────┐            ┌────────────────┐
+สัปดาห์ที่ 6                      สัปดาห์ที่ 7
+┌────────────────┐             ┌────────────────┐
 │ ออกแบบ          │            │ Deploy         │
 │ Architecture    │  ────────► │ บน Cloud       │
 │ (ADD-Lite)      │            │ (IaaS/PaaS)    │
-└────────────────┘            └────────────────┘
+└────────────────┘             └────────────────┘
 ```
 
 ---
@@ -143,30 +143,30 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    5 Essential Characteristics of Cloud                  │
+│                    5 Essential Characteristics of Cloud                 │
 │                         (NIST SP 800-145)                               │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  1. 🔄 On-demand Self-service                                            │
-│     ผู้ใช้สามารถจัดสรรทรัพยากรได้เองโดยอัตโนมัติ                               │
-│     ไม่ต้องติดต่อผู้ให้บริการ                                                │
-│                                                                          │
-│  2. 🌐 Broad Network Access                                              │
-│     เข้าถึงผ่านเครือข่ายได้จากทุกที่ ทุกอุปกรณ์                                │
+│                                                                         │
+│  1. 🔄 On-demand Self-service                                           │
+│     ผู้ใช้สามารถจัดสรรทรัพยากรได้เองโดยอัตโนมัติ                                 │
+│     ไม่ต้องติดต่อผู้ให้บริการ                                                   │
+│                                                                         │
+│  2. 🌐 Broad Network Access                                             │
+│     เข้าถึงผ่านเครือข่ายได้จากทุกที่ ทุกอุปกรณ์                                     │
 │     (Laptop, Mobile, Tablet)                                            │
-│                                                                          │
-│  3. 🏊 Resource Pooling                                                  │
-│     ทรัพยากรถูกรวมกันเพื่อให้บริการหลายผู้ใช้ (Multi-tenant)                   │
-│     ผู้ใช้ไม่ต้องรู้ว่าทรัพยากรอยู่ที่ไหน                                      │
-│                                                                          │
+│                                                                         │
+│  3. 🏊 Resource Pooling                                                 │
+│     ทรัพยากรถูกรวมกันเพื่อให้บริการหลายผู้ใช้ (Multi-tenant)                      │
+│     ผู้ใช้ไม่ต้องรู้ว่าทรัพยากรอยู่ที่ไหน                                            │
+│                                                                         │
 │  4. ⚡ Rapid Elasticity                                                  │
-│     สามารถขยาย/ลดทรัพยากรได้อย่างรวดเร็ว                                     │
+│     สามารถขยาย/ลดทรัพยากรได้อย่างรวดเร็ว                                    │
 │     ตามความต้องการที่เปลี่ยนแปลง                                             │
-│                                                                          │
-│  5. 📊 Measured Service                                                  │
-│     ติดตามและวัดการใช้ทรัพยากรได้อย่างละเอียด                                 │
+│                                                                         │
+│  5. 📊 Measured Service                                                 │
+│     ติดตามและวัดการใช้ทรัพยากรได้อย่างละเอียด                                  │
 │     จ่ายตามการใช้งานจริง (Pay-per-use)                                     │
-│                                                                          │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -175,14 +175,14 @@
 **"Pizza as a Service"** - เปรียบเทียบให้เข้าใจง่าย:
 
 ```
-┌────────────────────────────────────────────────────────────────────────────┐
-│                        Cloud Service Models                                 │
-│                    "Pizza as a Service" Analogy                            │
-├────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│   On-Premises      IaaS           PaaS           SaaS                      │
-│   (ทำเองทั้งหมด)     (ซื้อวัตถุดิบ)    (ซื้อพิซซ่าสำเร็จ)   (กินที่ร้าน)            │
-│                                                                             │
+┌───────────────────────────────────────────────────────────────────────────┐
+│                        Cloud Service Models                               │
+│                    "Pizza as a Service" Analogy                           │
+├───────────────────────────────────────────────────────────────────────────┤
+│                                                                           │
+│   On-Premises      IaaS           PaaS           SaaS                     │
+│   (ทำเองทั้งหมด)     (ซื้อวัตถุดิบ)    (ซื้อพิซซ่าสำเร็จ)   (กินที่ร้าน)                  │
+│                                                                           │
 │  ┌───────────┐   ┌───────────┐   ┌───────────┐   ┌───────────┐            │
 │  │Application│   │Application│   │Application│   │███████████│ ◄─ Managed │
 │  ├───────────┤   ├───────────┤   ├───────────┤   ├───────────┤            │
@@ -202,10 +202,10 @@
 │  ├───────────┤   ├───────────┤   ├───────────┤   ├───────────┤            │
 │  │ Network   │   │███████████│   │███████████│   │███████████│            │
 │  └───────────┘   └───────────┘   └───────────┘   └───────────┘            │
-│                                                                             │
-│  █ = You Manage     ███ = Provider Manages                                 │
-│                                                                             │
-└────────────────────────────────────────────────────────────────────────────┘
+│                                                                           │
+│  █ = You Manage     ███ = Provider Manages                                │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### 🔍 รายละเอียด Service Models
@@ -216,20 +216,20 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    IaaS - คุณจัดการ                          │
+│                    IaaS - คุณจัดการ                           │
 ├─────────────────────────────────────────────────────────────┤
-│  ✅ Applications    - คุณติดตั้งและจัดการ                      │
-│  ✅ Data           - คุณจัดการ                               │
-│  ✅ Runtime        - คุณติดตั้ง (Node.js, Python, Java)       │
-│  ✅ Middleware     - คุณติดตั้ง (Web Server, Message Queue)   │
-│  ✅ O/S            - คุณเลือกและอัพเดต (Ubuntu, Windows)      │
+│  ✅ Applications    - คุณติดตั้งและจัดการ                        │
+│  ✅ Data           - คุณจัดการ                                │
+│  ✅ Runtime        - คุณติดตั้ง (Node.js, Python, Java)         │
+│  ✅ Middleware     - คุณติดตั้ง (Web Server, Message Queue)     │
+│  ✅ O/S            - คุณเลือกและอัพเดต (Ubuntu, Windows)       │
 ├─────────────────────────────────────────────────────────────┤
 │                    IaaS - Provider จัดการ                    │
 ├─────────────────────────────────────────────────────────────┤
-│  ☁️ Virtualization - Provider จัดการ                        │
-│  ☁️ Servers        - Provider จัดการ                        │
-│  ☁️ Storage        - Provider จัดการ                        │
-│  ☁️ Networking     - Provider จัดการ                        │
+│  ☁️ Virtualization - Provider จัดการ                         │
+│  ☁️ Servers        - Provider จัดการ                         │
+│  ☁️ Storage        - Provider จัดการ                         │
+│  ☁️ Networking     - Provider จัดการ                         │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -253,20 +253,20 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    PaaS - คุณจัดการ                          │
+│                    PaaS - คุณจัดการ                           │
 ├─────────────────────────────────────────────────────────────┤
 │  ✅ Applications    - คุณพัฒนาและ Deploy                      │
-│  ✅ Data           - คุณจัดการข้อมูล                          │
+│  ✅ Data           - คุณจัดการข้อมูล                            │
 ├─────────────────────────────────────────────────────────────┤
 │                    PaaS - Provider จัดการ                    │
 ├─────────────────────────────────────────────────────────────┤
 │  ☁️ Runtime        - Provider จัดการ (Node.js, Python)       │
-│  ☁️ Middleware     - Provider จัดการ                        │
-│  ☁️ O/S            - Provider จัดการ                        │
-│  ☁️ Virtualization - Provider จัดการ                        │
-│  ☁️ Servers        - Provider จัดการ                        │
-│  ☁️ Storage        - Provider จัดการ                        │
-│  ☁️ Networking     - Provider จัดการ                        │
+│  ☁️ Middleware     - Provider จัดการ                         │
+│  ☁️ O/S            - Provider จัดการ                         │
+│  ☁️ Virtualization - Provider จัดการ                         │
+│  ☁️ Servers        - Provider จัดการ                         │
+│  ☁️ Storage        - Provider จัดการ                         │
+│  ☁️ Networking     - Provider จัดการ                         │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -292,15 +292,15 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    SaaS - คุณจัดการ                          │
+│                    SaaS - คุณจัดการ                           │
 ├─────────────────────────────────────────────────────────────┤
-│  ✅ ใช้งาน Application ผ่าน Browser                          │
-│  ✅ จัดการข้อมูลของตัวเอง (บางส่วน)                            │
+│  ✅ ใช้งาน Application ผ่าน Browser                           │
+│  ✅ จัดการข้อมูลของตัวเอง (บางส่วน)                              │
 ├─────────────────────────────────────────────────────────────┤
-│                    SaaS - Provider จัดการทุกอย่าง             │
+│                    SaaS - Provider จัดการทุกอย่าง              │
 ├─────────────────────────────────────────────────────────────┤
-│  ☁️ Application, Data, Runtime, Middleware                   │
-│  ☁️ O/S, Virtualization, Servers, Storage, Networking        │
+│  ☁️ Application, Data, Runtime, Middleware                  │
+│  ☁️ O/S, Virtualization, Servers, Storage, Networking       │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -328,14 +328,14 @@
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────┐
-│                        Cloud Deployment Models                              │
+│                        Cloud Deployment Models                             │
 ├────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
+│                                                                            │
 │  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐          │
 │  │   Public Cloud   │  │  Private Cloud   │  │   Hybrid Cloud   │          │
 │  │                  │  │                  │  │                  │          │
 │  │  ┌────────────┐  │  │  ┌────────────┐  │  │ ┌─────┐ ┌─────┐  │          │
-│  │  │ ☁️☁️☁️☁️   │  │  │  │ 🏢         │  │  │ │ ☁️  │ │ 🏢  │  │          │
+│  │  │ ☁️☁️☁️☁️   │  │  │  │ 🏢         │  │  │ │ ☁️  │ │ 🏢  │  │         │
 │  │  │ Shared     │  │  │  │ Dedicated  │  │  │ │     │═│     │  │          │
 │  │  │ Resources  │  │  │  │ Resources  │  │  │ └─────┘ └─────┘  │          │
 │  │  └────────────┘  │  │  └────────────┘  │  │                  │          │
@@ -343,11 +343,11 @@
 │  │  AWS, Azure, GCP │  │  On-premises     │  │  Public+Private  │          │
 │  │  DigitalOcean    │  │  VMware, OpenStack│ │                  │          │
 │  └──────────────────┘  └──────────────────┘  └──────────────────┘          │
-│                                                                             │
-│  ✅ Cost-effective      ✅ Security & Control  ✅ Best of Both Worlds       │
-│  ✅ Scalability         ✅ Compliance          ✅ Flexibility               │
-│  ❌ Less Control        ❌ High Cost           ❌ Complexity                │
-│                                                                             │
+│                                                                            │
+│  ✅ Cost-effective      ✅ Security & Control  ✅ Best of Both Worlds      │
+│  ✅ Scalability         ✅ Compliance          ✅ Flexibility              │
+│  ❌ Less Control        ❌ High Cost           ❌ Complexity               │
+│                                                                            │
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -357,32 +357,32 @@
 ┌─────────────────────────────────────────────────────────────────────────┐
 │              ตัวอย่างการใช้ Cloud ในประเทศไทย                              │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
+│                                                                         │
 │  🏥 หมอพร้อม (MorPrompt)                                                 │
 │     └─► AWS Thailand Region                                             │
-│     └─► Auto-scaling รับมือช่วงวัคซีน COVID-19                            │
-│     └─► รองรับผู้ใช้หลายล้านคนพร้อมกัน                                      │
-│                                                                          │
-│  🛒 Shopee Thailand                                                      │
+│     └─► Auto-scaling รับมือช่วงวัคซีน COVID-19                               │
+│     └─► รองรับผู้ใช้หลายล้านคนพร้อมกัน                                         │
+│                                                                         │
+│  🛒 Shopee Thailand                                                     │
 │     └─► Multi-cloud (AWS + GCP)                                         │
 │     └─► รองรับ 11.11, 12.12 Flash Sales                                  │
 │     └─► CDN กระจายทั่วเอเชีย                                               │
-│                                                                          │
-│  🏦 SCB Easy / K PLUS                                                    │
+│                                                                         │
+│  🏦 SCB Easy / K PLUS                                                   │
 │     └─► Hybrid Cloud (Private + AWS)                                    │
-│     └─► ข้อมูลสำคัญอยู่ Private Cloud (Compliance)                        │
+│     └─► ข้อมูลสำคัญอยู่ Private Cloud (Compliance)                           │
 │     └─► Non-sensitive workloads บน Public Cloud                         │
-│                                                                          │
-│  💬 LINE Thailand                                                        │
+│                                                                         │
+│  💬 LINE Thailand                                                       │
 │     └─► Private Data Centers + Cloud                                    │
-│     └─► รองรับผู้ใช้ 50+ ล้านคน                                            │
+│     └─► รองรับผู้ใช้ 50+ ล้านคน                                              │
 │     └─► Real-time messaging infrastructure                              │
-│                                                                          │
-│  🚗 Grab Thailand                                                        │
+│                                                                         │
+│  🚗 Grab Thailand                                                       │
 │     └─► AWS เป็นหลัก                                                      │
 │     └─► Real-time location tracking                                     │
 │     └─► Machine Learning for matching                                   │
-│                                                                          │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -405,22 +405,22 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        The 12-Factor App Methodology                         │
+│                        The 12-Factor App Methodology                        │
 │                    https://12factor.net (Adam Wiggins, 2011)                │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                              │
+│                                                                             │
 │   ┌─────────────────────────────────────────────────────────────────────┐   │
 │   │ 1. CODEBASE        │ One codebase, many deploys                     │   │
-│   │                    │ หนึ่ง Git repo = หนึ่ง App                        │   │
+│   │                    │ หนึ่ง Git repo = หนึ่ง App                         │   │
 │   ├────────────────────┼────────────────────────────────────────────────┤   │
 │   │ 2. DEPENDENCIES    │ Explicitly declare & isolate                   │   │
-│   │                    │ ใช้ package.json, requirements.txt             │   │
+│   │                    │ ใช้ package.json, requirements.txt              │   │
 │   ├────────────────────┼────────────────────────────────────────────────┤   │
 │   │ 3. CONFIG          │ Store config in environment                    │   │
-│   │                    │ ใช้ ENV variables ไม่ hardcode ⭐               │   │
+│   │                    │ ใช้ ENV variables ไม่ hardcode ⭐                │   │
 │   ├────────────────────┼────────────────────────────────────────────────┤   │
 │   │ 4. BACKING SERVICES│ Treat as attached resources                    │   │
-│   │                    │ DB, Queue, Cache เปลี่ยนได้โดยไม่แก้ Code         │   │
+│   │                    │ DB, Queue, Cache เปลี่ยนได้โดยไม่แก้ Code           │   │
 │   ├────────────────────┼────────────────────────────────────────────────┤   │
 │   │ 5. BUILD, RELEASE, │ Strictly separate stages                       │   │
 │   │    RUN             │ Build → Release → Run แยกชัดเจน                 │   │
@@ -429,26 +429,26 @@
 │   │                    │ ไม่เก็บ State ใน Memory/Disk ของ App ⭐          │   │
 │   ├────────────────────┼────────────────────────────────────────────────┤   │
 │   │ 7. PORT BINDING    │ Export services via port binding               │   │
-│   │                    │ App ฟังที่ Port และ serve HTTP เอง               │   │
+│   │                    │ App ฟังที่ Port และ serve HTTP เอง                │   │
 │   ├────────────────────┼────────────────────────────────────────────────┤   │
 │   │ 8. CONCURRENCY     │ Scale out via the process model                │   │
 │   │                    │ Scale โดยเพิ่มจำนวน Process                      │   │
 │   ├────────────────────┼────────────────────────────────────────────────┤   │
 │   │ 9. DISPOSABILITY   │ Fast startup & graceful shutdown               │   │
-│   │                    │ เริ่ม/หยุดได้เร็ว รองรับ Auto-scaling ⭐          │   │
+│   │                    │ เริ่ม/หยุดได้เร็ว รองรับ Auto-scaling ⭐             │   │
 │   ├────────────────────┼────────────────────────────────────────────────┤   │
 │   │ 10. DEV/PROD PARITY│ Keep dev, staging, prod similar                │   │
-│   │                    │ Environment เหมือนกันมากที่สุด ⭐                 │   │
+│   │                    │ Environment เหมือนกันมากที่สุด ⭐                   │   │
 │   ├────────────────────┼────────────────────────────────────────────────┤   │
 │   │ 11. LOGS           │ Treat logs as event streams                    │   │
-│   │                    │ เขียน Log ไป stdout ไม่เขียนไฟล์ ⭐               │   │
+│   │                    │ เขียน Log ไป stdout ไม่เขียนไฟล์ ⭐                │   │
 │   ├────────────────────┼────────────────────────────────────────────────┤   │
 │   │ 12. ADMIN PROCESSES│ Run admin/management tasks as one-off          │   │
-│   │                    │ งาน Admin รันเป็น one-time command              │   │
+│   │                    │ งาน Admin รันเป็น one-time command               │   │
 │   └────────────────────┴────────────────────────────────────────────────┘   │
-│                                                                              │
-│   ⭐ = Factors ที่สำคัญที่สุดสำหรับ Cloud-Native Apps                          │
-│                                                                              │
+│                                                                             │
+│   ⭐ = Factors ที่สำคัญที่สุดสำหรับ Cloud-Native Apps                              │
+│                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -458,47 +458,47 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    Factor 3: CONFIG                                      │
+│                    Factor 3: CONFIG                                     │
 │                    เก็บ Configuration ใน Environment Variables           │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  ❌ BAD - Hardcoded Config                                               │
+│                                                                         │
+│  ❌ BAD - Hardcoded Config                                              │
 │  ┌─────────────────────────────────────────────────────────────────┐    │
-│  │  // config.js                                                    │    │
-│  │  const config = {                                                │    │
-│  │    database: "mongodb://localhost:27017/myapp",  // ❌ Hardcoded │    │
-│  │    apiKey: "sk-12345-secret-key",                // ❌ Secret!   │    │
-│  │    port: 3000                                    // ❌ Fixed     │    │
-│  │  };                                                              │    │
+│  │  // config.js                                                   │    │
+│  │  const config = {                                               │    │
+│  │    database: "mongodb://localhost:27017/myapp",  // ❌ Hardcoded│    │
+│  │    apiKey: "sk-12345-secret-key",                // ❌ Secret!  │    │
+│  │    port: 3000                                    // ❌ Fixed    │    │
+│  │  };                                                             │    │
 │  └─────────────────────────────────────────────────────────────────┘    │
-│                                                                          │
-│  ปัญหา:                                                                   │
+│                                                                         │
+│  ปัญหา:                                                                  │
 │  • Secret keys อยู่ใน Git history ตลอดไป                                  │
-│  • ต้องแก้ code เมื่อเปลี่ยน environment                                    │
+│  • ต้องแก้ code เมื่อเปลี่ยน environment                                      │
 │  • ไม่สามารถ deploy codebase เดียวกันหลาย environments                     │
-│                                                                          │
-│  ✅ GOOD - Environment Variables                                         │
+│                                                                         │
+│  ✅ GOOD - Environment Variables                                        │
 │  ┌─────────────────────────────────────────────────────────────────┐    │
-│  │  // config.js                                                    │    │
-│  │  const config = {                                                │    │
-│  │    database: process.env.DATABASE_URL,           // ✅ From ENV  │    │
-│  │    apiKey: process.env.API_KEY,                  // ✅ Secure    │    │
-│  │    port: process.env.PORT || 3000                // ✅ Flexible  │    │
-│  │  };                                                              │    │
+│  │  // config.js                                                   │    │
+│  │  const config = {                                               │    │
+│  │    database: process.env.DATABASE_URL,           // ✅ From ENV │    │
+│  │    apiKey: process.env.API_KEY,                  // ✅ Secure   │    │
+│  │    port: process.env.PORT || 3000                // ✅ Flexible │    │
+│  │  };                                                             │    │
 │  └─────────────────────────────────────────────────────────────────┘    │
-│                                                                          │
+│                                                                         │
 │  ┌─────────────────────────────────────────────────────────────────┐    │
-│  │  # .env file (ไม่ commit ไป Git! ใส่ใน .gitignore)                 │    │
-│  │  DATABASE_URL=mongodb://prod-server:27017/myapp                  │    │
-│  │  API_KEY=sk-prod-secret-key                                      │    │
-│  │  PORT=8080                                                       │    │
+│  │  # .env file (ไม่ commit ไป Git! ใส่ใน .gitignore)                │    │
+│  │  DATABASE_URL=mongodb://prod-server:27017/myapp                 │    │
+│  │  API_KEY=sk-prod-secret-key                                     │    │
+│  │  PORT=8080                                                      │    │
 │  └─────────────────────────────────────────────────────────────────┘    │
-│                                                                          │
+│                                                                         │
 │  ข้อดี:                                                                   │
-│  • Secrets ไม่อยู่ใน code                                                 │
-│  • Deploy codebase เดียวกันได้หลาย environments                          │
-│  • เปลี่ยน config โดยไม่ต้อง rebuild                                       │
-│                                                                          │
+│  • Secrets ไม่อยู่ใน code                                                  │
+│  • Deploy codebase เดียวกันได้หลาย environments                            │
+│  • เปลี่ยน config โดยไม่ต้อง rebuild                                        │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -506,47 +506,47 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    Factor 6: PROCESSES                                   │
-│                    แอปพลิเคชันต้อง Stateless                              │
+│                    Factor 6: PROCESSES                                  │
+│                    แอปพลิเคชันต้อง Stateless                               │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
+│                                                                         │
 │  ❌ STATEFUL - เก็บ Session ใน Memory                                    │
-│                                                                          │
-│     User A ─────► [App Instance 1] ◄─── Session อยู่ที่นี่               │
-│                        │                                                 │
+│                                                                         │
+│     User A ─────► [App Instance 1] ◄─── Session อยู่ที่นี่                    │
+│                        │                                                │
 │       (Load Balancer routes to different instance)                      │
-│                        ↓                                                 │
-│     User A ─────► [App Instance 2] ◄─── ❌ Session หาย!                  │
-│                                                                          │
+│                        ↓                                                │
+│     User A ─────► [App Instance 2] ◄─── ❌ Session หาย!                 │
+│                                                                         │
 │  ┌─────────────────────────────────────────────────────────────────┐    │
-│  │  // ❌ Bad - Session in memory                                   │    │
-│  │  const sessions = {};  // หายเมื่อ restart หรือ scale           │    │
-│  │  app.post('/login', (req, res) => {                              │    │
-│  │    sessions[userId] = { loggedIn: true, cart: [] };              │    │
-│  │  });                                                             │    │
+│  │  // ❌ Bad - Session in memory                                  │    │
+│  │  const sessions = {};  // หายเมื่อ restart หรือ scale              │    │
+│  │  app.post('/login', (req, res) => {                             │    │
+│  │    sessions[userId] = { loggedIn: true, cart: [] };             │    │
+│  │  });                                                            │    │
 │  └─────────────────────────────────────────────────────────────────┘    │
-│                                                                          │
+│                                                                         │
 │  ✅ STATELESS - เก็บ Session ใน External Store                           │
-│                                                                          │
+│                                                                         │
 │     User A ─────► [App Instance 1] ────┐                                │
-│                                         ├───► [Redis] ◄─── Session      │
+│                                        ├───► [Redis] ◄─── Session       │
 │     User A ─────► [App Instance 2] ────┘         ✅ ทุก Instance เข้าถึงได้ │
-│                                                                          │
+│                                                                         │
 │  ┌─────────────────────────────────────────────────────────────────┐    │
-│  │  // ✅ Good - Session in Redis                                   │    │
-│  │  const session = require('express-session');                     │    │
-│  │  const RedisStore = require('connect-redis').default;            │    │
-│  │  app.use(session({                                               │    │
-│  │    store: new RedisStore({ client: redisClient }),               │    │
-│  │    secret: process.env.SESSION_SECRET                            │    │
-│  │  }));                                                            │    │
+│  │  // ✅ Good - Session in Redis                                  │    │
+│  │  const session = require('express-session');                    │    │
+│  │  const RedisStore = require('connect-redis').default;           │    │
+│  │  app.use(session({                                              │    │
+│  │    store: new RedisStore({ client: redisClient }),              │    │
+│  │    secret: process.env.SESSION_SECRET                           │    │
+│  │  }));                                                           │    │
 │  └─────────────────────────────────────────────────────────────────┘    │
-│                                                                          │
+│                                                                         │
 │  External Stores สำหรับ State:                                           │
 │  • Redis - Sessions, Caching                                            │
 │  • Database - User data, Application state                              │
 │  • S3/Cloud Storage - Files, Images                                     │
-│                                                                          │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -554,51 +554,51 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    Factor 9: DISPOSABILITY                               │
-│                    เริ่มต้นเร็ว หยุดอย่างสง่างาม                            │
+│                    Factor 9: DISPOSABILITY                              │
+│                    เริ่มต้นเร็ว หยุดอย่างสง่างาม                               │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  ทำไมสำคัญ?                                                               │
-│  • Auto-scaling ต้องเพิ่ม/ลด instances เร็ว                               │
-│  • Rolling deployments ต้องเริ่ม instance ใหม่เร็ว                        │
-│  • Crash recovery ต้อง restart ได้ทันที                                   │
-│  • Kubernetes kills pods ที่ไม่ healthy                                  │
-│                                                                          │
+│                                                                         │
+│  ทำไมสำคัญ?                                                              │
+│  • Auto-scaling ต้องเพิ่ม/ลด instances เร็ว                                 │
+│  • Rolling deployments ต้องเริ่ม instance ใหม่เร็ว                           │
+│  • Crash recovery ต้อง restart ได้ทันที                                     │
+│  • Kubernetes kills pods ที่ไม่ healthy                                    │
+│                                                                         │
 │  ┌──────────────────────────────────────────────────────────────┐       │
-│  │              Lifecycle of a Cloud-Native App                  │       │
-│  │                                                               │       │
+│  │              Lifecycle of a Cloud-Native App                 │       │
+│  │                                                              │       │
 │  │   ┌─────────┐    ┌─────────┐    ┌─────────┐                  │       │
 │  │   │ Startup │───►│ Running │───►│Shutdown │                  │       │
 │  │   │  < 10s  │    │  ....   │    │ < 30s   │                  │       │
 │  │   └─────────┘    └─────────┘    └─────────┘                  │       │
-│  │       │              │              │                         │       │
+│  │       │              │              │                        │       │
 │  │   - Load config     SIGTERM     - Stop accepting requests    │       │
 │  │   - Connect DB      received    - Finish current requests    │       │
 │  │   - Ready to serve              - Close DB connections       │       │
 │  │                                  - Exit with code 0          │       │
 │  └──────────────────────────────────────────────────────────────┘       │
-│                                                                          │
+│                                                                         │
 │  ┌─────────────────────────────────────────────────────────────────┐    │
-│  │  // Graceful shutdown example (Node.js)                          │    │
-│  │  process.on('SIGTERM', async () => {                             │    │
-│  │    console.log('SIGTERM received, shutting down gracefully');    │    │
-│  │                                                                  │    │
-│  │    // 1. Stop accepting new requests                             │    │
-│  │    server.close(() => {                                          │    │
-│  │      console.log('HTTP server closed');                          │    │
-│  │                                                                  │    │
-│  │      // 2. Close database connections                            │    │
-│  │      mongoose.connection.close(false, () => {                    │    │
-│  │        console.log('MongoDB connection closed');                 │    │
-│  │        process.exit(0);  // 3. Exit cleanly                      │    │
-│  │      });                                                         │    │
-│  │    });                                                           │    │
-│  │                                                                  │    │
-│  │    // Force exit after 30 seconds                                │    │
-│  │    setTimeout(() => process.exit(1), 30000);                     │    │
-│  │  });                                                             │    │
+│  │  // Graceful shutdown example (Node.js)                         │    │
+│  │  process.on('SIGTERM', async () => {                            │    │
+│  │    console.log('SIGTERM received, shutting down gracefully');   │    │
+│  │                                                                 │    │
+│  │    // 1. Stop accepting new requests                            │    │
+│  │    server.close(() => {                                         │    │
+│  │      console.log('HTTP server closed');                         │    │
+│  │                                                                 │    │
+│  │      // 2. Close database connections                           │    │
+│  │      mongoose.connection.close(false, () => {                   │    │
+│  │        console.log('MongoDB connection closed');                │    │
+│  │        process.exit(0);  // 3. Exit cleanly                     │    │
+│  │      });                                                        │    │
+│  │    });                                                          │    │
+│  │                                                                 │    │
+│  │    // Force exit after 30 seconds                               │    │
+│  │    setTimeout(() => process.exit(1), 30000);                    │    │
+│  │  });                                                            │    │
 │  └─────────────────────────────────────────────────────────────────┘    │
-│                                                                          │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -606,43 +606,43 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    Factor 10: DEV/PROD PARITY                            │
-│                    ทำให้ Development และ Production เหมือนกัน             │
+│                    Factor 10: DEV/PROD PARITY                           │
+│                    ทำให้ Development และ Production เหมือนกัน              │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  3 Gaps ที่ต้องลด:                                                       │
-│                                                                          │
-│  1. TIME GAP (ระยะเวลา)                                                  │
-│     ❌ Bad:  Code เขียนเสร็จ → Deploy หลังจากนั้น 2 สัปดาห์                 │
-│     ✅ Good: Code เขียนเสร็จ → Deploy ภายในวันเดียว (CI/CD)                │
-│                                                                          │
-│  2. PERSONNEL GAP (คนทำ)                                                 │
-│     ❌ Bad:  Dev เขียน code, Ops เป็นคน deploy                           │
+│                                                                         │
+│  3 Gaps ที่ต้องลด:                                                         │
+│                                                                         │
+│  1. TIME GAP (ระยะเวลา)                                                 │
+│     ❌ Bad:  Code เขียนเสร็จ → Deploy หลังจากนั้น 2 สัปดาห์                    │
+│     ✅ Good: Code เขียนเสร็จ → Deploy ภายในวันเดียว (CI/CD)                 │
+│                                                                         │
+│  2. PERSONNEL GAP (คนทำ)                                                │
+│     ❌ Bad:  Dev เขียน code, Ops เป็นคน deploy                            │
 │     ✅ Good: Dev เขียน code และ deploy เอง (DevOps culture)              │
-│                                                                          │
-│  3. TOOLS GAP (เครื่องมือ)                                                │
-│     ❌ Bad:  Dev ใช้ SQLite, Prod ใช้ PostgreSQL                         │
-│     ✅ Good: Dev และ Prod ใช้ PostgreSQL เหมือนกัน                        │
-│                                                                          │
+│                                                                         │
+│  3. TOOLS GAP (เครื่องมือ)                                                 │
+│     ❌ Bad:  Dev ใช้ SQLite, Prod ใช้ PostgreSQL                          │
+│     ✅ Good: Dev และ Prod ใช้ PostgreSQL เหมือนกัน                         │
+│                                                                         │
 │  ┌────────────────────────────────────────────────────────────────┐     │
-│  │                    Environment Parity Example                   │     │
-│  │                                                                 │     │
+│  │                    Environment Parity Example                  │     │
+│  │                                                                │     │
 │  │   Development              Staging              Production     │     │
-│  │  ┌──────────────┐      ┌──────────────┐      ┌──────────────┐ │     │
-│  │  │ Docker       │      │ Docker       │      │ Docker       │ │     │
-│  │  │ PostgreSQL 15│      │ PostgreSQL 15│      │ PostgreSQL 15│ │     │
-│  │  │ Redis 7      │      │ Redis 7      │      │ Redis 7      │ │     │
-│  │  │ Node.js 18   │      │ Node.js 18   │      │ Node.js 18   │ │     │
-│  │  └──────────────┘      └──────────────┘      └──────────────┘ │     │
-│  │         ✅                    ✅                    ✅          │     │
-│  │      Same Stack            Same Stack           Same Stack    │     │
+│  │  ┌──────────────┐      ┌──────────────┐      ┌──────────────┐  │     │
+│  │  │ Docker       │      │ Docker       │      │ Docker       │  │     │
+│  │  │ PostgreSQL 15│      │ PostgreSQL 15│      │ PostgreSQL 15│  │     │
+│  │  │ Redis 7      │      │ Redis 7      │      │ Redis 7      │  │     │
+│  │  │ Node.js 18   │      │ Node.js 18   │      │ Node.js 18   │  │     │
+│  │  └──────────────┘      └──────────────┘      └──────────────┘  │     │
+│  │         ✅                    ✅                    ✅         │     │
+│  │      Same Stack            Same Stack           Same Stack     │     │
 │  └────────────────────────────────────────────────────────────────┘     │
-│                                                                          │
-│  เครื่องมือที่ช่วย:                                                        │
-│  • Docker & Docker Compose - ทำให้ทุก environment เหมือนกัน               │
+│                                                                         │
+│  เครื่องมือที่ช่วย:                                                           │
+│  • Docker & Docker Compose - ทำให้ทุก environment เหมือนกัน                 │
 │  • Infrastructure as Code (Terraform) - กำหนด infra เป็น code            │
-│  • CI/CD Pipelines - อัตโนมัติการ deploy                                  │
-│                                                                          │
+│  • CI/CD Pipelines - อัตโนมัติการ deploy                                   │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -650,62 +650,62 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    Factor 11: LOGS                                       │
+│                    Factor 11: LOGS                                      │
 │                    Logs เป็น Event Streams                               │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  ❌ BAD - เขียน Log ลงไฟล์                                               │
+│                                                                         │
+│  ❌ BAD - เขียน Log ลงไฟล์                                                │
 │  ┌─────────────────────────────────────────────────────────────────┐    │
-│  │  // ❌ Bad - Writing to file                                     │    │
-│  │  const fs = require('fs');                                       │    │
-│  │  fs.appendFileSync('/var/log/app.log', message);                 │    │
-│  │                                                                  │    │
+│  │  // ❌ Bad - Writing to file                                    │    │
+│  │  const fs = require('fs');                                      │    │
+│  │  fs.appendFileSync('/var/log/app.log', message);                │    │
+│  │                                                                 │    │
 │  │  // ปัญหา:                                                       │    │
 │  │  // - ไฟล์เต็ม disk                                               │    │
 │  │  // - ต้องจัดการ log rotation                                     │    │
-│  │  // - ไม่ work กับ containers (ไฟล์หายเมื่อ restart)               │    │
-│  │  // - ไม่สามารถ aggregate logs จากหลาย instances                  │    │
+│  │  // - ไม่ work กับ containers (ไฟล์หายเมื่อ restart)                 │    │
+│  │  // - ไม่สามารถ aggregate logs จากหลาย instances                 │    │
 │  └─────────────────────────────────────────────────────────────────┘    │
-│                                                                          │
+│                                                                         │
 │  ✅ GOOD - เขียน Log ไป stdout                                           │
 │  ┌─────────────────────────────────────────────────────────────────┐    │
-│  │  // ✅ Good - Write to stdout (structured JSON)                  │    │
-│  │  const log = (level, message, data = {}) => {                    │    │
-│  │    console.log(JSON.stringify({                                  │    │
-│  │      timestamp: new Date().toISOString(),                        │    │
-│  │      level,                                                      │    │
-│  │      message,                                                    │    │
-│  │      ...data                                                     │    │
-│  │    }));                                                          │    │
-│  │  };                                                              │    │
-│  │                                                                  │    │
-│  │  // Usage                                                        │    │
+│  │  // ✅ Good - Write to stdout (structured JSON)                 │    │
+│  │  const log = (level, message, data = {}) => {                   │    │
+│  │    console.log(JSON.stringify({                                 │    │
+│  │      timestamp: new Date().toISOString(),                       │    │
+│  │      level,                                                     │    │
+│  │      message,                                                   │    │
+│  │      ...data                                                    │    │
+│  │    }));                                                         │    │
+│  │  };                                                             │    │
+│  │                                                                 │    │
+│  │  // Usage                                                       │    │
 │  │  log('info', 'User logged in', { userId: 123, ip: '1.2.3.4' }); │    │
-│  │                                                                  │    │
-│  │  // Output:                                                      │    │
-│  │  // {"timestamp":"2024-01-15T10:30:00Z","level":"info",          │    │
+│  │                                                                 │    │
+│  │  // Output:                                                     │    │
+│  │  // {"timestamp":"2024-01-15T10:30:00Z","level":"info",         │    │
 │  │  //  "message":"User logged in","userId":123,"ip":"1.2.3.4"}    │    │
 │  └─────────────────────────────────────────────────────────────────┘    │
-│                                                                          │
-│  Log Aggregation Flow:                                                   │
-│                                                                          │
-│  ┌─────┐   stdout    ┌─────────────┐    ┌─────────────────────┐        │
-│  │ App │ ──────────► │ Docker/K8s  │───►│   Log Aggregator    │        │
-│  └─────┘             │ Log Driver  │    │  ┌───────────────┐  │        │
-│                      └─────────────┘    │  │ CloudWatch    │  │        │
-│  ┌─────┐   stdout                       │  │ Datadog       │  │        │
-│  │ App │ ───────────────────────────────►  │ ELK Stack     │  │        │
-│  └─────┘                                │  │ Loki+Grafana  │  │        │
-│                                          │  └───────────────┘  │        │
-│                                          └─────────────────────┘        │
-│                                                 │                        │
-│                                                 ▼                        │
+│                                                                         │
+│  Log Aggregation Flow:                                                  │
+│                                                                         │
+│  ┌─────┐   stdout    ┌─────────────┐    ┌─────────────────────┐         │
+│  │ App │ ──────────► │ Docker/K8s  │───►│   Log Aggregator    │         │
+│  └─────┘             │ Log Driver  │    │  ┌───────────────┐  │         │
+│                      └─────────────┘    │  │ CloudWatch    │  │         │
+│  ┌─────┐   stdout                       │  │ Datadog       │  │         │
+│  │ App │ ───────────────────────────────►  │ ELK Stack     │  │         │
+│  └─────┘                                │  │ Loki+Grafana  │  │         │
+│                                         │  └───────────────┘  │         │
+│                                         └─────────────────────┘         │
+│                                                 │                       │
+│                                                 ▼                       │
 │                                          ┌─────────────┐                │
 │                                          │  Dashboard  │                │
 │                                          │  Alerting   │                │
 │                                          │  Search     │                │
 │                                          └─────────────┘                │
-│                                                                          │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -735,35 +735,35 @@
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────┐
-│              Virtual Machines vs Containers                                 │
+│              Virtual Machines vs Containers                                │
 ├────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│     VIRTUAL MACHINES                      CONTAINERS                        │
-│                                                                             │
-│  ┌─────────┬─────────┬─────────┐    ┌─────────┬─────────┬─────────┐       │
-│  │  App A  │  App B  │  App C  │    │  App A  │  App B  │  App C  │       │
-│  ├─────────┼─────────┼─────────┤    ├─────────┼─────────┼─────────┤       │
-│  │ Bins/   │ Bins/   │ Bins/   │    │ Bins/   │ Bins/   │ Bins/   │       │
-│  │ Libs    │ Libs    │ Libs    │    │ Libs    │ Libs    │ Libs    │       │
-│  ├─────────┼─────────┼─────────┤    └─────────┴─────────┴─────────┘       │
+│                                                                            │
+│     VIRTUAL MACHINES                      CONTAINERS                       │
+│                                                                            │
+│  ┌─────────┬─────────┬─────────┐    ┌─────────┬─────────┬─────────┐        │
+│  │  App A  │  App B  │  App C  │    │  App A  │  App B  │  App C  │        │
+│  ├─────────┼─────────┼─────────┤    ├─────────┼─────────┼─────────┤        │
+│  │ Bins/   │ Bins/   │ Bins/   │    │ Bins/   │ Bins/   │ Bins/   │        │
+│  │ Libs    │ Libs    │ Libs    │    │ Libs    │ Libs    │ Libs    │        │
+│  ├─────────┼─────────┼─────────┤    └─────────┴─────────┴─────────┘        │
 │  │Guest OS │Guest OS │Guest OS │              │                            │
-│  │(Ubuntu) │(CentOS) │(Windows)│    ┌─────────┴─────────────────┐         │
-│  │ ~1GB    │ ~1GB    │ ~4GB    │    │    Container Runtime      │         │
-│  └─────────┴─────────┴─────────┘    │    (Docker Engine)        │         │
-│              │                       │         ~100MB            │         │
-│  ┌───────────┴───────────────┐      └───────────────────────────┘         │
+│  │(Ubuntu) │(CentOS) │(Windows)│    ┌─────────┴─────────────────┐          │
+│  │ ~1GB    │ ~1GB    │ ~4GB    │    │    Container Runtime      │          │
+│  └─────────┴─────────┴─────────┘    │    (Docker Engine)        │          │
+│              │                      │         ~100MB            │          │
+│  ┌───────────┴───────────────┐      └───────────────────────────┘          │
 │  │       Hypervisor          │                  │                          │
-│  │   (VMware, VirtualBox)    │      ┌───────────┴───────────────┐         │
-│  └───────────────────────────┘      │       Host OS             │         │
-│              │                       │      (Linux)              │         │
-│  ┌───────────┴───────────────┐      └───────────────────────────┘         │
+│  │   (VMware, VirtualBox)    │      ┌───────────┴───────────────┐          │
+│  └───────────────────────────┘      │       Host OS             │          │
+│              │                      │      (Linux)              │          │
+│  ┌───────────┴───────────────┐      └───────────────────────────┘          │
 │  │       Host OS             │                  │                          │
-│  └───────────────────────────┘      ┌───────────┴───────────────┐         │
-│              │                       │    Infrastructure         │         │
-│  ┌───────────┴───────────────┐      └───────────────────────────┘         │
+│  └───────────────────────────┘      ┌───────────┴───────────────┐          │
+│              │                      │    Infrastructure         │          │
+│  ┌───────────┴───────────────┐      └───────────────────────────┘          │
 │  │    Infrastructure         │                                             │
 │  └───────────────────────────┘                                             │
-│                                                                             │
+│                                                                            │
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -785,34 +785,34 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                        Docker Architecture                               │
+│                        Docker Architecture                              │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│   Developer                                                              │
-│       │                                                                  │
-│       ▼                                                                  │
+│                                                                         │
+│   Developer                                                             │
+│       │                                                                 │
+│       ▼                                                                 │
 │  ┌─────────────┐                                                        │
-│  │ Dockerfile  │  ◄─── คำสั่งในการสร้าง Image (Recipe)                    │
+│  │ Dockerfile  │  ◄─── คำสั่งในการสร้าง Image (Recipe)                     │
 │  └──────┬──────┘                                                        │
-│         │ docker build -t myapp:1.0 .                                    │
-│         ▼                                                                │
+│         │ docker build -t myapp:1.0 .                                   │
+│         ▼                                                               │
 │  ┌─────────────┐      ┌─────────────────────────────────┐               │
 │  │   Image     │ ────►│      Docker Registry            │               │
 │  │ (Blueprint) │ push │  (Docker Hub, ECR, GCR, ACR)    │               │
 │  └──────┬──────┘      └─────────────────────────────────┘               │
-│         │ docker run -p 3000:3000 myapp:1.0                              │
-│         ▼                                                                │
+│         │ docker run -p 3000:3000 myapp:1.0                             │
+│         ▼                                                               │
 │  ┌─────────────┐                                                        │
 │  │ Container   │  ◄─── Running instance ของ Image                       │
 │  │ (Instance)  │       (สร้างได้หลาย containers จาก 1 image)              │
 │  └─────────────┘                                                        │
-│                                                                          │
-│  Key Concepts:                                                           │
-│  • Image = Template/Blueprint (read-only)                                │
-│  • Container = Running instance (read-write layer)                       │
-│  • Dockerfile = Instructions to build image                              │
-│  • Registry = Storage for images                                         │
-│                                                                          │
+│                                                                         │
+│  Key Concepts:                                                          │
+│  • Image = Template/Blueprint (read-only)                               │
+│  • Container = Running instance (read-write layer)                      │
+│  • Dockerfile = Instructions to build image                             │
+│  • Registry = Storage for images                                        │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -874,47 +874,47 @@ docker push myregistry/myapp:1.0
 - Rolling updates (zero-downtime deployments)
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                      Kubernetes Architecture (Simplified)                    │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                              │
-│   ┌─────────────────────────────────────────────────────────────────────┐   │
-│   │                        KUBERNETES CLUSTER                            │   │
-│   │                                                                      │   │
-│   │  ┌──────────────────────────────────────────────────────────────┐   │   │
-│   │  │                     Control Plane (Master)                    │   │   │
+┌────────────────────────────────────────────────────────────────────────────┐
+│                      Kubernetes Architecture (Simplified)                  │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│   ┌────────────────────────────────────────────────────────────────────┐   │
+│   │                        KUBERNETES CLUSTER                          │   │
+│   │                                                                    │   │
+│   │  ┌─────────────────────────────────────────────────────────────┐   │   │
+│   │  │                     Control Plane (Master)                  │   │   │
 │   │  │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────────┐    │   │   │
 │   │  │  │API Server│ │Scheduler │ │Controller│ │    etcd      │    │   │   │
 │   │  │  │ (kubectl)│ │ (จัดวาง   │ │ Manager  │ │ (Key-Value   │    │   │   │
-│   │  │  │          │ │  Pods)   │ │ (ดูแล    │ │  Database)   │    │   │   │
+│   │  │  │          │ │  Pods)   │ │ (ดูแล     │ │  Database)   │    │   │   │
 │   │  │  │          │ │          │ │  state)  │ │              │    │   │   │
 │   │  │  └──────────┘ └──────────┘ └──────────┘ └──────────────┘    │   │   │
-│   │  └──────────────────────────────────────────────────────────────┘   │   │
-│   │                              │                                       │   │
-│   │                              ▼                                       │   │
-│   │  ┌────────────────────────────────────────────────────────────┐     │   │
-│   │  │                     Worker Nodes                            │     │   │
-│   │  │                                                             │     │   │
-│   │  │   Node 1                    Node 2                          │     │   │
-│   │  │  ┌───────────────────┐    ┌───────────────────┐            │     │   │
-│   │  │  │ ┌─────┐ ┌─────┐   │    │ ┌─────┐ ┌─────┐   │            │     │   │
-│   │  │  │ │Pod A│ │Pod B│   │    │ │Pod C│ │Pod D│   │            │     │   │
-│   │  │  │ │ 🐳  │ │ 🐳  │   │    │ │ 🐳  │ │ 🐳  │   │            │     │   │
-│   │  │  │ └─────┘ └─────┘   │    │ └─────┘ └─────┘   │            │     │   │
-│   │  │  │   kubelet         │    │   kubelet         │            │     │   │
-│   │  │  │   kube-proxy      │    │   kube-proxy      │            │     │   │
-│   │  │  └───────────────────┘    └───────────────────┘            │     │   │
-│   │  └────────────────────────────────────────────────────────────┘     │   │
-│   └─────────────────────────────────────────────────────────────────────┘   │
-│                                                                              │
-│   Key Concepts:                                                              │
-│   • Pod = หน่วยย่อยสุด (1+ containers ที่ทำงานด้วยกัน)                         │
-│   • Service = Load balancer + DNS ภายใน cluster                              │
-│   • Deployment = จัดการ replicas ของ Pods + rolling updates                  │
-│   • Ingress = External access point (รับ traffic จากภายนอก)                  │
-│   • ConfigMap/Secret = จัดการ configuration                                  │
-│                                                                              │
-└─────────────────────────────────────────────────────────────────────────────┘
+│   │  └─────────────────────────────────────────────────────────────┘   │   │
+│   │                              │                                     │   │
+│   │                              ▼                                     │   │
+│   │  ┌────────────────────────────────────────────────────────────┐    │   │
+│   │  │                     Worker Nodes                           │    │   │
+│   │  │                                                            │    │   │
+│   │  │   Node 1                    Node 2                         │    │   │
+│   │  │  ┌───────────────────┐    ┌───────────────────┐            │    │   │
+│   │  │  │ ┌─────┐ ┌─────┐   │    │ ┌─────┐ ┌─────┐   │            │    │   │
+│   │  │  │ │Pod A│ │Pod B│   │    │ │Pod C│ │Pod D│   │            │    │   │
+│   │  │  │ │ 🐳  │ │ 🐳  │   │    │ │ 🐳  │ │ 🐳  │   │            │    │   │
+│   │  │  │ └─────┘ └─────┘   │    │ └─────┘ └─────┘   │            │    │   │
+│   │  │  │   kubelet         │    │   kubelet         │            │    │   │
+│   │  │  │   kube-proxy      │    │   kube-proxy      │            │    │   │
+│   │  │  └───────────────────┘    └───────────────────┘            │    │   │
+│   │  └────────────────────────────────────────────────────────────┘    │   │
+│   └────────────────────────────────────────────────────────────────────┘   │
+│                                                                            │
+│   Key Concepts:                                                            │
+│   • Pod = หน่วยย่อยสุด (1+ containers ที่ทำงานด้วยกัน)                            │
+│   • Service = Load balancer + DNS ภายใน cluster                            │
+│   • Deployment = จัดการ replicas ของ Pods + rolling updates                 │
+│   • Ingress = External access point (รับ traffic จากภายนอก)                 │
+│   • ConfigMap/Secret = จัดการ configuration                                 │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
 ```
 
 #### Managed Kubernetes Services
@@ -932,13 +932,13 @@ docker push myregistry/myapp:1.0
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│              Topology 1: SINGLE SERVER                                   │
+│              Topology 1: SINGLE SERVER                                  │
 │              เหมาะสำหรับ: Development, Small apps, Prototypes            │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│   Users (Internet)                                                       │
-│         │                                                                │
-│         ▼                                                                │
+│                                                                         │
+│   Users (Internet)                                                      │
+│         │                                                               │
+│         ▼                                                               │
 │  ┌─────────────────────────────────────────────────┐                    │
 │  │              Single Server (EC2/VM)             │                    │
 │  │                                                 │                    │
@@ -948,18 +948,18 @@ docker push myregistry/myapp:1.0
 │  │  │ (Nginx) │  │(Node.js)│  │                 │  │                    │
 │  │  └─────────┘  └─────────┘  └─────────────────┘  │                    │
 │  │                                                 │                    │
-│  │         IP: 203.0.113.50 (Elastic IP)          │                    │
+│  │         IP: 203.0.113.50 (Elastic IP)           │                    │
 │  └─────────────────────────────────────────────────┘                    │
-│                                                                          │
-│  ✅ ข้อดี:                     ❌ ข้อเสีย:                                │
-│  • ง่าย ราคาถูก                • Single Point of Failure                 │
+│                                                                         │
+│  ✅ ข้อดี:                     ❌ ข้อเสีย:                                  │
+│  • ง่าย ราคาถูก                • Single Point of Failure                  │
 │  • Deploy ง่าย                 • ไม่สามารถ Scale                          │
-│  • เหมาะกับเรียนรู้             • Downtime เมื่อ update                   │
-│  • Latency ต่ำ (ทุกอย่างอยู่ด้วยกัน) • ถ้า server ล่ม ทุกอย่างล่ม              │
-│                                                                          │
-│  💰 Cost: ~$5-20/month (t3.micro/small)                                  │
-│  📊 Capacity: ~100-1000 concurrent users                                 │
-│                                                                          │
+│  • เหมาะกับเรียนรู้             • Downtime เมื่อ update                       │
+│  • Latency ต่ำ (ทุกอย่างอยู่ด้วยกัน) • ถ้า server ล่ม ทุกอย่างล่ม                   │
+│                                                                         │
+│  💰 Cost: ~$5-20/month (t3.micro/small)                                 │
+│  📊 Capacity: ~100-1000 concurrent users                                │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -967,38 +967,38 @@ docker push myregistry/myapp:1.0
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│              Topology 2: SEPARATED DATABASE                              │
+│              Topology 2: SEPARATED DATABASE                             │
 │              เหมาะสำหรับ: Small production apps                          │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│   Users (Internet)                                                       │
-│         │                                                                │
-│         ▼                                                                │
-│  ┌─────────────────────────────┐    ┌─────────────────────────┐         │
-│  │     Application Server      │    │     Managed Database    │         │
-│  │        (EC2/VM)             │    │    (RDS/Cloud SQL)      │         │
-│  │  ┌─────────┐  ┌─────────┐  │    │                         │         │
-│  │  │  Nginx  │  │  API    │  │    │  ┌─────────────────┐    │         │
-│  │  │ (Proxy) │  │(Node.js)│  │───►│  │   PostgreSQL    │    │         │
-│  │  └─────────┘  └─────────┘  │    │  │   (Managed)     │    │         │
-│  └─────────────────────────────┘    │  └─────────────────┘    │         │
-│                                      │                         │         │
-│                                      │  Features:              │         │
-│                                      │  • Auto backup (daily)  │         │
-│                                      │  • Point-in-time recovery│        │
-│                                      │  • Security patches     │         │
-│                                      │  • Monitoring           │         │
-│                                      └─────────────────────────┘         │
-│                                                                          │
-│  ✅ ข้อดี:                     ❌ ข้อเสีย:                                │
-│  • DB มี backup/recovery       • Cost สูงขึ้น (~$15-50/mo for DB)        │
-│  • แยก concern ชัดเจน          • App ยังเป็น SPOF                        │
-│  • ง่ายต่อการ scale DB         • Network latency เพิ่มเล็กน้อย            │
-│  • DB maintenance อัตโนมัติ                                               │
-│                                                                          │
-│  💰 Cost: ~$30-100/month                                                 │
-│  📊 Capacity: ~500-2000 concurrent users                                 │
-│                                                                          │
+│                                                                         │
+│   Users (Internet)                                                      │
+│         │                                                               │
+│         ▼                                                               │
+│  ┌─────────────────────────────┐    ┌──────────────────────────┐        │
+│  │     Application Server      │    │     Managed Database     │        │
+│  │        (EC2/VM)             │    │    (RDS/Cloud SQL)       │        │
+│  │  ┌─────────┐  ┌─────────┐   │    │                          │        │
+│  │  │  Nginx  │  │  API    │   │    │  ┌─────────────────┐     │        │
+│  │  │ (Proxy) │  │(Node.js)│   │───►│  │   PostgreSQL    │     │        │
+│  │  └─────────┘  └─────────┘   │    │  │   (Managed)     │     │        │
+│  └─────────────────────────────┘    │  └─────────────────┘     │        │
+│                                     │                          │        │
+│                                     │  Features:               │        │
+│                                     │  • Auto backup (daily)   │        │
+│                                     │  • Point-in-time recovery│        │
+│                                     │  • Security patches      │        │
+│                                     │  • Monitoring            │        │
+│                                     └──────────────────────────┘        │
+│                                                                         │
+│  ✅ ข้อดี:                     ❌ ข้อเสีย:                                  │
+│  • DB มี backup/recovery       • Cost สูงขึ้น (~$15-50/mo for DB)           │
+│  • แยก concern ชัดเจน          • App ยังเป็น SPOF                          │
+│  • ง่ายต่อการ scale DB         • Network latency เพิ่มเล็กน้อย                │
+│  • DB maintenance อัตโนมัติ                                                │
+│                                                                         │
+│  💰 Cost: ~$30-100/month                                                │
+│  📊 Capacity: ~500-2000 concurrent users                                │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -1006,31 +1006,31 @@ docker push myregistry/myapp:1.0
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│              Topology 3: LOAD BALANCED                                   │
-│              เหมาะสำหรับ: Production apps ที่ต้องการ HA                   │
+│              Topology 3: LOAD BALANCED                                  │
+│              เหมาะสำหรับ: Production apps ที่ต้องการ HA                     │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│   Users (Internet)                                                       │
-│         │                                                                │
-│         ▼                                                                │
+│                                                                         │
+│   Users (Internet)                                                      │
+│         │                                                               │
+│         ▼                                                               │
 │  ┌─────────────────────────────────────────────┐                        │
 │  │      Load Balancer (ALB/NLB/Cloud LB)       │                        │
-│  │  • Health checks ทุก 30 วินาที                │                        │
+│  │  • Health checks ทุก 30 วินาที                 │                        │
 │  │  • SSL termination                          │                        │
 │  │  • Auto-remove unhealthy instances          │                        │
 │  └─────────────────────┬───────────────────────┘                        │
-│                        │                                                 │
+│                        │                                                │
 │          ┌─────────────┼─────────────┐                                  │
 │          ▼             ▼             ▼                                  │
-│     ┌─────────┐   ┌─────────┐   ┌─────────┐                            │
-│     │ App #1  │   │ App #2  │   │ App #3  │   Auto Scaling Group       │
-│     │(Node.js)│   │(Node.js)│   │(Node.js)│   • Min: 2 instances       │
-│     │  AZ-a   │   │  AZ-b   │   │  AZ-c   │   • Max: 10 instances      │
-│     └────┬────┘   └────┬────┘   └────┬────┘   • Scale at CPU > 70%     │
+│     ┌─────────┐   ┌─────────┐   ┌─────────┐                             │
+│     │ App #1  │   │ App #2  │   │ App #3  │   Auto Scaling Group        │
+│     │(Node.js)│   │(Node.js)│   │(Node.js)│   • Min: 2 instances        │
+│     │  AZ-a   │   │  AZ-b   │   │  AZ-c   │   • Max: 10 instances       │
+│     └────┬────┘   └────┬────┘   └────┬────┘   • Scale at CPU > 70%      │
 │          │             │             │                                  │
 │          └─────────────┼─────────────┘                                  │
-│                        │                                                 │
-│                        ▼                                                 │
+│                        │                                                │
+│                        ▼                                                │
 │  ┌─────────────────────────────────────────────┐                        │
 │  │        Managed Database (RDS Multi-AZ)      │                        │
 │  │  ┌─────────────┐      ┌─────────────┐       │                        │
@@ -1039,16 +1039,16 @@ docker push myregistry/myapp:1.0
 │  │  └─────────────┘      └─────────────┘       │                        │
 │  │  Auto failover if primary fails             │                        │
 │  └─────────────────────────────────────────────┘                        │
-│                                                                          │
-│  ✅ ข้อดี:                     ❌ ข้อเสีย:                                │
-│  • High Availability (99.9%+)  • Cost สูง (~$200-500/mo)                │
-│  • Auto-scaling               • Complexity สูง                          │
-│  • No single point of failure • ต้องการ DevOps skills                   │
+│                                                                         │
+│  ✅ ข้อดี:                     ❌ ข้อเสีย:                                  │
+│  • High Availability (99.9%+)  • Cost สูง (~$200-500/mo)                 │
+│  • Auto-scaling               • Complexity สูง                           │
+│  • No single point of failure • ต้องการ DevOps skills                    │
 │  • Zero-downtime deployments                                            │
-│                                                                          │
-│  💰 Cost: ~$200-500/month                                                │
+│                                                                         │
+│  💰 Cost: ~$200-500/month                                               │
 │  📊 Capacity: ~5000-50000 concurrent users                              │
-│                                                                          │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -1056,62 +1056,62 @@ docker push myregistry/myapp:1.0
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│              Topology 4: FULL PRODUCTION (Enterprise)                         │
+│              Topology 4: FULL PRODUCTION (Enterprise)                        │
 │              เหมาะสำหรับ: Large-scale production, Microservices               │
 ├──────────────────────────────────────────────────────────────────────────────┤
-│                                                                               │
+│                                                                              │
 │   Users ──► CDN (CloudFront/CloudFlare)                                      │
 │             • Cache static assets (images, CSS, JS)                          │
 │             • DDoS protection                                                │
 │             • Global edge locations                                          │
-│                       │                                                       │
-│                       ▼                                                       │
+│                       │                                                      │
+│                       ▼                                                      │
 │              ┌─────────────────┐                                             │
 │              │  WAF (Firewall) │  • SQL injection protection                 │
 │              │                 │  • XSS protection                           │
 │              └────────┬────────┘  • Rate limiting                            │
-│                       │                                                       │
-│                       ▼                                                       │
+│                       │                                                      │
+│                       ▼                                                      │
 │              ┌─────────────────┐                                             │
 │              │  Load Balancer  │                                             │
 │              └────────┬────────┘                                             │
-│                       │                                                       │
+│                       │                                                      │
 │     ┌─────────────────┼─────────────────┐                                    │
 │     ▼                 ▼                 ▼                                    │
-│  ┌──────┐         ┌──────┐         ┌──────┐                                 │
-│  │Web/SPA│        │ API  │         │ API  │     Auto Scaling                │
-│  │(Static)│       │  #1  │         │  #2  │     Groups                      │
-│  └───┬───┘        └──┬───┘         └──┬───┘                                 │
-│      │               │                 │                                      │
+│  ┌────────┐        ┌──────┐         ┌──────┐                                 │
+│  │Web/SPA │        │ API  │         │ API  │     Auto Scaling                │
+│  │(Static)│        │  #1  │         │  #2  │     Groups                      │
+│  └───┬────┘        └──┬───┘         └──┬───┘                                 │
+│      │               │                 │                                     │
 │      │   ┌───────────┼─────────────────┤                                     │
-│      │   │           │                 │                                      │
-│      │   ▼           ▼                 ▼                                      │
-│      │ ┌──────┐  ┌───────────┐   ┌──────────────┐                           │
-│      │ │Redis │  │  Message  │   │   Database   │                           │
-│      │ │Cache │  │   Queue   │   │  (RDS/Aurora)│                           │
-│      │ │(ElastiCache) (SQS/    │   │  Multi-AZ    │                           │
-│      │ └──────┘  │ RabbitMQ) │   │  + Read      │                           │
-│      │           └─────┬─────┘   │   Replicas   │                           │
-│      │                 │         └──────────────┘                           │
-│      │                 ▼                                                     │
-│      │         ┌──────────────┐                                             │
-│      │         │   Workers    │   Background Jobs                           │
-│      │         │  (Consumers) │   • Email sending                           │
-│      │         └──────────────┘   • Report generation                       │
-│      │                            • Data processing                          │
+│      │   │           │                 │                                     │
+│      │   ▼           ▼                 ▼                                     │
+│      │ ┌───────┐    ┌───────────┐   ┌──────────────┐                         │
+│      │ │Redis  │    │  Message  │   │   Database   │                         │
+│      │ │Cache  │    │   Queue   │   │  (RDS/Aurora)│                         │
+│      │ │(ElastiCache) (SQS/     │   │  Multi-AZ    │                         │
+│      │ └───────┘    │ RabbitMQ) │   │  + Read      │                         │
+│      │              └─────┬─────┘   │   Replicas   │                         │
+│      │                    │         └──────────────┘                         │
+│      │                    ▼                                                  │
+│      │            ┌──────────────┐                                           │
+│      │            │   Workers    │   Background Jobs                         │
+│      │            │  (Consumers) │   • Email sending                         │
+│      │            └──────────────┘   • Report generation                     │
+│      │                               • Data processing                       │
 │      ▼                                                                       │
-│  ┌──────────────┐                                                           │
-│  │ S3 / Cloud   │  Static files, User uploads                               │
-│  │   Storage    │                                                           │
-│  └──────────────┘                                                           │
-│                                                                               │
-│  Additional Services:                                                         │
-│  • Secrets Manager (credentials)  • CloudWatch/Datadog (Monitoring)         │
-│  • Route 53 (DNS)                 • CloudTrail (Audit logs)                 │
-│                                                                               │
-│  💰 Cost: ~$500-5000+/month                                                   │
+│  ┌──────────────┐                                                            │
+│  │ S3 / Cloud   │  Static files, User uploads                                │
+│  │   Storage    │                                                            │
+│  └──────────────┘                                                            │
+│                                                                              │
+│  Additional Services:                                                        │
+│  • Secrets Manager (credentials)  • CloudWatch/Datadog (Monitoring)          │
+│  • Route 53 (DNS)                 • CloudTrail (Audit logs)                  │
+│                                                                              │
+│  💰 Cost: ~$500-5000+/month                                                  │
 │  📊 Capacity: 100K+ concurrent users                                         │
-│                                                                               │
+│                                                                              │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -1127,34 +1127,34 @@ docker push myregistry/myapp:1.0
 ### 🎯 เลือก Topology อย่างไร?
 
 ```
-┌─────────────────────────────────────────────────────────────────────────┐
+┌──────────────────────────────────────────────────────────────────────────┐
 │                    Decision Tree: Choosing Topology                      │
-├─────────────────────────────────────────────────────────────────────────┤
+├──────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
 │                         Start                                            │
 │                           │                                              │
 │                           ▼                                              │
-│            ┌──────────────────────────────┐                             │
-│            │ Development/Learning only?   │                             │
-│            └──────────────┬───────────────┘                             │
+│            ┌──────────────────────────────┐                              │
+│            │ Development/Learning only?   │                              │
+│            └──────────────┬───────────────┘                              │
 │                   Yes     │      No                                      │
-│            ┌──────────────┴───────────────┐                             │
+│            ┌──────────────┴───────────────┐                              │
 │            ▼                              ▼                              │
-│     Single Server              ┌──────────────────────────┐             │
-│                                │ < 1000 users expected?   │             │
-│                                └──────────────┬───────────┘             │
+│     Single Server              ┌──────────────────────────┐              │
+│                                │ < 1000 users expected?   │              │
+│                                └──────────────┬───────────┘              │
 │                                       Yes     │      No                  │
-│                                ┌──────────────┴───────────┐             │
-│                                ▼                          ▼             │
-│                         Separated DB         ┌───────────────────────┐  │
-│                                              │ Need 99.9%+ uptime?   │  │
-│                                              └───────────┬───────────┘  │
-│                                                   Yes    │     No       │
-│                                              ┌───────────┴───────────┐  │
-│                                              ▼                       ▼  │
-│                                       Full Production        Load Balanced │
+│                                ┌──────────────┴───────────┐              │
+│                                ▼                          ▼              │
+│                         Separated DB         ┌───────────────────────┐   │
+│                                              │ Need 99.9%+ uptime?   │   │
+│                                              └───────────┬───────────┘   │
+│                                                   Yes    │     No        │
+│                                              ┌───────────┴───────────┐   │
+│                                              ▼                       ▼   │
+│                                       Full Production      Load Balanced │
 │                                                                          │
-└─────────────────────────────────────────────────────────────────────────┘
+└──────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -1165,32 +1165,32 @@ docker push myregistry/myapp:1.0
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    Key Takeaways - สัปดาห์ที่ 7                          │
+│                    Key Takeaways - สัปดาห์ที่ 7                             │
 ├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
+│                                                                         │
 │  1️⃣ CLOUD SERVICE MODELS                                                │
-│     • IaaS = คุณจัดการ OS ขึ้นไป (EC2, VMs)                              │
-│     • PaaS = คุณจัดการแค่ App + Data (Heroku, App Engine)               │
-│     • SaaS = ใช้งานอย่างเดียว (Gmail, Salesforce)                        │
-│                                                                          │
-│  2️⃣ 12-FACTOR APP (5 ข้อสำคัญ)                                          │
+│     • IaaS = คุณจัดการ OS ขึ้นไป (EC2, VMs)                                 │
+│     • PaaS = คุณจัดการแค่ App + Data (Heroku, App Engine)                  │
+│     • SaaS = ใช้งานอย่างเดียว (Gmail, Salesforce)                          │
+│                                                                         │
+│  2️⃣ 12-FACTOR APP (5 ข้อสำคัญ)                                            │
 │     • Config in ENV (ไม่ hardcode)                                       │
-│     • Stateless processes (ใช้ Redis สำหรับ session)                     │
+│     • Stateless processes (ใช้ Redis สำหรับ session)                      │
 │     • Disposability (start/stop เร็ว)                                    │
-│     • Logs to stdout (ไม่เขียนไฟล์)                                       │
-│     • Dev/Prod parity (environment เหมือนกัน)                            │
-│                                                                          │
+│     • Logs to stdout (ไม่เขียนไฟล์)                                        │
+│     • Dev/Prod parity (environment เหมือนกัน)                             │
+│                                                                         │
 │  3️⃣ CONTAINERS                                                          │
 │     • Lightweight กว่า VMs (MB vs GB)                                    │
 │     • Docker = Container platform (build, ship, run)                    │
 │     • Kubernetes = Orchestration (manage at scale)                      │
-│                                                                          │
+│                                                                         │
 │  4️⃣ DEPLOYMENT TOPOLOGIES                                               │
 │     • Single Server → Dev/Small ($5-20/mo)                              │
 │     • Separated DB → Small Prod ($30-100/mo)                            │
 │     • Load Balanced → HA Required ($200-500/mo)                         │
 │     • Full Production → Enterprise ($500-5000+/mo)                      │
-│                                                                          │
+│                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
