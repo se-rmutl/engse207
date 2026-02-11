@@ -2733,14 +2733,7 @@ cat > docs/ANALYSIS.md << 'EOF'
 [เขียนคำสั่งที่ใช้บ่อย]
 ```
 
----
-
-*สร้างโดย: [ชื่อนักศึกษา]*  
-*ENGSE207 Software Architecture - Week 6*
-EOF
-```
-
-### 8.2 คำสั่งสำหรับเก็บข้อมูล
+### 8 คำสั่งสำหรับเก็บข้อมูล
 
 ```bash
 # ดู memory usage ของ Docker
@@ -2759,6 +2752,13 @@ docker images
 docker network ls
 docker network inspect taskboard-network
 ```
+---
+
+*สร้างโดย: [ชื่อนักศึกษา]*  
+*ENGSE207 Software Architecture - Week 6*
+EOF
+```
+
 
 ---
 
