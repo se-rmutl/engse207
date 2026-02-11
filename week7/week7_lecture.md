@@ -89,19 +89,19 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│           Architectural Design Process                       │
+│           Architectural Design Process                      │
 ├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  1. Gather Requirements                                      │
-│           ↓                                                  │
-│  2. Identify Architectural Drivers                           │
-│           ↓                                                  │
-│  3. Design Architecture (ADD-Lite)                           │
-│           ↓                                                  │
-│  4. Evaluate & Compare Candidates                            │
-│           ↓                                                  │
-│  5. Document (ADR)                                           │
-│                                                              │
+│                                                             │
+│  1. Gather Requirements                                     │
+│           ↓                                                 │
+│  2. Identify Architectural Drivers                          │
+│           ↓                                                 │
+│  3. Design Architecture (ADD-Lite)                          │
+│           ↓                                                 │
+│  4. Evaluate & Compare Candidates                           │
+│           ↓                                                 │
+│  5. Document (ADR)                                          │
+│                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -118,11 +118,11 @@
 
 ```
 สัปดาห์ที่ 6                      สัปดาห์ที่ 7
-┌────────────────┐             ┌────────────────┐
-│ ออกแบบ          │            │ Deploy         │
-│ Architecture    │  ────────► │ บน Cloud       │
-│ (ADD-Lite)      │            │ (IaaS/PaaS)    │
-└────────────────┘             └────────────────┘
+┌────────────────┐            ┌────────────────┐
+│ ออกแบบ         │            │ Deploy         │
+│ Architecture   │  ────────► │ บน Cloud       │
+│ (ADD-Lite)     │            │ (IaaS/PaaS)    │
+└────────────────┘            └────────────────┘
 ```
 
 ---
