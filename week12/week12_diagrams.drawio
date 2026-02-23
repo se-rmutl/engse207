@@ -1,0 +1,693 @@
+<mxfile host="app.diagrams.net" modified="2025-01-01T00:00:00.000Z" agent="ENGSE207" version="24.0.0" type="device">
+  <diagram id="dfd-taskboard" name="1. DFD - Task Board Threat Model">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="title1" value="&lt;b&gt;Data Flow Diagram (DFD): Task Board System - Threat Modeling&lt;/b&gt;&lt;br&gt;ENGSE207 Week 12 - Security-Aware Software Architecture" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="280" y="20" width="600" height="50" as="geometry"/>
+        </mxCell>
+        <!-- External Entity: Browser User -->
+        <mxCell id="ext-user" value="&lt;b&gt;Browser&lt;/b&gt;&lt;br&gt;(ผู้ใช้งาน)" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=0;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="310" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <!-- Trust Boundary: Internet -->
+        <mxCell id="tb-internet" value="&lt;b&gt;Trust Boundary: Internet&lt;/b&gt;" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#FF0000;strokeWidth=2;dashed=1;dashPattern=8 4;fontSize=11;fontColor=#FF0000;verticalAlign=top;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="80" width="870" height="660" as="geometry"/>
+        </mxCell>
+        <!-- Trust Boundary: Docker Network -->
+        <mxCell id="tb-docker" value="&lt;b&gt;Trust Boundary: Docker Network&lt;/b&gt;" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#00AA00;strokeWidth=2;dashed=1;dashPattern=8 4;fontSize=11;fontColor=#00AA00;verticalAlign=top;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="120" width="790" height="580" as="geometry"/>
+        </mxCell>
+        <!-- Process: WAF -->
+        <mxCell id="proc-waf" value="&lt;b&gt;WAF&lt;/b&gt;&lt;br&gt;(Web Application&lt;br&gt;Firewall)" style="shape=doubleRectangle;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="310" y="200" width="140" height="70" as="geometry"/>
+        </mxCell>
+        <!-- Process: API Gateway (Nginx) -->
+        <mxCell id="proc-gateway" value="&lt;b&gt;API Gateway&lt;/b&gt;&lt;br&gt;(Nginx Enhanced)&lt;br&gt;JWT Validation&lt;br&gt;Rate Limiting" style="shape=doubleRectangle;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="310" y="340" width="140" height="90" as="geometry"/>
+        </mxCell>
+        <!-- Process: Auth Service -->
+        <mxCell id="proc-auth" value="&lt;b&gt;Auth Service&lt;/b&gt;&lt;br&gt;Login / Register&lt;br&gt;JWT Issue / Refresh" style="shape=doubleRectangle;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="560" y="180" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <!-- Process: Task Service -->
+        <mxCell id="proc-task" value="&lt;b&gt;Task Service&lt;/b&gt;&lt;br&gt;CRUD Tasks&lt;br&gt;Board Management" style="shape=doubleRectangle;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="560" y="340" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <!-- Process: User Service -->
+        <mxCell id="proc-user" value="&lt;b&gt;User Service&lt;/b&gt;&lt;br&gt;Profile Management&lt;br&gt;Role Management" style="shape=doubleRectangle;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="560" y="490" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <!-- Data Store: Auth DB -->
+        <mxCell id="ds-authdb" value="&lt;b&gt;Auth DB&lt;/b&gt;&lt;br&gt;users, tokens" style="shape=partialRectangle;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;top=1;bottom=1;left=0;right=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="820" y="180" width="140" height="50" as="geometry"/>
+        </mxCell>
+        <!-- Data Store: Task DB -->
+        <mxCell id="ds-taskdb" value="&lt;b&gt;Task DB&lt;/b&gt;&lt;br&gt;tasks, boards" style="shape=partialRectangle;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;top=1;bottom=1;left=0;right=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="820" y="345" width="140" height="50" as="geometry"/>
+        </mxCell>
+        <!-- Data Store: User DB -->
+        <mxCell id="ds-userdb" value="&lt;b&gt;User DB&lt;/b&gt;&lt;br&gt;profiles, roles" style="shape=partialRectangle;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;top=1;bottom=1;left=0;right=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="820" y="500" width="140" height="50" as="geometry"/>
+        </mxCell>
+        <!-- Process: Centralized Logging -->
+        <mxCell id="proc-log" value="&lt;b&gt;Centralized&lt;br&gt;Logging&lt;/b&gt;&lt;br&gt;(ELK / Loki+Grafana)" style="shape=doubleRectangle;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="370" y="590" width="160" height="70" as="geometry"/>
+        </mxCell>
+        <!-- Data Flows -->
+        <mxCell id="flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" source="ext-user" target="proc-waf" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="flow1-label" value="HTTPS Request" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#333333;" vertex="1" connectable="0" parent="flow1">
+          <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#d6b656;strokeWidth=2;" edge="1" source="proc-waf" target="proc-gateway" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="flow2-label" value="Filtered Traffic" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="flow2">
+          <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="flow3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.2;entryX=0;entryY=0.5;strokeColor=#82b366;strokeWidth=2;" edge="1" source="proc-gateway" target="proc-auth" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="flow3-label" value="/auth/*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="flow3">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="flow4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#82b366;strokeWidth=2;" edge="1" source="proc-gateway" target="proc-task" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="flow4-label" value="/api/tasks/*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="flow4">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="flow5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.8;entryX=0;entryY=0.5;strokeColor=#82b366;strokeWidth=2;" edge="1" source="proc-gateway" target="proc-user" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="flow5-label" value="/api/users/*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="flow5">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="flow6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#b85450;strokeWidth=2;" edge="1" source="proc-auth" target="ds-authdb" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="flow6-label" value="SQL (TCP)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="flow6">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="flow7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#b85450;strokeWidth=2;" edge="1" source="proc-task" target="ds-taskdb" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="flow7-label" value="SQL (TCP)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="flow7">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="flow8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#b85450;strokeWidth=2;" edge="1" source="proc-user" target="ds-userdb" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="flow8-label" value="SQL (TCP)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="flow8">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <!-- Log flows (dashed) -->
+        <mxCell id="logflow1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;dashed=1;strokeColor=#9673a6;exitX=0.5;exitY=1;entryX=0.2;entryY=0;" edge="1" source="proc-auth" target="proc-log" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="logflow2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;dashed=1;strokeColor=#9673a6;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" source="proc-task" target="proc-log" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="logflow3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;dashed=1;strokeColor=#9673a6;exitX=0.5;exitY=1;entryX=0.8;entryY=0;" edge="1" source="proc-user" target="proc-log" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="logflow-label" value="Logs" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#9673a6;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="620" y="460" width="40" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Legend -->
+        <mxCell id="legend-box" value="" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#CCCCCC;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="500" width="160" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-title" value="&lt;b&gt;Legend&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="100" y="505" width="80" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg1" value="External Entity" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="535" width="90" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg2" value="Process" style="shape=doubleRectangle;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="70" y="570" width="90" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg3" value="Data Store" style="shape=partialRectangle;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;top=1;bottom=1;left=0;right=0;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="70" y="605" width="90" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg4" value="─ ─ Trust Boundary" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#FF0000;" vertex="1" parent="1">
+          <mxGeometry x="70" y="640" width="130" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg5" value="──► Data Flow" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="70" y="665" width="130" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg6" value="- -► Log Flow" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="70" y="690" width="130" height="25" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="stride-analysis" name="2. STRIDE Analysis Table">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="title2" value="&lt;b&gt;STRIDE Threat Analysis: Task Board System&lt;/b&gt;&lt;br&gt;ENGSE207 Week 12" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="330" y="20" width="500" height="50" as="geometry"/>
+        </mxCell>
+        <!-- Table Header -->
+        <mxCell id="h1" value="&lt;b&gt;STRIDE&lt;/b&gt;" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#1a237e;fontColor=#FFFFFF;strokeColor=#1a237e;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="90" width="100" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="h2" value="&lt;b&gt;ภัยคุกคาม (Threat)&lt;/b&gt;" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#1a237e;fontColor=#FFFFFF;strokeColor=#1a237e;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="150" y="90" width="200" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="h3" value="&lt;b&gt;ตัวอย่างใน Task Board&lt;/b&gt;" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#1a237e;fontColor=#FFFFFF;strokeColor=#1a237e;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="350" y="90" width="280" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="h4" value="&lt;b&gt;Mitigation&lt;/b&gt;" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#1a237e;fontColor=#FFFFFF;strokeColor=#1a237e;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="630" y="90" width="280" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="h5" value="&lt;b&gt;Component&lt;/b&gt;" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#1a237e;fontColor=#FFFFFF;strokeColor=#1a237e;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="910" y="90" width="150" height="40" as="geometry"/>
+        </mxCell>
+        <!-- Row S -->
+        <mxCell id="s1" value="&lt;b&gt;S&lt;/b&gt;&lt;br&gt;Spoofing" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#e57373;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="130" width="100" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="s2" value="ปลอมตัวเป็นผู้ใช้คนอื่น&lt;br&gt;เพื่อเข้าถึงระบบ" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="150" y="130" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3" value="ผู้โจมตีปลอม JWT Token&lt;br&gt;หรือขโมย Token จาก&lt;br&gt;localStorage เพื่อเข้าถึง&lt;br&gt;Task ของคนอื่น" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="350" y="130" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="s4" value="• JWT with strong signing (HS256/RS256)&lt;br&gt;• Short token expiry (1hr)&lt;br&gt;• HttpOnly cookies&lt;br&gt;• Refresh token rotation" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#a5d6a7;fontSize=11;align=left;spacingLeft=5;" vertex="1" parent="1">
+          <mxGeometry x="630" y="130" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="s5" value="🔑 Auth Service&lt;br&gt;🚪 API Gateway" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#90caf9;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="910" y="130" width="150" height="80" as="geometry"/>
+        </mxCell>
+        <!-- Row T -->
+        <mxCell id="t1" value="&lt;b&gt;T&lt;/b&gt;&lt;br&gt;Tampering" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#e57373;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="210" width="100" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="t2" value="แก้ไขข้อมูลโดยไม่ได้&lt;br&gt;รับอนุญาต" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="150" y="210" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="t3" value="SQL Injection ผ่าน&lt;br&gt;task title/description&lt;br&gt;หรือแก้ไข request body&lt;br&gt;เพื่อเปลี่ยน task owner" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="350" y="210" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="t4" value="• Parameterized queries (ORM)&lt;br&gt;• Input validation &amp; sanitization&lt;br&gt;• WAF rules (OWASP CRS)&lt;br&gt;• Server-side ownership check" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#a5d6a7;fontSize=11;align=left;spacingLeft=5;" vertex="1" parent="1">
+          <mxGeometry x="630" y="210" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="t5" value="🛡️ WAF&lt;br&gt;📋 Task Service&lt;br&gt;(Input Validation)" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#90caf9;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="910" y="210" width="150" height="80" as="geometry"/>
+        </mxCell>
+        <!-- Row R -->
+        <mxCell id="r1" value="&lt;b&gt;R&lt;/b&gt;&lt;br&gt;Repudiation" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#e57373;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="290" width="100" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2" value="ปฏิเสธว่าไม่ได้ทำ&lt;br&gt;กิจกรรมบางอย่าง" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="150" y="290" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3" value="ผู้ใช้ลบ Task สำคัญ&lt;br&gt;แล้วอ้างว่า &amp;quot;ไม่ได้ทำ&amp;quot;&lt;br&gt;ไม่มีหลักฐานว่าใครลบ" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="350" y="290" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4" value="• Centralized audit logging&lt;br&gt;• Log: who, what, when, from where&lt;br&gt;• Immutable log storage&lt;br&gt;• Tamper-proof timestamps" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#a5d6a7;fontSize=11;align=left;spacingLeft=5;" vertex="1" parent="1">
+          <mxGeometry x="630" y="290" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5" value="📊 Centralized&lt;br&gt;Logging&lt;br&gt;(ELK/Loki)" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#90caf9;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="910" y="290" width="150" height="80" as="geometry"/>
+        </mxCell>
+        <!-- Row I -->
+        <mxCell id="i1" value="&lt;b&gt;I&lt;/b&gt;&lt;br&gt;Information&lt;br&gt;Disclosure" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#e57373;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="370" width="100" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="i2" value="ข้อมูลรั่วไหลสู่&lt;br&gt;ผู้ไม่มีสิทธิ์" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="150" y="370" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="i3" value=".env file (DB password)&lt;br&gt;ถูก commit ลง Git&lt;br&gt;หรือ API ส่งข้อมูล task&lt;br&gt;ของ user อื่นมาด้วย" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="350" y="370" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="i4" value="• .gitignore for .env files&lt;br&gt;• Secret management (Vault)&lt;br&gt;• Data-level access control&lt;br&gt;• HTTPS everywhere" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#a5d6a7;fontSize=11;align=left;spacingLeft=5;" vertex="1" parent="1">
+          <mxGeometry x="630" y="370" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="i5" value="🔐 Secret Mgmt&lt;br&gt;📋 Service-level&lt;br&gt;access control" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#90caf9;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="910" y="370" width="150" height="80" as="geometry"/>
+        </mxCell>
+        <!-- Row D -->
+        <mxCell id="d1" value="&lt;b&gt;D&lt;/b&gt;&lt;br&gt;Denial of&lt;br&gt;Service" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#e57373;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="450" width="100" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="d2" value="ทำให้ระบบ&lt;br&gt;ใช้งานไม่ได้" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="150" y="450" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="d3" value="ส่ง requests จำนวนมาก&lt;br&gt;ท่วม API Server&lt;br&gt;หรือ create tasks ไม่หยุด&lt;br&gt;ทำให้ DB เต็ม" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="350" y="450" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="d4" value="• Rate limiting (100 req/min/IP)&lt;br&gt;• WAF DDoS protection&lt;br&gt;• Resource quotas per user&lt;br&gt;• Auto-scaling (if cloud)" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#a5d6a7;fontSize=11;align=left;spacingLeft=5;" vertex="1" parent="1">
+          <mxGeometry x="630" y="450" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="d5" value="🛡️ WAF&lt;br&gt;🚪 API Gateway&lt;br&gt;(Rate Limiting)" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#90caf9;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="910" y="450" width="150" height="80" as="geometry"/>
+        </mxCell>
+        <!-- Row E -->
+        <mxCell id="e1" value="&lt;b&gt;E&lt;/b&gt;&lt;br&gt;Elevation of&lt;br&gt;Privilege" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#e57373;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="530" width="100" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="ยกระดับสิทธิ์&lt;br&gt;เกินที่ได้รับ" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="150" y="530" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="แก้ role ใน JWT payload&lt;br&gt;จาก &amp;quot;member&amp;quot; เป็น &amp;quot;admin&amp;quot;&lt;br&gt;หรือเข้าถึง admin-only&lt;br&gt;endpoints โดยตรง" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#e0e0e0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="350" y="530" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="• Server-side role validation&lt;br&gt;• JWT signature verification&lt;br&gt;• RBAC middleware per endpoint&lt;br&gt;• Principle of least privilege" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#a5d6a7;fontSize=11;align=left;spacingLeft=5;" vertex="1" parent="1">
+          <mxGeometry x="630" y="530" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="🔑 Auth Service&lt;br&gt;📋 RBAC&lt;br&gt;Middleware" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#90caf9;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="910" y="530" width="150" height="80" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="c2-security" name="3. C2 Container Diagram (Security Enhanced)">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="title3" value="&lt;b&gt;C2 Container Diagram: Task Board with Security Components&lt;/b&gt;&lt;br&gt;ENGSE207 Week 12 - ปรับปรุงจาก Week 6 Docker Architecture" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="250" y="10" width="660" height="50" as="geometry"/>
+        </mxCell>
+        <!-- Person: User -->
+        <mxCell id="person" value="&lt;b&gt;ผู้ใช้งาน&lt;/b&gt;&lt;br&gt;[Person]&lt;br&gt;&lt;br&gt;นักศึกษา / อาจารย์&lt;br&gt;ใช้จัดการ Task Board" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#08427b;fontColor=#FFFFFF;strokeColor=#08427b;fontSize=11;perimeter=ellipsePerimeter;" vertex="1" parent="1">
+          <mxGeometry x="480" y="65" width="170" height="100" as="geometry"/>
+        </mxCell>
+        <!-- System Boundary -->
+        <mxCell id="sys-boundary" value="&lt;b&gt;Task Board System&lt;/b&gt; [Docker Compose]" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#444444;strokeWidth=2;dashed=1;fontSize=12;fontColor=#444444;verticalAlign=top;rounded=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="30" y="200" width="1110" height="590" as="geometry"/>
+        </mxCell>
+        <!-- WAF Container -->
+        <mxCell id="c-waf" value="&lt;b&gt;WAF&lt;/b&gt;&lt;br&gt;[Container: ModSecurity]&lt;br&gt;&lt;br&gt;กรอง malicious traffic&lt;br&gt;OWASP Top 10 protection&lt;br&gt;&lt;font color=&quot;#FF0000&quot;&gt;[NEW]&lt;/font&gt;" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;rounded=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="440" y="230" width="250" height="100" as="geometry"/>
+        </mxCell>
+        <!-- API Gateway Container -->
+        <mxCell id="c-gateway" value="&lt;b&gt;API Gateway&lt;/b&gt;&lt;br&gt;[Container: Nginx]&lt;br&gt;&lt;br&gt;JWT validation, Rate limiting&lt;br&gt;Request routing, Access logging&lt;br&gt;&lt;font color=&quot;#FFD700&quot;&gt;[UPGRADED]&lt;/font&gt;" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;rounded=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="440" y="370" width="250" height="100" as="geometry"/>
+        </mxCell>
+        <!-- Auth Service Container -->
+        <mxCell id="c-auth" value="&lt;b&gt;Auth Service&lt;/b&gt;&lt;br&gt;[Container: Node.js]&lt;br&gt;&lt;br&gt;Login, Register&lt;br&gt;JWT Issue &amp; Refresh&lt;br&gt;&lt;font color=&quot;#FF0000&quot;&gt;[NEW]&lt;/font&gt;" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;rounded=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="100" y="520" width="200" height="100" as="geometry"/>
+        </mxCell>
+        <!-- Task Service Container -->
+        <mxCell id="c-task" value="&lt;b&gt;Task Service&lt;/b&gt;&lt;br&gt;[Container: Node.js]&lt;br&gt;&lt;br&gt;CRUD Tasks, Board Mgmt&lt;br&gt;Input Validation&lt;br&gt;&lt;font color=&quot;#FFD700&quot;&gt;[EXISTING+SEC]&lt;/font&gt;" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;rounded=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="440" y="520" width="200" height="100" as="geometry"/>
+        </mxCell>
+        <!-- User Service Container -->
+        <mxCell id="c-user" value="&lt;b&gt;User Service&lt;/b&gt;&lt;br&gt;[Container: Node.js]&lt;br&gt;&lt;br&gt;Profile, Role Mgmt&lt;br&gt;&lt;font color=&quot;#FF0000&quot;&gt;[NEW]&lt;/font&gt;" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;rounded=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="780" y="520" width="200" height="100" as="geometry"/>
+        </mxCell>
+        <!-- Auth DB -->
+        <mxCell id="c-authdb" value="&lt;b&gt;Auth Database&lt;/b&gt;&lt;br&gt;[Container: PostgreSQL]&lt;br&gt;&lt;br&gt;users, refresh_tokens" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;size=10;" vertex="1" parent="1">
+          <mxGeometry x="110" y="680" width="170" height="90" as="geometry"/>
+        </mxCell>
+        <!-- Task DB -->
+        <mxCell id="c-taskdb" value="&lt;b&gt;Task Database&lt;/b&gt;&lt;br&gt;[Container: PostgreSQL]&lt;br&gt;&lt;br&gt;tasks, boards, columns" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;size=10;" vertex="1" parent="1">
+          <mxGeometry x="455" y="680" width="170" height="90" as="geometry"/>
+        </mxCell>
+        <!-- User DB -->
+        <mxCell id="c-userdb" value="&lt;b&gt;User Database&lt;/b&gt;&lt;br&gt;[Container: PostgreSQL]&lt;br&gt;&lt;br&gt;profiles, roles, permissions" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;size=10;" vertex="1" parent="1">
+          <mxGeometry x="795" y="680" width="170" height="90" as="geometry"/>
+        </mxCell>
+        <!-- Log Service -->
+        <mxCell id="c-log" value="&lt;b&gt;Log Aggregator&lt;/b&gt;&lt;br&gt;[Container: Loki/ELK]&lt;br&gt;&lt;br&gt;Centralized Logging&lt;br&gt;Dashboard &amp; Alerts&lt;br&gt;&lt;font color=&quot;#FF0000&quot;&gt;[NEW]&lt;/font&gt;" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#85BBF0;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;rounded=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="920" y="340" width="200" height="100" as="geometry"/>
+        </mxCell>
+        <!-- Connections -->
+        <mxCell id="conn1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#666666;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" source="person" target="c-waf" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="conn1-l" value="HTTPS" style="edgeLabel;html=1;fontSize=10;" vertex="1" connectable="0" parent="conn1">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="conn2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#666666;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" source="c-waf" target="c-gateway" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="conn2-l" value="Filtered HTTP" style="edgeLabel;html=1;fontSize=10;" vertex="1" connectable="0" parent="conn2">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="conn3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#666666;strokeWidth=1;exitX=0;exitY=1;entryX=0.5;entryY=0;" edge="1" source="c-gateway" target="c-auth" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="conn3-l" value="/auth/*" style="edgeLabel;html=1;fontSize=10;" vertex="1" connectable="0" parent="conn3">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="conn4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#666666;strokeWidth=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" source="c-gateway" target="c-task" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="conn4-l" value="/api/tasks/*" style="edgeLabel;html=1;fontSize=10;" vertex="1" connectable="0" parent="conn4">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="conn5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#666666;strokeWidth=1;exitX=1;exitY=1;entryX=0.5;entryY=0;" edge="1" source="c-gateway" target="c-user" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="conn5-l" value="/api/users/*" style="edgeLabel;html=1;fontSize=10;" vertex="1" connectable="0" parent="conn5">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="conn6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#666666;strokeWidth=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" source="c-auth" target="c-authdb" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="conn6-l" value="TCP/5432" style="edgeLabel;html=1;fontSize=10;" vertex="1" connectable="0" parent="conn6">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="conn7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#666666;strokeWidth=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" source="c-task" target="c-taskdb" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="conn7-l" value="TCP/5432" style="edgeLabel;html=1;fontSize=10;" vertex="1" connectable="0" parent="conn7">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="conn8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#666666;strokeWidth=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" source="c-user" target="c-userdb" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="conn8-l" value="TCP/5432" style="edgeLabel;html=1;fontSize=10;" vertex="1" connectable="0" parent="conn8">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <!-- Log connections (dashed) -->
+        <mxCell id="logc1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;dashed=1;strokeColor=#9673a6;exitX=1;exitY=0.3;entryX=0;entryY=0.5;" edge="1" source="c-auth" target="c-log" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="logc2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;dashed=1;strokeColor=#9673a6;exitX=1;exitY=0.3;entryX=0;entryY=0.7;" edge="1" source="c-task" target="c-log" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="logc3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;dashed=1;strokeColor=#9673a6;exitX=1;exitY=0.3;entryX=0.5;entryY=1;" edge="1" source="c-user" target="c-log" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="logc-label" value="Audit Logs" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#9673a6;fontStyle=2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="930" y="460" width="70" height="20" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="jwt-flow" name="4. JWT Authentication Flow">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="title4" value="&lt;b&gt;JWT Authentication Flow: Task Board System&lt;/b&gt;&lt;br&gt;ENGSE207 Week 12" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="330" y="10" width="500" height="50" as="geometry"/>
+        </mxCell>
+        <!-- Lifeline labels -->
+        <mxCell id="ll-browser" value="&lt;b&gt;Browser&lt;/b&gt;&lt;br&gt;(User)" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="70" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll-gateway" value="&lt;b&gt;API Gateway&lt;/b&gt;&lt;br&gt;(Nginx)" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="70" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll-auth" value="&lt;b&gt;Auth Service&lt;/b&gt;&lt;br&gt;(Node.js)" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="70" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll-task" value="&lt;b&gt;Task Service&lt;/b&gt;&lt;br&gt;(Node.js)" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="810" y="70" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <!-- Lifelines -->
+        <mxCell id="line1" style="dashed=1;strokeColor=#AAAAAA;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="120" as="sourcePoint"/>
+            <mxPoint x="120" y="750" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="line2" style="dashed=1;strokeColor=#AAAAAA;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="120" as="sourcePoint"/>
+            <mxPoint x="370" y="750" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="line3" style="dashed=1;strokeColor=#AAAAAA;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="620" y="120" as="sourcePoint"/>
+            <mxPoint x="620" y="750" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="line4" style="dashed=1;strokeColor=#AAAAAA;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="870" y="120" as="sourcePoint"/>
+            <mxPoint x="870" y="750" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <!-- Phase 1: Login -->
+        <mxCell id="phase1" value="Phase 1: Login (ขอ Token)" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#C5CAE9;fontSize=11;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="140" width="200" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="msg1" style="strokeColor=#1976D2;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="190" as="sourcePoint"/>
+            <mxPoint x="370" y="190" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg1-l" value="1. POST /auth/login {email, password}" style="edgeLabel;html=1;fontSize=10;fontColor=#1976D2;" vertex="1" connectable="0" parent="msg1">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg2" style="strokeColor=#388E3C;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="230" as="sourcePoint"/>
+            <mxPoint x="620" y="230" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg2-l" value="2. Forward to Auth Service" style="edgeLabel;html=1;fontSize=10;fontColor=#388E3C;" vertex="1" connectable="0" parent="msg2">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg3" value="3. Verify credentials&lt;br&gt;Generate JWT" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#A5D6A7;fontSize=10;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="250" width="130" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="msg4" style="strokeColor=#388E3C;strokeWidth=2;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="620" y="310" as="sourcePoint"/>
+            <mxPoint x="370" y="310" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg4-l" value="4. JWT Token (access + refresh)" style="edgeLabel;html=1;fontSize=10;fontColor=#388E3C;" vertex="1" connectable="0" parent="msg4">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg5" style="strokeColor=#1976D2;strokeWidth=2;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="350" as="sourcePoint"/>
+            <mxPoint x="120" y="350" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg5-l" value="5. Return JWT Token" style="edgeLabel;html=1;fontSize=10;fontColor=#1976D2;" vertex="1" connectable="0" parent="msg5">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg5b" value="6. Store JWT&lt;br&gt;in memory/cookie" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#90CAF9;fontSize=10;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="370" width="130" height="40" as="geometry"/>
+        </mxCell>
+        <!-- Phase 2: Access -->
+        <mxCell id="phase2" value="Phase 2: Access API (ใช้ Token)" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FFE0B2;fontSize=11;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="430" width="200" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="msg6" style="strokeColor=#E65100;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="480" as="sourcePoint"/>
+            <mxPoint x="370" y="480" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg6-l" value="7. GET /api/tasks  [Authorization: Bearer &lt;JWT&gt;]" style="edgeLabel;html=1;fontSize=10;fontColor=#E65100;" vertex="1" connectable="0" parent="msg6">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg7" value="8. Verify JWT&lt;br&gt;(signature + expiry)" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFE082;fontSize=10;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="500" width="130" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="msg8" style="strokeColor=#388E3C;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="560" as="sourcePoint"/>
+            <mxPoint x="870" y="560" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg8-l" value="9. Forward + user context (userId, role)" style="edgeLabel;html=1;fontSize=10;fontColor=#388E3C;" vertex="1" connectable="0" parent="msg8">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg9" value="10. Check role&lt;br&gt;+ fetch tasks" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#A5D6A7;fontSize=10;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="830" y="580" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="msg10" style="strokeColor=#388E3C;strokeWidth=2;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="870" y="640" as="sourcePoint"/>
+            <mxPoint x="370" y="640" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg10-l" value="11. Tasks data (filtered by role)" style="edgeLabel;html=1;fontSize=10;fontColor=#388E3C;" vertex="1" connectable="0" parent="msg10">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg11" style="strokeColor=#1976D2;strokeWidth=2;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="680" as="sourcePoint"/>
+            <mxPoint x="120" y="680" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg11-l" value="12. Response (JSON)" style="edgeLabel;html=1;fontSize=10;fontColor=#1976D2;" vertex="1" connectable="0" parent="msg11">
+          <mxGeometry relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="zero-trust" name="5. Zero-Trust vs Perimeter Security">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="title5" value="&lt;b&gt;Perimeter Security (Castle-and-Moat) vs Zero-Trust Architecture&lt;/b&gt;&lt;br&gt;ENGSE207 Week 12" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="280" y="10" width="600" height="50" as="geometry"/>
+        </mxCell>
+        <!-- Left: Perimeter Security -->
+        <mxCell id="perim-title" value="&lt;b&gt;❌ Perimeter Security (แบบเดิม)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=13;fontColor=#D32F2F;" vertex="1" parent="1">
+          <mxGeometry x="100" y="70" width="350" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="perim-wall" value="" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#EF5350;strokeWidth=3;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="110" width="480" height="330" as="geometry"/>
+        </mxCell>
+        <mxCell id="perim-fw" value="&lt;b&gt;Firewall (คูเมือง)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=top;resizable=0;points=[];fontSize=11;fontColor=#D32F2F;" vertex="1" parent="1">
+          <mxGeometry x="200" y="115" width="150" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="p-svc1" value="Service A" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="170" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="p-svc2" value="Service B" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="170" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="p-svc3" value="Service C" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="170" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="p-db" value="Database" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;size=10;" vertex="1" parent="1">
+          <mxGeometry x="230" y="250" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="p-conn1" style="strokeColor=#999;strokeWidth=1;" edge="1" source="p-svc1" target="p-svc2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="p-conn2" style="strokeColor=#999;strokeWidth=1;" edge="1" source="p-svc2" target="p-svc3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="p-conn3" style="strokeColor=#999;strokeWidth=1;" edge="1" source="p-svc1" target="p-db" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="p-conn4" style="strokeColor=#999;strokeWidth=1;" edge="1" source="p-svc3" target="p-db" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="p-problem" value="🦠 ถ้า Attacker เจาะ Service A ได้&lt;br&gt;→ เข้าถึง B, C, DB ได้หมด!&lt;br&gt;(เพราะไม่มีการตรวจสอบภายใน)" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#EF5350;fontSize=11;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="340" width="350" height="60" as="geometry"/>
+        </mxCell>
+        <!-- Right: Zero-Trust -->
+        <mxCell id="zt-title" value="&lt;b&gt;✅ Zero-Trust Architecture (แบบใหม่)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=13;fontColor=#2E7D32;" vertex="1" parent="1">
+          <mxGeometry x="660" y="70" width="380" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="zt-wall" value="" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#66BB6A;strokeWidth=3;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="110" width="510" height="330" as="geometry"/>
+        </mxCell>
+        <mxCell id="zt-label" value="&lt;b&gt;Network (ไม่เชื่อถือใคร)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=top;resizable=0;points=[];fontSize=11;fontColor=#2E7D32;" vertex="1" parent="1">
+          <mxGeometry x="760" y="115" width="200" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="z-svc1" value="Service A&lt;br&gt;🔒" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#66BB6A;strokeWidth=2;fontSize=11;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="170" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="z-svc2" value="Service B&lt;br&gt;🔒" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#66BB6A;strokeWidth=2;fontSize=11;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="170" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="z-svc3" value="Service C&lt;br&gt;🔒" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#66BB6A;strokeWidth=2;fontSize=11;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="170" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="z-db" value="Database&lt;br&gt;🔐" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#66BB6A;strokeWidth=2;fontSize=11;size=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="250" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="z-conn1" value="🔑" style="strokeColor=#66BB6A;strokeWidth=2;" edge="1" source="z-svc1" target="z-svc2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="z-conn2" value="🔑" style="strokeColor=#66BB6A;strokeWidth=2;" edge="1" source="z-svc2" target="z-svc3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="z-conn3" value="🔑" style="strokeColor=#66BB6A;strokeWidth=2;" edge="1" source="z-svc1" target="z-db" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="z-conn4" value="🔑" style="strokeColor=#66BB6A;strokeWidth=2;" edge="1" source="z-svc3" target="z-db" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="z-benefit" value="🛡️ ถ้า Attacker เจาะ Service A ได้&lt;br&gt;→ ❌ เข้า B, C, DB ไม่ได้!&lt;br&gt;(ทุก connection ต้อง verify)" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#66BB6A;fontSize=11;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="340" width="350" height="60" as="geometry"/>
+        </mxCell>
+        <!-- Bottom: 5 Principles -->
+        <mxCell id="principles-title" value="&lt;b&gt;Zero-Trust 5 Principles&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=13;fontColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="410" y="470" width="340" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="pr1" value="1. Verify Explicitly&lt;br&gt;ตรวจสอบทุกครั้ง" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#90CAF9;fontSize=11;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="520" width="190" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="pr2" value="2. Least Privilege&lt;br&gt;ให้สิทธิ์น้อยที่สุด" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#90CAF9;fontSize=11;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="520" width="190" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="pr3" value="3. Assume Breach&lt;br&gt;สมมติว่าถูกเจาะแล้ว" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#90CAF9;fontSize=11;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="520" width="190" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="pr4" value="4. Monitor Everything&lt;br&gt;บันทึกทุกอย่าง" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#90CAF9;fontSize=11;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="710" y="520" width="190" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="pr5" value="5. Encrypt Everything&lt;br&gt;เข้ารหัสทุกอย่าง" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#90CAF9;fontSize=11;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="930" y="520" width="190" height="50" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="defense-in-depth" name="6. Defense in Depth Layers">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="title6" value="&lt;b&gt;Defense in Depth: Security Layers for Task Board&lt;/b&gt;&lt;br&gt;ENGSE207 Week 12" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="330" y="10" width="500" height="50" as="geometry"/>
+        </mxCell>
+        <!-- Outer: WAF -->
+        <mxCell id="layer1" value="" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#EF5350;strokeWidth=2;rounded=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="1000" height="680" as="geometry"/>
+        </mxCell>
+        <mxCell id="l1-label" value="&lt;b&gt;Layer 1: WAF&lt;/b&gt; — กรอง SQL Injection, XSS, DDoS" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontColor=#C62828;" vertex="1" parent="1">
+          <mxGeometry x="100" y="85" width="500" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Layer 2: API Gateway -->
+        <mxCell id="layer2" value="" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#FBC02D;strokeWidth=2;rounded=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="130" y="130" width="900" height="590" as="geometry"/>
+        </mxCell>
+        <mxCell id="l2-label" value="&lt;b&gt;Layer 2: API Gateway&lt;/b&gt; — JWT Validation, Rate Limiting, Routing" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontColor=#F57F17;" vertex="1" parent="1">
+          <mxGeometry x="150" y="135" width="500" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Layer 3: Auth Service -->
+        <mxCell id="layer3" value="" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#66BB6A;strokeWidth=2;rounded=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="180" y="180" width="800" height="500" as="geometry"/>
+        </mxCell>
+        <mxCell id="l3-label" value="&lt;b&gt;Layer 3: Auth Service&lt;/b&gt; — Authentication (JWT), Authorization (RBAC)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontColor=#2E7D32;" vertex="1" parent="1">
+          <mxGeometry x="200" y="185" width="500" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Layer 4: Service Security -->
+        <mxCell id="layer4" value="" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#42A5F5;strokeWidth=2;rounded=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="230" y="230" width="700" height="410" as="geometry"/>
+        </mxCell>
+        <mxCell id="l4-label" value="&lt;b&gt;Layer 4: Service-Level Security&lt;/b&gt; — Input Validation, Parameterized Queries" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="250" y="235" width="550" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Layer 5: Data Security -->
+        <mxCell id="layer5" value="" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#AB47BC;strokeWidth=2;rounded=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="280" y="280" width="600" height="320" as="geometry"/>
+        </mxCell>
+        <mxCell id="l5-label" value="&lt;b&gt;Layer 5: Data Security&lt;/b&gt; — Encryption at Rest &amp; in Transit, Secret Mgmt" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontColor=#7B1FA2;" vertex="1" parent="1">
+          <mxGeometry x="300" y="285" width="500" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Layer 6: Logging -->
+        <mxCell id="layer6" value="" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#CE93D8;strokeWidth=2;rounded=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="330" y="330" width="500" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="l6-label" value="&lt;b&gt;Layer 6: Logging &amp; Monitoring&lt;/b&gt; — Audit Logs, Alerts, Incident Response" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontColor=#6A1B9A;" vertex="1" parent="1">
+          <mxGeometry x="350" y="335" width="460" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Core: Application -->
+        <mxCell id="core" value="&lt;b&gt;🏠 Task Board Application&lt;/b&gt;&lt;br&gt;&lt;br&gt;Auth Service | Task Service | User Service&lt;br&gt;Auth DB | Task DB | User DB&lt;br&gt;&lt;br&gt;Protected by 6 layers of security!" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=3;fontSize=12;rounded=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="400" y="390" width="350" height="140" as="geometry"/>
+        </mxCell>
+        <!-- Arrow: Attacker -->
+        <mxCell id="attacker" value="🦠 Attacker" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#263238;fontColor=#FFFFFF;strokeColor=#263238;fontSize=12;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="940" y="80" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="att-arrow" style="strokeColor=#D32F2F;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1000" y="120" as="sourcePoint"/>
+            <mxPoint x="1000" y="390" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="att-block" value="❌ ถูกบล็อก&lt;br&gt;ที่ชั้นใด&lt;br&gt;ชั้นหนึ่ง" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontColor=#D32F2F;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="220" width="80" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
