@@ -434,6 +434,7 @@ cat > task-service/package.json << 'EOF'
   "dependencies": {
     "amqplib": "^0.10.3",
     "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
     "pg": "^8.11.3"
@@ -449,7 +450,7 @@ cat > task-service/Dockerfile << 'EOF'
 FROM node:20-alpine
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm install --omit=dev
 COPY . .
 # Copy shared events (จะ mount ผ่าน Docker volume)
 EXPOSE 3001
@@ -825,6 +826,7 @@ cat > notification-service/package.json << 'EOF'
   "dependencies": {
     "amqplib": "^0.10.3",
     "cors": "^2.8.5",
+    "dotenv": "^16.3.1",    
     "express": "^4.18.2",
     "morgan": "^1.10.0"
   }
@@ -839,7 +841,7 @@ cat > notification-service/Dockerfile << 'EOF'
 FROM node:20-alpine
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm install --omit=dev
 COPY . .
 EXPOSE 3002
 HEALTHCHECK --interval=15s --timeout=3s --retries=3 \
@@ -1027,6 +1029,7 @@ cat > audit-service/package.json << 'EOF'
   "dependencies": {
     "amqplib": "^0.10.3",
     "cors": "^2.8.5",
+    "dotenv": "^16.3.1",    
     "express": "^4.18.2",
     "morgan": "^1.10.0"
   }
@@ -1041,7 +1044,7 @@ cat > audit-service/Dockerfile << 'EOF'
 FROM node:20-alpine
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm install --omit=dev
 COPY . .
 EXPOSE 3003
 HEALTHCHECK --interval=15s --timeout=3s --retries=3 \
@@ -1187,6 +1190,7 @@ cat > api-gateway/package.json << 'EOF'
   "scripts": { "start": "node server.js" },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.3.1",    
     "express": "^4.18.2",
     "http-proxy-middleware": "^2.0.6",
     "morgan": "^1.10.0"
@@ -1202,7 +1206,7 @@ cat > api-gateway/Dockerfile << 'EOF'
 FROM node:20-alpine
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm install --omit=dev
 COPY . .
 EXPOSE 3000
 CMD ["node", "server.js"]
