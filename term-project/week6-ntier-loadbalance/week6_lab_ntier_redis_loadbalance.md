@@ -17,9 +17,10 @@
 6. [Part 3: Nginx Load Balancer (30 นาที)](#part-3-nginx-load-balancer-30-นาที)
 7. [Part 4: Docker Compose + Scale (30 นาที)](#part-4-docker-compose--scale-30-นาที)
 8. [Part 5: Testing & Monitoring (30 นาที)](#part-5-testing--monitoring-30-นาที)
-9. [Part 6: สรุปและเปรียบเทียบ](#part-6-สรุปและเปรียบเทียบ)
-10. [Challenge: ทำต่อเอง](#-challenge-ทำต่อเอง)
-11. [การส่งงาน](#-การส่งงานทาง-git)
+9. [Part 6: ทดลอง Availability และ Scalability (45 นาที)](#part-6-ทดลอง-availability-และ-scalability-45-นาที)
+10. [Part 7: สรุปและเปรียบเทียบ](#part-7-สรุปและเปรียบเทียบ)
+11. [Challenge: ทำต่อเอง](#-challenge-ทำต่อเอง)
+12. [การส่งงาน](#-การส่งงานทาง-git)
 
 ---
 
@@ -1390,7 +1391,293 @@ docker exec taskboard-redis redis-cli INFO stats | grep -E "keyspace|hit|miss"
 
 ---
 
-## Part 6: สรุปและเปรียบเทียบ
+
+## Part 6: ทดลอง Availability และ Scalability (45 นาที)
+
+> **เป้าหมายของ Part นี้:**  
+> 1) จำลอง “เหตุการณ์จริง” ที่ API instance หยุดทำงานบางตัว แล้วระบบควรยังให้บริการได้ (High Availability)  
+> 2) วัดผล “การกระจายโหลด” ว่าเพิ่มจำนวน API instances แล้ว **เวลาเฉลี่ย** และ **Throughput** ดีขึ้นแค่ไหน (Scalability)
+
+---
+
+### สถานการณ์ที่ 1: ปิด API app บางตัวแล้ว Frontend ใช้งานไม่ได้ (ต้อง restart/reload Nginx)
+
+#### 6.1 อธิบายเหตุการณ์ที่มักเกิดขึ้น
+ในแลบนี้ `nginx` ทำหน้าที่เป็น Load Balancer ส่งคำขอไปยัง service `app` ที่มีหลาย instances (เช่น 3 ตัว)  
+แต่ถ้าเราปิด `app` บางตัว (เช่น `week6-app-2`) แล้วพบว่า:
+
+- บางครั้งหน้าเว็บเรียก API ไม่ได้ / ได้ `502 Bad Gateway` หรือ `504 Gateway Timeout`
+- บางครั้งต้อง **restart nginx container** ถึงจะกลับมาใช้งานได้
+
+**สาเหตุหลัก (เข้าใจแบบสถาปัตยกรรม):**
+- `app` เป็น “ชื่อ DNS” ใน Docker network ซึ่งชี้ไปหลาย IP (ตามจำนวน instance)
+- Nginx (โดยค่าเริ่มต้น) จะ resolve รายชื่อ IP ตอนเริ่มทำงาน แล้ว “จำ” ไว้
+- เมื่อ instance ใดหยุดทำงาน IP นั้น “หายไป” ใน DNS แต่ Nginx ยังพยายามส่ง request ไป IP เก่า → เกิด error
+- และใน config เดิมยังไม่ได้เปิดโหมด **failover / retry upstream** ทำให้ request ที่ชน instance ที่ล่ม “ล่มตาม” ทันที
+
+> ✅ จุดเรียนรู้: **Load Balancing ≠ High Availability อัตโนมัติ**  
+> ต้องมี **Failover + Retry + Service Discovery (DNS re-resolve)**
+
+---
+
+#### 6.2 ทดลองให้เจอปัญหา (Reproduce ตามเหตุการณ์จริง)
+
+1) เริ่มระบบด้วย 3 instances
+```bash
+docker compose up -d --build --scale app=3
+docker compose ps
+```
+
+2) ยิง health check ดูการสลับ instance (ควรเห็น `instanceId` เปลี่ยนไปมา)
+```bash
+for i in $(seq 1 12); do
+  echo -n "Request $i: "
+  curl -s http://localhost/api/health | grep -o '"instanceId":"[^"]*"'
+  sleep 0.3
+done
+```
+
+3) ปิด API app 1 ตัว (ตัวอย่าง: `week6-app-2`)
+```bash
+docker stop week6-app-2
+```
+
+4) ทดสอบซ้ำ (ให้ลองหลายครั้ง/หลายรอบ)
+```bash
+for i in $(seq 1 30); do
+  echo -n "Request $i: "
+  curl -s -m 2 http://localhost/api/health | grep -o '"instanceId":"[^"]*"' || echo "❌ FAILED"
+  sleep 0.2
+done
+```
+
+✅ **สิ่งที่อาจพบ (ข้อสังเกต):**
+- มีบาง request ล้ม (`FAILED`) เพราะไปชน upstream ที่หยุดทำงาน
+- บางเครื่อง/บางจังหวะ อาจดูเหมือน “หน้าเว็บใช้ไม่ได้เลย” เพราะเบราว์เซอร์ retry แล้วชนจังหวะล้มซ้ำ ๆ
+- ถ้าคุณสลับปิดเพิ่มอีก 1 ตัว (เหลือ 1 ตัว) อาการจะชัดขึ้นมาก
+
+> 💡 บันทึกลงรายงาน:  
+> - จำนวนครั้งที่ล้มจากทั้งหมด 30 requests  
+> - error ที่เห็นใน browser devtools (ถ้ามี) เช่น 502/504  
+> - พฤติกรรม: “ล้มเป็นบางครั้ง” หรือ “ล้มเกือบทั้งหมด”
+
+---
+
+#### 6.3 แก้ไข: ปรับ `nginx/conf.d/default.conf` ให้ “ไม่ต้อง restart nginx ทุกครั้ง”
+
+**แนวคิดการแก้:**
+1) ให้ Nginx “ถาม DNS ของ Docker” เป็นระยะ (re-resolve)  
+2) เมื่อ upstream ตัวใดล่ม ให้ **retry ไปตัวอื่น** อัตโนมัติ (failover)
+
+ให้แก้ไฟล์ `nginx/conf.d/default.conf` เป็นเวอร์ชันนี้ (แทนที่ทั้งไฟล์):
+
+```nginx
+# ==============================================================
+# Nginx Load Balancer Configuration (Improved for Availability)
+# ENGSE207 Term Project Week 6 — Part 6
+#
+# ✅ เป้าหมาย:
+#  - Re-resolve DNS ของ service "app" เมื่อ instances เปลี่ยน
+#  - Retry/failover เมื่อบาง instance ล่ม (ไม่ต้อง restart nginx)
+# ==============================================================
+
+# Docker embedded DNS in containers
+resolver 127.0.0.11 valid=5s ipv6=off;
+
+upstream app_servers {
+    # แชร์ state ของ upstream (จำเป็นต่อการ re-resolve แบบ dynamic ในหลายกรณี)
+    zone app_servers 64k;
+
+    # resolve = ให้ Nginx อัปเดตรายชื่อ IP ของ "app" ตาม DNS ได้
+    server app:3000 resolve
+        max_fails=1 fail_timeout=3s;
+
+    # Keepalive connections
+    keepalive 32;
+}
+
+server {
+    listen 80;
+    server_name localhost;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location /api/ {
+        proxy_pass http://app_servers;
+
+        proxy_http_version 1.1;
+        proxy_set_header Connection "";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        # ✅ ถ้าเจอ error/timeout ให้ลอง upstream ตัวอื่น
+        proxy_next_upstream error timeout http_502 http_503 http_504;
+        proxy_next_upstream_tries 3;
+
+        # ✅ ทำให้ failover เร็วขึ้น
+        proxy_connect_timeout 1s;
+        proxy_read_timeout 10s;
+
+        add_header X-Served-By $upstream_addr always;
+
+        # CORS
+        add_header 'Access-Control-Allow-Origin' '*' always;
+        add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE, OPTIONS' always;
+        add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization' always;
+
+        if ($request_method = 'OPTIONS') { return 204; }
+    }
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+```
+
+จากนั้น “ทดสอบ config” และ “reload” (ไม่ต้อง restart container)
+
+```bash
+# ตรวจ syntax
+docker exec -it taskboard-nginx nginx -t
+
+# reload config (ไม่ restart)
+docker exec -it taskboard-nginx nginx -s reload
+```
+
+---
+
+#### 6.4 ทดลองซ้ำหลังแก้ (Expected Result)
+
+1) ให้แน่ใจว่า scale ยังเป็น 3 (หรือเริ่มใหม่)
+```bash
+docker compose up -d --scale app=3
+```
+
+2) ปิด app 1 ตัวอีกครั้ง
+```bash
+docker stop week6-app-2
+```
+
+3) ยิง health check ซ้ำ 30 ครั้ง
+```bash
+for i in $(seq 1 30); do
+  echo -n "Request $i: "
+  curl -s -m 2 http://localhost/api/health | grep -o '"instanceId":"[^"]*"' || echo "❌ FAILED"
+  sleep 0.2
+done
+```
+
+✅ **ผลที่คาดหวังหลังแก้:**
+- request ส่วนใหญ่ควร “ยังตอบได้ต่อเนื่อง”
+- อาจมีหลุด 1–2 ครั้งได้ในบางเครื่อง/บางจังหวะ (ขึ้นกับ timeout/สภาพเครื่อง) แต่ไม่ควร “ล่มยาว”
+
+> 💡 ถ้ายังพบอาการล่มถี่:  
+> - ลองลด `fail_timeout` ให้สั้นลง  
+> - หรือปิด `keepalive` ชั่วคราวเพื่อดูผลต่าง (เพื่อการทดลอง)  
+> - ตรวจว่า Nginx image เวอร์ชันใหม่พอ (nginx:alpine ปกติใหม่อยู่)
+
+---
+
+### สถานการณ์ที่ 2: ทดสอบโหลดสูง — 1 instance vs หลาย instances (วัดเวลาเฉลี่ย/Throughput)
+
+> ใน Part 5.4 เราทำ load test แบบง่าย ๆ (loop curl)  
+> ตอนนี้เราจะทำการทดลองเชิง “วัดผล” ให้ชัดขึ้น และเปรียบเทียบก่อน/หลัง scaling
+
+#### 6.5 เตรียมเครื่องมือ Load Test
+แนะนำใช้ **wrk** (ได้สถิติ Latency/Requests per sec)
+
+- macOS (Homebrew): `brew install wrk`
+- Ubuntu/Debian: `sudo apt-get update && sudo apt-get install -y wrk`
+
+ถ้าไม่อยากติดตั้งบนเครื่อง สามารถใช้ Docker ได้ (แต่ต้องอยู่ใน network เดียวกับ compose)
+```bash
+# หา network ชื่อที่มีคำว่า taskboard-ntier
+docker network ls | grep taskboard-ntier
+```
+แล้วใช้คำสั่งประมาณนี้ (แทน <NETWORK_NAME> ตามที่พบ):
+```bash
+docker run --rm --network <NETWORK_NAME> williamyeh/wrk   -t4 -c50 -d20s http://nginx/api/tasks
+```
+
+---
+
+#### 6.6 Test A: มีแค่ 1 API app instance (Baseline)
+
+1) เหลือ 1 instance
+```bash
+docker compose up -d --scale app=1
+docker compose ps
+```
+
+2) Warm-up 1 ครั้ง (ให้ระบบพร้อม)
+```bash
+curl -s http://localhost/api/tasks > /dev/null
+```
+
+3) รัน wrk (20 วินาที)
+```bash
+wrk -t4 -c50 -d20s http://localhost/api/tasks
+```
+
+ให้จดค่าจากผลลัพธ์:
+- **Requests/sec**
+- **Latency (avg)**
+- (ถ้ามี) p95/p99
+
+---
+
+#### 6.7 Test B: เพิ่มเป็น 3 API app instances (Scale-out)
+
+1) เพิ่มเป็น 3 instances
+```bash
+docker compose up -d --scale app=3
+docker compose ps
+```
+
+2) Warm-up
+```bash
+curl -s http://localhost/api/tasks > /dev/null
+```
+
+3) รัน wrk ด้วยพารามิเตอร์เดิม
+```bash
+wrk -t4 -c50 -d20s http://localhost/api/tasks
+```
+
+---
+
+#### 6.8 บันทึกผล และสรุป (กรอกตาราง)
+
+ให้เติมผลการทดลองลงตารางนี้:
+
+| Case | #App Instances | Concurrency (c) | Duration | Avg Latency | Requests/sec | สรุป |
+|---|---:|---:|---:|---:|---:|---|
+| A | 1 | 50 | 20s | ____ ms | ____ | baseline |
+| B | 3 | 50 | 20s | ____ ms | ____ | after scale-out |
+
+✅ **คำถามชวนคิด (Discussion):**
+1) เพิ่ม instance แล้ว **Avg Latency ลดลงไหม?** ลดลงมาก/น้อย เพราะอะไร  
+2) เพิ่ม instance แล้ว **Requests/sec เพิ่มขึ้นไหม?** เพิ่มขึ้นเป็นสัดส่วนหรือไม่  
+3) ถ้าผล “ไม่ดีขึ้นมาก” ให้ลองวิเคราะห์ bottleneck ว่าอยู่ที่ไหน  
+   - DB (Postgres) เป็นคอขวด?  
+   - Redis/Network เป็นคอขวด?  
+   - Nginx เป็นคอขวด?  
+4) ถ้าจะทำให้สเกลได้จริงในระบบใหญ่ ต้องเพิ่มอะไรอีกบ้าง  
+   (เช่น read replica DB, caching strategy, async job queue, rate limit)
+
+---
+
+### ✅ Checkpoint 6: ทำ Availability + Scalability Experiment สำเร็จ!
+- [ ] ทดลอง reproduce ปัญหา “ปิด instance แล้วล่ม” ได้  
+- [ ] ปรับ `default.conf` และ reload Nginx โดยไม่ restart container  
+- [ ] ทำ load test แบบ 1 instance vs 3 instances และมีตารางผลลัพธ์
+
+
+---
+
+## Part 7: สรุปและเปรียบเทียบ
 
 ### เปรียบเทียบ Week 6 เดิม vs Term Project Week 6
 
