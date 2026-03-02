@@ -1,0 +1,76 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.6 Chrome/140.0.7339.249 Electron/38.8.0 Safari/537.36" version="29.3.6">
+  <diagram id="_u8EWTCWRVlAuFs45h2d" name="C4 Container Diagram (C2)">
+    <mxGraphModel dx="1737" dy="1397" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;              verticalAlign=middle;whiteSpace=wrap;rounded=0;              fontSize=18;fontStyle=1;" value="C2: Task Board Security Architecture (Week 12)" vertex="1">
+          <mxGeometry height="40" width="350" x="440" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user" parent="1" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;              fillColor=#dae8fc;strokeColor=#6c8ebf;" value="🌐 Browser / User" vertex="1">
+          <mxGeometry height="80" width="120" x="60" y="277" as="geometry" />
+        </mxCell>
+        <mxCell id="nginx" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0a30a;              fontColor=#000000;strokeColor=#BD7000;fontSize=12;" value="🛡️ Nginx API Gateway&#xa;[Container: nginx:alpine]&#xa;&#xa;- Rate Limiting (5r/m auth)&#xa;- Route /api/auth → auth-svc&#xa;- Route /api/tasks → task-svc&#xa;- Route /api/users → user-svc" vertex="1">
+          <mxGeometry height="130" width="180" x="260" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="auth-svc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;              strokeColor=#82b366;fontSize=12;" value="🔑 Auth Service&#xa;[Container: Node.js]&#xa;&#xa;- POST /api/auth/login&#xa;- POST /api/auth/register&#xa;- GET /api/auth/verify&#xa;- Issues JWT Token" vertex="1">
+          <mxGeometry height="130" width="170" x="540" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="LsbbOfVL48kjNP804J2_-1" edge="1" parent="1" source="task-svc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="auth-svc" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="task-svc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;              strokeColor=#82b366;fontSize=12;" value="📋 Task Service&#xa;[Container: Node.js]&#xa;&#xa;- CRUD /api/tasks&#xa;- JWT Middleware&#xa;- Role-based access" vertex="1">
+          <mxGeometry height="120" width="170" x="540" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="user-svc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;              strokeColor=#82b366;fontSize=12;" value="👤 User Service&#xa;[Container: Node.js]&#xa;&#xa;- GET /api/users/me&#xa;- GET /api/users (admin)&#xa;- JWT Middleware" vertex="1">
+          <mxGeometry height="120" width="170" x="540" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="auth-db" parent="1" style="shape=mxgraph.flowchart.database;whiteSpace=wrap;html=1;              fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="&lt;br&gt;🗄️ auth-db&lt;br&gt;[PostgreSQL]&lt;br&gt;auth_users table" vertex="1">
+          <mxGeometry height="80" width="120" x="790" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="task-db" parent="1" style="shape=mxgraph.flowchart.database;whiteSpace=wrap;html=1;              fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="&lt;br&gt;🗄️ task-db&lt;br&gt;[PostgreSQL]&lt;br&gt;tasks table" vertex="1">
+          <mxGeometry height="80" width="120" x="790" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="user-db" parent="1" style="shape=mxgraph.flowchart.database;whiteSpace=wrap;html=1;              fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="&lt;br&gt;🗄️ user-db&lt;br&gt;[PostgreSQL]&lt;br&gt;user_profiles table" vertex="1">
+          <mxGeometry height="85" width="120" x="790" y="444" as="geometry" />
+        </mxCell>
+        <mxCell id="loki" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;              strokeColor=#9673a6;fontSize=11;" value="📊 Loki + Grafana&#xa;[Monitoring Stack]&#xa;&#xa;- Centralized Logs&#xa;- Security Events&#xa;- Failed logins alert" vertex="1">
+          <mxGeometry height="100" width="140" x="790" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="user" style="edgeStyle=orthogonalEdgeStyle;exitX=1.003;exitY=0.665;exitDx=0;exitDy=0;exitPerimeter=0;" target="nginx" value="HTTPS :80">
+          <mxGeometry relative="1" x="-0.0015" y="20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="nginx" style="edgeStyle=orthogonalEdgeStyle;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1.004;exitY=0.202;exitDx=0;exitDy=0;exitPerimeter=0;" target="auth-svc" value="/api/auth/*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="nginx" style="edgeStyle=orthogonalEdgeStyle;" target="task-svc" value="/api/tasks/* (JWT)">
+          <mxGeometry relative="1" y="10" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="nginx" style="edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.002;entryY=0.445;entryDx=0;entryDy=0;entryPerimeter=0;" target="user-svc" value="/api/users/* (JWT)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="auth-svc" target="auth-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="task-svc" target="task-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="user-svc" target="user-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="auth-svc" style="dashed=1;entryX=0.016;entryY=0.345;entryDx=0;entryDy=0;entryPerimeter=0;" target="loki" value="stdout logs">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="910" y="211" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="task-svc" style="dashed=1;" target="loki" value="stdout logs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,340 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.6 Chrome/140.0.7339.249 Electron/38.8.0 Safari/537.36" version="29.3.6" pages="3">
+  <diagram name="C4 Container Diagram (C2)" id="lC5XNqa_HRS_MUMqyXAu">
+    <mxGraphModel dx="1018" dy="783" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" value="C4 Container Diagram (C2) — Task Board Week 12: Security Architecture" vertex="1">
+          <mxGeometry height="40" width="1200" x="200" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="user" parent="1" style="shape=mxgraph.c4.person2;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" value="👤 Browser (User/Admin)&#xa;[External Person]&#xa;ใช้งาน Task Board ผ่าน Web Browser" vertex="1">
+          <mxGeometry height="100" width="160" x="620" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="boundary" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;strokeDasharray=6,6;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="600" width="1200" x="100" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="boundaryLabel" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=3;" value="🐳 Docker Network: task-net" vertex="1">
+          <mxGeometry height="20" width="280" x="110" y="225" as="geometry" />
+        </mxCell>
+        <mxCell id="nginx" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;fontStyle=0;fontSize=10;" value="🛡️ Nginx&#xa;[API Gateway / Rate Limiter]&#xa;Port: 8080 (external)&#xa;• Route /api/auth → :3001&#xa;• Route /api/tasks → :3002&#xa;• Route /api/users → :3003&#xa;• Rate Limit: 100r/min&#xa;• Security Headers" vertex="1">
+          <mxGeometry height="140" width="300" x="550" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="auth" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=0;fontSize=10;" value="🔑 Auth Service&#xa;[Node.js / Express]&#xa;Port: 3001 (internal)&#xa;• POST /api/auth/register&#xa;• POST /api/auth/login&#xa;• GET /api/auth/verify&#xa;• POST /api/auth/refresh&#xa;Issues JWT Tokens" vertex="1">
+          <mxGeometry height="160" width="250" x="150" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="task" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=0;fontSize=10;" value="📋 Task Service&#xa;[Node.js / Express]&#xa;Port: 3002 (internal)&#xa;• GET/POST/PATCH/DELETE&#xa;  /api/tasks&#xa;• Verifies JWT Token&#xa;• Role-based Access&#xa;  admin/member/viewer" vertex="1">
+          <mxGeometry height="160" width="250" x="550" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="user_svc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=0;fontSize=10;" value="👥 User Service&#xa;[Node.js / Express]&#xa;Port: 3003 (internal)&#xa;• GET /api/users&#xa;• GET /api/users/profile&#xa;• PATCH /api/users/:id/role&#xa;• Admin-only endpoints&#xa;• Verifies JWT Token" vertex="1">
+          <mxGeometry height="160" width="250" x="950" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="db" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="🗄️ PostgreSQL 15&#xa;[Database]&#xa;Port: 5432 (internal only)&#xa;• users table&#xa;• tasks table&#xa;• audit_logs table&#xa;Volume: postgres_data" vertex="1">
+          <mxGeometry height="120" width="250" x="550" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="logs" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="📝 Log Files&#xa;[Docker Volume: ./logs]&#xa;auth-combined.log&#xa;task-combined.log&#xa;user-combined.log" vertex="1">
+          <mxGeometry height="110" width="200" x="150" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="user" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#0000FF;fontStyle=0;fontSize=9;" target="nginx" value="HTTPS :8080&#xa;(Public)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="nginx" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#cc6600;fontSize=9;" target="auth" value="/api/auth/**&#xa;Rate: 10r/m">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="nginx" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#cc6600;fontSize=9;" target="task" value="/api/tasks/**&#xa;Rate: 100r/m">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="nginx" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#cc6600;fontSize=9;" target="user_svc" value="/api/users/**&#xa;Rate: 100r/m">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="auth" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#006600;fontSize=9;" target="db" value="SQL Query&#xa;pg driver">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="task" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#006600;fontSize=9;" target="db" value="SQL Query">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="user_svc" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#006600;fontSize=9;" target="db" value="SQL Query">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="auth" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#9966ff;fontSize=9;dashed=1;" target="logs" value="Winston Logs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="task" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#9966ff;fontSize=9;dashed=1;" target="logs" value="Winston Logs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="user_svc" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#9966ff;fontSize=9;dashed=1;" target="logs" value="Winston Logs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" parent="1" style="text;html=1;strokeColor=#666666;fillColor=#f5f5f5;fontSize=10;fontColor=#333333;" value="Legend:&#xa;─── HTTPS (External)&#xa;─── Internal Routing (Nginx)&#xa;─── Database Queries&#xa;- - - Log Writes" vertex="1">
+          <mxGeometry height="100" width="180" x="1250" y="680" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="GcUs8UvItvL1T8IvoMJ_" name="JWT Flow Sequence">
+    <mxGraphModel dx="1018" dy="783" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;" value="JWT Authentication Flow — Task Board Week 12" vertex="1">
+          <mxGeometry height="40" width="900" x="100" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="h_browser" parent="1" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;fontSize=12;fontStyle=1;" value="🌐 Browser" vertex="1">
+          <mxGeometry height="40" width="140" x="80" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="h_nginx" parent="1" style="text;html=1;strokeColor=#d6b656;fillColor=#ffe6cc;align=center;fontSize=12;fontStyle=1;" value="🛡️ Nginx" vertex="1">
+          <mxGeometry height="40" width="140" x="300" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="h_auth" parent="1" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;fontSize=12;fontStyle=1;" value="🔑 Auth Service" vertex="1">
+          <mxGeometry height="40" width="140" x="520" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="h_task" parent="1" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;fontSize=12;fontStyle=1;" value="📋 Task Service" vertex="1">
+          <mxGeometry height="40" width="140" x="740" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="h_db" parent="1" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;fontSize=12;fontStyle=1;" value="🗄️ PostgreSQL" vertex="1">
+          <mxGeometry height="40" width="140" x="960" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="l1" edge="1" parent="1" style="edgeStyle=none;html=1;strokeColor=#6c8ebf;strokeDasharray=6,4;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="150" y="110" />
+              <mxPoint x="150" y="800" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l2" edge="1" parent="1" style="edgeStyle=none;html=1;strokeColor=#d6b656;strokeDasharray=6,4;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="110" />
+              <mxPoint x="370" y="800" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l3" edge="1" parent="1" style="edgeStyle=none;html=1;strokeColor=#82b366;strokeDasharray=6,4;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="590" y="110" />
+              <mxPoint x="590" y="800" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l4" edge="1" parent="1" style="edgeStyle=none;html=1;strokeColor=#82b366;strokeDasharray=6,4;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="810" y="110" />
+              <mxPoint x="810" y="800" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l5" edge="1" parent="1" style="edgeStyle=none;html=1;strokeColor=#6c8ebf;strokeDasharray=6,4;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="110" />
+              <mxPoint x="1030" y="800" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s1label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;align=left;" value="① POST /api/auth/login&#xa;{email, password}" vertex="1">
+          <mxGeometry height="35" width="200" x="155" y="135" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#0000FF;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="150" y="148" />
+              <mxPoint x="370" y="148" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s2label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;align=left;" value="② Forward Request" vertex="1">
+          <mxGeometry height="25" width="200" x="375" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#cc6600;fontSize=9;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="185" />
+              <mxPoint x="590" y="185" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s3label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;align=left;" value="③ SELECT * FROM users WHERE email=?" vertex="1">
+          <mxGeometry height="25" width="320" x="595" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#006600;fontSize=9;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="590" y="225" />
+              <mxPoint x="1030" y="225" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s4label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;align=right;" value="④ {id, email, hash, role}" vertex="1">
+          <mxGeometry height="25" width="420" x="595" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#006600;fontSize=9;dashed=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="260" />
+              <mxPoint x="590" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s5" parent="1" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="⑤ bcrypt.compare(password, hash)&#xa;   jwt.sign({id,role}, secret)" vertex="1">
+          <mxGeometry height="45" width="240" x="480" y="285" as="geometry" />
+        </mxCell>
+        <mxCell id="s6label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;align=right;" value="⑥ {accessToken: &quot;eyJ...&quot;}" vertex="1">
+          <mxGeometry height="25" width="400" x="155" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="s6" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#0000CC;fontSize=9;dashed=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="590" y="360" />
+              <mxPoint x="370" y="360" />
+              <mxPoint x="150" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note1" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="เก็บ Token ใน localStorage" vertex="1">
+          <mxGeometry height="40" width="180" x="55" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="div1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#999999;" value="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" vertex="1">
+          <mxGeometry height="20" width="1030" x="80" y="425" as="geometry" />
+        </mxCell>
+        <mxCell id="div1label" parent="1" style="text;html=1;strokeColor=none;fillColor=#f8cecc;fontSize=11;fontStyle=1;" value="ต่อมา: ใช้ Token เรียก API" vertex="1">
+          <mxGeometry height="20" width="260" x="400" y="428" as="geometry" />
+        </mxCell>
+        <mxCell id="s7label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;align=left;" value="⑦ GET /api/tasks&#xa;Authorization: Bearer eyJ..." vertex="1">
+          <mxGeometry height="40" width="200" x="155" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="s7" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#0000FF;fontSize=9;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="150" y="475" />
+              <mxPoint x="370" y="475" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s8label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;align=left;" value="⑧ Forward + Authorization header" vertex="1">
+          <mxGeometry height="25" width="260" x="375" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="s8" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#cc6600;fontSize=9;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="510" />
+              <mxPoint x="810" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s9" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="⑨ jwt.verify(token, secret)&#xa;    ✅ decoded = {id:5, role:&#39;member&#39;}" vertex="1">
+          <mxGeometry height="45" width="260" x="700" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="s10label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;align=left;" value="⑩ SELECT * FROM tasks WHERE created_by=5" vertex="1">
+          <mxGeometry height="25" width="300" x="815" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="s10" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#006600;fontSize=9;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="810" y="600" />
+              <mxPoint x="1030" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s11" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#0000CC;fontSize=9;dashed=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="625" />
+              <mxPoint x="810" y="625" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s12label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;align=right;" value="⑪ 200 OK {tasks: [...]}" vertex="1">
+          <mxGeometry height="25" width="640" x="155" y="645" as="geometry" />
+        </mxCell>
+        <mxCell id="s12" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#0000CC;fontSize=9;dashed=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="810" y="655" />
+              <mxPoint x="370" y="655" />
+              <mxPoint x="150" y="655" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="notoken" parent="1" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" value="⚠️ ถ้าไม่มี Token:&#xa;Task Service → 401 Unauthorized" vertex="1">
+          <mxGeometry height="50" width="260" x="700" y="690" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="_u8EWTCWRVlAuFs45h2d" name="Page-3">
+    <mxGraphModel dx="1737" dy="1397" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;              verticalAlign=middle;whiteSpace=wrap;rounded=0;              fontSize=18;fontStyle=1;" value="C2: Task Board Security Architecture (Week 12)" vertex="1">
+          <mxGeometry height="40" width="350" x="440" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user" parent="1" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;              fillColor=#dae8fc;strokeColor=#6c8ebf;" value="🌐 Browser / User" vertex="1">
+          <mxGeometry height="80" width="120" x="60" y="277" as="geometry" />
+        </mxCell>
+        <mxCell id="nginx" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0a30a;              fontColor=#000000;strokeColor=#BD7000;fontSize=12;" value="🛡️ Nginx API Gateway&#xa;[Container: nginx:alpine]&#xa;&#xa;- Rate Limiting (5r/m auth)&#xa;- Route /api/auth → auth-svc&#xa;- Route /api/tasks → task-svc&#xa;- Route /api/users → user-svc" vertex="1">
+          <mxGeometry height="130" width="180" x="260" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="auth-svc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;              strokeColor=#82b366;fontSize=12;" value="🔑 Auth Service&#xa;[Container: Node.js]&#xa;&#xa;- POST /api/auth/login&#xa;- POST /api/auth/register&#xa;- GET /api/auth/verify&#xa;- Issues JWT Token" vertex="1">
+          <mxGeometry height="130" width="170" x="540" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="LsbbOfVL48kjNP804J2_-1" edge="1" parent="1" source="task-svc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="auth-svc" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="task-svc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;              strokeColor=#82b366;fontSize=12;" value="📋 Task Service&#xa;[Container: Node.js]&#xa;&#xa;- CRUD /api/tasks&#xa;- JWT Middleware&#xa;- Role-based access" vertex="1">
+          <mxGeometry height="120" width="170" x="540" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="user-svc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;              strokeColor=#82b366;fontSize=12;" value="👤 User Service&#xa;[Container: Node.js]&#xa;&#xa;- GET /api/users/me&#xa;- GET /api/users (admin)&#xa;- JWT Middleware" vertex="1">
+          <mxGeometry height="120" width="170" x="540" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="auth-db" parent="1" style="shape=mxgraph.flowchart.database;whiteSpace=wrap;html=1;              fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="&lt;br&gt;🗄️ auth-db&lt;br&gt;[PostgreSQL]&lt;br&gt;auth_users table" vertex="1">
+          <mxGeometry height="80" width="120" x="790" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="task-db" parent="1" style="shape=mxgraph.flowchart.database;whiteSpace=wrap;html=1;              fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="&lt;br&gt;🗄️ task-db&lt;br&gt;[PostgreSQL]&lt;br&gt;tasks table" vertex="1">
+          <mxGeometry height="80" width="120" x="790" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="user-db" parent="1" style="shape=mxgraph.flowchart.database;whiteSpace=wrap;html=1;              fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="&lt;br&gt;🗄️ user-db&lt;br&gt;[PostgreSQL]&lt;br&gt;user_profiles table" vertex="1">
+          <mxGeometry height="85" width="120" x="790" y="444" as="geometry" />
+        </mxCell>
+        <mxCell id="loki" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;              strokeColor=#9673a6;fontSize=11;" value="📊 Loki + Grafana&#xa;[Monitoring Stack]&#xa;&#xa;- Centralized Logs&#xa;- Security Events&#xa;- Failed logins alert" vertex="1">
+          <mxGeometry height="100" width="140" x="790" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="user" style="edgeStyle=orthogonalEdgeStyle;exitX=1.003;exitY=0.665;exitDx=0;exitDy=0;exitPerimeter=0;" target="nginx" value="HTTPS :80">
+          <mxGeometry relative="1" x="-0.0015" y="20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="nginx" style="edgeStyle=orthogonalEdgeStyle;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1.004;exitY=0.202;exitDx=0;exitDy=0;exitPerimeter=0;" target="auth-svc" value="/api/auth/*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="nginx" style="edgeStyle=orthogonalEdgeStyle;" target="task-svc" value="/api/tasks/* (JWT)">
+          <mxGeometry relative="1" y="10" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="nginx" style="edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.002;entryY=0.445;entryDx=0;entryDy=0;entryPerimeter=0;" target="user-svc" value="/api/users/* (JWT)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="auth-svc" target="auth-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="task-svc" target="task-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="user-svc" target="user-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="auth-svc" style="dashed=1;entryX=0.016;entryY=0.345;entryDx=0;entryDy=0;entryPerimeter=0;" target="loki" value="stdout logs">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="910" y="211" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="task-svc" style="dashed=1;" target="loki" value="stdout logs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

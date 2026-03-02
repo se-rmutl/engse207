@@ -785,7 +785,7 @@ JWT เป็น Token มาตรฐานที่ใช้ในการส
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  Browser ─► Nginx ─► API ─► DB    Browser ─► WAF ─► Gateway ─► Services     │
-│                                                     ├► Auth Service         │
+│                                                      ├► Auth Service        │
 │  Containers: 3 ตัว                                    ├► Task Service        │
 │  • nginx                                             ├► User Service        │
 │  • api                                               └► Centralized Log     │
