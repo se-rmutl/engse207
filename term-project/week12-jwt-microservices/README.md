@@ -1615,6 +1615,7 @@ services:
   loki:
     image: grafana/loki:2.9.0
     container_name: taskboard-loki
+    user: "0000:0000" # รันด้วย user ปกติ (ไม่มช่ root) เพิ่อความปลอดภัย
     ports:
       - "3100:3100"
     volumes:
