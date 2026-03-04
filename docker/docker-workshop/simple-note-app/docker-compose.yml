@@ -1,0 +1,82 @@
+# ============================================
+# 📦 Docker Compose - Simple Note App
+# ============================================
+# Docker Compose รวมการตั้งค่า containers ทั้งหมดไว้ใน 1 ไฟล์
+# แทนที่จะต้องพิมพ์ docker run หลายคำสั่ง
+
+# Version ของ Compose file format
+version: '3.8'
+
+# ============================================
+# Services = Containers ที่ต้องการรัน
+# ============================================
+services:
+  
+  # ------------------------------------------
+  # Service 1: API (Node.js Application)
+  # ------------------------------------------
+  api:
+    # build จาก Dockerfile ในโฟลเดอร์ปัจจุบัน
+    build: .
+    
+    # ตั้งชื่อ container (optional)
+    container_name: note-api
+    
+    # Port mapping (host:container)
+    ports:
+      - "3000:3000"
+    
+    # Environment variables
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - DB_HOST=db           # ใช้ service name!
+      - DB_PORT=5432
+      - DB_USER=noteuser
+      - DB_PASSWORD=notepass
+      - DB_NAME=notedb
+    
+    # Dependencies - รอ db พร้อมก่อน
+    depends_on:
+      db:
+        condition: service_healthy
+    
+    # Restart policy
+    restart: unless-stopped
+
+  # ------------------------------------------
+  # Service 2: Database (PostgreSQL)
+  # ------------------------------------------
+  db:
+    # ใช้ official image
+    image: postgres:16-alpine
+    
+    container_name: note-db
+    
+    # Environment variables
+    environment:
+      - POSTGRES_USER=noteuser
+      - POSTGRES_PASSWORD=notepass
+      - POSTGRES_DB=notedb
+    
+    # Volume สำหรับ persistent data
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    
+    # Health check - ตรวจสอบว่า DB พร้อมใช้งาน
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U noteuser -d notedb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    
+    restart: unless-stopped
+
+# ============================================
+# Volumes = Persistent Storage
+# ============================================
+volumes:
+  postgres_data:
+    # ใช้ default driver (local)
+    # ข้อมูลจะเก็บไว้แม้ลบ container
