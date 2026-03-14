@@ -1,4 +1,4 @@
-# 🚀 คู่มือปฏิบัติการ ENGSE207 - สัปดาห์ที่ 7
+# 🚀 คู่มือปฏิบัติการ ENGCE301 - สัปดาห์ที่ 7
 ## Deploy TaskBoard to Cloud: 3-Tier Architecture บน Railway
 
 **สัปดาห์:** 7 | **ระยะเวลา:** 3 ชั่วโมง | **ระดับความยาก:** ⭐⭐⭐
@@ -621,7 +621,7 @@ curl https://YOUR-API-URL.railway.app/api/tasks
 ```javascript
 // ============================================
 // Task Board Frontend Application
-// ENGSE207 - Week 7 Cloud Version
+// ENGCE301 - Week 7 Cloud Version
 // ============================================
 
 // ⚠️ เปลี่ยน URL นี้เป็น API URL ของคุณบน Railway
@@ -1019,7 +1019,7 @@ git push origin main
 
 ```markdown
 # Cloud Deployment Analysis
-## ENGSE207 - Week 7 Lab
+## ENGCE301 - Week 7 Lab
 
 **ชื่อ-นามสกุล:** _______________
 **รหัสนักศึกษา:** _______________
@@ -1263,5 +1263,5 @@ git push
 
 ---
 
-*ENGSE207 - Software Architecture*  
+*ENGCE301 - Software Design and Development*  
 *มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา*

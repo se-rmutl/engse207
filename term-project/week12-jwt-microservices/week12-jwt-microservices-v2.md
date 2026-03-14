@@ -5,6 +5,13 @@
 
 > 🔗 **ต่อเนื่องจาก:** Week 6 (N-Tier Docker) → Week 7 (Cloud Deploy) → **Week 12 (Secure Architecture)**
 
+> 📝 **Version 2.0 — สิ่งที่ปรับปรุงจาก v1:**
+> - ✅ แก้ไขปัญหา Login ไม่ได้ด้วย bcrypt seed script แทน hardcoded hash
+> - ✅ แยก Frontend ออกเป็นไฟล์ HTML / CSS / JS อิสระ
+> - ✅ แก้ไข Loki Logging ใช้ Docker Driver Plugin (รองรับ macOS + WSL2)
+> - ✅ แก้ Rate Limit เป็น 20r/m (dev-friendly แต่ยังสาธิต Test Case ได้)
+> - ✅ เพิ่ม `.env.example`, shared `authMiddleware`, Grafana Dashboard สำเร็จรูป
+
 ---
 
 ## 📋 สารบัญ
