@@ -4,8 +4,8 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;              verticalAlign=middle;whiteSpace=wrap;rounded=0;              fontSize=18;fontStyle=1;" value="C2: Task Board Security Architecture (Week 12)" vertex="1">
-          <mxGeometry height="40" width="350" x="440" y="40" as="geometry" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;              verticalAlign=middle;whiteSpace=wrap;rounded=0;              fontSize=18;fontStyle=1;fontSize=13;" value="C2: Task Board Security Architecture (Week 12)" vertex="1">
+          <mxGeometry height="40" width="350" x="440" y="50" as="geometry" />
         </mxCell>
         <mxCell id="user" parent="1" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;              fillColor=#dae8fc;strokeColor=#6c8ebf;" value="🌐 Browser / User" vertex="1">
           <mxGeometry height="80" width="120" x="60" y="277" as="geometry" />
