@@ -2021,6 +2021,7 @@ _________________________________________________
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="engse207-frontend-health" content="frontend-ok">
   <title>🔐 Task Board — Week 12 Security</title>
   <style>
     /* ═══════════════════════════════════════════════════════
