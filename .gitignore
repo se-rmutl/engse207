@@ -1,3 +1,15 @@
-resources
-.vscode
-experiments
+# OS
+.DS_Store
+Thumbs.db
+
+# Node / build
+node_modules/
+dist/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Editor
+.idea/

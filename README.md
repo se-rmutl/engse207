@@ -1,68 +1,164 @@
-# ENGSE207 สถาปัตยกรรมซอฟต์แวร์ (Software Architecture) 🏗️
+# ENGSE207 สถาปัตยกรรมซอฟต์แวร์ (Software Architecture)
 
-**หลักสูตรวิศวกรรมซอฟต์แวร์ มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา (ดอยสะเก็ด)** **ภาคเรียนที่:** 2/2568  
-**ผู้สอน:** อ.ธนิต เกตุแก้ว 
+**หลักสูตรวิศวกรรมศาสตรบัณฑิต สาขาวิชาวิศวกรรมซอฟต์แวร์ (หลักสูตร พ.ศ. 2566)**
+คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา พื้นที่ดอยสะเก็ด · **ภาคการศึกษาที่ 2 ปีการศึกษา 2569**
 
-![Software Architecture Banner](https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3)
-*(ภาพประกอบ: Software Architecture Concept)*
+> จากระบบที่ **อ่านได้** สู่แบบที่ **ให้เหตุผลและประเมินได้**
+> ทั้งเทอมเราพัฒนาระบบจัดการงานทีม (Task Board) ระบบเดียว ทีละขั้น ตั้งแต่การอ่านโค้ด จัดโครงสร้าง เขียนเอกสาร นำขึ้น Cloud ไปจนถึงประเมินด้วยหลักฐาน
 
----
-
-## 📖 เกี่ยวกับรายวิชา 
-รายวิชานี้มุ่งเน้นการศึกษาและฝึกปฏิบัติเกี่ยวกับพื้นฐานของสถาปัตยกรรมซอฟต์แวร์ (Software Architecture) ครอบคลุมเนื้อหาสำคัญดังนี้:
-* หลักการพื้นฐานและแนวทางในการออกแบบสถาปัตยกรรม
-* รูปแบบ (Patterns) และกรอบแนวคิด (Styles) ต่างๆ
-* การเขียนเอกสารอธิบายสถาปัตยกรรม (Documentation)
-* การประเมินผลสถาปัตยกรรม (Evaluation)
-* การประยุกต์ใช้กับเทคโนโลยีสมัยใหม่ เช่น Cloud Computing, Microservices และ Serverless
-
-## 🎯 วัตถุประสงค์การเรียนรู้ (Course Objectives) 
-เมื่อสิ้นสุดการเรียนรายวิชานี้ นักศึกษาจะสามารถ:
-1.  **เข้าใจ:** หลักการพื้นฐานและความสำคัญของ Software Architecture
-2.  **วิเคราะห์:** เลือกใช้ Architectural Patterns ที่เหมาะสมกับความต้องการ
-3.  **ออกแบบ:** สถาปัตยกรรมที่มีคุณภาพสูงโดยคำนึงถึง Quality Attributes
-4.  **สื่อสาร:** ใช้เครื่องมือ (C4 Model, Diagrams) ในการนำเสนอสถาปัตยกรรม
-5.  **ประเมิน:** ปรับปรุงสถาปัตยกรรมอย่างเป็นระบบ
+| | |
+|---|---|
+| รหัสวิชา | ENGSE207 · 3(2-3-5) · กลุ่มวิชาชีพบังคับ · ชั้นปีที่ 2 |
+| ชั่วโมงเรียน | บรรยาย 2 + ปฏิบัติ 3 + ศึกษาด้วยตนเอง 5 ชั่วโมงต่อสัปดาห์ · 15 ครั้งสอน + สอบ 2 ครั้ง |
+| วิชาที่ต้องเรียนก่อน | ไม่มี · ENGSE206 เป็นวิชาที่เชื่อมเนื้อหาตามแผนการเรียน |
+| ผู้สอน | อาจารย์ธนิต เกตุแก้ว · thanit@rmutl.ac.th |
+| คำปรึกษา | รายคนหรือรายกลุ่มโดยนัดหมายทางอีเมล (ช่วงเวลาประจำจะประกาศในชั้นเรียน) |
 
 ---
 
-## 🛠️ เครื่องมือที่ใช้ (Tools & Technologies) 
-* **Modeling:** [Draw.io](https://app.diagrams.net/), [Structurizr](https://structurizr.com/), Lucidchart
-* **Collaboration:** Miro / FigJam
-* **Development/DevOps:** Docker, Kubernetes (Basic), Git
+## เริ่มต้นที่นี่
+
+| | |
+|---|---|
+| 🖥️ **สไลด์ภาพรวมรายวิชา** | [`slides/course-overview.html`](slides/course-overview.html) ดาวน์โหลดแล้วเปิดในเบราว์เซอร์ (มีปุ่มปรับขนาดตัวอักษรและเลือก Theme) |
+| 🐳 **ใบงานสัปดาห์แรก (T01)** | [รู้จัก Docker ก่อนรันระบบ](weeks/week01/README.md) ติดตั้ง Docker Desktop บน Windows (WSL 2) และ macOS พร้อมแล็บ A–D |
+| 🧩 **Term Project** | [ระบบ Task Board และชุดผลงาน ARCH-01 ถึง ARCH-06](term-project/README.md) |
+| 👥 **แม่แบบ Team Charter** | [templates/team-charter.md](templates/team-charter.md) ใช้ตกลงกติกาทีมในสัปดาห์แรก |
 
 ---
 
-## 📅 แผนการเรียนการสอน (Weekly Schedule) 
+## คำอธิบายรายวิชา
 
-| สัปดาห์ | หัวข้อ (Topic) | เนื้อหา (Materials) | งานปฏิบัติ (Labs/Workshops) |
-| :---: | :--- | :---: | :---: |
-| **01** | **บทนำสถาปัตยกรรมซอฟต์แวร์** <br> (Introduction & Modern Systems) | [📺 Lecture](./week1/lecture.md) | [💻 Lab: System Analysis](./week1/lab.md) |
-| **02** | **คุณภาพซอฟต์แวร์ & ปัจจัยขับเคลื่อน** <br> (Quality Attributes & Architectural Drivers) | [📺 Lecture](./week2/lecture.md) | [💻 Workshop: QA Scenarios](./week2/workshop.md) <br> [💻 Lab: Architectural Drivers](./week2/lab.md)|
-| **03** | **รูปแบบสถาปัตยกรรมพื้นฐาน (Part 1)** <br> (Monolith, Layered, Client-Server, Pipe-Filter) | [📺 Lecture](./week3/lecture.md) | [💻 Lab: Refactoring to Layered](./week3/lab.md) |
-| **04** | **รูปแบบสถาปัตยกรรมสมัยใหม่ (Part 2)** <br> (Microservices, Event-Driven, Serverless) | [📺 Lecture](./week4/lecture.md) | [💻 Lab: Microservices Design](./week4/lab.md) |
-| **05** | **การจำลองแบบด้วย C4 Model** <br> (Architecture Views: Context/Container) | [📺 Lecture](./week5/lecture.md) | [💻 Lab: Draw C1-C2 Diagrams](./week5/lab.md) |
-| **06** | **กระบวนการออกแบบสถาปัตยกรรม** <br> (Design Process & ADD-Lite) | [📺 Lecture](./week06/lecture.md) | [💻 Workshop: Decision Record (ADR)](./week6/lab.md) |
-| **07** | **สถาปัตยกรรมสำหรับ Cloud** <br> (Cloud & Containerization) | [📺 Lecture](./week7/lecture.md) | [💻 Lab: Cloud Deployment Diagram](./week7/lab.md) |
-| **08** | 📝 **สอบกลางภาค (Midterm Exam)** | - | - |
-| **09** | **สถาปัตยกรรมสำหรับ Mobile & Edge** <br> (Offline-First, BFF Pattern) | [📺 Lecture](./week9/lecture.md) | [💻 Lab: Mobile/BFF Design](./week9/lab.md) |
-| **10** | **สถาปัตยกรรมข้อมูล & การเชื่อมต่อ** <br> (Data-Intensive & Integration) | [📺 Lecture](./week10/lecture.md) | [💻 Lab: Data Flow & Integration](./week10/lab.md) |
-| **11** | **การประเมินสถาปัตยกรรม** <br> (Evaluation & Technical Debt) | [📺 Lecture](./week11/lecture.md) | [💻 Activity: Architecture Review](./week11/lab.md) |
-| **12** | **ความปลอดภัยในสถาปัตยกรรม** <br> (Security-Aware Architecture) | [📺 Lecture](./week12/lecture.md) | [💻 Lab: Threat Modeling](./week12/lab.md) |
-| **13** | **DevOps & Observability** <br> (CI/CD, Logging, Monitoring) | [📺 Lecture](./week13/lecture.md) | [💻 Lab: Deployment Pipeline](./week13/lab.md) |
-| **14** | **Project Workshop 1** <br> (High-Level Arch & C4 Integration) | - | [💻 Project: SAD Draft](./week14/project.md) |
-| **15** | **Project Workshop 2** <br> (Detail, Trade-offs & Documentation) | - | [💻 Project: Finalize SAD](./week15/project.md) |
-| **16** | 🎤 **นำเสนอโครงงาน (Final Presentation)** | - | [📂 Submission](./week16/submission.md) |
-| **17** | 📝 **สอบปลายภาค (Final Exam)** | - | - |
+ศึกษาและฝึกปฏิบัติเกี่ยวกับพื้นฐานของสถาปัตยกรรมซอฟต์แวร์ อันได้แก่หลักการพื้นฐานและแนวทางในการออกแบบสถาปัตยกรรมซอฟต์แวร์ รูปแบบและกรอบแนวคิดต่าง ๆ ของสถาปัตยกรรมซอฟต์แวร์ วิธีการ เทคนิคและเครื่องมือสำหรับการใช้เอกสารอธิบายสถาปัตยกรรมซอฟต์แวร์อย่างสมเหตุสมผล การออกแบบสถาปัตยกรรมซอฟต์แวร์และกระบวนการประเมินผล ศึกษาวิธีการและเครื่องมือสำหรับการออกแบบและประเมินสถาปัตยกรรมซอฟต์แวร์ สำหรับสถานะของเทคโนโลยีที่ทันสมัย เช่น การประมวลผลแบบคลาวด์และการประมวลผลสำหรับอุปกรณ์เคลื่อนที่
+
+*Study and practice on the fundamentals of software architecture. Fundamental principles and guidelines for software architecture design, architectural styles, patterns and frameworks. Methods, techniques and tools for describing software architecture and documenting design rationale. Software architecture design and evaluation processes. Approaches and tools for designing and evaluating software architectures for the state-of-the-art technologies such as cloud-computing and mobile computing.*
+
+## ผลลัพธ์การเรียนรู้รายวิชา (CLO)
+
+| CLO | ผลลัพธ์ | Outcome |
+|---|---|---|
+| CLO1 | วิเคราะห์บริบท ความต้องการ และข้อจำกัดของระบบ เพื่อระบุประเด็นสำคัญทางสถาปัตยกรรม โดยโยงกับหลักการออกแบบ รูปแบบสถาปัตยกรรม และมุมมองที่เหมาะสม | Analyse context, requirements and constraints to identify architectural concerns |
+| CLO2 | เสนอและเปรียบเทียบทางเลือกสถาปัตยกรรมสำหรับระบบขนาดเล็ก โดยใช้ความต้องการด้านคุณภาพและข้อจำกัด และให้เหตุผลเรื่องข้อแลกเปลี่ยนและความเสี่ยง | Propose and compare alternatives; justify trade-offs and risks |
+| CLO3 | จัดทำและสื่อสารคำอธิบายสถาปัตยกรรมและเหตุผลการออกแบบ ด้วยแผนภาพและเอกสารที่ตรงกับระบบ ใช้ภาษาไทยและอังกฤษในส่วนสำคัญ | Document and communicate architecture and rationale (Thai/English) |
+| CLO4 | ปรับองค์ประกอบของระบบตามแบบ และนำขึ้นใช้งานทั้ง local และ cloud โดยจัดการการเชื่อมต่อ การตั้งค่า และข้อมูลที่ต้องคงอยู่ | Adapt components and deploy locally and to the cloud |
+| CLO5 | ประเมินสถาปัตยกรรมด้วยสถานการณ์คุณภาพและการทดลองขนาดเล็ก รวมข้อจำกัดเครือข่ายของผู้ใช้มือถือ และใช้หลักฐานเสนอการปรับปรุง | Evaluate with quality scenarios and small experiments |
+| CLO6 | ทำงานสถาปัตยกรรมร่วมกับทีมอย่างรับผิดชอบ จัดการงานและรุ่นของผลงาน นำเสนอเหตุผล ให้และรับข้อเสนอแนะ | Work responsibly in a team |
+| CLO7 | สืบค้นและประเมินข้อมูลหรือคำแนะนำจากเอกสารเทคนิคและเครื่องมือช่วย รวมถึง AI ตรวจกับบริบทหรือผลทดลอง อ้างอิงแหล่ง และสะท้อนสิ่งที่ต้องพัฒนาต่อ | Find, verify and cite information, including AI suggestions |
+
+ระดับเป้าหมายคือการวิเคราะห์และประยุกต์ผ่านระบบขนาดเล็กที่มีโครงช่วย ไม่ต้องสร้างระบบกระจายระดับองค์กรขึ้นจากศูนย์
+
+## วิธีเรียน
+
+- **ระบบเดียวทั้งเทอม:** ทุกทีมได้รับ brief ระบบ Task Board และต่อยอดจากระบบเดิมทุกครั้งสอน
+- **ทุกครั้งสอน:** บรรยายสั้นพร้อม worked example 2 ชั่วโมง แล้วลงมือในแล็บ 3 ชั่วโมง (คาดการณ์ก่อนรัน → แก้ทีละจุด → ตรวจผลปกติและผิดพลาด → อภิปราย)
+- **เสริมพื้นฐาน** 30–45 นาทีในเวลาปฏิบัติช่วง T02–T06 และ T08–T10
+- **ค่อยลดตัวช่วย:** ช่วงต้นมีระบบพร้อมรันและใบชี้ตำแหน่ง ช่วงท้ายทีมตัดสินใจ ลงมือ และอธิบายเอง
+- **ทีมละ 3–4 คน** หมุนบทบาท อ่านโค้ด → ลงมือ → ตรวจ ใช้ issue และ Git
+
+## แผนการเรียน 17 สัปดาห์
+
+S = ลำดับสัปดาห์ในแผน · T = ครั้งสอนเนื้อหา · ตำแหน่งสอบเป็นตำแหน่งในแผน วันสอบจริงตามประกาศมหาวิทยาลัย
+
+| S | T | หัวข้อ | CLO | งานที่มีคะแนน | เอกสาร |
+|:-:|:-:|---|---|---|---|
+| **ช่วง 1** | | **อ่านระบบและวางพื้นฐาน** | | | |
+| 01 | T01 | ภาพรวมรายวิชา · รู้จัก Docker ก่อนรันระบบ | 1, 6 | – | [ใบงาน T01](weeks/week01/README.md) |
+| 02 | T02 | ความรับผิดชอบขององค์ประกอบและเส้นทางข้อมูล | 1, 3, 4, 6 | – | [S02](weeks/week02/README.md) |
+| 03 | T03 | คุณลักษณะคุณภาพและการวิเคราะห์ข้อขัดข้อง | 1, 4, 5, 7 | – | [S03](weeks/week03/README.md) |
+| **ช่วง 2** | | **จัดโครงสร้างและสื่อสารแบบ** | | | |
+| 04 | T04 | Layered และ Modular Monolith | 1, 2, 4 | – | [S04](weeks/week04/README.md) |
+| 05 | T05 | กรอบแนวคิดและเอกสารสถาปัตยกรรมด้วย C4 | 1, 3, 4 | – | [S05](weeks/week05/README.md) |
+| 06 | T06 | กระบวนการออกแบบและการตัดสินใจอย่างมีเหตุผล (ADD, ADR) | 1, 2, 3, 7 | A2a | [S06](weeks/week06/README.md) |
+| 07 | T07 | ทบทวนสถาปัตยกรรมและจุดตรวจความเข้าใจรอบแรก | 1, 2, 3, 4, 6 | A1a · A5a | [S07](weeks/week07/README.md) |
+| 08 | – | 📝 **สอบกลางภาค** | 1, 2, 3 | A3 | [S08](weeks/week08/README.md) |
+| **ช่วง 3** | | **ขยายสู่ Cloud · Data · Service** | | | |
+| 09 | T08 | Cloud และการนำสถาปัตยกรรมขึ้นใช้งาน | 2, 3, 4, 7 | – | [S09](weeks/week09/README.md) |
+| 10 | T09 | สถาปัตยกรรมข้อมูลและการเลือกฐานข้อมูล | 2, 4, 7 | – | [S10](weeks/week10/README.md) |
+| 11 | T10 | การแยกบริการและข้อขัดข้องบางส่วน | 1, 2, 4, 5 | – | [S11](weeks/week11/README.md) |
+| 12 | T11 | Event-Driven และการสื่อสารแบบไม่พร้อมกัน | 1, 2, 4, 5 | – | [S12](weeks/week12/README.md) |
+| 13 | T12 | สถาปัตยกรรมสำหรับผู้ใช้บนอุปกรณ์เคลื่อนที่ | 2, 3, 4, 5 | – | [S13](weeks/week13/README.md) |
+| **ช่วง 4** | | **ประเมิน ปรับปรุง และส่งมอบ** | | | |
+| 14 | T13 | การประเมินสถาปัตยกรรมจากหลักฐาน | 2, 5, 7 | A2b | [S14](weeks/week14/README.md) |
+| 15 | T14 | ปรับปรุงสถาปัตยกรรมและเตรียมส่งมอบ | 2–7 | A1b · A5b · A6 · A7 | [S15](weeks/week15/README.md) |
+| 16 | T15 | นำเสนอ ทบทวนร่วมกัน และต่อยอดสู่โครงงาน | 2, 3, 5, 6, 7 | A8 · A9 | [S16](weeks/week16/README.md) |
+| 17 | – | 📝 **สอบปลายภาค** | 2, 3, 4, 5 | A4 | [S17](weeks/week17/README.md) |
+
+## การประเมินผล
+
+คะแนนเต็ม 100 · **รายบุคคล 60** · **กลุ่ม 40**
+
+| รหัส | งาน | ประเภท | CLO (คะแนน) | ช่วงประเมิน | คะแนน |
+|---|---|---|---|---|--:|
+| A1 | จุดตรวจอ่าน แก้ และอธิบายระบบ (2 รอบ รอบละ 5) | เดี่ยว | CLO3 (2) · CLO4 (8) | T07 · T14 | 10 |
+| A2 | วิเคราะห์ทางเลือก (A2a 2) และอ่านผลทดลอง (A2b 3) | เดี่ยว | CLO2 (2) · CLO5 (3) | T06 · T13 | 5 |
+| A3 | สอบกลางภาค | เดี่ยว | CLO1 (8) · CLO2 (6) · CLO3 (6) | S08 | 20 |
+| A4 | สอบปลายภาค | เดี่ยว | CLO2 (4) · CLO3 (2) · CLO4 (4) · CLO5 (5) | S17 | 15 |
+| A5 | ชุดเอกสารสถาปัตยกรรม (A5a 5 · A5b 10) | กลุ่ม | CLO1 (3) · CLO2 (6) · CLO3 (6) | T07 · T14 | 15 |
+| A6 | ระบบและหลักฐานการนำขึ้นใช้งาน | กลุ่ม | CLO4 (10) | สะสม T08–T14 | 10 |
+| A7 | การประเมินและปรับปรุงสถาปัตยกรรม | กลุ่ม | CLO5 (10) | T13–T14 | 10 |
+| A8 | นำเสนอและทบทวนร่วมกับเพื่อน | กลุ่ม | CLO3 (3) · CLO6 (2) | T15 | 5 |
+| A9 | ความรับผิดชอบและการเรียนรู้จากหลักฐาน | เดี่ยว | CLO6 (5) · CLO7 (5) | สะสม T02–T15 | 10 |
+
+- **ระดับคุณภาพ 0–3** ทุกมิติ · คะแนนมิติ = ระดับ ÷ 3 × น้ำหนัก
+  - 3 ทำได้ครบ ตรวจความผิดปกติและข้อจำกัด และให้เหตุผลจากหลักฐาน
+  - 2 ทำได้ตามเป้าหมายด้วยโครงช่วยที่กำหนด และอธิบายได้
+  - 1 ทำได้บางส่วน แต่ยังมีช่องว่างในสาระสำคัญ
+  - 0 หลักฐานไม่แสดงทักษะที่ตรวจได้
+- **การบรรลุ CLO รายคน** ใช้เฉพาะงานเดี่ยว (A1–A4, A9) ต้องได้อย่างน้อย 2/3 ของคะแนนรายคนของ CLO นั้น และมีหลักฐานสำคัญครบ คะแนนทีมไม่ใช้แทนความสามารถรายคน
+- **เกณฑ์ตัดเกรดที่เสนอ:** A ≥ 80 · B+ ≥ 75 · B ≥ 70 · C+ ≥ 65 · C ≥ 60 · D+ ≥ 55 · D ≥ 50 · F < 50 (ใช้ค่าจริงก่อนปัด)
+- การแก้งานระหว่างเรียนเป็นโอกาสฝึก ไม่บวกคะแนนซ้ำทุกครั้งที่ส่ง snapshot
+- กำหนดส่งช้า ขาดสอบ และการชดเชย ประกาศล่วงหน้าตามช่วงการสอน
+
+## การใช้ AI และความซื่อตรง
+
+| ใช้ได้ตามขอบเขตโจทย์ | ไม่ใช้ระหว่างการประเมินรายคน |
+|---|---|
+| การฝึกในแล็บ งานทีม (A5–A8) และงานสะสม (A9) | A1 จุดตรวจรายคน · A3 สอบกลางภาค · A4 สอบปลายภาค |
+| ระบุว่าส่วนไหนใช้ AI · ตรวจผลกับระบบหรือเอกสารทางการก่อนใช้ · อ้างอิงแหล่งที่มา | ไม่ใช้ Generative AI และไม่รับคำตอบจากผู้อื่น · ใช้เอกสารและโปรแกรมเฉพาะที่ประกาศ · ปิด AI autocomplete ที่ไม่อนุญาต |
+
+- ไม่สร้างผลทดลองเท็จ อ้างอิงโค้ด เอกสาร และ AI อย่างตรงไปตรงมา
+- เก็บ secrets อย่างเหมาะสม ไม่ commit ไฟล์ `.env` ให้ใช้ `.env.example`
+- ไม่บังคับใช้บัญชีเสียเงิน และไม่ต้องใช้ AI เพื่อให้ได้คะแนน
+- A9 ประเมินจากหลักฐานบทบาทและการเรียนรู้ ไม่ใช้คะแนนความนิยมจากเพื่อนหรือจำนวน commit
+
+## เครื่องมือ
+
+| ด้าน | เครื่องมือ | หมายเหตุ |
+|---|---|---|
+| Runtime | Docker Desktop · Docker Compose | Windows ใช้ WSL 2 · macOS ใช้ Docker Desktop · เริ่มใช้ตั้งแต่ T01 |
+| Frontend | React + Vite (JavaScript/JSX) | อ่านและแก้ระบบตัวอย่าง ไม่เปิดสอนใหม่ทั้ง framework |
+| Backend | Node.js | เวอร์ชันที่ตรึงจะระบุในใบงานแต่ละครั้ง |
+| Data | PostgreSQL (ข้อมูลหลัก) · MongoDB (ทดลองและเปรียบเทียบ) | |
+| Cloud | Railway ผ่าน Git และ Dockerfile | ใช้บัญชีและทรัพยากรที่ผู้สอนจัดให้ |
+| ทีมงาน | Git/GitHub · issue/รายการงาน | |
+| เอกสาร | draw.io (Miro/Figma เป็นทางเลือก) | เก็บไฟล์ต้นฉบับที่แก้ได้ |
+| ตรวจ/วิเคราะห์ | Browser DevTools · HTTP client · ตารางคำนวณ | |
+
+## แหล่งอ้างอิง
+
+- Bass, L., Clements, P., and Kazman, R. (2021). *Software Architecture in Practice*, 4th ed. Addison-Wesley. (อ่านบทที่ผู้สอนเลือก ไม่ต้องซื้อก่อนเริ่มเรียน)
+- [The C4 model for visualising software architecture](https://c4model.com/)
+- [arc42 Template overview](https://arc42.org/overview/)
+- [SEI · The Architecture Tradeoff Analysis Method](https://sei.cmu.edu/library/the-architecture-tradeoff-analysis-method/)
+- เอกสารทางการ: [React](https://react.dev/learn) · [Vite](https://vite.dev/guide/) · [Node.js](https://nodejs.org/en/learn) · [PostgreSQL](https://www.postgresql.org/docs/) · [MongoDB](https://www.mongodb.com/docs/) · [Docker](https://docs.docker.com/learn/) · [Railway](https://docs.railway.com/builds/dockerfiles)
+
+## โครงสร้าง repository
+
+```text
+engse207/
+├── README.md                 หน้านี้
+├── slides/
+│   └── course-overview.html  สไลด์ภาพรวมรายวิชา
+├── weeks/
+│   ├── week01/               ใบงาน T01 + check-docker.sh
+│   ├── week02/ … week16/     เอกสารรายสัปดาห์ (S02–S16)
+│   ├── week08/               สอบกลางภาค
+│   └── week17/               สอบปลายภาค
+├── term-project/             ระบบ Task Board และชุดผลงาน ARCH-01 ถึง ARCH-06
+└── templates/
+    └── team-charter.md       แม่แบบข้อตกลงทีม
+```
 
 ---
 
-## 📚 แหล่งข้อมูลอ้างอิง (References)
-* *Software Architecture in Practice (3rd/4th Edition)* - Bass, Clements, Kazman
-* *Fundamentals of Software Architecture* - Richards, Ford
-* [C4 Model Website](https://c4model.com/)
-* [AWS Architecture Center](https://aws.amazon.com/architecture/)
-
----
-
-> **Note for Students:** กรุณาตรวจสอบ GitHub Issues และ Announcements ใน Class เป็นประจำเพื่อติดตามการอัปเดตและส่งงาน
+<sub>เนื้อหาในหน้านี้สรุปจาก มคอ.3 ENGSE207 ภาคการศึกษาที่ 2/2569 ฉบับร่าง v0.3 น้ำหนักคะแนนและเกณฑ์อาจปรับก่อนประกาศใช้จริง · เนื้อหาของภาคการศึกษาก่อนเก็บไว้ที่ branch [`1-68_backup`](https://github.com/se-rmutl/engse207/tree/1-68_backup)</sub>
