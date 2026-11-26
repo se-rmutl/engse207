@@ -23,7 +23,7 @@
 | 🖥️ **สไลด์ภาพรวมรายวิชา** | [`slides/course-overview.html`](slides/course-overview.html) ดาวน์โหลดแล้วเปิดในเบราว์เซอร์ (มีปุ่มปรับขนาดตัวอักษรและเลือก Theme) |
 | 🐳 **ใบงานสัปดาห์แรก (T01)** | [รู้จัก Docker ก่อนรันระบบ](weeks/week01/README.md) ติดตั้ง Docker Desktop บน Windows (WSL 2) และ macOS พร้อมแล็บ A–D |
 | 🧩 **Term Project** | [ระบบ Task Board และชุดผลงาน ARCH-01 ถึง ARCH-06](term-project/README.md) |
-| 👥 **แม่แบบ Team Charter** | [templates/team-charter.md](templates/team-charter.md) ใช้ตกลงกติกาทีมในสัปดาห์แรก |
+| 👥 **ลงทะเบียนทีมและ repo ทีม** | [แบบลงทะเบียนทีม](https://se-rmutl.github.io/engse207/register.html) แล้วสร้าง repo จากแม่แบบ [`se-rmutl/engse207-team-template`](https://github.com/se-rmutl/engse207-team-template) ซึ่งมี team charter และแม่แบบงานทุกชิ้นอยู่ในโฟลเดอร์ `templates/` |
 
 ---
 

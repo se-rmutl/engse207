@@ -33,33 +33,40 @@ flowchart LR
 
 - ทีมละประมาณ **3–4 คน** อยู่ทีมเดิมตลอดเทอม
 - ทุกทีมต้องมีเครื่องที่รัน Docker ได้อย่างน้อย 2 เครื่อง
-- ทำ [team charter](../templates/team-charter.md) ให้เสร็จก่อน T02 และเก็บไว้ใน README ของ repo ทีม
+- ลงทะเบียนทีมที่[หน้าลงทะเบียน](https://se-rmutl.github.io/engse207/register.html) ได้รหัสทีม เช่น `S1-T03`
+- ทำ team charter ให้เสร็จก่อน T02 ที่ `docs/team-charter.md` ใน repo ทีม (แม่แบบอยู่ที่ `templates/team-charter.md` ของ repo ทีม)
 - **บทบาทรายครั้งสอน:** หมุนกันเป็น อ่านโค้ด → ลงมือ → ตรวจ ทุกคนต้องได้ลงมือ
 - **บทบาทรายช่วง:** repo maintainer · เจ้าของเอกสาร ARCH · deploy owner (ตั้งแต่ T08) หมุนทุกช่วง
 - บันทึกการหมุนบทบาทและงานของแต่ละคน ใช้เป็นหลักฐานของ A9
 
 ## กติกา Git ของทีม
 
-- repo ของทีมเป็น private ผู้สอนเข้าถึงได้
+- repo ของทีมสร้างจากแม่แบบ [`se-rmutl/engse207-team-template`](https://github.com/se-rmutl/engse207-team-template) ชื่อ `engse207-2569-s<SEC>-t<เลขทีม>` เป็น private และเพิ่ม `tkeatkaew` เป็น collaborator
+- ส่งงานโดย push ไฟล์ตาม path มาตรฐานเข้า `main` ระบบตรวจทุกชั่วโมง ดูกำหนดส่งและ path ทั้งหมดที่[หน้าสิ่งที่ต้องส่ง](https://se-rmutl.github.io/engse207/deliverables.html)
 - `main` ต้องรันได้เสมอ งานใหม่ทำใน branch แล้วเปิด Pull Request ให้เพื่อนอีกคนรีวิวก่อน merge
 - งานแต่ละชิ้นผูกกับ issue
 - ห้าม commit ไฟล์ `.env` หรือ secrets ใช้ `.env.example` แทน
 - ก่อนส่งงานให้ติด tag ของรุ่นที่ส่ง เช่น `t07-a5a`, `t14-submit` คะแนนแต่ละมิติใช้ snapshot ชุดเดียว
 
-โครงสร้างที่แนะนำใน repo ทีม
+โครงสร้างของ repo ทีม (ชื่อไฟล์และโฟลเดอร์ต้องตรง เพราะใช้ตรวจการส่งอัตโนมัติ)
 
 ```text
 <team-repo>/
-├── README.md                 team charter + วิธีรันแบบ clean start
+├── README.md                 วิธีรันแบบ clean start และ Cloud URL
 ├── .env.example
 ├── docker-compose.yml
 ├── frontend/  backend/  …    ระบบ (ARCH-04)
-└── docs/
-    ├── arch-01-context.md
-    ├── arch-02-diagrams/     ไฟล์ draw.io ต้นฉบับ + ภาพ
-    ├── arch-03-adr/          ADR-001-*.md, ADR-002-*.md, data-note.md
-    ├── arch-05-evaluation.md
-    └── arch-06-handover.md
+├── docs/
+│   ├── team-charter.md
+│   ├── arch-01-context.md
+│   ├── arch-02-diagrams/     ไฟล์ draw.io ต้นฉบับ + ภาพ
+│   ├── arch-03-adr/          ADR-001-*.md, ADR-002-*.md, data-note.md
+│   ├── arch-05-evaluation.md
+│   ├── arch-06-handover.md
+│   ├── labs/                 บันทึกแล็บ t02.md … t14.md
+│   └── presentation/slides.pdf
+├── individual/               งานเดี่ยว T01-<รหัส>.md, A1a-, A1b-, A2a-, A2b-, A9-log-, A9-reflection-<รหัส>.md
+└── templates/                แม่แบบ คัดลอกไปใช้ตาม path
 ```
 
 ## ชุดผลงาน ARCH-01 ถึง ARCH-06
