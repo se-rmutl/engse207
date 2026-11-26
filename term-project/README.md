@@ -41,7 +41,7 @@ flowchart LR
 
 ## กติกา Git ของทีม
 
-- repo ของทีมสร้างจากแม่แบบ [`se-rmutl/engse207-team-template`](https://github.com/se-rmutl/engse207-team-template) ชื่อ `engse207-2569-s<SEC>-t<เลขทีม>` เป็น private และเพิ่ม `tkeatkaew` เป็น collaborator
+- repo ของทีมสร้างจากแม่แบบ [`se-rmutl/engse207-team-template`](https://github.com/se-rmutl/engse207-team-template) ชื่อ `engse207-2569-s<SEC>-<ชื่อทีมภาษาอังกฤษ>` เช่น `engse207-2569-s1-cloudcats` เป็น private และเพิ่ม `tkeatkaew` เป็น collaborator ก่อนกรอกแบบลงทะเบียน
 - ส่งงานโดย push ไฟล์ตาม path มาตรฐานเข้า `main` ระบบตรวจทุกชั่วโมง ดูกำหนดส่งและ path ทั้งหมดที่[หน้าสิ่งที่ต้องส่ง](https://se-rmutl.github.io/engse207/deliverables.html)
 - `main` ต้องรันได้เสมอ งานใหม่ทำใน branch แล้วเปิด Pull Request ให้เพื่อนอีกคนรีวิวก่อน merge
 - งานแต่ละชิ้นผูกกับ issue
