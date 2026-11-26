@@ -25,6 +25,8 @@
 
 DevTools Network panel, การอ่าน log, คำสั่ง SELECT ผ่าน psql ใน container
 
+ทบทวน image, container, port, volume และ network ด้วย[แล็บพื้นฐาน Docker (ฉบับร่าง)](docker-basics.md)
+
 ## หลักฐานและการประเมิน
 
 - **ARCH-01** รุ่นแรกและบันทึก debug แยกข้อมูลที่วัดได้ ข้อสมมติ และข้อมูลจากโจทย์ออกจากกัน
